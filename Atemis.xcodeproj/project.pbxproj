@@ -24,6 +24,9 @@
 		D5163E8727280F6E00DF09D0 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5163E7F2728098E00DF09D0 /* Avenir.ttc */; };
 		D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8827280F9A00DF09D0 /* Extensions.swift */; };
 		D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8B2728108A00DF09D0 /* TabContainer.swift */; };
+		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
+		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
+		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		D5163E8327280E3000DF09D0 /* ExampleCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCV.swift; sourceTree = "<group>"; };
 		D5163E8827280F9A00DF09D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5163E8B2728108A00DF09D0 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
+		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
+		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
 		E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.release.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.release.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D5163E4E2727FF9800DF09D0 /* AtemisTests.swift */,
+				D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */,
 			);
 			path = AtemisTests;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 		D5163E67272802CE00DF09D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D5325FBE272D0AE7007FAFED /* CloudKitModels */,
 				D5163E6B272803AE00DF09D0 /* Core Data */,
 			);
 			path = Models;
@@ -252,6 +260,7 @@
 		D5163E8127280E0B00DF09D0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D5325FB9272B99A9007FAFED /* CloudKit Helpers */,
 				D5163E8227280E1600DF09D0 /* Custom Views */,
 			);
 			path = Common;
@@ -271,6 +280,22 @@
 				D5163E8827280F9A00DF09D0 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D5325FB9272B99A9007FAFED /* CloudKit Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */,
+			);
+			path = "CloudKit Helpers";
+			sourceTree = "<group>";
+		};
+		D5325FBE272D0AE7007FAFED /* CloudKitModels */ = {
+			isa = PBXGroup;
+			children = (
+				D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */,
+			);
+			path = CloudKitModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,7 +559,9 @@
 				D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */,
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* ExampleCV.swift in Sources */,
+				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
+				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
 			);
@@ -545,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5163E4F2727FF9800DF09D0 /* AtemisTests.swift in Sources */,
+				D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,7 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Atemis/Atemis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Atemis/Supporting Files/Atemis.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
@@ -727,7 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Atemis/Atemis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Atemis/Supporting Files/Atemis.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
