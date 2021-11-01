@@ -27,6 +27,7 @@
 		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
+		D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
+		D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKCrudOperators.swift; sourceTree = "<group>"; };
 		E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.release.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.release.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */,
+				D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */,
 			);
 			path = "CloudKit Helpers";
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* ExampleCV.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
+				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,

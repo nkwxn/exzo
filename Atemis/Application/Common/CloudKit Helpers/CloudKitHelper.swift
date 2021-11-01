@@ -19,69 +19,52 @@ class CKHelper {
         static let CustomFoodIntake = "CustomFoodIntake"
     }
     
-    enum CKHelperError: Error {
-        case recordFailure
-        case recordIDFailure
-        case castFailure
-        case cursorFailure
+    enum AccountError: Error {
+        case accountExists
+        case notRegistered
+        case incorrectPassword
     }
     
     // Singleton
     static let shared = CKHelper()
     
-    // CloudKit Container
-    let container = CKContainer.default()
-    let database: CKDatabase?
-    
-    private init() {
-        database = container.publicCloudDatabase
-    }
-    
-    // MARK: - Check iCloud account status (if apple id not logged in, can't use the app)
-    func checkiCloud(completionHandler: @escaping (_: CKAccountStatus, _: Error?) -> Void) {
-        container.accountStatus { status, error in
-            completionHandler(status, error)
-        }
-    }
-    
     // MARK: - Create a new user
     func signUpNewUser(
         newAcc: NewUserAccount,
-        completionHandler: @escaping (Result<NewUserAccount, Error>) -> ()
+        completion: @escaping (Result<NewUserAccount, Error>) -> Void
     ) {
-        let newUserRecord = CKRecord(recordType: RecordType.Account)
-        
-        newUserRecord.setValuesForKeys([
-            "givenName": newAcc.fName,
-            "surName": newAcc.lName,
-            "email": newAcc.email,
-            "password": newAcc.pwd
-        ])
-        
-        if let database = database {
-            database.save(newUserRecord) { record, error in
-                if let error = error {
-                    completionHandler(.failure(error))
-                    return
+        self.checkIsUserRegistered(newAcc.email) { registered, result in
+            if registered {
+                completion(.failure(AccountError.accountExists))
+            } else {
+                CKCrudOperators.CREATE(
+                    recordType: RecordType.Account,
+                    values: [
+                        "givenName": newAcc.fName,
+                        "surName": newAcc.lName,
+                        "email": newAcc.email,
+                        "password": newAcc.pwd
+                    ]
+                ) { result in
+                    do {
+                        let record = try result.get()
+                        
+                        let id = record.recordID
+                        guard let fName = record["givenName"] as? String,
+                              let lName = record["surName"] as? String,
+                              let email = record["email"] as? String,
+                              let pwd = record["password"] as? String
+                        else {
+                            completion(.failure(CKError.castFailure))
+                            return
+                        }
+                        
+                        let account = NewUserAccount(recordID: id, fName: fName, lName: lName, email: email, pwd: pwd)
+                        completion(.success(account))
+                    } catch {
+                        print(error)
+                    }
                 }
-                
-                guard let record = record else {
-                    completionHandler(.failure(CKHelperError.recordFailure))
-                    return
-                }
-                
-                let id = record.recordID
-                guard let fName = record["givenName"] as? String,
-                      let lName = record["surName"] as? String,
-                      let email = record["email"] as? String,
-                      let pwd = record["password"] as? String
-                else {
-                    completionHandler(.failure(CKHelperError.castFailure))
-                    return
-                }
-                
-                let account = NewUserAccount(recordID: id, fName: fName, lName: lName, email: email, pwd: pwd)
-                completionHandler(.success(account))
             }
         }
     }
@@ -91,45 +74,30 @@ class CKHelper {
         userID: CKRecord.ID, nickName: String, picKey: String,
         completion: @escaping (Result<NewUserAccount, Error>) -> Void
     ) {
-        if let database = database {
-            database.fetch(withRecordID: userID) { accRec, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        completion(.failure(error))
-                        return
-                    }
-                    
-                    guard let accRec = accRec else { return }
-                    accRec.setValuesForKeys([
-                        "password": "updated", // buat testing data aja kok
-                        "nickName": nickName,
-                        "profThumb": picKey
-                    ])
-                    
-                    database.save(accRec) { record, error in
-                        DispatchQueue.main.async {
-                            if let error = error {
-                                completion(.failure(error))
-                                return
-                            }
-                            
-                            guard let record = record else { return }
-                            let id = record.recordID
-                            guard let fName = record["givenName"] as? String,
-                                  let lName = record["surName"] as? String,
-                                  let email = record["email"] as? String,
-                                  let pwd = record["password"] as? String,
-                                  let nick = record["nickName"] as? String,
-                                  let thumb = record["profThumb"] as? String
-                            else {
-                                completion(.failure(CKHelperError.castFailure))
-                                return
-                            }
-                            let account = NewUserAccount(recordID: id, fName: fName, lName: lName, email: email, pwd: pwd, picThumb: thumb, nickName: nick)
-                            completion(.success(account))
-                        }
-                    }
+        CKCrudOperators.UPDATE(
+            recordID: userID,
+            valueToUpdate: [
+                "nickName": nickName,
+                "profThumb": picKey
+            ]
+        ) { result in
+            do {
+                let record = try result.get()
+                let id = record.recordID
+                guard let fName = record["givenName"] as? String,
+                      let lName = record["surName"] as? String,
+                      let email = record["email"] as? String,
+                      let pwd = record["password"] as? String,
+                      let nick = record["nickName"] as? String,
+                      let thumb = record["profThumb"] as? String
+                else {
+                    completion(.failure(CKError.castFailure))
+                    return
                 }
+                let account = NewUserAccount(recordID: id, fName: fName, lName: lName, email: email, pwd: pwd, picThumb: thumb, nickName: nick)
+                completion(.success(account))
+            } catch {
+                completion(.failure(error))
             }
         }
     }
@@ -138,66 +106,78 @@ class CKHelper {
     func login(
         email: String,
         pwd: String,
-        completionHandler: @escaping (Result<NewUserAccount, Error>) -> Void
+        completion: @escaping (Result<NewUserAccount, Error>) -> Void
     ) {
-        // fetching every single user
-        let pred = NSPredicate(value: true)
-        let sort = NSSortDescriptor(key: "email", ascending: false)
-        let query = CKQuery(recordType: RecordType.Account, predicate: pred)
-        query.sortDescriptors = [sort]
-        
-        let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["givenName", "surName", "email", "password"]
-        
-        operation.recordMatchedBlock = { id, result in
-            DispatchQueue.main.async {
+        checkIsUserRegistered(email) { registered, result in
+            if registered {
                 do {
-                    let user = try result.get()
-                    let id = user.recordID
-                    guard let fName = user["givenName"] as? String,
-                          let lName = user["surName"] as? String,
-                          let email = user["email"] as? String,
-                          let pwd = user["password"] as? String
-                    else {
-                        completionHandler(.failure(CKHelperError.castFailure))
+                    guard let record = try result.get() else {
+                        completion(.failure(CKError.castFailure))
                         return
                     }
-                    let account = NewUserAccount(recordID: id, fName: fName, lName: lName, email: email, pwd: pwd)
-                    completionHandler(.success(account))
+                    
+                    let id = record.recordID
+                    guard let fName = record["givenName"] as? String,
+                          let lName = record["surName"] as? String,
+                          let email = record["email"] as? String,
+                          let pass = record["password"] as? String,
+                          let nick = record["nickName"] as? String,
+                          let thumb = record["profThumb"] as? String
+                    else {
+                        completion(.failure(CKError.castFailure))
+                        return
+                    }
+                    
+                    let acc = NewUserAccount(
+                        recordID: id,
+                        fName: fName,
+                        lName: lName,
+                        email: email,
+                        pwd: pass,
+                        picThumb: thumb,
+                        nickName: nick
+                    )
+                    
+                    // Check password if correct then login
+                    if pwd == pass {
+                        completion(.success(acc))
+                    } else {
+                        completion(.failure(AccountError.incorrectPassword))
+                    }
                 } catch {
-                    print("Error")
+                    completion(.failure(error))
                 }
+            } else {
+                completion(.failure(AccountError.notRegistered))
             }
         }
-        
-        operation.queryCompletionBlock = { _, err in
-            DispatchQueue.main.async {
-                if let err = err {
-                    completionHandler(.failure(err))
-                    return
+    }
+    
+    // MARK: - Check if user exist
+    func checkIsUserRegistered(_ email: String, completion: @escaping (Bool, Result<CKRecord?, Error>) -> Void) {
+        let predicate = NSPredicate(format: "email = %@", email)
+        CKCrudOperators.READ(recordToRead: RecordType.Account, predicate: predicate, sortDescriptors: [NSSortDescriptor(key: "email", ascending: true)]) { result in
+            do {
+                let recs = try result.get()
+                if recs.isEmpty {
+                    completion(false, .success(nil))
+                } else {
+                    completion(true, .success(recs[0]))
                 }
+            } catch {
+                completion(false, .failure(error))
             }
-        }
-
-        if let database = database {
-            database.add(operation)
         }
     }
     
     // MARK: - Delete User (PASSED)
-    func deleteAccount(accountID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
-        if let database = database {
-            database.delete(withRecordID: accountID) { accID, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        completion(.failure(error))
-                    }
-                    guard let accID = accID else {
-                        completion(.failure(CKHelperError.castFailure))
-                        return
-                    }
-                    completion(.success(accID))
-                }
+    func deleteAccount(accountID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> Void) {
+        CKCrudOperators.DELETE(recordID: accountID) { result in
+            do {
+                let deletedID = try result.get()
+                completion(.success(deletedID))
+            } catch {
+                completion(.failure(error))
             }
         }
     }

@@ -37,7 +37,7 @@ struct AtemisApp: App {
             switch phase {
             case .active:
                 print("Active")
-                CKHelper.shared.checkiCloud { status, error in
+                CKCrudOperators.checkiCloud { status, error in
                     switch status {
                     case .noAccount:
                         print("alert please login")
@@ -45,18 +45,6 @@ struct AtemisApp: App {
                     default:
                         // continue to app
                         print("Continue to the app")
-                        CKHelper.shared.login(email: "nkwxn05@gmail.com", pwd: "asdf") { result in
-                            print(result)
-                            do {
-                                let resget = try result.get()
-                                guard let recID = resget.recordID else {return}
-                                CKHelper.shared.setNickname(userID: recID, nickName: "Nico", picKey: "pic_001") { result in
-                                    print("Result: \(result)")
-                                }
-                            } catch {
-                                print("error")
-                            }
-                        }
                     }
                 }
             case .inactive:

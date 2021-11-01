@@ -20,10 +20,18 @@ class AtemisBackendTest: XCTestCase {
     }
     
     func testRegister() throws {
-        
+        ckHelper.signUpNewUser(
+            newAcc: NewUserAccount(fName: "Nic", lName: "asdf", email: "nkwxn05@gmail.com", pwd: "asdf")) { result in
+                do {
+                    let user = try result.get()
+                    XCTAssert(true, "ga error kok: \(user)")
+                } catch {
+                    XCTAssert(false, "Error woi disini")
+                }
+            }
     }
     
-    func testLogin() throws {
+    func testCheck() throws {
         
     }
 
