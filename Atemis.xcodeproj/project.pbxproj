@@ -28,6 +28,13 @@
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
 		D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */; };
+		D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD7272FA8EA00DA1CF7 /* PreOnboardingView.swift */; };
+		D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494ADB272FB6CB00DA1CF7 /* LoginView.swift */; };
+		D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494ADD272FB6D600DA1CF7 /* SignUpView.swift */; };
+		D5494AE1272FFA5E00DA1CF7 /* SetNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE0272FFA5E00DA1CF7 /* SetNicknameView.swift */; };
+		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
+		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
+		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +85,13 @@
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
 		D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKCrudOperators.swift; sourceTree = "<group>"; };
+		D5494AD7272FA8EA00DA1CF7 /* PreOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingView.swift; sourceTree = "<group>"; };
+		D5494ADB272FB6CB00DA1CF7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D5494ADD272FB6D600DA1CF7 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D5494AE0272FFA5E00DA1CF7 /* SetNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameView.swift; sourceTree = "<group>"; };
+		D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
+		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.release.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.release.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +212,7 @@
 			children = (
 				D5163E8127280E0B00DF09D0 /* Common */,
 				D5163E6A2728031700DF09D0 /* Main */,
+				D5494AD5272F9FE700DA1CF7 /* LoginRegisterPage */,
 				D5163E8527280E4900DF09D0 /* Extensions */,
 			);
 			path = Application;
@@ -299,6 +314,52 @@
 				D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */,
 			);
 			path = CloudKitModels;
+			sourceTree = "<group>";
+		};
+		D5494AD5272F9FE700DA1CF7 /* LoginRegisterPage */ = {
+			isa = PBXGroup;
+			children = (
+				D5494ADF272FFA3D00DA1CF7 /* Set Nickname */,
+				D5494ADA272FAA9100DA1CF7 /* Sign Up */,
+				D5494AD9272FAA8B00DA1CF7 /* Login */,
+				D5494AD6272FA8BE00DA1CF7 /* Pre Onboarding Page */,
+			);
+			path = LoginRegisterPage;
+			sourceTree = "<group>";
+		};
+		D5494AD6272FA8BE00DA1CF7 /* Pre Onboarding Page */ = {
+			isa = PBXGroup;
+			children = (
+				D5494AD7272FA8EA00DA1CF7 /* PreOnboardingView.swift */,
+				D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */,
+			);
+			path = "Pre Onboarding Page";
+			sourceTree = "<group>";
+		};
+		D5494AD9272FAA8B00DA1CF7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D5494ADB272FB6CB00DA1CF7 /* LoginView.swift */,
+				D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D5494ADA272FAA9100DA1CF7 /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				D5494ADD272FB6D600DA1CF7 /* SignUpView.swift */,
+				D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		D5494ADF272FFA3D00DA1CF7 /* Set Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				D5494AE0272FFA5E00DA1CF7 /* SetNicknameView.swift */,
+			);
+			path = "Set Nickname";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,12 +621,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */,
+				D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */,
+				D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */,
+				D5494AE1272FFA5E00DA1CF7 /* SetNicknameView.swift in Sources */,
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* ExampleCV.swift in Sources */,
+				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
+				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
 				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
+				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
+				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
 			);
