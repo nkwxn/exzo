@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_AtemisVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_AtemisVersionString[];
+FOUNDATION_EXPORT double Pods_exzo_exzoUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_exzo_exzoUITestsVersionString[];
 
