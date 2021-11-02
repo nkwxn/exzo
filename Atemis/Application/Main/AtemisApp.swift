@@ -15,7 +15,8 @@ struct AtemisApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            TabContainer()
+//            TabContainer()
+            ProductView()
         }
     }
 }

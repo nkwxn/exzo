@@ -53,11 +53,11 @@
         <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="triggerAreas" inverseEntity="Journal"/>
     </entity>
     <elements>
+        <element name="Activity" positionX="-144.33642578125" positionY="64.00970458984375" width="128" height="89"/>
+        <element name="FoodIntake" positionX="-143.2540283203125" positionY="175.64306640625" width="128" height="103"/>
+        <element name="Journal" positionX="-150.470703125" positionY="-188.234130859375" width="128" height="223"/>
         <element name="Product" positionX="-151.774658203125" positionY="-316.2908935546875" width="128" height="104"/>
         <element name="SkinCondition" positionX="25.5316162109375" positionY="-316.4061889648438" width="164.2552490234375" height="208"/>
-        <element name="Journal" positionX="-150.470703125" positionY="-188.234130859375" width="128" height="223"/>
         <element name="TriggerAreas" positionX="30.0235595703125" positionY="-68.4010009765625" width="128" height="103"/>
-        <element name="FoodIntake" positionX="-143.2540283203125" positionY="175.64306640625" width="128" height="89"/>
-        <element name="Activity" positionX="-144.33642578125" positionY="64.00970458984375" width="128" height="89"/>
     </elements>
 </model>
