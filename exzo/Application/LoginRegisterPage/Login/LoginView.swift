@@ -11,18 +11,16 @@ struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
     
     var body: some View {
-        // TODO: Ubah style ke custom text field dan button style
-        VStack {
-            TextField("Email", text: $viewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            SecureField("Password", text: $viewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        VStack(spacing: 20) {
+            ExzoTextField("Email", input: $viewModel.email, style: .emailTextField)
+            ExzoTextField("Password", input: $viewModel.password, style: .pwdTextField)
             Button("Log in") {
-                // TODO: Panggil function buat login dari ViewModel
+                // TODO: Masukin logic, seperti save ke user defaults
                 viewModel.loginButtonPressed { result in
                     
                 }
             }
+            .buttonStyle(ExzoButtonStyle(type: .primary))
             HStack {
                 Text("Don't have account?")
                 NavigationLink("Sign up here") {

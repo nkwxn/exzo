@@ -13,11 +13,13 @@ class SignUpViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     
-    func signUpButtonClicked(completion: @escaping (Result<NewUserAccount, Error>) -> Void) {
+    func signUpButtonClicked() {
         let newAccount = NewUserAccount(fName: firstName, lName: lastName, email: email, pwd: password)
         
-        CKHelper.shared.signUpNewUser(newAcc: newAccount) { result in
-            
+        CKHelper.shared.signUpNewUser(
+            newAcc: newAccount
+        ) { <#Result<NewUserAccount, Error>#> in
+            <#code#>
         }
     }
 }
