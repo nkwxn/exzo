@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		299A0E3F16B01D59EC828C0C /* Pods_AtemisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF72F6994F7C7D4384D18FB /* Pods_AtemisTests.framework */; };
 		5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE8C272FA77800541E7A /* ProductView.swift */; };
 		5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE8E272FA78400541E7A /* ProductViewModel.swift */; };
 		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
-		763817485E142AAB095D9134 /* Pods_Atemis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3044E524DD989E0FADFFE74E /* Pods_Atemis.framework */; };
-		ADE6EDF580FD2D1242EAC883 /* Pods_Atemis_AtemisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF15F140C55B3EF8ABEA2F /* Pods_Atemis_AtemisUITests.framework */; };
+		C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */; };
+		CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */; };
 		D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* AtemisApp.swift */; };
 		D5163E3D2727FF9800DF09D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3C2727FF9800DF09D0 /* Assets.xcassets */; };
 		D5163E402727FF9800DF09D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3F2727FF9800DF09D0 /* Preview Assets.xcassets */; };
@@ -41,6 +40,7 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
+		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FCB2A272FA28400721FFD /* UDHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,31 +62,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2BC93CCB4E8FC2C43D959059 /* Pods-AtemisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.debug.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3044E524DD989E0FADFFE74E /* Pods_Atemis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atemis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08BF652D2CB061C2BF0C9999 /* Pods-exzo-exzoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo-exzoUITests.debug.xcconfig"; path = "Target Support Files/Pods-exzo-exzoUITests/Pods-exzo-exzoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0BF7356E018D02E2D3E9E0C3 /* Pods-exzo-exzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo-exzoUITests.release.xcconfig"; path = "Target Support Files/Pods-exzo-exzoUITests/Pods-exzo-exzoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo_exzoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30400BF0900285D376968C67 /* Pods-exzoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzoTests.release.xcconfig"; path = "Target Support Files/Pods-exzoTests/Pods-exzoTests.release.xcconfig"; sourceTree = "<group>"; };
+		36581B2FB2C1FA027E732EC5 /* Pods-exzoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzoTests.debug.xcconfig"; path = "Target Support Files/Pods-exzoTests/Pods-exzoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D23EE8C272FA77800541E7A /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		5D23EE8E272FA78400541E7A /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
-		A8AB8EA8E36044F34B7E1775 /* Pods-Atemis-AtemisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.debug.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		B9A70AABB20A29DC933AF128 /* Pods-Atemis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis.debug.xcconfig"; path = "Target Support Files/Pods-Atemis/Pods-Atemis.debug.xcconfig"; sourceTree = "<group>"; };
-		BFF72F6994F7C7D4384D18FB /* Pods_AtemisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtemisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0CF15F140C55B3EF8ABEA2F /* Pods_Atemis_AtemisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atemis_AtemisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C586B15CA472B92EA3D3F73E /* Pods-Atemis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis.release.xcconfig"; path = "Target Support Files/Pods-Atemis/Pods-Atemis.release.xcconfig"; sourceTree = "<group>"; };
-		D5163E352727FF9600DF09D0 /* Atemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Atemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5163E352727FF9600DF09D0 /* exzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E382727FF9600DF09D0 /* AtemisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisApp.swift; sourceTree = "<group>"; };
 		D5163E3C2727FF9800DF09D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5163E3F2727FF9800DF09D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5163E412727FF9800DF09D0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D5163E442727FF9800DF09D0 /* Atemis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Atemis.xcdatamodel; sourceTree = "<group>"; };
-		D5163E4A2727FF9800DF09D0 /* AtemisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtemisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5163E4A2727FF9800DF09D0 /* exzoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exzoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E4E2727FF9800DF09D0 /* AtemisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisTests.swift; sourceTree = "<group>"; };
-		D5163E542727FF9800DF09D0 /* AtemisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtemisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5163E542727FF9800DF09D0 /* exzoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exzoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E582727FF9800DF09D0 /* AtemisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisUITests.swift; sourceTree = "<group>"; };
 		D5163E5A2727FF9800DF09D0 /* AtemisUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D5163E6C272803C100DF09D0 /* Atemis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Atemis.entitlements; sourceTree = "<group>"; };
+		D5163E6C272803C100DF09D0 /* exzo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = exzo.entitlements; sourceTree = "<group>"; };
 		D5163E6E272803F100DF09D0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D5163E702728045900DF09D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5163E7F2728098E00DF09D0 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
@@ -105,9 +106,8 @@
 		D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E29FCB2A272FA28400721FFD /* UDHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDHelper.swift; sourceTree = "<group>"; };
-		E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.release.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.release.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5163E6F272803F100DF09D0 /* CloudKit.framework in Frameworks */,
-				763817485E142AAB095D9134 /* Pods_Atemis.framework in Frameworks */,
+				C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				299A0E3F16B01D59EC828C0C /* Pods_AtemisTests.framework in Frameworks */,
+				D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE6EDF580FD2D1242EAC883 /* Pods_Atemis_AtemisUITests.framework in Frameworks */,
+				CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,12 +142,12 @@
 		1B22AD4D29613CFF3E829459 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B9A70AABB20A29DC933AF128 /* Pods-Atemis.debug.xcconfig */,
-				C586B15CA472B92EA3D3F73E /* Pods-Atemis.release.xcconfig */,
-				A8AB8EA8E36044F34B7E1775 /* Pods-Atemis-AtemisUITests.debug.xcconfig */,
-				E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */,
-				2BC93CCB4E8FC2C43D959059 /* Pods-AtemisTests.debug.xcconfig */,
-				F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */,
+				D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */,
+				A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */,
+				08BF652D2CB061C2BF0C9999 /* Pods-exzo-exzoUITests.debug.xcconfig */,
+				0BF7356E018D02E2D3E9E0C3 /* Pods-exzo-exzoUITests.release.xcconfig */,
+				36581B2FB2C1FA027E732EC5 /* Pods-exzoTests.debug.xcconfig */,
+				30400BF0900285D376968C67 /* Pods-exzoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -191,9 +191,9 @@
 		D5163E2C2727FF9600DF09D0 = {
 			isa = PBXGroup;
 			children = (
-				D5163E372727FF9600DF09D0 /* Atemis */,
-				D5163E4D2727FF9800DF09D0 /* AtemisTests */,
-				D5163E572727FF9800DF09D0 /* AtemisUITests */,
+				D5163E372727FF9600DF09D0 /* exzo */,
+				D5163E4D2727FF9800DF09D0 /* exzoTests */,
+				D5163E572727FF9800DF09D0 /* exzoUITests */,
 				D5163E362727FF9600DF09D0 /* Products */,
 				D5163E6D272803F100DF09D0 /* Frameworks */,
 				1B22AD4D29613CFF3E829459 /* Pods */,
@@ -203,14 +203,14 @@
 		D5163E362727FF9600DF09D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5163E352727FF9600DF09D0 /* Atemis.app */,
-				D5163E4A2727FF9800DF09D0 /* AtemisTests.xctest */,
-				D5163E542727FF9800DF09D0 /* AtemisUITests.xctest */,
+				D5163E352727FF9600DF09D0 /* exzo.app */,
+				D5163E4A2727FF9800DF09D0 /* exzoTests.xctest */,
+				D5163E542727FF9800DF09D0 /* exzoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5163E372727FF9600DF09D0 /* Atemis */ = {
+		D5163E372727FF9600DF09D0 /* exzo */ = {
 			isa = PBXGroup;
 			children = (
 				D5163E712728049D00DF09D0 /* Supporting Files */,
@@ -219,7 +219,7 @@
 				D5163E69272802EA00DF09D0 /* Assets */,
 				D5163E3E2727FF9800DF09D0 /* Preview Content */,
 			);
-			path = Atemis;
+			path = exzo;
 			sourceTree = "<group>";
 		};
 		D5163E3E2727FF9800DF09D0 /* Preview Content */ = {
@@ -230,22 +230,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D5163E4D2727FF9800DF09D0 /* AtemisTests */ = {
+		D5163E4D2727FF9800DF09D0 /* exzoTests */ = {
 			isa = PBXGroup;
 			children = (
 				D5163E4E2727FF9800DF09D0 /* AtemisTests.swift */,
 				D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */,
 			);
-			path = AtemisTests;
+			path = exzoTests;
 			sourceTree = "<group>";
 		};
-		D5163E572727FF9800DF09D0 /* AtemisUITests */ = {
+		D5163E572727FF9800DF09D0 /* exzoUITests */ = {
 			isa = PBXGroup;
 			children = (
 				D5163E582727FF9800DF09D0 /* AtemisUITests.swift */,
 				D5163E5A2727FF9800DF09D0 /* AtemisUITestsLaunchTests.swift */,
 			);
-			path = AtemisUITests;
+			path = exzoUITests;
 			sourceTree = "<group>";
 		};
 		D5163E67272802CE00DF09D0 /* Models */ = {
@@ -301,9 +301,9 @@
 			isa = PBXGroup;
 			children = (
 				D5163E6E272803F100DF09D0 /* CloudKit.framework */,
-				3044E524DD989E0FADFFE74E /* Pods_Atemis.framework */,
-				C0CF15F140C55B3EF8ABEA2F /* Pods_Atemis_AtemisUITests.framework */,
-				BFF72F6994F7C7D4384D18FB /* Pods_AtemisTests.framework */,
+				C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */,
+				1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */,
+				92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				D5163E702728045900DF09D0 /* Info.plist */,
-				D5163E6C272803C100DF09D0 /* Atemis.entitlements */,
+				D5163E6C272803C100DF09D0 /* exzo.entitlements */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -426,31 +426,31 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5163E342727FF9600DF09D0 /* Atemis */ = {
+		D5163E342727FF9600DF09D0 /* exzo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5163E5E2727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "Atemis" */;
+			buildConfigurationList = D5163E5E2727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzo" */;
 			buildPhases = (
-				029A646C85BC86A2BA4E96C5 /* [CP] Check Pods Manifest.lock */,
+				507C030F58EE2112483843D2 /* [CP] Check Pods Manifest.lock */,
 				D5163E312727FF9600DF09D0 /* Sources */,
 				D5163E322727FF9600DF09D0 /* Frameworks */,
 				D5163E332727FF9600DF09D0 /* Resources */,
-				9D0BDB48A296700C562B6A8C /* [CP] Embed Pods Frameworks */,
 				D5298F57272A83AF00A75D10 /* ShellScript */,
+				78EE4DC7ACB84F192344DE93 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Atemis;
+			name = exzo;
 			productName = Atemis;
-			productReference = D5163E352727FF9600DF09D0 /* Atemis.app */;
+			productReference = D5163E352727FF9600DF09D0 /* exzo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D5163E492727FF9800DF09D0 /* AtemisTests */ = {
+		D5163E492727FF9800DF09D0 /* exzoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5163E612727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "AtemisTests" */;
+			buildConfigurationList = D5163E612727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzoTests" */;
 			buildPhases = (
-				A06E2D1B0DC33A759EE08DBB /* [CP] Check Pods Manifest.lock */,
+				7D256A59B6B9EDECE8D77352 /* [CP] Check Pods Manifest.lock */,
 				D5163E462727FF9800DF09D0 /* Sources */,
 				D5163E472727FF9800DF09D0 /* Frameworks */,
 				D5163E482727FF9800DF09D0 /* Resources */,
@@ -460,29 +460,29 @@
 			dependencies = (
 				D5163E4C2727FF9800DF09D0 /* PBXTargetDependency */,
 			);
-			name = AtemisTests;
+			name = exzoTests;
 			productName = AtemisTests;
-			productReference = D5163E4A2727FF9800DF09D0 /* AtemisTests.xctest */;
+			productReference = D5163E4A2727FF9800DF09D0 /* exzoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D5163E532727FF9800DF09D0 /* AtemisUITests */ = {
+		D5163E532727FF9800DF09D0 /* exzoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5163E642727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "AtemisUITests" */;
+			buildConfigurationList = D5163E642727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzoUITests" */;
 			buildPhases = (
-				9EA90E16CE5F0D0A50781B6D /* [CP] Check Pods Manifest.lock */,
+				0C6F6326DD4D375B0A80F51E /* [CP] Check Pods Manifest.lock */,
 				D5163E502727FF9800DF09D0 /* Sources */,
 				D5163E512727FF9800DF09D0 /* Frameworks */,
 				D5163E522727FF9800DF09D0 /* Resources */,
-				3E45E0295E35E68DF1BD7C73 /* [CP] Embed Pods Frameworks */,
+				ADC09EA68E26DE34F3333C07 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D5163E562727FF9800DF09D0 /* PBXTargetDependency */,
 			);
-			name = AtemisUITests;
+			name = exzoUITests;
 			productName = AtemisUITests;
-			productReference = D5163E542727FF9800DF09D0 /* AtemisUITests.xctest */;
+			productReference = D5163E542727FF9800DF09D0 /* exzoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -508,7 +508,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5163E302727FF9600DF09D0 /* Build configuration list for PBXProject "Atemis" */;
+			buildConfigurationList = D5163E302727FF9600DF09D0 /* Build configuration list for PBXProject "exzo" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -521,9 +521,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5163E342727FF9600DF09D0 /* Atemis */,
-				D5163E492727FF9800DF09D0 /* AtemisTests */,
-				D5163E532727FF9800DF09D0 /* AtemisUITests */,
+				D5163E342727FF9600DF09D0 /* exzo */,
+				D5163E492727FF9800DF09D0 /* exzoTests */,
+				D5163E532727FF9800DF09D0 /* exzoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -557,7 +557,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		029A646C85BC86A2BA4E96C5 /* [CP] Check Pods Manifest.lock */ = {
+		0C6F6326DD4D375B0A80F51E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -572,89 +572,89 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Atemis-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-exzo-exzoUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3E45E0295E35E68DF1BD7C73 /* [CP] Embed Pods Frameworks */ = {
+		507C030F58EE2112483843D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-exzo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78EE4DC7ACB84F192344DE93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-exzo/Pods-exzo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-exzo/Pods-exzo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-exzo/Pods-exzo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D0BDB48A296700C562B6A8C /* [CP] Embed Pods Frameworks */ = {
+		7D256A59B6B9EDECE8D77352 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Atemis/Pods-Atemis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-exzoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC09EA68E26DE34F3333C07 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-exzo-exzoUITests/Pods-exzo-exzoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Atemis/Pods-Atemis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-exzo-exzoUITests/Pods-exzo-exzoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Atemis/Pods-Atemis-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9EA90E16CE5F0D0A50781B6D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Atemis-AtemisUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A06E2D1B0DC33A759EE08DBB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AtemisTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-exzo-exzoUITests/Pods-exzo-exzoUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D5298F57272A83AF00A75D10 /* ShellScript */ = {
@@ -730,12 +730,12 @@
 /* Begin PBXTargetDependency section */
 		D5163E4C2727FF9800DF09D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D5163E342727FF9600DF09D0 /* Atemis */;
+			target = D5163E342727FF9600DF09D0 /* exzo */;
 			targetProxy = D5163E4B2727FF9800DF09D0 /* PBXContainerItemProxy */;
 		};
 		D5163E562727FF9800DF09D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D5163E342727FF9600DF09D0 /* Atemis */;
+			target = D5163E342727FF9600DF09D0 /* exzo */;
 			targetProxy = D5163E552727FF9800DF09D0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -859,18 +859,18 @@
 		};
 		D5163E5F2727FF9800DF09D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9A70AABB20A29DC933AF128 /* Pods-Atemis.debug.xcconfig */;
+			baseConfigurationReference = D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Atemis/Supporting Files/Atemis.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "exzo/Supporting Files/exzo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Atemis/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -881,7 +881,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impraver.Atemis;
+				PRODUCT_BUNDLE_IDENTIFIER = impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -891,18 +891,18 @@
 		};
 		D5163E602727FF9800DF09D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C586B15CA472B92EA3D3F73E /* Pods-Atemis.release.xcconfig */;
+			baseConfigurationReference = A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Atemis/Supporting Files/Atemis.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "exzo/Supporting Files/exzo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Atemis/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -913,7 +913,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impraver.Atemis;
+				PRODUCT_BUNDLE_IDENTIFIER = impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -923,7 +923,7 @@
 		};
 		D5163E622727FF9800DF09D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BC93CCB4E8FC2C43D959059 /* Pods-AtemisTests.debug.xcconfig */;
+			baseConfigurationReference = 36581B2FB2C1FA027E732EC5 /* Pods-exzoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -943,13 +943,13 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Atemis.app/Atemis";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/exzo.app/exzo";
 			};
 			name = Debug;
 		};
 		D5163E632727FF9800DF09D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F64F7D9A7DE64CAA4AC483F2 /* Pods-AtemisTests.release.xcconfig */;
+			baseConfigurationReference = 30400BF0900285D376968C67 /* Pods-exzoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -969,13 +969,13 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Atemis.app/Atemis";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/exzo.app/exzo";
 			};
 			name = Release;
 		};
 		D5163E652727FF9800DF09D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8AB8EA8E36044F34B7E1775 /* Pods-Atemis-AtemisUITests.debug.xcconfig */;
+			baseConfigurationReference = 08BF652D2CB061C2BF0C9999 /* Pods-exzo-exzoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -999,7 +999,7 @@
 		};
 		D5163E662727FF9800DF09D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3405A88C5CCA11CBFD1BC58 /* Pods-Atemis-AtemisUITests.release.xcconfig */;
+			baseConfigurationReference = 0BF7356E018D02E2D3E9E0C3 /* Pods-exzo-exzoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1024,7 +1024,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5163E302727FF9600DF09D0 /* Build configuration list for PBXProject "Atemis" */ = {
+		D5163E302727FF9600DF09D0 /* Build configuration list for PBXProject "exzo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5163E5C2727FF9800DF09D0 /* Debug */,
@@ -1033,7 +1033,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5163E5E2727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "Atemis" */ = {
+		D5163E5E2727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5163E5F2727FF9800DF09D0 /* Debug */,
@@ -1042,7 +1042,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5163E612727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "AtemisTests" */ = {
+		D5163E612727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5163E622727FF9800DF09D0 /* Debug */,
@@ -1051,7 +1051,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5163E642727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "AtemisUITests" */ = {
+		D5163E642727FF9800DF09D0 /* Build configuration list for PBXNativeTarget "exzoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5163E652727FF9800DF09D0 /* Debug */,

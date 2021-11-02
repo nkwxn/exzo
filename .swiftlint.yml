@@ -3,11 +3,11 @@ disabled_rules:
     - trailing_whitespace
 
 opt_in_rules:
-#    force_unwrapping
-    trailing_closure
+    - trailing_closure
+    - force_unwrap
 
 included:
-    Atemis
+    exzo
 excluded:
     Pods
 
@@ -23,6 +23,8 @@ file_length:
     warning: 800
     error: 1000
     
+force_cast: warning
+
 comma: error
 
 trailing_comma: error
