@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+        <attribute name="activityName" optional="YES" attributeType="String"/>
+        <attribute name="activityThumb" optional="YES" attributeType="Transformable"/>
+        <attribute name="idActivity" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="FoodIntake" representedClassName="FoodIntake" syncable="YES" codeGenerationType="class">
+        <attribute name="idFoodIntake" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="intakeName" optional="YES" attributeType="String"/>
+        <attribute name="intakeThumb" optional="YES" attributeType="Transformable"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class">
+        <attribute name="activities" optional="YES" attributeType="Transformable"/>
+        <attribute name="dateAndTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="foodIntake" optional="YES" attributeType="Transformable"/>
+        <attribute name="idJournal" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="skinExposure" optional="YES" attributeType="Transformable"/>
+        <attribute name="stressLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weatherCondition" optional="YES" attributeType="Transformable"/>
+        <attribute name="weatherHumid" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherPressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherTemp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="skinCondition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkinCondition" inverseName="journal" inverseEntity="SkinCondition"/>
+        <relationship name="triggerAreas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TriggerAreas" inverseName="journal" inverseEntity="TriggerAreas"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
+        <attribute name="idProduct" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="productImage" optional="YES" attributeType="Transformable"/>
+        <attribute name="productIngr" optional="YES" attributeType="Transformable"/>
+        <attribute name="productName" optional="YES" attributeType="String"/>
+        <attribute name="productType" optional="YES" attributeType="Transformable"/>
+    </entity>
+    <entity name="SkinCondition" representedClassName="SkinCondition" syncable="YES" codeGenerationType="class">
+        <attribute name="crust" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dryness" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="idCondition" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="itchiness" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poScorad" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="redness" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="scratch" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sleepLoss" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="swelling" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thicken" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="skinCondition" inverseEntity="Journal"/>
+    </entity>
+    <entity name="TriggerAreas" representedClassName="TriggerAreas" syncable="YES" codeGenerationType="class">
+        <attribute name="idTrigger" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="triggerArea" optional="YES" attributeType="Transformable"/>
+        <attribute name="triggerParts" optional="YES" attributeType="Transformable"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="triggerAreas" inverseEntity="Journal"/>
+    </entity>
+    <elements>
+        <element name="Activity" positionX="-144.33642578125" positionY="64.00970458984375" width="128" height="89"/>
+        <element name="FoodIntake" positionX="-143.2540283203125" positionY="175.64306640625" width="128" height="103"/>
+        <element name="Journal" positionX="-150.470703125" positionY="-188.234130859375" width="128" height="223"/>
+        <element name="Product" positionX="-151.774658203125" positionY="-316.2908935546875" width="128" height="104"/>
+        <element name="SkinCondition" positionX="25.5316162109375" positionY="-316.4061889648438" width="164.2552490234375" height="208"/>
+        <element name="TriggerAreas" positionX="30.0235595703125" positionY="-68.4010009765625" width="128" height="103"/>
+    </elements>
+</model>
