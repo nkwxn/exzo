@@ -28,7 +28,7 @@ class CKHelper {
     // Singleton
     static let shared = CKHelper()
     
-    // MARK: - Create a new user
+    // MARK: - CRUD functions for Account
     func signUpNewUser(
         newAcc: NewUserAccount,
         completion: @escaping (Result<NewUserAccount, Error>) -> Void
@@ -69,7 +69,6 @@ class CKHelper {
         }
     }
     
-    // MARK: - Create Nickname (PASS UPDATE VALUE)
     func setNickname(
         userID: CKRecord.ID, nickName: String, picKey: String,
         completion: @escaping (Result<NewUserAccount, Error>) -> Void
@@ -102,7 +101,6 @@ class CKHelper {
         }
     }
     
-    // MARK: - Fetch user, validate the password (READ PASSED)
     func login(
         email: String,
         pwd: String,
@@ -153,7 +151,6 @@ class CKHelper {
         }
     }
     
-    // MARK: - Check if user exist
     func checkIsUserRegistered(_ email: String, completion: @escaping (Bool, Result<CKRecord?, Error>) -> Void) {
         let predicate = NSPredicate(format: "email = %@", email)
         CKCrudOperators.READ(recordToRead: RecordType.Account, predicate: predicate, sortDescriptors: [NSSortDescriptor(key: "email", ascending: true)]) { result in
@@ -170,7 +167,6 @@ class CKHelper {
         }
     }
     
-    // MARK: - Delete User (PASSED)
     func deleteAccount(accountID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> Void) {
         CKCrudOperators.DELETE(recordID: accountID) { result in
             do {
@@ -181,4 +177,6 @@ class CKHelper {
             }
         }
     }
+    
+    // MARK: - CRUD Methods for SkinCondition
 }
