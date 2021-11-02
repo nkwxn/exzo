@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		299A0E3F16B01D59EC828C0C /* Pods_AtemisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF72F6994F7C7D4384D18FB /* Pods_AtemisTests.framework */; };
+		5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE8C272FA77800541E7A /* ProductView.swift */; };
+		5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE8E272FA78400541E7A /* ProductViewModel.swift */; };
+		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
+		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
+		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
+		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		763817485E142AAB095D9134 /* Pods_Atemis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3044E524DD989E0FADFFE74E /* Pods_Atemis.framework */; };
 		ADE6EDF580FD2D1242EAC883 /* Pods_Atemis_AtemisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF15F140C55B3EF8ABEA2F /* Pods_Atemis_AtemisUITests.framework */; };
 		D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* AtemisApp.swift */; };
@@ -58,6 +64,12 @@
 /* Begin PBXFileReference section */
 		2BC93CCB4E8FC2C43D959059 /* Pods-AtemisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtemisTests.debug.xcconfig"; path = "Target Support Files/Pods-AtemisTests/Pods-AtemisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3044E524DD989E0FADFFE74E /* Pods_Atemis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atemis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D23EE8C272FA77800541E7A /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		5D23EE8E272FA78400541E7A /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
+		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		A8AB8EA8E36044F34B7E1775 /* Pods-Atemis-AtemisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis-AtemisUITests.debug.xcconfig"; path = "Target Support Files/Pods-Atemis-AtemisUITests/Pods-Atemis-AtemisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9A70AABB20A29DC933AF128 /* Pods-Atemis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atemis.debug.xcconfig"; path = "Target Support Files/Pods-Atemis/Pods-Atemis.debug.xcconfig"; sourceTree = "<group>"; };
 		BFF72F6994F7C7D4384D18FB /* Pods_AtemisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtemisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +152,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5D23EE88272FA6B600541E7A /* Product Page */ = {
+			isa = PBXGroup;
+			children = (
+				5D23EE89272FA6E300541E7A /* Model */,
+				5D23EE8A272FA6E900541E7A /* ViewModel */,
+				5D23EE8B272FA6EE00541E7A /* View */,
+			);
+			path = "Product Page";
+			sourceTree = "<group>";
+		};
+		5D23EE89272FA6E300541E7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D23EE90272FA79200541E7A /* ProductModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D23EE8A272FA6E900541E7A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5D23EE8E272FA78400541E7A /* ProductViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5D23EE8B272FA6EE00541E7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D23EE8C272FA77800541E7A /* ProductView.swift */,
+				5D23EE92272FA87500541E7A /* ProductRowView.swift */,
+				5D23EE94272FB4B400541E7A /* AddProductView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D5163E2C2727FF9600DF09D0 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +260,7 @@
 		D5163E68272802D400DF09D0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				5D23EE88272FA6B600541E7A /* Product Page */,
 				D5163E8127280E0B00DF09D0 /* Common */,
 				D5163E6A2728031700DF09D0 /* Main */,
 				D5494AD5272F9FE700DA1CF7 /* LoginRegisterPage */,
@@ -243,6 +292,7 @@
 			children = (
 				D5163E412727FF9800DF09D0 /* Persistence.swift */,
 				D5163E432727FF9800DF09D0 /* Atemis.xcdatamodeld */,
+				5DCA14852730E13D00F541AC /* CDStorage.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -646,7 +696,13 @@
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
+				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
+				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
+				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
+				5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */,
+				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
+				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -811,7 +867,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = TW4WHS432Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Atemis/Supporting Files/Info.plist";
@@ -843,7 +899,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Atemis/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = TW4WHS432Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Atemis/Supporting Files/Info.plist";
