@@ -8,18 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
         VStack(spacing: 20) {
             ExzoTextField("Email", input: $viewModel.email, style: .emailTextField)
             ExzoTextField("Password", input: $viewModel.password, style: .pwdTextField)
-            Button("Log in") {
-                // TODO: Masukin logic, seperti save ke user defaults
-                viewModel.loginButtonPressed { result in
-                    
-                }
-            }
+            Button("Log in", action: viewModel.loginButtonPressed)
             .buttonStyle(ExzoButtonStyle(type: .primary))
             HStack {
                 Text("Don't have account?")
@@ -30,7 +25,7 @@ struct LoginView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("Sign Up")
+        .navigationTitle("Log In")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

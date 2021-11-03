@@ -18,7 +18,7 @@ struct AtemisApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabContainer()
+            PreOnboardingView()
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {

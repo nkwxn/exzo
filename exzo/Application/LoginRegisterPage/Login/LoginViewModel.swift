@@ -11,9 +11,14 @@ class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     
-    func loginButtonPressed(completion: @escaping (Result<NewUserAccount, Error>) -> Void) {
+    func loginButtonPressed() {
         CKHelper.shared.login(email: email, pwd: password) { result in
-            
+            do {
+                let account = try result.get()
+                
+            } catch {
+                print("Error: \(error)")
+            }
         }
     }
     

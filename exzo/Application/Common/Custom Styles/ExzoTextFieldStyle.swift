@@ -109,11 +109,13 @@ struct ExzoTextField: View {
                             .focused($editing)
                             .keyboardType(style.getKeyboardType())
                             .multilineTextAlignment(textAlign)
+                            .disableAutocorrection(true)
                     } else {
                         TextField("", text: $textToEdit)
                             .focused($editing)
                             .keyboardType(style.getKeyboardType())
                             .multilineTextAlignment(textAlign)
+                            .disableAutocorrection(style == .emailTextField ? true : false)
                     }
                     if self.style == .pwdTextField {
                         Button {

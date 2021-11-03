@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreOnboardingView: View {
-    @ObservedObject var viewModel = PreOnboardingViewModel()
+    @StateObject var viewModel = PreOnboardingViewModel()
     
     var body: some View {
         NavigationView {
@@ -35,9 +35,7 @@ struct PreOnboardingView: View {
                     ZStack {
                         Color.clear
                             .frame(width: nil, height: 30)
-                        Button("Maybe later") {
-                            print("Skip ke onboarding first page")
-                        }
+                        Button("Maybe later", action: viewModel.maybeLaterPressed)
                         .foregroundColor(.primary)
                     }
                 }
