@@ -22,12 +22,12 @@ class SetNicknameViewModel: ObservableObject {
     }
     
     func doneButtonPressed() {
-        guard let recordID = UDHelper.sharedUD.defaults.object(forKey: UDKey.loginUserID.rawValue) as? CKRecord.ID else {
+        guard let recordID = UDHelper.sharedUD.defaults.string(forKey: UDKey.loginUserID.rawValue) else {
             print("Error: \(CKError.recordIDFailure)")
             return
         }
         
-        CKHelper.shared.setNickname(userID: recordID, nickName: myNickName, picKey: selectedPic) { result in
+        CKHelper.shared.setNickname(recordID: recordID, nickName: myNickName, picKey: selectedPic) { result in
             
         }
     }

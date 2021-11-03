@@ -49,7 +49,7 @@ class CKHelper {
                     do {
                         let record = try result.get()
                         
-                        let id = record.recordID
+                        let id = record.recordID.recordName
                         guard let fName = record["givenName"] as? String,
                               let lName = record["surName"] as? String,
                               let email = record["email"] as? String,
@@ -70,11 +70,12 @@ class CKHelper {
     }
     
     func setNickname(
-        userID: CKRecord.ID, nickName: String, picKey: String,
+        recordID: String, nickName: String, picKey: String,
         completion: @escaping (Result<NewUserAccount, Error>) -> Void
     ) {
+        let recID = CKRecord.ID(recordName: recordID)
         CKCrudOperators.UPDATE(
-            recordID: userID,
+            recordID: recID,
             valueToUpdate: [
                 "nickName": nickName,
                 "profThumb": picKey
@@ -82,7 +83,7 @@ class CKHelper {
         ) { result in
             do {
                 let record = try result.get()
-                let id = record.recordID
+                let id = record.recordID.recordName
                 guard let fName = record["givenName"] as? String,
                       let lName = record["surName"] as? String,
                       let email = record["email"] as? String,
@@ -114,7 +115,7 @@ class CKHelper {
                         return
                     }
                     
-                    let id = record.recordID
+                    let id = record.recordID.recordName
                     guard let fName = record["givenName"] as? String,
                           let lName = record["surName"] as? String,
                           let email = record["email"] as? String,

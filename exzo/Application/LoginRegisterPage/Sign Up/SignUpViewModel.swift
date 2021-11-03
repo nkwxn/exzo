@@ -29,10 +29,6 @@ class SignUpViewModel: ObservableObject {
     func signUpButtonClicked() {
         let newAccount = NewUserAccount(fName: firstName, lName: lastName, email: email, pwd: password)
         
-        /* TODO: Tambahin:
-            - validasi email (ada simbol @ di tengah dan . bbrp karakter setelah @),
-            - validasi password (password 8 char, Kapital, kecil, simbol)
-         */
         let fNameValid = self.isValidName(firstName)
         let lNameValid = self.isValidName(lastName)
         let emailValid = self.isValidEmail(email)
@@ -70,8 +66,6 @@ class SignUpViewModel: ObservableObject {
             self.errorText = errorText
             self.showErrorAlert = true
         }
-        
-        
     }
     
     func dismissError() {
