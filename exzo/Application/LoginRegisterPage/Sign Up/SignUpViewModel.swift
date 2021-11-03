@@ -23,7 +23,7 @@ class SignUpViewModel: ObservableObject {
     @Published var pushNavigation = false
     
     init() {
-        UDHelper.sharedUD.defaults.removeObject(forKey: UDKey.loginUserID.rawValue)
+        UDHelper.sharedUD.defaults.set(true, forKey: UDKey.newUser.rawValue)
     }
     
     func signUpButtonClicked() {
@@ -50,8 +50,11 @@ class SignUpViewModel: ObservableObject {
                             self.pushNavigation = true
                         }
                     } catch {
-                        self.errorText = error.localizedDescription
-                        print(error.localizedDescription)
+                        if let accError = error as? AccountError {
+                            self.errorText = accError.getDescription()
+                        } else {
+                            self.errorText = error.localizedDescription
+                        }
                         DispatchQueue.main.async {
                             self.showErrorAlert = true
                         }

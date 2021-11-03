@@ -7,6 +7,23 @@
 
 import CloudKit
 
+enum AccountError: Error {
+    case accountExists
+    case notRegistered
+    case incorrectPassword
+    
+    func getDescription() -> String {
+        switch self {
+        case .accountExists:
+            return "Account exists"
+        case .notRegistered:
+            return "Account is not available"
+        case .incorrectPassword:
+            return "Incorrect password"
+        }
+    }
+}
+
 class CKHelper {
     // MARK: - Record Types
     struct RecordType {
@@ -17,12 +34,6 @@ class CKHelper {
         static let TriggerArea = "TriggerArea"
         static let CustomActivity = "CustomActivity"
         static let CustomFoodIntake = "CustomFoodIntake"
-    }
-    
-    enum AccountError: Error {
-        case accountExists
-        case notRegistered
-        case incorrectPassword
     }
     
     // Singleton
