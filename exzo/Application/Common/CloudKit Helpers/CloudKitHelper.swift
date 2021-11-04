@@ -192,4 +192,18 @@ class CKHelper {
     }
     
     // MARK: - CRUD Methods for SkinCondition
+    func inputSkinCondition(accountRecName: String, completion: @escaping (Result<CKRecord, Error>) -> Void) {
+        
+    }
+}
+
+struct CKSkinCondition {
+    let drynness: Int
+    let redness: Int
+    let swelling: Int
+    let crust: Int
+    let scratch: Int
+    let thickSkin: Int
+    let itchiness: Int
+    let sleepLoss: Int
 }

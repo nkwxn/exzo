@@ -36,6 +36,10 @@
 		D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8827280F9A00DF09D0 /* Extensions.swift */; };
 		D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8B2728108A00DF09D0 /* TabContainer.swift */; };
 		D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */; };
+		D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC862733C78100DE63CC /* AddJournalView.swift */; };
+		D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */; };
+		D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC8F27342F4500DE63CC /* JournalSection.swift */; };
+		D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */; };
 		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
@@ -113,6 +117,10 @@
 		D5163E8827280F9A00DF09D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5163E8B2728108A00DF09D0 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
 		D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoAppContainer.swift; sourceTree = "<group>"; };
+		D51CFC862733C78100DE63CC /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
+		D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewModel.swift; sourceTree = "<group>"; };
+		D51CFC8F27342F4500DE63CC /* JournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSection.swift; sourceTree = "<group>"; };
+		D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSectionType.swift; sourceTree = "<group>"; };
 		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 		D5163E68272802D400DF09D0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D51CFC842733C75D00DE63CC /* Add Journal Page */,
 				BFD2B4532733824E0011F064 /* OnBoarding */,
 				5D23EE88272FA6B600541E7A /* Product Page */,
 				D5163E8127280E0B00DF09D0 /* Common */,
@@ -405,6 +414,25 @@
 				BFD2B44E2733809B0011F064 /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D51CFC842733C75D00DE63CC /* Add Journal Page */ = {
+			isa = PBXGroup;
+			children = (
+				D51CFC852733C76D00DE63CC /* Custom Components */,
+				D51CFC862733C78100DE63CC /* AddJournalView.swift */,
+				D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */,
+			);
+			path = "Add Journal Page";
+			sourceTree = "<group>";
+		};
+		D51CFC852733C76D00DE63CC /* Custom Components */ = {
+			isa = PBXGroup;
+			children = (
+				D51CFC8F27342F4500DE63CC /* JournalSection.swift */,
+				D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */,
+			);
+			path = "Custom Components";
 			sourceTree = "<group>";
 		};
 		D5325FB9272B99A9007FAFED /* CloudKit Helpers */ = {
@@ -764,9 +792,10 @@
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
 				BFD2B45A273382A00011F064 /* MySkinView.swift in Sources */,
-				D5163E8427280E3000DF09D0 /* ExampleCV.swift in Sources */,
+				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
+				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
@@ -786,9 +815,12 @@
 				D58AF7592731492100E67214 /* QuarterArc.swift in Sources */,
 				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
+				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
+				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
+				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,7 +984,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -984,7 +1016,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";

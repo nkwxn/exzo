@@ -12,14 +12,21 @@ struct PreOnboardingView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Image("login_image")
-                    .clipShape(QuarterArc())
-                    .offset(x: 0, y: -30)
+            ZStack {
+                VStack {
+                    Image("login_image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(QuarterArc())
+                        .offset(x: 0, y: -35)
+                        .ignoresSafeArea(edges: .top)
+                    Spacer()
+                }
                 VStack(alignment: .leading, spacing: 14) {
                     Text("Hello!")
-                        .font(.title)
-                    Text("Welcome to Atemis, an app that helps you to track your triggers")
+                        .font(Lexend.init(.title).getFont().bold())
+                    Text("Welcome to exzo, an app that helps you to track your triggers")
+                        .font(Avenir.shared.getFont())
                     NavigationLink {
                         SignUpView()
                     } label: {
@@ -37,6 +44,7 @@ struct PreOnboardingView: View {
                             .frame(width: nil, height: 30)
                         Button("Maybe later", action: viewModel.maybeLaterPressed)
                         .foregroundColor(.primary)
+                        .font(Avenir.shared.getFont())
                     }
                 }
                 .padding()
@@ -45,11 +53,8 @@ struct PreOnboardingView: View {
                 )
                 .shadow(color: .clear, radius: 50, x: 0, y: 0)
                 .padding()
-                .offset(x: 0, y: -60)
                 .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                Spacer()
             }
-            .ignoresSafeArea(edges: .top)
         }
     }
 }

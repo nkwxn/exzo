@@ -133,6 +133,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
                     .cornerRadius(20)
                 HStack {
                     configuration.label
+                        .font(Avenir.shared.getFont().bold())
                 }
                 .foregroundColor(labelColor)
             }
@@ -188,6 +189,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
                 }
                 HStack {
                     configuration.label
+                        .font(Avenir.shared.getFont().bold())
                 }
                 .foregroundColor(labelColor)
             }

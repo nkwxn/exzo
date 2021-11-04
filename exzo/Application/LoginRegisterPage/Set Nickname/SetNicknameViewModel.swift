@@ -12,6 +12,8 @@ class SetNicknameViewModel: ObservableObject {
     @Published var selectedPic = ""
     @Published var myNickName = ""
     
+    @Published var showOnboarding = false
+    
     func shuffleImage() {
         print("Image should be shuffled")
     }
@@ -28,7 +30,13 @@ class SetNicknameViewModel: ObservableObject {
         }
         
         CKHelper.shared.setNickname(recordID: recordID, nickName: myNickName, picKey: selectedPic) { result in
-            
+            do {
+                let account = try result.get()
+                print("Updating nickname success: \(account)")
+                self.showOnboarding.toggle()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }
