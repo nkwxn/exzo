@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Atemis
+@testable import exzo
 
 class AtemisBackendTest: XCTestCase {
     var ckHelper = CKHelper.shared
