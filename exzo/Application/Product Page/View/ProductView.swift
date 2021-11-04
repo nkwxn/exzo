@@ -8,51 +8,30 @@
 import SwiftUI
 
 struct ProductView: View {
-    @FetchRequest(
-        entity: Product.entity(),
-        sortDescriptors: [
-        NSSortDescriptor(keyPath: \Product.productName, ascending: true)
-    ]) var products: FetchedResults<Product>
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @StateObject var viewModel = ProductViewModel()
     @State var isPresented = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(products, id: \.idProduct) {
-                    ProductRow(product: $0)
+                ForEach(Array(viewModel.products.enumerated()), id: \.0) {
+                    ProductRow(product: $1)
                 }
+                .onDelete(perform: viewModel.deleteItem)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
             .sheet(isPresented: $isPresented) {
-                AddProduct { name in
-                    self.addProduct(name: name)
-                    self.isPresented = false
+                AddProduct()
+            }
+            .navigationTitle("Products")
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action: { self.isPresented.toggle() }) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
-            .navigationBarTitle(Text("Products"))
-            .navigationBarItems(trailing:
-                Button(action: { self.isPresented.toggle() }) {
-                  Image(systemName: "plus")
-                }
-            )
-        }
-    }
-    
-    func addProduct (name: String) {
-        let newProduct = Product(context: managedObjectContext)
-        
-        newProduct.productName = name
-        
-        saveContext()
-        
-        print("\(newProduct.productName)")
-    }
-    
-    func saveContext() {
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print("Error saving managed object context: \(error)")
         }
     }
 }
