@@ -11,20 +11,20 @@ import SwiftUI
 struct AtemisApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State var loginAlert = false
-
+    
     init() {
-        print("Atemis runs")
+        print("Exzo runs")
     }
     
     var body: some Scene {
         WindowGroup {
-            TabContainer()
+            ExzoAppContainer()
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                             return
                         }
-
+                        
                         if UIApplication.shared.canOpenURL(settingsUrl) {
                             UIApplication.shared.open(settingsUrl, options: [: ]) { success in
                                 print("Settings opened: \(success)")

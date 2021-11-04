@@ -7,6 +7,23 @@
 
 import CloudKit
 
+enum AccountError: Error {
+    case accountExists
+    case notRegistered
+    case incorrectPassword
+    
+    func getDescription() -> String {
+        switch self {
+        case .accountExists:
+            return "Account exists"
+        case .notRegistered:
+            return "Account is not available"
+        case .incorrectPassword:
+            return "Incorrect password"
+        }
+    }
+}
+
 class CKHelper {
     // MARK: - Record Types
     struct RecordType {
@@ -17,12 +34,6 @@ class CKHelper {
         static let TriggerArea = "TriggerArea"
         static let CustomActivity = "CustomActivity"
         static let CustomFoodIntake = "CustomFoodIntake"
-    }
-    
-    enum AccountError: Error {
-        case accountExists
-        case notRegistered
-        case incorrectPassword
     }
     
     // Singleton
@@ -49,7 +60,7 @@ class CKHelper {
                     do {
                         let record = try result.get()
                         
-                        let id = record.recordID
+                        let id = record.recordID.recordName
                         guard let fName = record["givenName"] as? String,
                               let lName = record["surName"] as? String,
                               let email = record["email"] as? String,
@@ -70,11 +81,12 @@ class CKHelper {
     }
     
     func setNickname(
-        userID: CKRecord.ID, nickName: String, picKey: String,
+        recordID: String, nickName: String, picKey: String,
         completion: @escaping (Result<NewUserAccount, Error>) -> Void
     ) {
+        let recID = CKRecord.ID(recordName: recordID)
         CKCrudOperators.UPDATE(
-            recordID: userID,
+            recordID: recID,
             valueToUpdate: [
                 "nickName": nickName,
                 "profThumb": picKey
@@ -82,7 +94,7 @@ class CKHelper {
         ) { result in
             do {
                 let record = try result.get()
-                let id = record.recordID
+                let id = record.recordID.recordName
                 guard let fName = record["givenName"] as? String,
                       let lName = record["surName"] as? String,
                       let email = record["email"] as? String,
@@ -127,7 +139,8 @@ class CKHelper {
                     }
                     
                     let acc = NewUserAccount(
-                        recordID: id,
+                        rID: id,
+                        recordID: id.recordName,
                         fName: fName,
                         lName: lName,
                         email: email,
