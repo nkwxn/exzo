@@ -29,6 +29,7 @@
 		D5163E8727280F6E00DF09D0 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5163E7F2728098E00DF09D0 /* Avenir.ttc */; };
 		D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8827280F9A00DF09D0 /* Extensions.swift */; };
 		D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8B2728108A00DF09D0 /* TabContainer.swift */; };
+		D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */; };
 		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
@@ -99,6 +100,7 @@
 		D5163E8327280E3000DF09D0 /* WaitAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAlert.swift; sourceTree = "<group>"; };
 		D5163E8827280F9A00DF09D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5163E8B2728108A00DF09D0 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
+		D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoAppContainer.swift; sourceTree = "<group>"; };
 		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				D5163E382727FF9600DF09D0 /* AtemisApp.swift */,
 				D5163E8B2728108A00DF09D0 /* TabContainer.swift */,
+				D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
 				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
 				D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */,
+				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
 				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
 				5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */,

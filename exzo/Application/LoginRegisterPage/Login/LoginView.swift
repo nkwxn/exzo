@@ -14,8 +14,21 @@ struct LoginView: View {
         VStack(spacing: 20) {
             ExzoTextField("Email", input: $viewModel.email, style: .emailTextField)
             ExzoTextField("Password", input: $viewModel.password, style: .pwdTextField)
-            Button("Log in", action: viewModel.loginButtonPressed)
-            .buttonStyle(ExzoButtonStyle(type: .primary))
+            NavigationLink(destination: SetNicknameView(), isActive: $viewModel.pushNavigation) {
+                EmptyView()
+            }.hidden()
+            .alert("Error", isPresented: $viewModel.showErrorAlert) {
+                Button("OK", role: .cancel, action: viewModel.dismissError)
+            } message: {
+                Text(viewModel.errorText)
+            }
+            if viewModel.showLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                Button("Log in", action: viewModel.loginButtonPressed)
+                    .buttonStyle(ExzoButtonStyle(type: .primary))
+            }
             HStack {
                 Text("Don't have account?")
                 NavigationLink("Sign up here") {
@@ -27,6 +40,10 @@ struct LoginView: View {
         .padding()
         .navigationTitle("Log In")
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $viewModel.openPage, onDismiss: nil) {
+            TabContainer()
+            
+        }
     }
 }
 

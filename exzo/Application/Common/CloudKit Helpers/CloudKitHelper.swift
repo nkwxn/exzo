@@ -126,7 +126,7 @@ class CKHelper {
                         return
                     }
                     
-                    let id = record.recordID.recordName
+                    let id = record.recordID
                     guard let fName = record["givenName"] as? String,
                           let lName = record["surName"] as? String,
                           let email = record["email"] as? String,
@@ -139,7 +139,8 @@ class CKHelper {
                     }
                     
                     let acc = NewUserAccount(
-                        recordID: id,
+                        rID: id,
+                        recordID: id.recordName,
                         fName: fName,
                         lName: lName,
                         email: email,

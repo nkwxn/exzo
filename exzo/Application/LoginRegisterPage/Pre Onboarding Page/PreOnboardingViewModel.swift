@@ -9,6 +9,6 @@ import Foundation
 
 class PreOnboardingViewModel: ObservableObject {
     func maybeLaterPressed() {
-        print("Skip to home page (without log in)")
+        // TODO: Create code to skip to onboarding
     }
 }

@@ -21,7 +21,7 @@ struct SignUpView: View {
                     EmptyView()
                 }.hidden()
                 .alert("Error", isPresented: $viewModel.showErrorAlert) {
-                    Button("OK", action: viewModel.dismissError)
+                    Button("OK", role: .cancel, action: viewModel.dismissError)
                 } message: {
                     Text(viewModel.errorText)
                 }
