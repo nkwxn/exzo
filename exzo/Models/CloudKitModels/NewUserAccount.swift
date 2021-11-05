@@ -10,7 +10,8 @@ import CloudKit
 
 struct NewUserAccount: Identifiable {
     var id = UUID()
-    var recordID: CKRecord.ID?
+    var rID: CKRecord.ID?
+    var recordID: String?
     var fName: String
     var lName: String
     var email: String
