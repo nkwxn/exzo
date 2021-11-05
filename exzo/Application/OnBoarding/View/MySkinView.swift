@@ -27,6 +27,7 @@ struct MySkinView: View {
                                 .fill(Color.brandy)
                                 .frame(width: 32, height: 32, alignment: .leading)
                                 .offset(x: CGFloat((-20 * index)))
+                            
                         }
                         else {
                             Circle()
