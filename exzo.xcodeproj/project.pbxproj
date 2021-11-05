@@ -15,6 +15,7 @@
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
+		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
 		BFD2B44F2733809B0011F064 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B44E2733809B0011F064 /* Color.swift */; };
 		BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4502733822B0011F064 /* DynamicFont.swift */; };
 		BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B455273382620011F064 /* OnBoardingView.swift */; };
@@ -91,6 +92,7 @@
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
 		BF651D762734B94200276CD1 /* QuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageView.swift; sourceTree = "<group>"; };
 		BF651D792734C49100276CD1 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightOnboardingView.swift; sourceTree = "<group>"; };
 		BFD2B44E2733809B0011F064 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BFD2B4502733822B0011F064 /* DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFont.swift; sourceTree = "<group>"; };
 		BFD2B455273382620011F064 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
 				BF651D792734C49100276CD1 /* ProgressView.swift */,
+				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -789,7 +792,7 @@
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
-				D5163E8427280E3000DF09D0 /* ExampleCV.swift in Sources */,
+				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
 				BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */,
@@ -815,6 +818,7 @@
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
+				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 			);
