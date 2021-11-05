@@ -8,18 +8,34 @@
 import SwiftUI
 
 struct SetNicknameView: View {
+    @StateObject var viewModel = SetNicknameViewModel()
+    
     var body: some View {
-        // TODO: Ubah style ke custom text field dan button style
         VStack {
-            Spacer()
-            TextField("What's your nickname?", text: .constant(""))
-            Spacer()
-            Button("Done") {
-                // TODO: Connect ke Onboarding
-                
+            ZStack(alignment: .bottomTrailing) {
+                // FIXME: Ganti image sesuai dengan profile picture yang dibuatkan tim design
+                Image("login_image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 200, height: 200)
+                    .clipShape(Circle())
+                Button(action: viewModel.shuffleImage) {
+                    Image(systemName: "arrow.2.squarepath")
+                }
+                .buttonStyle(ExzoButtonStyle(type: .smallIconPrimary))
+                .padding(.horizontal)
             }
+            ExzoTextField("What's your name", input: $viewModel.myNickName, alignment: .center)
+            Button("Continue", action: viewModel.doneButtonPressed)
+                .buttonStyle(ExzoButtonStyle(type: .primary))
         }
+        .padding()
         .navigationTitle("Your Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: viewModel.viewOnAppear)
+        .fullScreenCover(isPresented: $viewModel.showOnboarding) {
+            OnBoardingView()
+        }
     }
 }
 

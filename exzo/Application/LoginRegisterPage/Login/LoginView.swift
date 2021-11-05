@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
-        // TODO: Ubah style ke custom text field dan button style
-        VStack {
-            TextField("Email", text: $viewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            SecureField("Password", text: $viewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button("Log in") {
-                // TODO: Panggil function buat login dari ViewModel
-                viewModel.loginButtonPressed { result in
-                    
-                }
+        VStack(spacing: 20) {
+            ExzoTextField("Email", input: $viewModel.email, style: .emailTextField)
+            ExzoTextField("Password", input: $viewModel.password, style: .pwdTextField)
+            NavigationLink(destination: SetNicknameView(), isActive: $viewModel.pushNavigation) {
+                EmptyView()
+            }.hidden()
+            .alert("Error", isPresented: $viewModel.showErrorAlert) {
+                Button("OK", role: .cancel, action: viewModel.dismissError)
+            } message: {
+                Text(viewModel.errorText)
+            }
+            if viewModel.showLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                Button("Log in", action: viewModel.loginButtonPressed)
+                    .buttonStyle(ExzoButtonStyle(type: .primary))
             }
             HStack {
                 Text("Don't have account?")
@@ -32,8 +38,12 @@ struct LoginView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("Sign Up")
+        .navigationTitle("Log In")
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $viewModel.openPage, onDismiss: nil) {
+            TabContainer()
+            
+        }
     }
 }
 
