@@ -40,7 +40,7 @@
         <attribute name="productImage" optional="YES" attributeType="Transformable"/>
         <attribute name="productIngr" optional="YES" attributeType="Transformable"/>
         <attribute name="productName" optional="YES" attributeType="String"/>
-        <attribute name="productType" optional="YES" attributeType="Transformable"/>
+        <attribute name="productType" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SkinCondition" representedClassName="SkinCondition" syncable="YES" codeGenerationType="class">
         <attribute name="crust" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
