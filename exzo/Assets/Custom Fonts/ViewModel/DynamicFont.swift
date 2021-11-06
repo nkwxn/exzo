@@ -27,7 +27,7 @@ extension View {
     }
 }
 
-/*
+/**
  Usage :
  Text("Hello World")
                  .scaledFont(name: "Georgia", size: 12)

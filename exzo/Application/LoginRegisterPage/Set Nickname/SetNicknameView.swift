@@ -14,7 +14,7 @@ struct SetNicknameView: View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
                 // FIXME: Ganti image sesuai dengan profile picture yang dibuatkan tim design
-                Image("login_image")
+                Image(viewModel.selectedPic)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 200, height: 200)
