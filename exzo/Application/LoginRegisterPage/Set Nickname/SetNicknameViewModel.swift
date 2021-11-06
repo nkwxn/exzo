@@ -9,13 +9,20 @@ import Foundation
 import CloudKit
 
 class SetNicknameViewModel: ObservableObject {
-    @Published var selectedPic = ""
+    var arrLoc = 0
+    var imageName = ["pp_001", "pp_002", "pp_003", "pp_004"]
+    @Published var selectedPic = "pp_001"
     @Published var myNickName = ""
     
     @Published var showOnboarding = false
     
     func shuffleImage() {
-        print("Image should be shuffled")
+        if arrLoc < 3 {
+            arrLoc += 1
+        } else {
+            arrLoc = 0
+        }
+        selectedPic = imageName[arrLoc]
     }
     
     func viewOnAppear() {
