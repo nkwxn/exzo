@@ -8,33 +8,41 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @ObservedObject var viewModel = SignUpViewModel()
+    @StateObject var viewModel = SignUpViewModel()
     
     var body: some View {
-        // TODO: Ubah ke custom text field dan button style
-        VStack {
-            TextField("First name", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Last name", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Email", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            SecureField("Password", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button("Log in") {
-                // TODO: Panggil function buat sign up dari ViewModel, kemudian redirect ke your profile + onboarding
-            }
-            HStack(spacing: 0) {
-                Text("Have account? ")
-                NavigationLink("Log in here") {
-                    LoginView()
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 20) {
+                ExzoTextField("First name", input: $viewModel.firstName)
+                ExzoTextField("Last name", input: $viewModel.lastName)
+                ExzoTextField("Email", input: $viewModel.email, style: .emailTextField)
+                ExzoTextField("Password", input: $viewModel.password, style: .pwdTextField)
+                NavigationLink(destination: SetNicknameView(), isActive: $viewModel.pushNavigation) {
+                    EmptyView()
+                }.hidden()
+                .alert("Error", isPresented: $viewModel.showErrorAlert) {
+                    Button("OK", role: .cancel, action: viewModel.dismissError)
+                } message: {
+                    Text(viewModel.errorText)
+                }
+                if viewModel.showLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    Button("Sign up", action: viewModel.signUpButtonClicked)
+                        .buttonStyle(ExzoButtonStyle(type: .primary))
+                }
+                HStack(spacing: 0) {
+                    Text("Have account? ")
+                    NavigationLink("Log in here") {
+                        LoginView()
+                    }
                 }
             }
-            Spacer()
+            .padding()
         }
-        .padding()
         .navigationTitle("Sign Up")
-            .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

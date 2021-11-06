@@ -8,5 +8,7 @@
 import Foundation
 
 class PreOnboardingViewModel: ObservableObject {
-    
+    func maybeLaterPressed() {
+        // TODO: Create code to skip to onboarding
+    }
 }
