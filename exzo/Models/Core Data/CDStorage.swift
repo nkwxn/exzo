@@ -13,6 +13,9 @@ class CDStorage: NSObject, ObservableObject {
     var productItems = CurrentValueSubject<[Product], Never>([])
     private var productFetchController: NSFetchedResultsController<Product>
     
+    var journalItems = CurrentValueSubject<[Journal], Never>([])
+    private var journalFetchController: NSFetchedResultsController<Journal>
+    
     static let shared = CDStorage()
     var context = PersistenceController.shared.container.viewContext
     
@@ -22,15 +25,24 @@ class CDStorage: NSObject, ObservableObject {
         productFetchRequest.sortDescriptors = [productSort]
         productFetchController = NSFetchedResultsController(fetchRequest: productFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
+        let journalSort = NSSortDescriptor(keyPath: \Journal.idJournal, ascending: true)
+        let journalFetchRequest: NSFetchRequest<Journal> = Journal.fetchRequest()
+        journalFetchRequest.sortDescriptors = [journalSort]
+        journalFetchController = NSFetchedResultsController(fetchRequest: journalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
         super.init()
         
         productFetchController.delegate = self
+        journalFetchController.delegate = self
         
         do {
             try productFetchController.performFetch()
             productItems.value = productFetchController.fetchedObjects ?? []
+            
+            try journalFetchController.performFetch()
+            journalItems.value = journalFetchController.fetchedObjects ?? []
         } catch {
-            NSLog("Error: could not fetch Product")
+            NSLog("Error: could not fetch")
         }
     }
     
@@ -64,6 +76,28 @@ extension CDStorage {
             item.idProduct == id
         }
         context.delete(productItem[0])
+    }
+}
+
+// MARK: - CRUD Journal
+extension CDStorage {
+    func createJournal(foodIntake: String) {
+        let newJournal = Journal(context: PersistenceController.shared.container.viewContext)
+        newJournal.idJournal = UUID()
+        newJournal.foodIntake = foodIntake as NSObject
+        
+        save()
+    }
+    
+    func updateJournal(with id: UUID) {
+        
+    }
+    
+    func deleteJournal(with id: UUID) {
+        let journalItem = journalItems.value.filter { item in
+            item.idJournal == id
+        }
+        context.delete(journalItem[0])
     }
 }
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-//enum product type
 enum ProductType: String, CaseIterable {
     case shampoo = "Shampoo"
     case bodyWash = "Body Wash"
