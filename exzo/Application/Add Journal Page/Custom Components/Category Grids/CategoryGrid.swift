@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryItem: Identifiable {
-    var id = UUID() // Formality identifiable
+    var id = UUID()
     var iconName: String
     var name: String
     var selected: Bool
@@ -25,18 +25,15 @@ struct CategoryGrid: View {
     }
     
     // Grid View Property
-    var gridItems: [GridItem] = [
-        GridItem(.adaptive(minimum: 30)),
-        GridItem(.adaptive(minimum: 30)),
-        GridItem(.adaptive(minimum: 30)),
-        GridItem(.adaptive(minimum: 30)),
-        GridItem(.adaptive(minimum: 30))
-    ]
+    var gridItems: [GridItem] = Array(
+        repeating: GridItem(.flexible()), count: 5
+    )
     
     var body: some View {
         LazyVGrid(columns: gridItems, spacing: 20) {
             ForEach(grid) {
                 CategoryGridItem(category: $0, accent: gridColor)
+                    .aspectRatio(0.7, contentMode: .fit)
             }
         }
     }

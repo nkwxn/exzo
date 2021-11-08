@@ -18,6 +18,7 @@ struct JournalSection<Content: View>: View {
         VStack {
             HStack {
                 Text(type.rawValue)
+                    .font(Avenir(.headline).getFont().bold())
                 Button {
                     // action to open
                     popoverPresent.toggle()
@@ -57,12 +58,12 @@ struct JournalSection<Content: View>: View {
                         self.contentHidden.toggle()
                     }
                 } label: {
-                    Image(systemName: "chevron.up")
+                    Image(systemName: contentHidden ? "chevron.down" : "chevron.up")
                 }
             }
             if !contentHidden {
                 content()
-                    .transition(.move(edge: .top))
+                    .transition(.scale(scale: 0, anchor: .top))
             }
             Divider()
         }

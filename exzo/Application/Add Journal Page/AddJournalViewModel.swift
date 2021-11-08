@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct BodyTriggerPart {
     var name: String
@@ -24,13 +25,17 @@ class AddJournalViewModel: ObservableObject {
     @Published var sliderRange2 = 0...3.0
     
     // Grid Items (ambil dr core data or savingan dr cloudkit)
-    @Published var foodIntake = [CategoryItem(iconName: "Icon004", name: "Gluten", selected: true), CategoryItem(iconName: "Icon001", name: "Dairy", selected: false)]
-    @Published var exposure = [CategoryItem(iconName: "Icon004", name: "Gluten", selected: true), CategoryItem(iconName: "Icon001", name: "Dairy", selected: false)]
-    @Published var activities = [CategoryItem(iconName: "Icon004", name: "Gluten", selected: true), CategoryItem(iconName: "Icon001", name: "Dairy", selected: false)]
+    @Published var foodIntake = [CategoryItem]()
+    @Published var exposure = [CategoryItem]()
+    @Published var activities = [CategoryItem]()
     
-    @Published var selectedIntake = Set<UUID>()
-    @Published var selectedExposure = Set<UUID>()
-    @Published var selectedActivity = Set<UUID>()
+    private var intakeSelectedSubs: AnyCancellable?
+    private var exposureSelectedSubs: AnyCancellable?
+    private var activitySelectedSubs: AnyCancellable?
+    
+    var intakeSelect = [IEAData]()
+    var exposureSelect = [IEAData]()
+    var activitySelect = [IEAData]()
     
     // Skin conditions
     @Published var dryness = 2.0
@@ -45,6 +50,51 @@ class AddJournalViewModel: ObservableObject {
     
     // Trigger areas
     var triggerAreas = [BodyTriggerPart]()
+    
+    private var intakeSubs: AnyCancellable?
+    private var exposureSubs: AnyCancellable?
+    private var activitySubs: AnyCancellable?
+    
+    init() {
+        intakeSubs = CDStorage.shared.foodIntakes.eraseToAnyPublisher().sink { intakes in
+            self.foodIntake = intakes.filter { intake in
+                intake.isFavorite
+            }.map { intake -> CategoryItem in
+                if let id = intake.idFoodIntake,
+                   let thumb = intake.intakeThumb,
+                   let name = intake.intakeName {
+                    return CategoryItem(id: id, iconName: thumb, name: name, selected: false)
+                }
+                return CategoryItem(iconName: "Icon001", name: "NULL", selected: false)
+            }
+        }
+        
+        exposureSubs = CDStorage.shared.envExposures.eraseToAnyPublisher().sink { exposures in
+            self.exposure = exposures.filter { exposure in
+                exposure.isFavorite
+            }.map { exposure -> CategoryItem in
+                if let id = exposure.idExposure,
+                   let thumb = exposure.exposureThumb,
+                   let name = exposure.exposureName {
+                    return CategoryItem(id: id, iconName: thumb, name: name, selected: false)
+                }
+                return CategoryItem(iconName: "Icon018", name: "NULL", selected: false)
+            }
+        }
+        
+        activitySubs = CDStorage.shared.activities.eraseToAnyPublisher().sink { activities in
+            self.activities = activities.filter { activity in
+                activity.isFavorite
+            }.map { activity -> CategoryItem in
+                if let id = activity.idActivity,
+                   let thumb = activity.activityThumb,
+                   let name = activity.activityName {
+                    return CategoryItem(id: id, iconName: thumb, name: name, selected: false)
+                }
+                return CategoryItem(iconName: "Icon014", name: "NULL", selected: false)
+            }
+        }
+    }
     
     // Done button pressed
     func doneBtnPressed() {

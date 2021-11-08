@@ -20,6 +20,7 @@ struct AtemisApp: App {
         WindowGroup {
             ExzoAppContainer()
                 .font(Avenir.shared.getFont())
+                .onAppear(perform: CDStorage.shared.createIEATemplate)
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
