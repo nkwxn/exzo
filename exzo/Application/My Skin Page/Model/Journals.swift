@@ -13,7 +13,7 @@ struct Journals {
     var dateAndTime: Date
     var foodIntake: [FoodIntakes]
     var stressLevel: Int
-    var skinExposure: [Exposure]
+    var skinExposure: [Exposurezzz]
     var activities: [Activities]
     var skinCondition: SkinConditions
     var triggerAreas: [TriggerArea]

@@ -14,6 +14,19 @@
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
+		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
+		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
+		5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE72734DB0100F4C319 /* CalendarModel.swift */; };
+		5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE65108273245F800CCAA39 /* ImagePicker.swift */; };
+		5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE42733837800F51423 /* MySkinView.swift */; };
+		5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE82733856700F51423 /* JournalRowView.swift */; };
+		5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEA27338ADA00F51423 /* Food Intakes.swift */; };
+		5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEC27338D2B00F51423 /* Exposure enum.swift */; };
+		5DF4ADEF27338E2D00F51423 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEE27338E2D00F51423 /* Activities.swift */; };
+		5DF4ADF127338F0200F51423 /* Skin Conditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF027338F0200F51423 /* Skin Conditions.swift */; };
+		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
+		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
+		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
 		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
@@ -23,21 +36,6 @@
 		BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */; };
 		BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B45B273382C40011F064 /* DynamicFontV2.swift */; };
 		BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B463273392FF0011F064 /* ImagePicker.swift */; };
-		BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4682733A3310011F064 /* DataQuestion.swift */; };
-		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
-		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
-		5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE72734DB0100F4C319 /* CalendarModel.swift */; };
-		5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE65108273245F800CCAA39 /* ImagePicker.swift */; };
-		5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE42733837800F51423 /* MySkinView.swift */; };
-		5DF4ADE72733842900F51423 /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE62733842900F51423 /* AddJournalView.swift */; };
-		5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE82733856700F51423 /* JournalRowView.swift */; };
-		5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEA27338ADA00F51423 /* Food Intakes.swift */; };
-		5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEC27338D2B00F51423 /* Exposure enum.swift */; };
-		5DF4ADEF27338E2D00F51423 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEE27338E2D00F51423 /* Activities.swift */; };
-		5DF4ADF127338F0200F51423 /* Skin Conditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF027338F0200F51423 /* Skin Conditions.swift */; };
-		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
-		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
-		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
 		C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */; };
 		CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */; };
 		D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* AtemisApp.swift */; };
@@ -70,6 +68,7 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
+		D56D7F262738D8040023686C /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7F252738D8040023686C /* DataQuestion.swift */; };
 		D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */; };
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
 		D58AF7592731492100E67214 /* QuarterArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF7582731492100E67214 /* QuarterArc.swift */; };
@@ -116,7 +115,6 @@
 		5DD92CE72734DB0100F4C319 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		5DE65108273245F800CCAA39 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5DF4ADE42733837800F51423 /* MySkinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySkinView.swift; sourceTree = "<group>"; };
-		5DF4ADE62733842900F51423 /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
 		5DF4ADE82733856700F51423 /* JournalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalRowView.swift; sourceTree = "<group>"; };
 		5DF4ADEA27338ADA00F51423 /* Food Intakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food Intakes.swift"; sourceTree = "<group>"; };
 		5DF4ADEC27338D2B00F51423 /* Exposure enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exposure enum.swift"; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 		BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingQuestionView.swift; sourceTree = "<group>"; };
 		BFD2B45B273382C40011F064 /* DynamicFontV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontV2.swift; sourceTree = "<group>"; };
 		BFD2B463273392FF0011F064 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		BFD2B4682733A3310011F064 /* DataQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E352727FF9600DF09D0 /* exzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E382727FF9600DF09D0 /* AtemisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisApp.swift; sourceTree = "<group>"; };
@@ -173,6 +170,7 @@
 		D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoButtonStyle.swift; sourceTree = "<group>"; };
 		D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoTextFieldStyle.swift; sourceTree = "<group>"; };
 		D58AF7582731492100E67214 /* QuarterArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterArc.swift; sourceTree = "<group>"; };
@@ -265,44 +263,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		BF651D782734BA7700276CD1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				BF651D762734B94200276CD1 /* QuestionPageView.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		BFD2B452273382310011F064 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				BFD2B4502733822B0011F064 /* DynamicFont.swift */,
-				BFD2B45B273382C40011F064 /* DynamicFontV2.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		BFD2B4532733824E0011F064 /* OnBoarding */ = {
-			isa = PBXGroup;
-			children = (
-				BF651D782734BA7700276CD1 /* ViewModel */,
-				BFD2B4672733A3280011F064 /* Model */,
-				BFD2B454273382560011F064 /* View */,
-			);
-			path = OnBoarding;
-			sourceTree = "<group>";
-		};
-		BFD2B454273382560011F064 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BFD2B455273382620011F064 /* OnBoardingView.swift */,
-				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
-				BF651D792734C49100276CD1 /* ProgressView.swift */,
-				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		5DF4ADE02733828200F51423 /* My Skin Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				5DF4ADE42733837800F51423 /* MySkinView.swift */,
-				5DF4ADE62733842900F51423 /* AddJournalView.swift */,
 				5DF4ADE82733856700F51423 /* JournalRowView.swift */,
 				5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */,
 				5DD92CE52734DA8200F4C319 /* CalendarView.swift */,
@@ -343,9 +302,46 @@
 				5DF4ADF027338F0200F51423 /* Skin Conditions.swift */,
 				5DF4ADF4273392ED00F51423 /* Journals.swift */,
 				5DD92CE72734DB0100F4C319 /* CalendarModel.swift */,
-				BFD2B4682733A3310011F064 /* DataQuestion.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BF651D782734BA7700276CD1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BF651D762734B94200276CD1 /* QuestionPageView.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BFD2B452273382310011F064 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B4502733822B0011F064 /* DynamicFont.swift */,
+				BFD2B45B273382C40011F064 /* DynamicFontV2.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BFD2B4532733824E0011F064 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				D56D7F272738D8250023686C /* New Group */,
+				BF651D782734BA7700276CD1 /* ViewModel */,
+				BFD2B454273382560011F064 /* View */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		BFD2B454273382560011F064 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2B455273382620011F064 /* OnBoardingView.swift */,
+				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
+				BF651D792734C49100276CD1 /* ProgressView.swift */,
+				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D5163E2C2727FF9600DF09D0 = {
@@ -508,7 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				D5163E8327280E3000DF09D0 /* WaitAlert.swift */,
-				D5163E8327280E3000DF09D0 /* ExampleCV.swift */,
 				E2479EDB273103CF00C4E278 /* CustomNavigationBar.swift */,
 			);
 			path = "Custom Views";
@@ -605,6 +600,14 @@
 				D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */,
 			);
 			path = "Set Nickname";
+			sourceTree = "<group>";
+		};
+		D56D7F272738D8250023686C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D56D7F252738D8040023686C /* DataQuestion.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		D58AF752273104DC00E67214 /* Custom Styles */ = {
@@ -924,11 +927,9 @@
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
-				BFD2B45A273382A00011F064 /* MySkinView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
-				BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */,
@@ -958,6 +959,7 @@
 				D58AF7592731492100E67214 /* QuarterArc.swift in Sources */,
 				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */,
+				D56D7F262738D8040023686C /* DataQuestion.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
@@ -974,7 +976,6 @@
 				5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */,
 				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
-				5DF4ADE72733842900F51423 /* AddJournalView.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
 			);
@@ -1140,10 +1141,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1154,7 +1156,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1172,10 +1174,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1186,7 +1189,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
