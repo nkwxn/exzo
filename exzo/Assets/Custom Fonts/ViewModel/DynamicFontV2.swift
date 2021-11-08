@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-//MARK: - With ViewModifier
+// swiftlint:disable all
 struct Avenir: ViewModifier {
     @Environment(\.sizeCategory) var sizeCategory
     var textStyle: Font.TextStyle
@@ -17,38 +17,40 @@ struct Avenir: ViewModifier {
         self.textStyle = textStyle
     }
 
+    static let shared = Avenir()
+    
     func body(content: Content) -> some View {
         content.font(getFont())
     }
-
+    
     func getFont() -> Font {
         switch(sizeCategory) {
         case .extraSmall:
-            return Font.custom("Avenir", size: 16 * getStyleFactor())
+            return Font.custom("Avenir", size: 14 * getStyleFactor())
         case .small:
-            return Font.custom("Avenir", size: 21 * getStyleFactor())
+            return Font.custom("Avenir", size: 15 * getStyleFactor())
         case .medium:
-            return Font.custom("Avenir", size: 24 * getStyleFactor())
+            return Font.custom("Avenir", size: 16 * getStyleFactor())
         case .large:
-            return Font.custom("Avenir", size: 28 * getStyleFactor())
+            return Font.custom("Avenir", size: 17 * getStyleFactor())
         case .extraLarge:
-            return Font.custom("Avenir", size: 32 * getStyleFactor())
+            return Font.custom("Avenir", size: 19 * getStyleFactor())
         case .extraExtraLarge:
-            return Font.custom("Avenir", size: 36 * getStyleFactor())
+            return Font.custom("Avenir", size: 21 * getStyleFactor())
         case .extraExtraExtraLarge:
-            return Font.custom("Avenir", size: 40 * getStyleFactor())
+            return Font.custom("Avenir", size: 23 * getStyleFactor())
         case .accessibilityMedium:
-            return Font.custom("Avenir", size: 48 * getStyleFactor())
+            return Font.custom("Avenir", size: 28 * getStyleFactor())
         case .accessibilityLarge:
-            return Font.custom("Avenir", size: 52 * getStyleFactor())
+            return Font.custom("Avenir", size: 33 * getStyleFactor())
         case .accessibilityExtraLarge:
-            return Font.custom("Avenir", size: 60 * getStyleFactor())
+            return Font.custom("Avenir", size: 40 * getStyleFactor())
         case .accessibilityExtraExtraLarge:
-            return Font.custom("Avenir", size: 66 * getStyleFactor())
+            return Font.custom("Avenir", size: 47 * getStyleFactor())
         case .accessibilityExtraExtraExtraLarge:
-            return Font.custom("Avenir", size: 72 * getStyleFactor())
+            return Font.custom("Avenir", size: 53 * getStyleFactor())
         @unknown default:
-            return Font.custom("Avenir", size: 36 * getStyleFactor())
+            return Font.custom("Avenir", size: 17 * getStyleFactor())
         }
     }
 
@@ -84,6 +86,8 @@ struct Lexend: ViewModifier {
     init(_ textStyle: Font.TextStyle = .body) {
         self.textStyle = textStyle
     }
+    
+    static let shared = Lexend()
 
     func body(content: Content) -> some View {
         content.font(getFont())
@@ -92,31 +96,31 @@ struct Lexend: ViewModifier {
     func getFont() -> Font {
         switch(sizeCategory) {
         case .extraSmall:
-            return Font.custom("Lexend", size: 16 * getStyleFactor())
+            return Font.custom("Lexend", size: 14 * getStyleFactor())
         case .small:
-            return Font.custom("Lexend", size: 21 * getStyleFactor())
+            return Font.custom("Lexend", size: 15 * getStyleFactor())
         case .medium:
-            return Font.custom("Lexend", size: 24 * getStyleFactor())
+            return Font.custom("Lexend", size: 16 * getStyleFactor())
         case .large:
-            return Font.custom("Lexend", size: 28 * getStyleFactor())
+            return Font.custom("Lexend", size: 17 * getStyleFactor())
         case .extraLarge:
-            return Font.custom("Lexend", size: 32 * getStyleFactor())
+            return Font.custom("Lexend", size: 19 * getStyleFactor())
         case .extraExtraLarge:
-            return Font.custom("Lexend", size: 36 * getStyleFactor())
+            return Font.custom("Lexend", size: 21 * getStyleFactor())
         case .extraExtraExtraLarge:
-            return Font.custom("Lexend", size: 40 * getStyleFactor())
+            return Font.custom("Lexend", size: 23 * getStyleFactor())
         case .accessibilityMedium:
-            return Font.custom("Lexend", size: 48 * getStyleFactor())
+            return Font.custom("Lexend", size: 28 * getStyleFactor())
         case .accessibilityLarge:
-            return Font.custom("Lexend", size: 52 * getStyleFactor())
+            return Font.custom("Lexend", size: 33 * getStyleFactor())
         case .accessibilityExtraLarge:
-            return Font.custom("Lexend", size: 60 * getStyleFactor())
+            return Font.custom("Lexend", size: 40 * getStyleFactor())
         case .accessibilityExtraExtraLarge:
-            return Font.custom("Lexend", size: 66 * getStyleFactor())
+            return Font.custom("Lexend", size: 47 * getStyleFactor())
         case .accessibilityExtraExtraExtraLarge:
-            return Font.custom("Lexend", size: 72 * getStyleFactor())
+            return Font.custom("Lexend", size: 53 * getStyleFactor())
         @unknown default:
-            return Font.custom("Lexend", size: 36 * getStyleFactor())
+            return Font.custom("Lexend", size: 17 * getStyleFactor())
         }
     }
 

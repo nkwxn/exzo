@@ -33,6 +33,9 @@ struct SetNicknameView: View {
         .navigationTitle("Your Profile")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: viewModel.viewOnAppear)
+        .fullScreenCover(isPresented: $viewModel.showOnboarding) {
+            OnBoardingView()
+        }
     }
 }
 

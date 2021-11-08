@@ -19,6 +19,7 @@ struct AtemisApp: App {
     var body: some Scene {
         WindowGroup {
             ExzoAppContainer()
+                .font(Avenir.shared.getFont())
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -26,7 +27,7 @@ struct AtemisApp: App {
                         }
                         
                         if UIApplication.shared.canOpenURL(settingsUrl) {
-                            UIApplication.shared.open(settingsUrl, options: [: ]) { success in
+                            UIApplication.shared.open(settingsUrl, options: [:]) { success in
                                 print("Settings opened: \(success)")
                             }
                         }
