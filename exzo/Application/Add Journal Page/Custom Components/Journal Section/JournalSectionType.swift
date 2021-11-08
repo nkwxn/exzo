@@ -15,6 +15,16 @@ enum JournalSectionType: String {
     case skinConditions = "Skin conditions"
     case triggerAreas = "Trigger areas"
     
+    func getEditable() -> Bool {
+        switch self {
+        case .foodIntake, .exposure, .activities, .triggerAreas:
+            return true
+        case .stressLevel, .skinConditions:
+            return false
+        }
+    }
+    
+    // swiftlint:disable function_body_length
     func getDescriptions() -> String {
         switch self {
         case .foodIntake:
@@ -61,9 +71,7 @@ enum JournalSectionType: String {
 
 """
         case .triggerAreas:
-            return """
-You can *take a photo* of your skin condition, and *update it everyday* so you can track your skin progress
-"""
+            return "You can **take a photo** of your skin condition, and **update it everyday** so you can track your skin progress"
         }
     }
 }
