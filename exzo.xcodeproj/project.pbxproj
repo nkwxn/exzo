@@ -38,7 +38,7 @@
 		BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B463273392FF0011F064 /* ImagePicker.swift */; };
 		C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */; };
 		CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */; };
-		D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* AtemisApp.swift */; };
+		D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* ExzoApp.swift */; };
 		D5163E3D2727FF9800DF09D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3C2727FF9800DF09D0 /* Assets.xcassets */; };
 		D5163E402727FF9800DF09D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3F2727FF9800DF09D0 /* Preview Assets.xcassets */; };
 		D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E412727FF9800DF09D0 /* Persistence.swift */; };
@@ -136,7 +136,7 @@
 		BFD2B463273392FF0011F064 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E352727FF9600DF09D0 /* exzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5163E382727FF9600DF09D0 /* AtemisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisApp.swift; sourceTree = "<group>"; };
+		D5163E382727FF9600DF09D0 /* ExzoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoApp.swift; sourceTree = "<group>"; };
 		D5163E3C2727FF9800DF09D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5163E3F2727FF9800DF09D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5163E412727FF9800DF09D0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -441,7 +441,7 @@
 		D5163E6A2728031700DF09D0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D5163E382727FF9600DF09D0 /* AtemisApp.swift */,
+				D5163E382727FF9600DF09D0 /* ExzoApp.swift */,
 				D5163E8B2728108A00DF09D0 /* TabContainer.swift */,
 				D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */,
 			);
@@ -964,7 +964,7 @@
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */,
-				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
+				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
@@ -976,7 +976,7 @@
 				5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */,
 				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
-				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
+				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

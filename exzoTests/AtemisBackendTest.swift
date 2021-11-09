@@ -31,7 +31,7 @@ class AtemisBackendTest: XCTestCase {
             }
     }
     
-    func testCheck() throws {
+    func testDelete() throws {
         
     }
 

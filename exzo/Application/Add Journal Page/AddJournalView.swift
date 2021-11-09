@@ -87,8 +87,6 @@ struct AddJournalView: View {
                     .disabled(true)
                 }
             }
-            .onAppear(perform:
-                        CDStorage.shared.deleteAllIEA)
         }
     }
 }

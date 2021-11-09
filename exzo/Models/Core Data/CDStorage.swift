@@ -79,6 +79,9 @@ class CDStorage: NSObject, ObservableObject {
         } catch {
             NSLog("Error: could not fetch")
         }
+        
+        // Append template IEA
+        self.createIEATemplate()
     }
     
     func save() {
@@ -242,6 +245,23 @@ extension CDStorage {
             intake.isFavorite = false
         }
         save()
+    }
+    
+    func deleteIEA(_ type: IEA, id: UUID) {
+        switch type {
+        case .activity:
+            context.delete(activities.value.filter { item in
+                item.idActivity == id
+            }[0])
+        case .exposure:
+            context.delete(envExposures.value.filter { item in
+                item.idExposure == id
+            }[0])
+        case .intake:
+            context.delete(activities.value.filter { item in
+                item.idActivity == id
+            }[0])
+        }
     }
     
     // Bulk delete all IEA

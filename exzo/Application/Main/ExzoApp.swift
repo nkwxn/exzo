@@ -1,5 +1,5 @@
 //
-//  AtemisApp.swift
+//  ExzoApp.swift
 //  Atemis
 //
 //  Created by Nicholas on 26/10/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct AtemisApp: App {
+struct ExzoApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State var loginAlert = false
     
@@ -20,7 +20,6 @@ struct AtemisApp: App {
         WindowGroup {
             ExzoAppContainer()
                 .font(Avenir.shared.getFont())
-                .onAppear(perform: CDStorage.shared.createIEATemplate)
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
