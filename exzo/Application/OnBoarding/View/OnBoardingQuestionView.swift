@@ -34,19 +34,19 @@ struct PageControlView: View {
             ZStack {
                 if currentPage == 1 {
                     QuestionPageView(score: $dryNess, index: $currentPage)
-                } else if currentPage == 2{
+                } else if currentPage == 2 {
                     QuestionPageView(score: $red, index: $currentPage)
-                } else if currentPage == 3{
+                } else if currentPage == 3 {
                     QuestionPageView(score: $swell, index: $currentPage)
-                } else if currentPage == 4{
+                } else if currentPage == 4 {
                     QuestionPageView(score: $crust, index: $currentPage)
-                } else if currentPage == 5{
+                } else if currentPage == 5 {
                     QuestionPageView(score: $scratch, index: $currentPage)
-                } else if currentPage == 6{
+                } else if currentPage == 6 {
                     QuestionPageView(score: $thicken, index: $currentPage)
-                } else if currentPage == 7{
+                } else if currentPage == 7 {
                     QuestionPageView(score: $itch, index: $currentPage)
-                } else if currentPage == 8{
+                } else if currentPage == 8 {
                     QuestionPageView(score: $sleep, index: $currentPage)
                 } else {
                     QuestionPageView(score: $sleep, index: $currentPage)
