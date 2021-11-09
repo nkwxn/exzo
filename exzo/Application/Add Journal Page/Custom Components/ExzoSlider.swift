@@ -15,16 +15,19 @@ struct ExzoSlider: View {
     var range: ClosedRange<Double>
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 6) {
             if let title = title {
-                Text(title)
+                Text("\(title): \(Int(value))")
+                    .font(Avenir.shared.getFont().bold())
             }
             Slider(value: $value, in: range, step: 1.0) {
-                Text("Stress Level")
+                
             } minimumValueLabel: {
                 Text("\(Int(range.lowerBound))")
+                    .font(Avenir.shared.getFont().bold())
             } maximumValueLabel: {
                 Text("\(Int(range.upperBound))")
+                    .font(Avenir.shared.getFont().bold())
             }
             .padding(.horizontal)
             .padding(.vertical, 7)

@@ -48,7 +48,7 @@ struct AddJournalView: View {
                         CategoryGrid($viewModel.activities, color: .brandy)
                     }
                     JournalSection(type: .skinConditions) {
-                        VStack {
+                        VStack(spacing: 20) {
                             ExzoSlider(title: "Dryness", value: $viewModel.dryness, range: viewModel.sliderRange2)
                             ExzoSlider(title: "Redness", value: $viewModel.redness, range: viewModel.sliderRange2)
                             ExzoSlider(title: "Swelling", value: $viewModel.swelling, range: viewModel.sliderRange2)
