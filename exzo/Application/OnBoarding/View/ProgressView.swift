@@ -8,26 +8,26 @@
 
 import SwiftUI
 
-struct ProgressView: View {
-    @State var percent: CGFloat = 0
-    @State var step = 0
-    var body: some View {
-        VStack {
-            Text("\(self.step) questions left")
-            CustomProgressView(percent: self.$percent)
-        }
-        .padding()
-        .onTapGesture {
-            withAnimation{
-                if self.percent < 0.9 {
-                    self.percent += 0.11
-                    self.step += 1
-                }
-            }
-        }
-        
-    }
-}
+//struct ProgressView: View {
+//    @State var percent: CGFloat = 0
+//    @State var step = 0
+//    var body: some View {
+//        VStack {
+//            Text("\(self.step) questions left")
+//            CustomProgressView(percent: self.$percent)
+//        }
+//        .padding()
+//        .onTapGesture {
+//            withAnimation{
+//                if self.percent < 0.9 {
+//                    self.percent += 0.11
+//                    self.step += 1
+//                }
+//            }
+//        }
+//        
+//    }
+//}
 
 struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
