@@ -34,6 +34,9 @@
 		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
 		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
 		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
+		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
+		BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */; };
+		BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */; };
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
 		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
@@ -138,6 +141,9 @@
 		5DF4ADF6273395C600F51423 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
+		BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontBodyView.swift; sourceTree = "<group>"; };
+		BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBodyView.swift; sourceTree = "<group>"; };
 		BF651D762734B94200276CD1 /* QuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageView.swift; sourceTree = "<group>"; };
 		BF651D792734C49100276CD1 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightOnboardingView.swift; sourceTree = "<group>"; };
@@ -170,8 +176,8 @@
 		D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoAppContainer.swift; sourceTree = "<group>"; };
 		D51CFC862733C78100DE63CC /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
 		D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewModel.swift; sourceTree = "<group>"; };
-		D51CFC8F27342F4500DE63CC /* JournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSection.swift; sourceTree = "<group>"; };
-		D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSectionType.swift; sourceTree = "<group>"; };
+		D51CFC8F27342F4500DE63CC /* JournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalSection.swift; path = "Journal Section/JournalSection.swift"; sourceTree = "<group>"; };
+		D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalSectionType.swift; path = "Journal Section/JournalSectionType.swift"; sourceTree = "<group>"; };
 		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
@@ -372,6 +378,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BF2F5D38273A30C90059FB23 /* BodyPartsView */ = {
+			isa = PBXGroup;
+			children = (
+				BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */,
+				BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */,
+				BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */,
+			);
+			path = BodyPartsView;
+			sourceTree = "<group>";
+		};
 		BF651D782734BA7700276CD1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +418,7 @@
 		BFD2B454273382560011F064 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF2F5D38273A30C90059FB23 /* BodyPartsView */,
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
 				BF651D792734C49100276CD1 /* ProgressView.swift */,
@@ -600,6 +617,8 @@
 				D5ADA879273514EF00425E43 /* Category Grids */,
 				D5ADA878273514CB00425E43 /* Journal Section */,
 				D5ADA87C27364DB500425E43 /* ExzoSlider.swift */,
+				D51CFC8F27342F4500DE63CC /* JournalSection.swift */,
+				D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */,
 			);
 			path = "Custom Components";
 			sourceTree = "<group>";
@@ -695,8 +714,6 @@
 		D5ADA878273514CB00425E43 /* Journal Section */ = {
 			isa = PBXGroup;
 			children = (
-				D51CFC8F27342F4500DE63CC /* JournalSection.swift */,
-				D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */,
 			);
 			path = "Journal Section";
 			sourceTree = "<group>";
@@ -985,9 +1002,14 @@
 				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
+				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
+				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
+				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
+				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
+				BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
@@ -1027,8 +1049,10 @@
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */,
+				BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */,
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
+				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
@@ -1205,7 +1229,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
