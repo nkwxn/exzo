@@ -31,23 +31,31 @@ struct QuestionPageView: View {
                     .fontWeight(.bold)
                 Text("\(dataQuestions[index].description)")
             }
-            VStack (alignment: .center) {
+            VStack(alignment: .center) {
                 Spacer()
                     .frame(height: 70)
                 if index < 6 {
                     Image("\(dataQuestions[index].image)\(score)")
-                        .frame(height:120)
+                        .frame(height: 120)
                 } else {
                     Image("\(dataQuestions[index].image)")
-                        .frame(height:120)
+                        .frame(height: 120)
                 }
                 Spacer()
                     .frame(height: 70)
-                Slider(value: intProxy, in: (index < 6 ? 0.0...3.0 : 0.0...10.0), step: 1.0, onEditingChanged: { _ in
-                    print(score.description)
-                })
-                    .tint(Color.brandy)
-                Text(score.description)
+                if index == 0 {
+                    BodyPartsView()
+                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * -2)
+                } else {
+                   
+                    Slider(value: intProxy, in: (index < 6 ? 0.0...3.0 : 0.0...10.0), step: 1.0, onEditingChanged: { _ in
+                        print(score.description)
+                    })
+                        .tint(Color.brandy)
+                    Text(score.description)
+                }
+                
+               
             }
             
         }.padding()

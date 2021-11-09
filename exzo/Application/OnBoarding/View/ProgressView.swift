@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//Abaikan Saja ini
 struct ProgressView: View {
     @State var percent: CGFloat = 0
     @State var step = 0
@@ -34,6 +35,8 @@ struct ProgressView_Previews: PreviewProvider {
         ProgressView()
     }
 }
+
+//MARK: - Custom Progress Bar
 
 struct CustomProgressView: View{
     @Binding var  percent: CGFloat
