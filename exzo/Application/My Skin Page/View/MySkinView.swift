@@ -15,7 +15,13 @@ struct MySkinView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Weather")
+                ZStack {
+                    RoundedRectangle(cornerRadius: 19)
+                        .foregroundColor(Color("accent_antique"))
+                        .frame(width: 347, height: 201, alignment: .center)
+                    WeatherView()
+                        .frame(width: 347, height: 201, alignment: .center)
+                }
                 CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
                     .frame(width: 300, height: 250, alignment: .init(horizontal: .center, vertical: .center))
                 Button("+ Add Journal") {

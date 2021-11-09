@@ -35,6 +35,8 @@ struct ProgressView_Previews: PreviewProvider {
     }
 }
 
+//MARK: - Custom Progress Bar
+
 struct CustomProgressView: View{
     @Binding var  percent: CGFloat
     
