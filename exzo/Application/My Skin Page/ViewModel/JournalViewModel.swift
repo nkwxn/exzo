@@ -12,7 +12,7 @@ import UIKit
 class JournalViewModel: ObservableObject {
     var journalModel = CDStorage.shared
     
-    @Published var journals: [Journal] = []
+    @Published var journals = [Journal]()
     
     private var cancellable: AnyCancellable?
 
@@ -22,6 +22,7 @@ class JournalViewModel: ObservableObject {
         cancellable = journalPublisher.sink { journalItem in
             print("update journal")
             self.journals = journalItem
+            print(self.journals)
         }
     }
 }

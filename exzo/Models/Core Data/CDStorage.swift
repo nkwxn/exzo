@@ -170,27 +170,52 @@ extension CDStorage {
     func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD) {
         // Get the weather data
         
-        // Append journal
-        let newJournal = Journal(context: context)
-        newJournal.idJournal = UUID()
-        newJournal.foodIntake = foodIntake as NSObject
-        newJournal.skinExposure = exposure as NSObject
-        newJournal.activities = activities as NSObject
-        newJournal.stressLevel = Int16(skinCondition.stressLevel)
-        newJournal.dateAndTime = Date()
-        newJournal.weatherCondition = NSObject()
-        newJournal.weatherTemp = 0.0
-        newJournal.weatherHumid = 0.0
-        newJournal.weatherTemp = 0.0
-        
         // Append Skin Condition
         let newSC = SkinCondition(context: context)
         newSC.idCondition = UUID()
-        newSC.journal = newJournal
+        newSC.sleepLoss = Int64(skinCondition.sleepLoss)
+        newSC.itchiness = Int64(skinCondition.itchy)
+        newSC.crust = Int64(skinCondition.crust)
+        newSC.swelling = Int64(skinCondition.swelling)
+        newSC.redness = Int64(skinCondition.redness)
+        newSC.dryness = Int64(skinCondition.dryness)
         
+        save()
+        
+        // Append journal
+        let newJournal = Journal(context: context)
+        newJournal.idJournal = UUID()
+        if !foodIntake.isEmpty {
+            newJournal.foodIntake = foodIntake as NSObject
+        } else {
+            newJournal.foodIntake = nil
+        }
+        if !exposure.isEmpty {
+            newJournal.skinExposure = exposure as NSObject
+        } else {
+            newJournal.skinExposure = nil
+        }
+        if !activities.isEmpty {
+            newJournal.activities = activities as NSObject
+        } else {
+            newJournal.activities = nil
+        }
+        newJournal.stressLevel = Int16(skinCondition.stressLevel)
+        newJournal.dateAndTime = Date()
+        newJournal.weatherCondition = nil
+        newJournal.weatherTemp = 0.0
+        newJournal.weatherHumid = 0.0
+        newJournal.weatherTemp = 0.0
         newJournal.skinCondition = newSC
         
+        save()
+        
+        // TODO: Kasih looping sesuai dengan array skin condition + gambarnya
         let triggerArea = TriggerAreas(context: context)
+        triggerArea.idTrigger = UUID()
+        triggerArea.journal = newJournal
+        
+        save()
     }
     
     func updateJournal(with id: UUID) {

@@ -24,17 +24,24 @@ struct MySkinView: View {
                 }
                 CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
                     .frame(width: 300, height: 250, alignment: .init(horizontal: .center, vertical: .center))
-                Button("+ Add Journal") {
+                Button {
                     isAddingJournal = true
+                } label: {
+                    Image(systemName: "plus")
+                    Text("Add Journal")
+                }.buttonStyle(ExzoButtonStyle(type: .primary))
+                    .padding()
+                List {
+                    ForEach(journalViewModel.journals) {
+                        Text("\($0) text")
+                    }
                 }
-                .offset(y: -150)
-                Text("Coba")
-                Text("Journal List")
             }
         }
         .sheet(isPresented: $isAddingJournal) {
             AddJournalView()
         }
+        .navigationBarHidden(true)
         
     }
 }

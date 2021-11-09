@@ -29,10 +29,6 @@ class AddJournalViewModel: ObservableObject {
     @Published var exposure = [CategoryItem]()
     @Published var activities = [CategoryItem]()
     
-    private var intakeSelectedSubs: AnyCancellable?
-    private var exposureSelectedSubs: AnyCancellable?
-    private var activitySelectedSubs: AnyCancellable?
-    
     var intakeSelect = [IEAData]()
     var exposureSelect = [IEAData]()
     var activitySelect = [IEAData]()
@@ -54,6 +50,13 @@ class AddJournalViewModel: ObservableObject {
     private var intakeSubs: AnyCancellable?
     private var exposureSubs: AnyCancellable?
     private var activitySubs: AnyCancellable?
+    
+    private var intakeSelectSubs: AnyCancellable?
+    private var exposureSelectSubs: AnyCancellable?
+    private var activitySelectSubs: AnyCancellable?
+    
+    // doneDisabled
+    @Published var doneDisabled = true
     
     init() {
         intakeSubs = CDStorage.shared.foodIntakes.eraseToAnyPublisher().sink { intakes in
@@ -95,41 +98,56 @@ class AddJournalViewModel: ObservableObject {
             }
         }
         
-        activitySelectedSubs = $activities.eraseToAnyPublisher().sink(receiveValue: { items in
-            let filteredActivity = items.filter { category in
-                category.selected
+        intakeSelectSubs = $foodIntake.eraseToAnyPublisher().sink { items in
+            self.intakeSelect = items.filter { item in
+                item.selected
+            }.map { item -> IEAData in
+                IEAData(name: item.name, thumb: item.iconName)
             }
-            print(filteredActivity)
-        })
+            self.toggleDoneBtnDisabled()
+        }
+        
+        exposureSelectSubs = $exposure.eraseToAnyPublisher().sink { items in
+            self.exposureSelect = items.filter { item in
+                item.selected
+            }.map { item -> IEAData in
+                IEAData(name: item.name, thumb: item.iconName)
+            }
+            self.toggleDoneBtnDisabled()
+        }
+        
+        activitySelectSubs = $activities.eraseToAnyPublisher().sink { items in
+            self.activitySelect = items.filter { item in
+                item.selected
+            }.map { item -> IEAData in
+                IEAData(name: item.name, thumb: item.iconName)
+            }
+            self.toggleDoneBtnDisabled()
+        }
+    }
+    
+    func toggleDoneBtnDisabled() {
+        if self.activitySelect.isEmpty && self.intakeSelect.isEmpty && self.exposureSelect.isEmpty {
+            // if one of three has no content at all
+            self.doneDisabled = true
+        } else {
+            self.doneDisabled = false
+        }
     }
     
     // Done button pressed
-    func doneBtnPressed() {
+    func doneBtnPressed(completion: @escaping (Bool) -> Void) {
         // if user logged in, save to both cloudkit and coredata
-        // else just save to core data
-        let selectedFI = foodIntake.filter { item in
-            item.selected
-        }.map { item in
-            IEAData(name: item.name, thumb: item.iconName)
-        }
-        let selectedE = exposure.filter { item in
-            item.selected
-        }.map { item in
-            IEAData(name: item.name, thumb: item.iconName)
-        }
-        let selectedAct = activities.filter { item in
-            item.selected
-        }.map { item in
-            IEAData(name: item.name, thumb: item.iconName)
-        }
-        
         CDStorage.shared.createJournal(
-            foodIntake: selectedFI, exposure: selectedE, activities: selectedAct,
+            foodIntake: intakeSelect, exposure: exposureSelect, activities: activitySelect,
             skinCondition: SkinConditionBeforeCD(
                 stressLevel: Int(stressLevelSlider), dryness: Int(dryness), redness: Int(redness),
                 swelling: Int(swelling), crust: Int(crust), traces: Int(scratchTraces),
                 thickSkin: Int(thickSkin), itchy: Int(itchiness), sleepLoss: Int(sleepLoss)
             )
         )
+        
+        completion(true)
+        
     }
 }
