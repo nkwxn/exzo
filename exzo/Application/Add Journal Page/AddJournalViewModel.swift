@@ -94,11 +94,42 @@ class AddJournalViewModel: ObservableObject {
                 return CategoryItem(iconName: "Icon014", name: "NULL", selected: false)
             }
         }
+        
+        activitySelectedSubs = $activities.eraseToAnyPublisher().sink(receiveValue: { items in
+            let filteredActivity = items.filter { category in
+                category.selected
+            }
+            print(filteredActivity)
+        })
     }
     
     // Done button pressed
     func doneBtnPressed() {
         // if user logged in, save to both cloudkit and coredata
         // else just save to core data
+        let selectedFI = foodIntake.filter { item in
+            item.selected
+        }.map { item in
+            IEAData(name: item.name, thumb: item.iconName)
+        }
+        let selectedE = exposure.filter { item in
+            item.selected
+        }.map { item in
+            IEAData(name: item.name, thumb: item.iconName)
+        }
+        let selectedAct = activities.filter { item in
+            item.selected
+        }.map { item in
+            IEAData(name: item.name, thumb: item.iconName)
+        }
+        
+        CDStorage.shared.createJournal(
+            foodIntake: selectedFI, exposure: selectedE, activities: selectedAct,
+            skinCondition: SkinConditionBeforeCD(
+                stressLevel: Int(stressLevelSlider), dryness: Int(dryness), redness: Int(redness),
+                swelling: Int(swelling), crust: Int(crust), traces: Int(scratchTraces),
+                thickSkin: Int(thickSkin), itchy: Int(itchiness), sleepLoss: Int(sleepLoss)
+            )
+        )
     }
 }

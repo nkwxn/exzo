@@ -26,6 +26,12 @@ class CDStorage: NSObject, ObservableObject {
     var activities = CurrentValueSubject<[Activity], Never>([])
     private var activityFetchController: NSFetchedResultsController<Activity>
     
+    var skinCondition = CurrentValueSubject<[SkinCondition], Never>([])
+    private var skinConditionFetchController: NSFetchedResultsController<SkinCondition>
+    
+    var triggerArea = CurrentValueSubject<[TriggerAreas], Never>([])
+    private var triggerAreaFetchController: NSFetchedResultsController<TriggerAreas>
+    
     // ---- End of Tambahannya Nic ---- //
     
     static let shared = CDStorage()
@@ -56,6 +62,16 @@ class CDStorage: NSObject, ObservableObject {
         activityFetchRequest.sortDescriptors = [ieaSort]
         activityFetchController = NSFetchedResultsController(fetchRequest: activityFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
+        let conditionSort = NSSortDescriptor(keyPath: \SkinCondition.idCondition, ascending: true)
+        let conditionFetchRequest = SkinCondition.fetchRequest()
+        conditionFetchRequest.sortDescriptors = [conditionSort]
+        skinConditionFetchController = NSFetchedResultsController(fetchRequest: conditionFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        let triggerSort = NSSortDescriptor(keyPath: \TriggerAreas.idTrigger, ascending: true)
+        let triggerFetchRequest = TriggerAreas.fetchRequest()
+        triggerFetchRequest.sortDescriptors = [triggerSort]
+        triggerAreaFetchController = NSFetchedResultsController(fetchRequest: triggerFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
         super.init()
         
         productFetchController.delegate = self
@@ -63,6 +79,8 @@ class CDStorage: NSObject, ObservableObject {
         intakeFetchController.delegate = self
         exposureFetchController.delegate = self
         activityFetchController.delegate = self
+        skinConditionFetchController.delegate = self
+        triggerAreaFetchController.delegate = self
         
         do {
             try productFetchController.performFetch()
@@ -79,6 +97,12 @@ class CDStorage: NSObject, ObservableObject {
             
             try activityFetchController.performFetch()
             activities.value = activityFetchController.fetchedObjects ?? []
+            
+            try skinConditionFetchController.performFetch()
+            skinCondition.value = skinConditionFetchController.fetchedObjects ?? []
+            
+            try triggerAreaFetchController.performFetch()
+            triggerArea.value = triggerAreaFetchController.fetchedObjects ?? []
         } catch {
             NSLog("Error: could not fetch")
         }
@@ -120,6 +144,18 @@ extension CDStorage {
     }
 }
 
+struct SkinConditionBeforeCD {
+    var stressLevel: Int
+    var dryness: Int
+    var redness: Int
+    var swelling: Int
+    var crust: Int
+    var traces: Int
+    var thickSkin: Int
+    var itchy: Int
+    var sleepLoss: Int
+}
+
 // MARK: - CRUD Journal
 extension CDStorage {
     func createJournal(foodIntake: String) {
@@ -130,8 +166,31 @@ extension CDStorage {
         save()
     }
     
-    func createJournal(foodIntake: [FoodIntakes]) {
+    // TODO: Tambahin 1 lg parameter buat ngeload gambar nya
+    func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD) {
+        // Get the weather data
         
+        // Append journal
+        let newJournal = Journal(context: context)
+        newJournal.idJournal = UUID()
+        newJournal.foodIntake = foodIntake as NSObject
+        newJournal.skinExposure = exposure as NSObject
+        newJournal.activities = activities as NSObject
+        newJournal.stressLevel = Int16(skinCondition.stressLevel)
+        newJournal.dateAndTime = Date()
+        newJournal.weatherCondition = NSObject()
+        newJournal.weatherTemp = 0.0
+        newJournal.weatherHumid = 0.0
+        newJournal.weatherTemp = 0.0
+        
+        // Append Skin Condition
+        let newSC = SkinCondition(context: context)
+        newSC.idCondition = UUID()
+        newSC.journal = newJournal
+        
+        newJournal.skinCondition = newSC
+        
+        let triggerArea = TriggerAreas(context: context)
     }
     
     func updateJournal(with id: UUID) {
@@ -302,6 +361,10 @@ extension CDStorage: NSFetchedResultsControllerDelegate {
             self.envExposures.value = exposureItems
         } else if let intakeItems = controller.fetchedObjects as? [FoodIntake] {
             self.foodIntakes.value = intakeItems
+        } else if let intakeItems = controller.fetchedObjects as? [SkinCondition] {
+            self.skinCondition.value = intakeItems
+        } else if let intakeItems = controller.fetchedObjects as? [TriggerAreas] {
+            self.triggerArea.value = intakeItems
         }
     }
 }

@@ -50,7 +50,7 @@ struct JournalSection<Content: View>: View {
                     Button {
                         // action
                     } label: {
-                        Image(systemName: "highlighter")
+                        Image(systemName: "list.bullet")
                     }
                 }
                 Button {
