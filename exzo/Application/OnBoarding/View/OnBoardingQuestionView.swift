@@ -26,7 +26,7 @@ struct PageControlView: View {
             VStack {
                 Text("\(self.step) questions left")
                     .scaledFont(name: "Avenir", size: 12)
-                CustomProgressView(percent: self.$percent)
+//                CustomProgressView(percent: self.$percent)
                     .padding(.horizontal)
                 Text("Not affected by eczema")
                     .scaledFont(name: "Avenir", size: 12)

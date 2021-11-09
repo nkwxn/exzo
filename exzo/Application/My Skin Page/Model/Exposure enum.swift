@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Exposure: String {
+enum Exposures: String {
     case pollen = "Pollen"
     case dust = "Dust"
     case sun = "Sun"
