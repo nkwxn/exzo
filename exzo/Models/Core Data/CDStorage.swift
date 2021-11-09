@@ -60,6 +60,9 @@ class CDStorage: NSObject, ObservableObject {
         
         productFetchController.delegate = self
         journalFetchController.delegate = self
+        intakeFetchController.delegate = self
+        exposureFetchController.delegate = self
+        activityFetchController.delegate = self
         
         do {
             try productFetchController.performFetch()
@@ -81,7 +84,7 @@ class CDStorage: NSObject, ObservableObject {
         }
         
         // Append template IEA
-        self.createIEATemplate()
+        createIEATemplate()
     }
     
     func save() {
@@ -125,6 +128,10 @@ extension CDStorage {
         newJournal.foodIntake = foodIntake as NSObject
         
         save()
+    }
+    
+    func createJournal(foodIntake: [FoodIntakes]) {
+        
     }
     
     func updateJournal(with id: UUID) {
@@ -285,7 +292,16 @@ extension CDStorage {
 // MARK: - NSFetchedResultController delegate method
 extension CDStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let productItems = controller.fetchedObjects as? [Product] else { return }
-        self.productItems.value = productItems
+        if let productItems = controller.fetchedObjects as? [Product] {
+            self.productItems.value = productItems
+        } else if let journalItems = controller.fetchedObjects as? [Journal] {
+            self.journalItems.value = journalItems
+        } else if let activityItems = controller.fetchedObjects as? [Activity] {
+            self.activities.value = activityItems
+        } else if let exposureItems = controller.fetchedObjects as? [Exposure] {
+            self.envExposures.value = exposureItems
+        } else if let intakeItems = controller.fetchedObjects as? [FoodIntake] {
+            self.foodIntakes.value = intakeItems
+        }
     }
 }
