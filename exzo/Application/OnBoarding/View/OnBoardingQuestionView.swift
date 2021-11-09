@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PageControlView: View {
     //MARK: - slider value
-    @State var dry: Int = 2
-    @State var red: Int = 2
-    @State var swell: Int = 2
-    @State var crust: Int = 2
-    @State var scratch: Int = 2
-    @State var thicken: Int = 2
-    @State var itch: Int = 2
-    @State var sleep: Int = 2
+    @AppStorage("dryness") var dryNess: Int = 2
+    @AppStorage("redNess") var red: Int = 2
+    @AppStorage("swell") var swell: Int = 2
+    @AppStorage("crust") var crust: Int = 2
+    @AppStorage("scratch") var scratch: Int = 2
+    @AppStorage("thicken") var thicken: Int = 2
+    @AppStorage("itch") var itch: Int = 2
+    @AppStorage("sleep") var sleep: Int = 2
     
     @State var percent: CGFloat = 0
     @State var step = 9
@@ -32,17 +32,41 @@ struct PageControlView: View {
                     .scaledFont(name: "Avenir", size: 12)
             }
             ZStack {
-                QuestionPageView(score: $dry, index: $currentPage)
+                if currentPage == 1 {
+                    QuestionPageView(score: $dryNess, index: $currentPage)
+                } else if currentPage == 2{
+                    QuestionPageView(score: $red, index: $currentPage)
+                } else if currentPage == 3{
+                    QuestionPageView(score: $swell, index: $currentPage)
+                } else if currentPage == 4{
+                    QuestionPageView(score: $crust, index: $currentPage)
+                } else if currentPage == 5{
+                    QuestionPageView(score: $scratch, index: $currentPage)
+                } else if currentPage == 6{
+                    QuestionPageView(score: $thicken, index: $currentPage)
+                } else if currentPage == 7{
+                    QuestionPageView(score: $itch, index: $currentPage)
+                } else if currentPage == 8{
+                    QuestionPageView(score: $sleep, index: $currentPage)
+                } else {
+                    QuestionPageView(score: $sleep, index: $currentPage)
+                }
+                
             }
+            
             PageControl(current: currentPage)
+            
             HStack {
                 Button {
 //                    withAnimation {
-                        if currentPage < 7 {
+                        if currentPage < 8 {
                             currentPage += 1
                             self.percent += 0.11
                             self.step -= 1
                         }
+                    if currentPage >= 8 {
+                        print("Navigate to Insight")
+                    }
 //                    }
                 } label: {
                     Spacer()
@@ -67,7 +91,7 @@ struct PageControlView_Previews: PreviewProvider {
     }
 }
 
-struct PageControl : UIViewRepresentable {
+struct PageControl: UIViewRepresentable {
     
     var current = 0
     
