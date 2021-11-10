@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MySkinView: View {
     @State var journalViewModel = JournalViewModel()
+//    @State var calendarViewModel = CalendarViewModel()
     @State var isAddingJournal = false
     @ObservedObject private var calendarModel = CalendarModel()
     
@@ -17,14 +18,29 @@ struct MySkinView: View {
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 19)
-                        .foregroundColor(Color("accent_antique"))
-                        .frame(width: 347, height: 201, alignment: .center)
+                        .foregroundColor(Color.white)
+                        .frame(width: 309, height: 130, alignment: .center)
+                        .shadow(color: Color.init(uiColor: UIColor.init(red: 0.45, green: 0.29, blue: 0.22, alpha: 0.2)), radius: 10, x: 2, y: 5)
+//                        .shadow(color: Color.init(red: 0.45, green: 0.29, blue: 0.22), radius: 10, x: 2, y: 5)
                     WeatherView()
-                        .frame(width: 347, height: 201, alignment: .center)
+                        .frame(width: 309, height: 130, alignment: .center)
                 }
-                CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
-                    .frame(alignment: .init(horizontal: .center, vertical: .top))
-                Button {
+                HStack {
+                    Button(action: { self.calendarModel.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self.calendarModel.currentPage)! }) {
+                        Image(systemName: "chevron.left")
+                    }
+                    .frame(height: 118, alignment: .top)
+                    
+                    CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
+                        .frame(width: 300, height: 250, alignment: .init(horizontal: .center, vertical: .center))
+                    
+                    Button(action: { self.calendarModel.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.calendarModel.currentPage)! }) {
+                        Image(systemName: "chevron.right")
+                    }
+                    .frame(height: 118, alignment: .top)
+                }
+                
+                Button("+ Add Journal") {
                     isAddingJournal = true
                 } label: {
                     Image(systemName: "plus")
@@ -36,7 +52,8 @@ struct MySkinView: View {
                         Text("\($0) text")
                     }
                 }
-                .frame(height: 350)
+                .offset(y: -150)
+                Text("Journal List")
             }
         }
         .sheet(isPresented: $isAddingJournal) {

@@ -16,6 +16,8 @@
 		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
+		5D68F14B273B7B4600C506FF /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D68F14A273B7B4500C506FF /* DataQuestion.swift */; };
+		5D68F14D273B894600C506FF /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D68F14C273B894600C506FF /* CalendarViewModel.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
 		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
@@ -123,6 +125,8 @@
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		5D68F14A273B7B4500C506FF /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
+		5D68F14C273B894600C506FF /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD92CE52734DA8200F4C319 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -339,6 +343,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5D68F147273B7A0A00C506FF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D56D7F252738D8040023686C /* DataQuestion.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5DF4ADE02733828200F51423 /* My Skin Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				5DF4ADF6273395C600F51423 /* JournalViewModel.swift */,
+				5D68F14C273B894600C506FF /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -414,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				D542BD1B273A57D8008BB68A /* Model */,
+				5D68F14A273B7B4500C506FF /* DataQuestion.swift */,
 				BF651D782734BA7700276CD1 /* ViewModel */,
 				BFD2B454273382560011F064 /* View */,
 			);
@@ -442,6 +456,7 @@
 				D5163E6D272803F100DF09D0 /* Frameworks */,
 				1B22AD4D29613CFF3E829459 /* Pods */,
 				D542BD18273A45D2008BB68A /* Recovered References */,
+				5D68F147273B7A0A00C506FF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1073,6 +1088,7 @@
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
 				D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
+				5D68F14D273B894600C506FF /* CalendarViewModel.swift in Sources */,
 				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
 				D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */,
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
@@ -1096,6 +1112,7 @@
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
+				5D68F14B273B7B4600C506FF /* DataQuestion.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 				5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */,
 				5D034A732732AE04005DB9B9 /* ProductDetailView.swift in Sources */,
@@ -1270,11 +1287,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = TW4WHS432Q;y
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Exzo needs access to your location to get weather at your current location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1285,7 +1304,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1303,11 +1322,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = TW4WHS432Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Exzo needs access to your location to get weather at your current location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1318,7 +1339,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

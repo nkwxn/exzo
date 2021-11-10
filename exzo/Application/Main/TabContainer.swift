@@ -41,6 +41,6 @@ struct TabContainer: View {
 
 struct TabContainer_Previews: PreviewProvider {
     static var previews: some View {
-        TabContainer()
+        ProductView()
     }
 }
