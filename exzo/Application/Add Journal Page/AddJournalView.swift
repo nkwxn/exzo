@@ -69,15 +69,7 @@ struct AddJournalView: View {
                         }
                     }
                     JournalSection(type: .triggerAreas) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<7) { _ in
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 150, height: 175)
-                                }
-                            }
-                        }
-                        .frame(width: nil, height: 175)
+                        TriggerAreaHScroll(items: $viewModel.triggerAreas)
                     } openPage: {
                         // TODO: Edit hingga bisa buka trigger area editor
                         print("Open Trigger Area Editor")

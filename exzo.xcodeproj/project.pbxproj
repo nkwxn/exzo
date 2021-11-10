@@ -71,6 +71,7 @@
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
 		D542BD1A273A55EE008BB68A /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D542BD1E273A5CFA008BB68A /* HapticFeedbackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD1D273A5CFA008BB68A /* HapticFeedbackHelper.swift */; };
+		D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD20273BA4FB008BB68A /* TriggerAreas.swift */; };
 		D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */; };
 		D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD7272FA8EA00DA1CF7 /* PreOnboardingView.swift */; };
 		D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494ADB272FB6CB00DA1CF7 /* LoginView.swift */; };
@@ -183,6 +184,7 @@
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
 		D542BD19273A55EE008BB68A /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		D542BD1D273A5CFA008BB68A /* HapticFeedbackHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackHelper.swift; sourceTree = "<group>"; };
+		D542BD20273BA4FB008BB68A /* TriggerAreas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerAreas.swift; sourceTree = "<group>"; };
 		D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKCrudOperators.swift; sourceTree = "<group>"; };
 		D5494AD7272FA8EA00DA1CF7 /* PreOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingView.swift; sourceTree = "<group>"; };
 		D5494ADB272FB6CB00DA1CF7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 		D51CFC852733C76D00DE63CC /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
+				D542BD1F273BA4D5008BB68A /* Trigger Areas Horizontal */,
 				D5ADA879273514EF00425E43 /* Category Grids */,
 				D5ADA878273514CB00425E43 /* Journal Section */,
 				D5ADA87C27364DB500425E43 /* ExzoSlider.swift */,
@@ -665,6 +668,14 @@
 				D542BD1D273A5CFA008BB68A /* HapticFeedbackHelper.swift */,
 			);
 			path = "Haptic Helper";
+			sourceTree = "<group>";
+		};
+		D542BD1F273BA4D5008BB68A /* Trigger Areas Horizontal */ = {
+			isa = PBXGroup;
+			children = (
+				D542BD20273BA4FB008BB68A /* TriggerAreas.swift */,
+			);
+			path = "Trigger Areas Horizontal";
 			sourceTree = "<group>";
 		};
 		D5494AD5272F9FE700DA1CF7 /* LoginRegisterPage */ = {
@@ -1092,6 +1103,7 @@
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
 				5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */,
 				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
+				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,

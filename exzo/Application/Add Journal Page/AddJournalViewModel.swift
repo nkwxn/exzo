@@ -8,11 +8,6 @@
 import SwiftUI
 import Combine
 
-struct BodyTriggerPart {
-    var name: String
-    var photo: UIImage?
-}
-
 enum JournalPageMode: String {
     case add
     case update
@@ -45,7 +40,7 @@ class AddJournalViewModel: ObservableObject {
     @Published var sleepLoss = 6.0
     
     // Trigger areas
-    var triggerAreas = [BodyTriggerPart]()
+    @Published var triggerAreas = [TriggerAreaItem(name: "Right arm", image: UIImage(named: "login_image")), TriggerAreaItem(name: "Neck", image: nil)]
     
     private var intakeSubs: AnyCancellable?
     private var exposureSubs: AnyCancellable?
@@ -58,6 +53,7 @@ class AddJournalViewModel: ObservableObject {
     // doneDisabled
     @Published var doneDisabled = true
     
+    // swiftlint:disable function_body_length
     init() {
         intakeSubs = CDStorage.shared.foodIntakes.eraseToAnyPublisher().sink { intakes in
             self.foodIntake = intakes.filter { intake in
