@@ -11,6 +11,7 @@ import SwiftUI
 struct JournalSection<Content: View>: View {
     let type: JournalSectionType
     let content: () -> Content
+    var openPage: () -> Void = {}
     @State var contentHidden = false
     @State var popoverPresent = false
     
@@ -47,9 +48,7 @@ struct JournalSection<Content: View>: View {
                 }
                 Spacer()
                 if type.getEditable() {
-                    Button {
-                        // action
-                    } label: {
+                    Button(action: openPage) {
                         Image(systemName: "list.bullet")
                     }
                 }

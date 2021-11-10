@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
         <attribute name="activityName" optional="YES" attributeType="String"/>
         <attribute name="activityThumb" optional="YES" attributeType="String"/>
@@ -63,11 +63,11 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-144.33642578125" positionY="64.00970458984375" width="128" height="104"/>
+        <element name="Exposure" positionX="119.68896484375" positionY="-41.2166748046875" width="128" height="104"/>
         <element name="FoodIntake" positionX="-143.2540283203125" positionY="175.64306640625" width="128" height="104"/>
-        <element name="Journal" positionX="-150.470703125" positionY="-188.234130859375" width="128" height="223"/>
+        <element name="Journal" positionX="-294.7469482421875" positionY="-174.7620239257812" width="128" height="223"/>
         <element name="Product" positionX="-151.774658203125" positionY="-316.2908935546875" width="128" height="104"/>
         <element name="SkinCondition" positionX="25.5316162109375" positionY="-316.4061889648438" width="164.2552490234375" height="208"/>
-        <element name="TriggerAreas" positionX="30.0235595703125" positionY="-68.4010009765625" width="128" height="103"/>
-        <element name="Exposure" positionX="-45" positionY="-153" width="128" height="104"/>
+        <element name="TriggerAreas" positionX="-596.8915405273438" positionY="-97.33343505859375" width="128" height="103"/>
     </elements>
 </model>

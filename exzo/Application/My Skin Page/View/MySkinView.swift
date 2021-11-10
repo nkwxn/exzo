@@ -42,6 +42,15 @@ struct MySkinView: View {
                 
                 Button("+ Add Journal") {
                     isAddingJournal = true
+                } label: {
+                    Image(systemName: "plus")
+                    Text("Add Journal")
+                }.buttonStyle(ExzoButtonStyle(type: .primary))
+                    .padding()
+                List {
+                    ForEach(journalViewModel.journals) {
+                        Text("\($0) text")
+                    }
                 }
                 .offset(y: -150)
                 Text("Journal List")
@@ -50,6 +59,7 @@ struct MySkinView: View {
         .sheet(isPresented: $isAddingJournal) {
             AddJournalView()
         }
+        .navigationBarHidden(true)
         
     }
 }

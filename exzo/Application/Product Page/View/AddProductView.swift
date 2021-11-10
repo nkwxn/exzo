@@ -14,7 +14,7 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    @State var image = UIImage(systemName: "camera")! //kayanya mesti bikin asset buat empty state? idk lol haha
+    @State var image: UIImage? = UIImage(systemName: "camera") //kayanya mesti bikin asset buat empty state? idk lol haha
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
@@ -33,16 +33,18 @@ struct AddProduct: View {
             Form {
                 HStack(alignment: .center, spacing: 11.0) {
                     Section {
-                        Image(uiImage: self.image)
-                            .resizable()
-                            .cornerRadius(15)
-                            .frame(width: 141, height: 181, alignment: .leading)
-                            .background(Color.white.opacity(0.2))
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
-                            .onTapGesture {
-                                showOption = true
-                            }
+                        if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .cornerRadius(15)
+                                .frame(width: 141, height: 181, alignment: .leading)
+                                .background(Color.white.opacity(0.2))
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .onTapGesture {
+                                    showOption = true
+                                }
+                        }
                     }
                     .confirmationDialog("Choose photo source", isPresented: $showOption, titleVisibility: .visible) {
                         Button("Photo Library") {
