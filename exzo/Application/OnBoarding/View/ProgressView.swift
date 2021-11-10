@@ -1,8 +1,33 @@
+////
+////  ProgressView.swift
+////  PageMechanism
+////
+////  Created by Difa N Pratama on 04/11/21.
+////
+///// ProgressBar(Youtube [here](https://www.youtube.com/watch?v=Agjk9v1zNQk)
 //
-//  ProgressView.swift
-//  PageMechanism
+//import SwiftUI
 //
-//  Created by Difa N Pratama on 04/11/21.
+//struct ProgressView: View {
+//    @State var percent: CGFloat = 0
+//    @State var step = 0
+//    var body: some View {
+//        VStack {
+//            Text("\(self.step) questions left")
+//            CustomProgressView(percent: self.$percent)
+//        }
+//        .padding()
+//        .onTapGesture {
+//            withAnimation{
+//                if self.percent < 0.9 {
+//                    self.percent += 0.11
+//                    self.step += 1
+//                }
+//            }
+//        }
+//        
+//    }
+//}
 //
 /// ProgressBar(Youtube [here](https://www.youtube.com/watch?v=Agjk9v1zNQk)
 
