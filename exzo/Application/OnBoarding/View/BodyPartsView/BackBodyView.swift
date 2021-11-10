@@ -30,16 +30,21 @@ struct BackBodyView: View {
     @State var isBackRightFoot: Bool = false
     @State var isBackLeftKnee: Bool = false
     @State var isBackLeftFoot: Bool = false
-    
+    @State var score: Double = 0
     var body: some View {
         ZStack {
             // Back Body
             Group {
-                // Body
+                //MARK: - Body
                 Group {
                     Button {
                         self.isBackHead.toggle()
                         print("Head Press")
+                        if(isBackHead){
+                            score += 4.5
+                        } else {
+                            score -= 4.5
+                        }
                     } label: {
                         Image(isBackHead ? "SB - Head" : "B - Head")
                             .resizable()
@@ -51,6 +56,11 @@ struct BackBodyView: View {
                 }
                 Button {
                     self.isBackShoulder.toggle()
+                    if(isBackShoulder){
+                        score += 6.0
+                    } else {
+                        score -= 6.0
+                    }
                 } label: {
                     Image(isBackShoulder ? "SB - Shoulder" : "B - Shoulder")
                         .resizable()
@@ -63,6 +73,11 @@ struct BackBodyView: View {
                 
                 Button {
                     self.isBackChest.toggle()
+                    if(isBackChest){
+                        score += 6.0
+                    } else {
+                        score -= 6.0
+                    }
                 } label: {
                     Image(isBackChest ? "SB - Chest" : "B - Chest")
                         .resizable()
@@ -104,7 +119,7 @@ struct BackBodyView: View {
                     
                 } .frame(width: 40, height: 79)
                     .position(x: (UIScreen.main.bounds.width / 1.42), y: (UIScreen.main.bounds.height / 2.11))
-                // Right Hand
+                //MARK: - Right Hand
                 Group {
                     Button {
                         self.isBackRightShoulder.toggle()
@@ -156,7 +171,7 @@ struct BackBodyView: View {
                     
                 }
                 
-                // Left Hand
+                //MARK: - Left Hand
                 Group {
                     Button {
                         self.isBackLeftShoulder.toggle()
@@ -206,7 +221,7 @@ struct BackBodyView: View {
                     
                 }
                 
-                // Right Knee
+                //MARK: - Right Knee
                 Group {
                     Button {
                         self.isBackRightKnee.toggle()
@@ -233,7 +248,7 @@ struct BackBodyView: View {
                     
                 }
                 
-                // Left Knee
+                //MARK: - Left Knee
                 Group {
                     Button {
                         self.isBackLeftKnee.toggle()
@@ -263,6 +278,7 @@ struct BackBodyView: View {
             }
         }
     }
+    
 }
 
 struct BackBodyView_Previews: PreviewProvider {

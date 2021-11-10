@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BodyPartsView: View {
-    
+//    @Binding var selected: Bool = true
     var body: some View {
         
         ZStack {

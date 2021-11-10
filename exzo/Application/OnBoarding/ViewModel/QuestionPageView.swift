@@ -45,7 +45,7 @@ struct QuestionPageView: View {
                     .frame(height: 70)
                 if index == 0 {
                     BodyPartsView()
-                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * -2)
+                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * -2.2)
                 } else {
                    
                     Slider(value: intProxy, in: (index < 6 ? 0.0...3.0 : 0.0...10.0), step: 1.0, onEditingChanged: { _ in

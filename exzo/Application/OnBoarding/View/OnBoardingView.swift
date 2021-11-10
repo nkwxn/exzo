@@ -8,37 +8,34 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @State var isOnboard: Bool = false
     var body: some View {
-        VStack {
-            Image("onBoarding")
-                .edgesIgnoringSafeArea(.top)
-            Text("We want to know more about you!")
-                .fontWeight(.bold)
-                .padding()
-                .font(.custom("Avenir", size: 34))
-                .multilineTextAlignment(.center)
-            
-            Text("Before we jump into Atemis, You have to fill **9 questions** about **severity of dry skin**, how intense your **current symptoms**, and problems caused by eczema in order for us to help you.")
-                .padding()
-                .multilineTextAlignment(.center)
-            Spacer()
-            Button {
-                print("Hello World")
-            } label: {
+        NavigationView{
+            VStack {
+                Image("onBoarding")
+                    .edgesIgnoringSafeArea(.top)
+                Text("We want to know more about you!")
+                    .fontWeight(.bold)
+                    .padding()
+                    .font(.custom("Avenir", size: 34))
+                    .multilineTextAlignment(.center)
                 
-                Text("Start")
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, (UIScreen.main.bounds.width / 3))
-                
+                Text("Before we jump into Atemis, You have to fill **9 questions** about **severity of dry skin**, how intense your **current symptoms**, and problems caused by eczema in order for us to help you.")
+                    .padding()
+                    .multilineTextAlignment(.center)
+                Spacer()
+                NavigationLink(destination: PageControlView()) {
+                    Text("Start")
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, (UIScreen.main.bounds.width / 3))
+                        .padding()
+                        .background(Color.brandy)
+                        .cornerRadius(10)
+                }
+                Spacer()
             }
-            .padding()
-            .background(Color.brandy)
-            .cornerRadius(10)
-
-            Spacer()
         }
-        
     }
 }
 

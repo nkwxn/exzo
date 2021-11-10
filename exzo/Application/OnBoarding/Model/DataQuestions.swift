@@ -64,3 +64,5 @@ struct DataQuestion {
     let description: String
     let image: String
 }
+
+//Jangan lupa apanya itu lu inget" kembali keynya apa, biar nanti ga ribet pokoknya. Gua lupa ngasih tunjuk untuk yang ini jurnal section

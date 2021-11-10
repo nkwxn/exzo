@@ -13,6 +13,11 @@
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
+		BF23FC46273B42FA005BA0ED /* DataQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23FC45273B42FA005BA0ED /* DataQuestions.swift */; };
+		BF23FC4C273B4A83005BA0ED /* DataInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23FC4B273B4A83005BA0ED /* DataInsight.swift */; };
+		BF23FC4E273B4A90005BA0ED /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23FC4D273B4A90005BA0ED /* ResultRow.swift */; };
+		BF23FC50273B5A4A005BA0ED /* ScanIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23FC4F273B5A4A005BA0ED /* ScanIngredientView.swift */; };
+		BF23FC53273B7590005BA0ED /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23FC52273B7590005BA0ED /* DetailProductView.swift */; };
 		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
 		BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */; };
 		BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */; };
@@ -25,7 +30,6 @@
 		BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */; };
 		BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B45B273382C40011F064 /* DynamicFontV2.swift */; };
 		BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B463273392FF0011F064 /* ImagePicker.swift */; };
-		BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4682733A3310011F064 /* DataQuestion.swift */; };
 		C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */; };
 		CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */; };
 		D5163E392727FF9600DF09D0 /* AtemisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* AtemisApp.swift */; };
@@ -100,6 +104,11 @@
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		BF23FC45273B42FA005BA0ED /* DataQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataQuestions.swift; sourceTree = "<group>"; };
+		BF23FC4B273B4A83005BA0ED /* DataInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInsight.swift; sourceTree = "<group>"; };
+		BF23FC4D273B4A90005BA0ED /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
+		BF23FC4F273B5A4A005BA0ED /* ScanIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanIngredientView.swift; sourceTree = "<group>"; };
+		BF23FC52273B7590005BA0ED /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
 		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
 		BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontBodyView.swift; sourceTree = "<group>"; };
 		BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBodyView.swift; sourceTree = "<group>"; };
@@ -112,7 +121,6 @@
 		BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingQuestionView.swift; sourceTree = "<group>"; };
 		BFD2B45B273382C40011F064 /* DynamicFontV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontV2.swift; sourceTree = "<group>"; };
 		BFD2B463273392FF0011F064 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		BFD2B4682733A3310011F064 /* DataQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E352727FF9600DF09D0 /* exzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E382727FF9600DF09D0 /* AtemisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisApp.swift; sourceTree = "<group>"; };
@@ -225,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				5D23EE8E272FA78400541E7A /* ProductViewModel.swift */,
+				BF23FC4F273B5A4A005BA0ED /* ScanIngredientView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 				5D23EE8C272FA77800541E7A /* ProductView.swift */,
 				5D23EE92272FA87500541E7A /* ProductRowView.swift */,
 				5D23EE94272FB4B400541E7A /* AddProductView.swift */,
+				BF23FC52273B7590005BA0ED /* DetailProductView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +257,15 @@
 				BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */,
 			);
 			path = BodyPartsView;
+			sourceTree = "<group>";
+		};
+		BF2F5D41273B11540059FB23 /* Parallax */ = {
+			isa = PBXGroup;
+			children = (
+				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
+				BF23FC4D273B4A90005BA0ED /* ResultRow.swift */,
+			);
+			path = Parallax;
 			sourceTree = "<group>";
 		};
 		BF651D782734BA7700276CD1 /* ViewModel */ = {
@@ -283,7 +302,7 @@
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
 				BF651D792734C49100276CD1 /* ProgressView.swift */,
-				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
+				BF2F5D41273B11540059FB23 /* Parallax */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,7 +310,8 @@
 		BFD2B4672733A3280011F064 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BFD2B4682733A3310011F064 /* DataQuestion.swift */,
+				BF23FC45273B42FA005BA0ED /* DataQuestions.swift */,
+				BF23FC4B273B4A83005BA0ED /* DataInsight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -864,6 +884,7 @@
 				BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */,
 				BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */,
 				D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */,
+				BF23FC4E273B4A90005BA0ED /* ResultRow.swift in Sources */,
 				BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */,
 				D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */,
 				D5494AE1272FFA5E00DA1CF7 /* SetNicknameView.swift in Sources */,
@@ -877,7 +898,6 @@
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
-				BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
@@ -885,6 +905,7 @@
 				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
 				D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */,
+				BF23FC4C273B4A83005BA0ED /* DataInsight.swift in Sources */,
 				E2479EDC273103CF00C4E278 /* CustomNavigationBar.swift in Sources */,
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
@@ -893,7 +914,9 @@
 				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
 				D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */,
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
+				BF23FC50273B5A4A005BA0ED /* ScanIngredientView.swift in Sources */,
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
+				BF23FC46273B42FA005BA0ED /* DataQuestions.swift in Sources */,
 				D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */,
 				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
 				5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */,
@@ -908,6 +931,7 @@
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
+				BF23FC53273B7590005BA0ED /* DetailProductView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
@@ -1078,6 +1102,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to Camera for scan Ingredients";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need access to Gallery for scan ingredients";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1110,6 +1136,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to Camera for scan Ingredients";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need access to Gallery for scan ingredients";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

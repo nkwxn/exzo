@@ -22,7 +22,18 @@ struct PageControlView: View {
     @State var step = 9
     @State var currentPage = 0
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Button {
+                if currentPage > 0 {
+                    currentPage -= 1
+                    self.percent -= 0.11
+                    self.step += 1
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                Text("Back")
+            }.padding()
+
             VStack {
                 Text("\(self.step) questions left")
                     .scaledFont(name: "Avenir", size: 12)
@@ -31,6 +42,7 @@ struct PageControlView: View {
                 Text("Not affected by eczema")
                     .scaledFont(name: "Avenir", size: 12)
             }
+            
             ZStack {
                 if currentPage == 1 {
                     QuestionPageView(score: $dryNess, index: $currentPage)
@@ -53,7 +65,9 @@ struct PageControlView: View {
                 }
                 
             }
-            
+            if currentPage > 0 {
+                Spacer()
+            }
             PageControl(current: currentPage)
             
             HStack {
@@ -64,13 +78,10 @@ struct PageControlView: View {
                             self.percent += 0.11
                             self.step -= 1
                         }
-                    if currentPage >= 8 {
-                        print("Navigate to Insight")
-                    }
 //                    }
                 } label: {
                     Spacer()
-                    Text("Next")
+                    Text(currentPage >= 8 ? "Finish" : "Next")
                         .foregroundColor(.white)
                         .padding()
                     Spacer()
@@ -79,9 +90,13 @@ struct PageControlView: View {
             }
             .cornerRadius(10)
             .padding()
-            
+            if currentPage == 8 {
+                NavigationLink(destination: InsightOnboardingView().navigationBarHidden(true)) {
+                    EmptyView()
+                }
+            }
         }
-        
+        .navigationBarHidden(true)
     }
 }
 
