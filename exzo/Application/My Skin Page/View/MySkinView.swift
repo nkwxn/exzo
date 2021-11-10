@@ -23,7 +23,7 @@ struct MySkinView: View {
                         .frame(width: 347, height: 201, alignment: .center)
                 }
                 CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
-                    .frame(width: 300, height: 250, alignment: .init(horizontal: .center, vertical: .center))
+                    .frame(alignment: .init(horizontal: .center, vertical: .top))
                 Button {
                     isAddingJournal = true
                 } label: {
@@ -36,6 +36,7 @@ struct MySkinView: View {
                         Text("\($0) text")
                     }
                 }
+                .frame(height: 350)
             }
         }
         .sheet(isPresented: $isAddingJournal) {

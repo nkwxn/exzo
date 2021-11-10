@@ -115,7 +115,7 @@ class CDStorage: NSObject, ObservableObject {
         do {
             try context.save()
         } catch {
-            print("Error saving")
+            print("Error saving: \(error.localizedDescription)")
         }
     }
 }
