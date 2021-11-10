@@ -11,7 +11,7 @@ struct TabContainer: View {
     var body: some View {
         TabView {
             // TODO: Replace ModalPlaceholder with the list of journal made by Stef
-            ModalPlaceholder()
+            MySkinView()
                 .tabItem {
                     Image(systemName: "scribble.variable")
                     Text("My Skin")

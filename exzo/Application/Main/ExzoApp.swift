@@ -1,5 +1,5 @@
 //
-//  AtemisApp.swift
+//  ExzoApp.swift
 //  Atemis
 //
 //  Created by Nicholas on 26/10/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct AtemisApp: App {
+struct ExzoApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State var loginAlert = false
     
