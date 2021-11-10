@@ -40,7 +40,7 @@ struct MySkinView: View {
                     .frame(height: 118, alignment: .top)
                 }
                 
-                Button("+ Add Journal") {
+                Button {
                     isAddingJournal = true
                 } label: {
                     Image(systemName: "plus")
@@ -52,7 +52,6 @@ struct MySkinView: View {
                         Text("\($0) text")
                     }
                 }
-                .offset(y: -150)
                 Text("Journal List")
             }
         }

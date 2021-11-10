@@ -16,7 +16,6 @@
 		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
-		5D68F14B273B7B4600C506FF /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D68F14A273B7B4500C506FF /* DataQuestion.swift */; };
 		5D68F14D273B894600C506FF /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D68F14C273B894600C506FF /* CalendarViewModel.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
@@ -71,7 +70,6 @@
 		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
-		D542BD1A273A55EE008BB68A /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D542BD1E273A5CFA008BB68A /* HapticFeedbackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD1D273A5CFA008BB68A /* HapticFeedbackHelper.swift */; };
 		D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD20273BA4FB008BB68A /* TriggerAreas.swift */; };
 		D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AD3272F458300DA1CF7 /* CKCrudOperators.swift */; };
@@ -82,6 +80,7 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
+		D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */; };
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
 		D58AF7592731492100E67214 /* QuarterArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF7582731492100E67214 /* QuarterArc.swift */; };
@@ -136,7 +135,6 @@
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
-		5D68F14A273B7B4500C506FF /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		5D68F14C273B894600C506FF /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				D542BD1B273A57D8008BB68A /* Model */,
-				5D68F14A273B7B4500C506FF /* DataQuestion.swift */,
 				BF651D782734BA7700276CD1 /* ViewModel */,
 				BFD2B454273382560011F064 /* View */,
 			);
@@ -688,7 +685,6 @@
 		D542BD18273A45D2008BB68A /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				D56D7F252738D8040023686C /* DataQuestion.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1166,7 +1162,6 @@
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */,
-				D542BD1A273A55EE008BB68A /* DataQuestion.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */,
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
@@ -1174,9 +1169,9 @@
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
-				5D68F14B273B7B4600C506FF /* DataQuestion.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 				5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */,
+				D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */,
 				5D034A732732AE04005DB9B9 /* ProductDetailView.swift in Sources */,
 				5D23E523273942AF007B6988 /* Constant.swift in Sources */,
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
@@ -1351,7 +1346,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1368,7 +1363,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1386,7 +1381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = TW4WHS432Q;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1403,7 +1398,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = impravers.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
