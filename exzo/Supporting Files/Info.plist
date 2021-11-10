@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Exzo needs access to your location to get weather at your current location.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Exzo needs access to your photo library to select image.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Exzo needs access to your camera to take photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lexend.ttf</string>
@@ -9,6 +15,7 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
 </dict>

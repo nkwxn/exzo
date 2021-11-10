@@ -90,7 +90,7 @@ class SignUpViewModel: ObservableObject {
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let pwdRegex = "(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}"
+        let pwdRegex = "(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,30}"
         let pwdPred = NSPredicate(format: "SELF MATCHES %@", pwdRegex)
         return pwdPred.evaluate(with: password)
     }

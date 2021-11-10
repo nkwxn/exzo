@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 // swiftlint:disable all
 struct Avenir: ViewModifier {

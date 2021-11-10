@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Cuma buat nyoba. Hapus ketika sudah di integrate dengan core data nya stef
 struct ModalPlaceholder: View {
     @State var showModal = false
     
@@ -35,34 +36,39 @@ struct AddJournalView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
                     JournalSection(type: .foodIntake) {
-                        Slider(value: $viewModel.stressLevelSlider, in: 0...10, step: 1.0) {
-                            Text("Stress Level")
-                        } minimumValueLabel: {
-                            Text("0")
-                        } maximumValueLabel: {
-                            Text("10")
-                        }
+                        CategoryGrid($viewModel.foodIntake, color: .accentYellow)
                     }
                     JournalSection(type: .stressLevel) {
-                        Slider(value: $viewModel.stressLevelSlider, in: 0...10, step: 1.0) {
-                            Text("Stress Level")
-                        } minimumValueLabel: {
-                            Text("0")
-                        } maximumValueLabel: {
-                            Text("10")
-                        }
+                        ExzoSlider(value: $viewModel.stressLevelSlider, range: viewModel.sliderRange1)
                     }
                     JournalSection(type: .exposure) {
-                        Text("A")
+                        CategoryGrid($viewModel.exposure, color: .copper)
                     }
                     JournalSection(type: .activities) {
-                        Text("S")
+                        CategoryGrid($viewModel.activities, color: .brandy)
                     }
                     JournalSection(type: .skinConditions) {
-                        Text("D")
+                        VStack(spacing: 20) {
+                            ExzoSlider(title: "Dryness", value: $viewModel.dryness, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Redness", value: $viewModel.redness, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Swelling", value: $viewModel.swelling, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Crust/Oozing", value: $viewModel.crust, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Scratch traces", value: $viewModel.scratchTraces, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Thickened skin", value: $viewModel.thickSkin, range: viewModel.sliderRange2)
+                            ExzoSlider(title: "Itchiness", value: $viewModel.itchiness, range: viewModel.sliderRange1)
+                            ExzoSlider(title: "Sleep Loss", value: $viewModel.sleepLoss, range: viewModel.sliderRange1)
+                        }
                     }
                     JournalSection(type: .triggerAreas) {
-                        Text("W")
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0..<7) { _ in
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 150, height: 175)
+                                }
+                            }
+                        }
+                        .frame(width: nil, height: 175)
                     }
                 }
                 .padding()
@@ -87,7 +93,8 @@ struct AddJournalView: View {
 
 struct AddJournalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalPlaceholder()
         AddJournalView()
+        AddJournalView()
+            .preferredColorScheme(.dark)
     }
 }
