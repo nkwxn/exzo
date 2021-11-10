@@ -9,7 +9,7 @@ import SwiftUI
 import Lottie
 
 struct JournalRowView: View {
-//    let journal: Journal
+    let journal: Journal
     let dummyData = Journals.journals
     
     var body: some View {
@@ -145,11 +145,5 @@ struct JournalRowView: View {
             }
         }
         .frame(width: 347, height: 201, alignment: .center)
-    }
-}
-
-struct JournalRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        JournalRowView()
     }
 }
