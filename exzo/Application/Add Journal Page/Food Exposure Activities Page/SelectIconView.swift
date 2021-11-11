@@ -8,42 +8,41 @@
 import SwiftUI
 
 struct SelectIconView: View {
+    @Environment(\.dismiss) var dismiss
+    @Binding var iconSelection: String
+    var accentColor: Color
+    
+    var gridItems = Array(repeating: GridItem(.flexible()), count: 5)
+    
     var body: some View {
-        NavigationView {
-//            IconRowView()
-            VStack(spacing: 20) {
-                IconRowView()
-                IconRowView()
-                IconRowView()
-                Spacer()
+        ScrollView {
+            LazyVGrid(columns: gridItems) {
+                ForEach(1..<38) { iconIndex in
+                    Image("Icon\(String(format: "%03d", iconIndex))")
+                        .resizable()
+                        .scaledToFit()
+                        .background {
+                            Circle()
+                                .strokeBorder(accentColor, lineWidth: 2)
+                                .background(Circle().fill(Color.clear))
+                        }
+                        .foregroundColor(accentColor)
+                        .onTapGesture {
+                            // set the icon selection string and go back
+                            iconSelection = "Icon\(String(format: "%03d", iconIndex))"
+                            dismiss()
+                        }
+                }
             }
-            .padding(.top)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-            }
-            .onDisappear {
-                UITableView.appearance().backgroundColor = .systemGray
-            }
-//            .background(Color.white)
-            .navigationTitle("Select Icon")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: {
-                
-            }, label: {
-                Text("Cancel")
-            }))
-            .navigationBarItems(trailing: Button(action: {
-                
-            }, label: {
-                Text("Done")
-            }).disabled(true))
-            Spacer()
+            .padding()
         }
+        .navigationTitle("Select Icon")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SelectIconView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectIconView()
+        SelectIconView(iconSelection: .constant(""), accentColor: .accentYellow)
     }
 }

@@ -12,18 +12,33 @@ struct AddFEARowView: View {
     let chooseImage: Bool
     let icon: Image?
     let name: String
+    let color: Color?
+    
+    private func safeColor() -> Color {
+        color ?? Color.brandy
+    }
+    
+    private func safeIcon() -> Image {
+        icon ?? Image(systemName: "")
+    }
     
     var body: some View {
         HStack {
             Text(title)
-                .font(.system(size: 17))
             Spacer()
             if chooseImage {
-                icon
+                safeIcon()
+                    .resizable()
+                    .scaledToFit()
+                    .background {
+                        Circle()
+                            .strokeBorder(safeColor(), lineWidth: 2)
+                    }
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(color)
             } else {
             Text(name)
-                    .font(.system(size: 15))
-                    .fontWeight(.medium)
+                    .foregroundColor(Color.secondary)
             }
         }
     }
@@ -31,6 +46,7 @@ struct AddFEARowView: View {
 
 struct FEARowView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFEARowView(title: "Category", chooseImage: false, icon: nil, name: "...")
+        AddFEARowView(title: "Category", chooseImage: false, icon: nil, name: "...", color: nil)
+        AddFEARowView(title: "Category", chooseImage: true, icon: Image("Icon005"), name: "...", color: Color.brandy)
     }
 }

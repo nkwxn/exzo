@@ -88,6 +88,7 @@
 		D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87A2735152D00425E43 /* CategoryGrid.swift */; };
 		D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87C27364DB500425E43 /* ExzoSlider.swift */; };
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
+		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E228CEA5273ABD9A00FFEDD8 /* SelectIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */; };
 		E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */; };
@@ -214,6 +215,7 @@
 		D5ADA87A2735152D00425E43 /* CategoryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGrid.swift; sourceTree = "<group>"; };
 		D5ADA87C27364DB500425E43 /* ExzoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoSlider.swift; sourceTree = "<group>"; };
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
+		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconView.swift; sourceTree = "<group>"; };
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 			children = (
 				D5163E8827280F9A00DF09D0 /* Extensions.swift */,
 				BFD2B44E2733809B0011F064 /* Color.swift */,
+				D5B53289273D573C003EC433 /* View+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -800,6 +803,15 @@
 			path = "Category Grids";
 			sourceTree = "<group>";
 		};
+		D5B53288273CF8F0003EC433 /* List of IEA */ = {
+			isa = PBXGroup;
+			children = (
+				E228CEA8273B74A100FFEDD8 /* FEAListView.swift */,
+				E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */,
+			);
+			path = "List of IEA";
+			sourceTree = "<group>";
+		};
 		E29FCB29272FA26400721FFD /* UserDefault */ = {
 			isa = PBXGroup;
 			children = (
@@ -811,12 +823,11 @@
 		E2EF691A273A2A6C00B2E321 /* Food Exposure Activities Page */ = {
 			isa = PBXGroup;
 			children = (
+				D5B53288273CF8F0003EC433 /* List of IEA */,
 				E2EF6918273A086E00B2E321 /* AddFEAView.swift */,
 				E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */,
 				E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */,
 				E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */,
-				E228CEA8273B74A100FFEDD8 /* FEAListView.swift */,
-				E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */,
 			);
 			path = "Food Exposure Activities Page";
 			sourceTree = "<group>";
@@ -1114,6 +1125,7 @@
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,
+				D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				5D23E52527394421007B6988 /* BaseRequest.swift in Sources */,
 				5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */,

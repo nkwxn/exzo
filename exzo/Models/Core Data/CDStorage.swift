@@ -48,7 +48,7 @@ class CDStorage: NSObject, ObservableObject {
         journalFetchRequest.sortDescriptors = [journalSort]
         journalFetchController = NSFetchedResultsController(fetchRequest: journalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: true)
+        let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: false)
         
         let intakeFetchRequest = FoodIntake.fetchRequest()
         intakeFetchRequest.sortDescriptors = [ieaSort]
@@ -115,7 +115,7 @@ class CDStorage: NSObject, ObservableObject {
         do {
             try context.save()
         } catch {
-            print("Error saving: \(error.localizedDescription)")
+            print("Error saving: \(error)")
         }
     }
 }
@@ -264,6 +264,12 @@ struct RawIEAData {
     ]
 }
 
+enum IEA: String {
+    case activity = "Activity"
+    case exposure = "Exposure"
+    case intake = "Food Intake"
+}
+
 // MARK: - CRUD Exposure, Food Intake, dan Activity Template
 extension CDStorage {
     func createIEATemplate() {
@@ -308,32 +314,52 @@ extension CDStorage {
         }
     }
     
-    enum IEA: String {
-        case activity = "Activity"
-        case exposure = "Exposure"
-        case intake = "Intake"
-    }
-    
     func createIEA(_ type: IEA, name: String, thumb: String) {
         switch type {
         case .activity:
             let activity = Activity(context: self.context)
+            activity.idActivity = UUID()
             activity.activityName = name
             activity.activityThumb = thumb
             activity.deletable = true
             activity.isFavorite = false
+            save()
         case .exposure:
             let exposure = Exposure(context: self.context)
+            exposure.idExposure = UUID()
             exposure.exposureName = name
             exposure.exposureThumb = thumb
             exposure.deletable = true
             exposure.isFavorite = false
+            save()
         case .intake:
             let intake = FoodIntake(context: self.context)
+            intake.idFoodIntake = UUID()
             intake.intakeName = name
             intake.intakeThumb = thumb
             intake.deletable = true
             intake.isFavorite = false
+            save()
+        }
+    }
+    
+    func updateFavoriteIEA(_ type: IEA, id: UUID) {
+        switch type {
+        case .activity:
+            let act = activities.value.filter { act in
+                act.idActivity == id
+            }[0]
+            act.isFavorite.toggle()
+        case .exposure:
+            let act = envExposures.value.filter { act in
+                act.idExposure == id
+            }[0]
+            act.isFavorite.toggle()
+        case .intake:
+            let act = foodIntakes.value.filter { act in
+                act.idFoodIntake == id
+            }[0]
+            act.isFavorite.toggle()
         }
         save()
     }
@@ -353,6 +379,7 @@ extension CDStorage {
                 item.idActivity == id
             }[0])
         }
+        save()
     }
     
     // Bulk delete all IEA

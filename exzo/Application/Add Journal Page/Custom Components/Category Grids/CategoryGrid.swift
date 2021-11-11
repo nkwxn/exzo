@@ -12,6 +12,7 @@ struct CategoryItem: Identifiable {
     var iconName: String
     var name: String
     var selected: Bool
+    var deletable: Bool?
 }
 
 struct CategoryGrid: View {
