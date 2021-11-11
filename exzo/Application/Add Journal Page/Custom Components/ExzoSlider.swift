@@ -11,7 +11,11 @@ struct ExzoSlider: View {
     @Environment(\.colorScheme) private var colorScheme
     
     var title: String? = nil
-    @Binding var value: Double
+    @Binding var value: Double {
+        didSet {
+            HFHelper.selectionChanged()
+        }
+    }
     var range: ClosedRange<Double>
     
     var body: some View {
