@@ -87,12 +87,12 @@
 		D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */; };
 		D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87A2735152D00425E43 /* CategoryGrid.swift */; };
 		D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87C27364DB500425E43 /* ExzoSlider.swift */; };
+		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E228CEA5273ABD9A00FFEDD8 /* SelectIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */; };
 		E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */; };
 		E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA8273B74A100FFEDD8 /* FEAListView.swift */; };
 		E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */; };
-		E2479EDC273103CF00C4E278 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */; };
 		E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FCB2A272FA28400721FFD /* UDHelper.swift */; };
 		E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF69102738AF1900B2E321 /* CustomNavView.swift */; };
 		E2EF69132738B01200B2E321 /* CustomNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF69122738B01200B2E321 /* CustomNavLink.swift */; };
@@ -213,12 +213,12 @@
 		D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewModel.swift; sourceTree = "<group>"; };
 		D5ADA87A2735152D00425E43 /* CategoryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGrid.swift; sourceTree = "<group>"; };
 		D5ADA87C27364DB500425E43 /* ExzoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoSlider.swift; sourceTree = "<group>"; };
+		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconView.swift; sourceTree = "<group>"; };
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		E228CEA8273B74A100FFEDD8 /* FEAListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListView.swift; sourceTree = "<group>"; };
 		E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListRowView.swift; sourceTree = "<group>"; };
-		E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		E29FCB2A272FA28400721FFD /* UDHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDHelper.swift; sourceTree = "<group>"; };
 		E2EF69102738AF1900B2E321 /* CustomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavView.swift; sourceTree = "<group>"; };
 		E2EF69122738B01200B2E321 /* CustomNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavLink.swift; sourceTree = "<group>"; };
@@ -629,7 +629,6 @@
 			children = (
 				E2F99DFB2734D991004C2456 /* Custom Navigation Bar */,
 				D5163E8327280E3000DF09D0 /* WaitAlert.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavigationBar.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -826,7 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				E2EF69162738E9BD00B2E321 /* NavBarButton.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */,
+				D5B53286273CCB55003EC433 /* CustomNavBarView.swift */,
 				E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */,
 				E2EF69102738AF1900B2E321 /* CustomNavView.swift */,
 				E2EF69122738B01200B2E321 /* CustomNavLink.swift */,
@@ -1106,7 +1105,6 @@
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
 				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
-				BFD2B45A273382A00011F064 /* MySkinView.swift in Sources */,
 				E2EF69172738E9BD00B2E321 /* NavBarButton.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
@@ -1135,7 +1133,6 @@
 				5DF4ADEF27338E2D00F51423 /* Activities.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
 				D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */,
-				E2479EDC273103CF00C4E278 /* CustomNavBarView.swift in Sources */,
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
@@ -1155,8 +1152,6 @@
 				E2EF69152738B20900B2E321 /* CustomNavBarPreferenceKeys.swift in Sources */,
 				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */,
-				D56D7F262738D8040023686C /* DataQuestion.swift in Sources */,
-				5D7831422738D80600A4094C /* DataQuestion.swift in Sources */,
 				E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
@@ -1181,6 +1176,7 @@
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
+				D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */,
 				E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */,
 				E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */,
 			);
