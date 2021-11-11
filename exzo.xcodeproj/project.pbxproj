@@ -78,7 +78,6 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
-		D56D7F262738D8040023686C /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7F252738D8040023686C /* DataQuestion.swift */; };
 		D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */; };
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
 		D58AF7592731492100E67214 /* QuarterArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF7582731492100E67214 /* QuarterArc.swift */; };
@@ -91,6 +90,9 @@
 		E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA8273B74A100FFEDD8 /* FEAListView.swift */; };
 		E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */; };
 		E2479EDC273103CF00C4E278 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */; };
+		E290561E273D647900A22CB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290561D273D647900A22CB2 /* SettingsView.swift */; };
+		E2905620273D6DD500A22CB2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */; };
+		E2905622273D6E8600A22CB2 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2905621273D6E8600A22CB2 /* SettingRowView.swift */; };
 		E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FCB2A272FA28400721FFD /* UDHelper.swift */; };
 		E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF69102738AF1900B2E321 /* CustomNavView.swift */; };
 		E2EF69132738B01200B2E321 /* CustomNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF69122738B01200B2E321 /* CustomNavLink.swift */; };
@@ -133,7 +135,7 @@
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
-		5D7831412738D80500A4094C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataQuestion.swift; path = Model/DataQuestion.swift; sourceTree = "<group>"; };
+		5D7831412738D80500A4094C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataQuestion.swift; path = "New Group/DataQuestion.swift"; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD92CE52734DA8200F4C319 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -213,7 +215,10 @@
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		E228CEA8273B74A100FFEDD8 /* FEAListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListView.swift; sourceTree = "<group>"; };
 		E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListRowView.swift; sourceTree = "<group>"; };
-		E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
+		E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavBarView.swift; path = "Custom Navigation Bar/CustomNavBarView.swift"; sourceTree = "<group>"; };
+		E290561D273D647900A22CB2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		E2905621273D6E8600A22CB2 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
 		E29FCB2A272FA28400721FFD /* UDHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDHelper.swift; sourceTree = "<group>"; };
 		E2EF69102738AF1900B2E321 /* CustomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavView.swift; sourceTree = "<group>"; };
 		E2EF69122738B01200B2E321 /* CustomNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavLink.swift; sourceTree = "<group>"; };
@@ -460,6 +465,7 @@
 				D5163E362727FF9600DF09D0 /* Products */,
 				D5163E6D272803F100DF09D0 /* Frameworks */,
 				1B22AD4D29613CFF3E829459 /* Pods */,
+				E290561B273CDA3900A22CB2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -514,7 +520,6 @@
 		D5163E67272802CE00DF09D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D5ADA8772735143D00425E43 /* JournalEntry  */,
 				D5325FBE272D0AE7007FAFED /* CloudKitModels */,
 				D5163E6B272803AE00DF09D0 /* Core Data */,
 			);
@@ -524,6 +529,7 @@
 		D5163E68272802D400DF09D0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				E290561C273D645E00A22CB2 /* Settings Page */,
 				D51CFC842733C75D00DE63CC /* Add Journal Page */,
 				BFD2B4532733824E0011F064 /* OnBoarding */,
 				5DF4ADE02733828200F51423 /* My Skin Page */,
@@ -612,7 +618,7 @@
 			children = (
 				E2F99DFB2734D991004C2456 /* Custom Navigation Bar */,
 				D5163E8327280E3000DF09D0 /* WaitAlert.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavigationBar.swift */,
+				E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -713,14 +719,6 @@
 			path = "Set Nickname";
 			sourceTree = "<group>";
 		};
-		D56D7F272738D8250023686C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				D56D7F252738D8040023686C /* DataQuestion.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		D58AF752273104DC00E67214 /* Custom Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,13 +736,6 @@
 			path = "Custom Shapes";
 			sourceTree = "<group>";
 		};
-		D5ADA8772735143D00425E43 /* JournalEntry  */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "JournalEntry ";
-			sourceTree = "<group>";
-		};
 		D5ADA878273514CB00425E43 /* Journal Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +749,24 @@
 				D5ADA87A2735152D00425E43 /* CategoryGrid.swift */,
 			);
 			path = "Category Grids";
+			sourceTree = "<group>";
+		};
+		E290561B273CDA3900A22CB2 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D56D7F252738D8040023686C /* DataQuestion.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		E290561C273D645E00A22CB2 /* Settings Page */ = {
+			isa = PBXGroup;
+			children = (
+				E290561D273D647900A22CB2 /* SettingsView.swift */,
+				E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */,
+				E2905621273D6E8600A22CB2 /* SettingRowView.swift */,
+			);
+			path = "Settings Page";
 			sourceTree = "<group>";
 		};
 		E29FCB29272FA26400721FFD /* UserDefault */ = {
@@ -785,7 +794,6 @@
 			isa = PBXGroup;
 			children = (
 				E2EF69162738E9BD00B2E321 /* NavBarButton.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */,
 				E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */,
 				E2EF69102738AF1900B2E321 /* CustomNavView.swift */,
 				E2EF69122738B01200B2E321 /* CustomNavLink.swift */,
@@ -1057,6 +1065,7 @@
 				BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */,
 				E2EF6919273A086E00B2E321 /* AddFEAView.swift in Sources */,
 				E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */,
+				E290561E273D647900A22CB2 /* SettingsView.swift in Sources */,
 				D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */,
 				BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */,
 				D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */,
@@ -1065,7 +1074,6 @@
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
 				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
-				BFD2B45A273382A00011F064 /* MySkinView.swift in Sources */,
 				E2EF69172738E9BD00B2E321 /* NavBarButton.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
@@ -1073,7 +1081,6 @@
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
-				BFD2B4692733A3310011F064 /* DataQuestion.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
@@ -1113,7 +1120,6 @@
 				E2EF69152738B20900B2E321 /* CustomNavBarPreferenceKeys.swift in Sources */,
 				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */,
-				D56D7F262738D8040023686C /* DataQuestion.swift in Sources */,
 				5D7831422738D80600A4094C /* DataQuestion.swift in Sources */,
 				E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
@@ -1137,8 +1143,10 @@
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
+				E2905622273D6E8600A22CB2 /* SettingRowView.swift in Sources */,
 				E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */,
 				E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */,
+				E2905620273D6DD500A22CB2 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,11 +1310,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Exzo needs access to your location to get weather at your current location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1317,7 +1327,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverdn.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1335,11 +1345,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Exzo needs access to your camera to take photos.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Exzo needs access to your location to get weather at your current location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1350,7 +1362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverdn.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

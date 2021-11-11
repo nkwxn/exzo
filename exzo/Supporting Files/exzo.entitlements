@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.impravers.exzo</string>
+		<string>iCloud.impraverdn.exzo</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
