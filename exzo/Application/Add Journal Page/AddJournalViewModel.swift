@@ -145,7 +145,8 @@ class AddJournalViewModel: ObservableObject {
                 stressLevel: Int(stressLevelSlider), dryness: Int(dryness), redness: Int(redness),
                 swelling: Int(swelling), crust: Int(crust), traces: Int(scratchTraces),
                 thickSkin: Int(thickSkin), itchy: Int(itchiness), sleepLoss: Int(sleepLoss)
-            )
+            ),
+            triggerAreas: triggerAreas
         )
         
         completion(true)

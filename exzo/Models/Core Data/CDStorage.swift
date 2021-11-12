@@ -158,8 +158,7 @@ struct SkinConditionBeforeCD {
 
 // MARK: - CRUD Journal
 extension CDStorage {
-    // TODO: Tambahin 1 lg parameter buat ngeload gambar nya
-    func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD) {
+    func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD, triggerAreas: [TriggerAreaItem]) {
         // Get the weather data
         
         // Append Skin Condition
@@ -171,6 +170,8 @@ extension CDStorage {
         newSC.swelling = Int64(skinCondition.swelling)
         newSC.redness = Int64(skinCondition.redness)
         newSC.dryness = Int64(skinCondition.dryness)
+        newSC.scratch = Int64(skinCondition.traces)
+        newSC.poScorad = Int64(80)
         
         save()
         
@@ -198,15 +199,24 @@ extension CDStorage {
         newJournal.weatherTemp = 0.0
         newJournal.weatherHumid = 0.0
         newJournal.weatherTemp = 0.0
-        newJournal.skinCondition = newSC
+        newJournal.skinCondition = newSC.self
         
         save()
         
         // TODO: Kasih looping sesuai dengan array skin condition + gambarnya
+        for trigger in triggerAreas {
+            if let _ = trigger.image {
+                addTriggerAreas(journal: newJournal, trigger: trigger)
+            }
+        }
+    }
+    
+    func addTriggerAreas(journal: Journal, trigger: TriggerAreaItem) {
         let triggerArea = TriggerAreas(context: context)
         triggerArea.idTrigger = UUID()
-        triggerArea.journal = newJournal
-        
+        triggerArea.journal = journal
+        triggerArea.areaName = trigger.name
+        triggerArea.areaImage = trigger.safeImage() as NSObject
         save()
     }
     
