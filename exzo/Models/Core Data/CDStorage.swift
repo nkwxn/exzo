@@ -377,8 +377,8 @@ extension CDStorage {
                 item.idExposure == id
             }[0])
         case .intake:
-            context.delete(activities.value.filter { item in
-                item.idActivity == id
+            context.delete(foodIntakes.value.filter { item in
+                item.idFoodIntake == id
             }[0])
         }
         save()

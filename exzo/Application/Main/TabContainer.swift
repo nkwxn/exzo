@@ -29,8 +29,7 @@ struct TabContainer: View {
                     Image(systemName: "chart.pie")
                     Text("Insights")
                 }
-            Text("Settings")
-                .font(.custom("Lexend", size: 50))
+            SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Settings")

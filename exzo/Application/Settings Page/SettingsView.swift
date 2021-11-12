@@ -10,24 +10,21 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack {
-            ProfileHeaderView(profileImage: "pp_004", profileName: "Deven Nathanael")
+            ProfileHeaderView(profileImage: "pp_004", profileName: "Regina George")
                 .padding(.bottom)
             List {
                 Section(header: Text("REMINDER")) {
                     SettingRowView(settingIcon: "timer", settingTitle: "Set Reminder")
                 }
-                .listRowBackground(Color.init(red: 242/255, green: 242/255, blue: 242/255))
                 
                 Section(header: Text("LANGUAGE")) {
                     SettingRowView(settingIcon: "globe", settingTitle: "Language")
                 }
-                .listRowBackground(Color.init(red: 242/255, green: 242/255, blue: 242/255))
                 
                 Section(header: Text("LEGAL MATTERS")) {
                     SettingRowView(settingIcon: "lock", settingTitle: "Privacy Policy")
                     SettingRowView(settingIcon: "exclamationmark.triangle", settingTitle: "Terms and Conditions")
                 }
-                .listRowBackground(Color.init(red: 242/255, green: 242/255, blue: 242/255))
                 
                 Section(header: Text("OTHERS")) {
                     SettingRowView(settingIcon: "star", settingTitle: "Rate our App")
@@ -37,16 +34,10 @@ struct SettingsView: View {
                     SettingRowView(settingIcon: "arrowshape.turn.up.backward", settingTitle: "Sign Out")
                     
                 }
-                .listRowBackground(Color.init(red: 242/255, green: 242/255, blue: 242/255))
                 
             }
-            .onAppear {
-                UITableView.appearance().backgroundColor = .white
-            }
-            .onDisappear {
-                UITableView.appearance().backgroundColor = .systemGray
-            }
             .cornerRadius(30)
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
     

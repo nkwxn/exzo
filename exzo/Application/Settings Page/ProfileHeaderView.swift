@@ -17,12 +17,13 @@ struct ProfileHeaderView: View {
                 Image(profileImage)
                     .resizable()
                     .frame(width: 104, height: 104)
+                    .clipShape(Circle())
                 Text(profileName)
                     .font(Font.custom("lexend", size: 24))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .padding()
-                
+                Spacer()
             }
             .padding()
         }
