@@ -15,7 +15,7 @@ class JournalViewModel: ObservableObject {
     @Published var journals = [Journal]()
     
     private var cancellable: AnyCancellable?
-
+    
     init(
         journalPublisher: AnyPublisher<[Journal], Never> = CDStorage.shared.journalItems.eraseToAnyPublisher()
     ) {
@@ -25,32 +25,11 @@ class JournalViewModel: ObservableObject {
             print(self.journals)
         }
     }
+    
+    func deleteItem(index offset: IndexSet) {
+        offset.map {
+            guard let id = journals[$0].idJournal else { return }
+            journalModel.deleteJournal(with: id)
+        }
+    }
 }
-
-//class ProductViewModel: ObservableObject {
-//    var productModel = CDStorage.shared
-//
-//    @Published var products: [Product] = []
-//
-//    private var cancellable: AnyCancellable?
-//
-//    init(
-//        productPublisher: AnyPublisher<[Product], Never> = CDStorage.shared.productItems.eraseToAnyPublisher()
-//    ) {
-//        cancellable = productPublisher.sink { productItems in
-//            print("update product")
-//            self.products = productItems
-//        }
-//    }
-//
-//    func addNewItem(name: String, type: ProductType, image: UIImage? = nil) {
-//        productModel.createProduct(name: name, type: type, image: image)
-//    }
-//
-//    func deleteItem(index offset: IndexSet) {
-//        offset.map {
-//            guard let id = products[$0].idProduct else { return }
-//            productModel.deleteProduct(with: id)
-//        }
-//    }
-//}

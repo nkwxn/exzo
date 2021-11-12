@@ -399,7 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				5DF4ADF6273395C600F51423 /* JournalViewModel.swift */,
-				5D68F14C273B894600C506FF /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1150,7 +1149,6 @@
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
 				D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
-				5D68F14D273B894600C506FF /* CalendarViewModel.swift in Sources */,
 				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
 				D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */,
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
