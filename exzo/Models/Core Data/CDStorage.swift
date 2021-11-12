@@ -158,14 +158,6 @@ struct SkinConditionBeforeCD {
 
 // MARK: - CRUD Journal
 extension CDStorage {
-    func createJournal(foodIntake: String) {
-        let newJournal = Journal(context: PersistenceController.shared.container.viewContext)
-        newJournal.idJournal = UUID()
-        newJournal.foodIntake = foodIntake as NSObject
-        
-        save()
-    }
-    
     // TODO: Tambahin 1 lg parameter buat ngeload gambar nya
     func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD) {
         // Get the weather data

@@ -53,6 +53,7 @@ struct WeatherView: View {
                 Text(viewModel.recommendationString)
                     .font(.body)
                     .multilineTextAlignment(.center)
+                    .lineLimit(0)
                 Text("Weather data provided by OpenWeather")
                     .font(.footnote)
                     .multilineTextAlignment(.center)
