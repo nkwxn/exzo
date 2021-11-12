@@ -13,6 +13,8 @@ import SwiftUI
 struct QuestionPageView: View {
     @Binding var score: Int
     @Binding var index: Int
+    @Binding var bodyScore: Float
+    @Binding var bodyArr: [String]
     var intProxy: Binding<Double>{
         Binding<Double>(get: {
             //returns the score as a Double
@@ -34,9 +36,10 @@ struct QuestionPageView: View {
             VStack(alignment: .center) {
                 Spacer()
                     .frame(height: 70)
-                if index < 6 {
+                if index < 7 {
                     Image("\(dataQuestions[index].image)\(score)")
                         .frame(height: 120)
+                    Text("\(dataQuestions[index].image)")
                 } else {
                     Image("\(dataQuestions[index].image)")
                         .frame(height: 120)
@@ -44,26 +47,25 @@ struct QuestionPageView: View {
                 Spacer()
                     .frame(height: 70)
                 if index == 0 {
-                    BodyPartsView()
-                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * -2)
+                    BodyPartsView(score: $bodyScore, bodyArr: $bodyArr)
+                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * -2.2)
                 } else {
                    
-                    Slider(value: intProxy, in: (index < 6 ? 0.0...3.0 : 0.0...10.0), step: 1.0, onEditingChanged: { _ in
+                    Slider(value: intProxy, in: (index < 7 ? 0.0...3.0 : 0.0...10.0), step: 1.0, onEditingChanged: { _ in
                         print(score.description)
                     })
                         .tint(Color.brandy)
                     Text(score.description)
                 }
                 
-               
             }
             
         }.padding()
     }
 }
 
-struct QuestionPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionPageView(score: Binding.constant(0), index: Binding.constant(0))
-    }
-}
+//struct QuestionPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionPageView(score: Binding.constant(0), index: Binding.constant(0), bodyScore: Binding.constant(0))
+//    }
+//}

@@ -31,14 +31,23 @@ struct FrontBodyView: View {
     @State var isFrontLeftKnee: Bool = false
     @State var isFrontLeftFoot: Bool = false
     
+    @Binding var score: Float
+    @Binding var bodyArr: [String]
     var body: some View {
         ZStack {
-            //Front Body
+            //MARK: - Front Body
             Group {
-                // Body
+                //MARK: - Body
                 Group {
                     Button {
                         self.isFrontHead.toggle()
+                        if (isFrontHead) {
+                            score += 4.5
+                            bodyArr.append("F - Head")
+                        } else {
+                            score -= 4.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontHead ? "SF - Head" : "F - Head")
                             .resizable()
@@ -50,6 +59,13 @@ struct FrontBodyView: View {
 
                     Button {
                         self.isFrontShoulder.toggle()
+                        if (isFrontShoulder) {
+                            score += 6.0
+                            bodyArr.append("F - Shoulder")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontShoulder ? "SF - Shoulder" : "B - Shoulder")
                             .resizable()
@@ -61,6 +77,13 @@ struct FrontBodyView: View {
 
                     Button {
                         self.isFrontChest.toggle()
+                        if (isFrontChest) {
+                            score += 6.0
+                            bodyArr.append("F - Chest")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontChest ? "SF - Chest" : "B - Chest")
                             .resizable()
@@ -72,6 +95,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontRightThigh.toggle()
+                        if (isFrontRightThigh) {
+                            score += 3.0
+                            bodyArr.append("F - Right Thigh")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightThigh ? "SF - Right Thigh" : "F- Right Thigh")
                             .resizable()
@@ -83,6 +113,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontLeftThigh.toggle()
+                        if (isFrontLeftThigh) {
+                            score += 3.0
+                            bodyArr.append("F - Left Thigh")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftThigh ? "SF - Left Thigh" : "F - Left Thigh")
                             .resizable()
@@ -94,6 +131,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontBelly.toggle()
+                        if (isFrontBelly) {
+                            score += 6.0
+                            bodyArr.append("F - Belly")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontBelly ? "SF - Belly" : "F - Belly")
                             .resizable()
@@ -105,6 +149,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontX.toggle()
+                        if (isFrontX) {
+                            bodyArr.append("F - XXX")
+                            score += 1.0
+                        } else {
+                            score -= 1.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Circle()
                             .fill(isFrontX ? Color.copper : .gray)
@@ -115,10 +166,17 @@ struct FrontBodyView: View {
 
                 }
                 
-                // Right Hand
+                //MARK: - Right Hand
                 Group {
                     Button {
                         self.isFrontRightShoulder.toggle()
+                        if (isFrontRightShoulder) {
+                            score += 1.5
+                            bodyArr.append("F - Right Shoulder")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightShoulder ? "SF - Right Shoulder" : "B - Right Shoulder")
                             .resizable()
@@ -130,6 +188,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontRightBisep.toggle()
+                        if (isFrontRightBisep) {
+                            score += 1.5
+                            bodyArr.append("F - Right Bisep")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightBisep ? "SF - Right Bisep" : "B - Right Bisep")
                             .resizable()
@@ -141,6 +206,13 @@ struct FrontBodyView: View {
 
                     Button {
                         self.isFrontRightArm.toggle()
+                        if (isFrontRightArm) {
+                            score += 1.5
+                            bodyArr.append("F - Right Arm")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightArm ? "SF - Right Arm" : "B - Right Arm")
                             .resizable()
@@ -152,6 +224,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontRightFinger.toggle()
+                        if (isFrontRightFinger) {
+                            score += 1.5
+                            bodyArr.append("F - Right Finger")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightFinger ? "SF - Right Finger" : "B - Right Finger")
                             .resizable()
@@ -164,10 +243,17 @@ struct FrontBodyView: View {
                     
                 }
                 
-                // Left Hand
+                //MARK: - Left Hand
                 Group {
                     Button {
                         self.isFrontLeftShoulder.toggle()
+                        if (isFrontLeftShoulder) {
+                            score += 1.5
+                            bodyArr.append("F - Left Shoulder")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftShoulder ? "SF - Left Shoulder" : "B - Left Shoulder")
                             .resizable()
@@ -180,6 +266,13 @@ struct FrontBodyView: View {
 
                     Button {
                         self.isFrontLeftBisep.toggle()
+                        if (isFrontLeftBisep) {
+                            score += 1.5
+                            bodyArr.append("F - Left Bisep")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftBisep ? "SF - Left Bisep" : "B - Left Bisep")
                             .resizable()
@@ -191,6 +284,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontLeftArm.toggle()
+                        if (isFrontLeftArm) {
+                            score += 1.5
+                            bodyArr.append("F - Left Arm")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftArm ? "SF - Left Arm" : "B - Left Arm")
                             .resizable()
@@ -202,6 +302,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontLeftFinger.toggle()
+                        if (isFrontLeftFinger) {
+                            score += 1.5
+                            bodyArr.append("F - Left Finger")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftFinger ? "SF - Left Finger" : "B - Left Finger")
                             .resizable()
@@ -213,10 +320,17 @@ struct FrontBodyView: View {
 
                 }
                 
-                // Right Knee
+                // MARK: - Right Knee
                 Group {
                     Button {
                         self.isFrontRightKnee.toggle()
+                        if (isFrontRightKnee) {
+                            score += 3.0
+                            bodyArr.append("F - Right Knee")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightKnee ? "SF - Right Knee" : "B - Right Knee")
                             .resizable()
@@ -228,6 +342,13 @@ struct FrontBodyView: View {
 
                     Button {
                         self.isFrontRightFoot.toggle()
+                        if (isFrontRightFoot) {
+                            score += 3.0
+                            bodyArr.append("F - Right Foot")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontRightFoot ? "SF - Right Foot" : "B - Right Foot")
                             .resizable()
@@ -243,6 +364,13 @@ struct FrontBodyView: View {
                 Group {
                     Button {
                         self.isFrontLeftKnee.toggle()
+                        if (isFrontLeftKnee) {
+                            score += 3.0
+                            bodyArr.append("F - Left Knee")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftKnee ? "SF - Left Knee" : "B - Left Knee")
                             .resizable()
@@ -254,6 +382,13 @@ struct FrontBodyView: View {
                     
                     Button {
                         self.isFrontLeftFoot.toggle()
+                        if (isFrontLeftFoot) {
+                            score += 3.0
+                            bodyArr.append("F - Left Foot")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
                     } label: {
                         Image(isFrontLeftFoot ? "SF - Left Foot" : "B - Left Foot")
                             .resizable()
@@ -269,8 +404,8 @@ struct FrontBodyView: View {
     }
 }
 
-struct FrontBodyView_Previews: PreviewProvider {
-    static var previews: some View {
-        FrontBodyView()
-    }
-}
+//struct FrontBodyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FrontBodyView(score: Binding.constant(0))
+//    }
+//}
