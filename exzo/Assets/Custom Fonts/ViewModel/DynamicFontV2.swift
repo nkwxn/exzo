@@ -53,7 +53,6 @@ struct Avenir: ViewModifier {
             return Font.custom("Avenir", size: 17 * getStyleFactor())
         }
     }
-
     func getStyleFactor() -> CGFloat {
         switch textStyle {
         case .caption:
@@ -67,9 +66,13 @@ struct Avenir: ViewModifier {
         case .body:
             return 1.0
         case .headline:
-            return 1.2
+            return 1.0
         case .title:
             return 1.5
+        case .title2:
+            return 1.3
+        case .title3:
+            return 1.2
         case .largeTitle:
             return 2.0
         @unknown default:
@@ -137,9 +140,13 @@ struct Lexend: ViewModifier {
         case .body:
             return 1.0
         case .headline:
-            return 1.2
+            return 1.0
         case .title:
             return 1.5
+        case .title2:
+            return 1.3
+        case .title3:
+            return 1.2
         case .largeTitle:
             return 2.0
         @unknown default:

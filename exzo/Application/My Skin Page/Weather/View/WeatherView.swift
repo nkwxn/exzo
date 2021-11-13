@@ -14,7 +14,7 @@ struct WeatherView: View {
         VStack(alignment: .center, spacing: 8) {
             Text("Today's Weather")
                 .foregroundColor(.white)
-                .font(Lexend(.title).getFont())
+                .font(Avenir(.title).getFont().bold())
             switch viewModel.fetchStatus {
             case .loading:
                 VStack {
@@ -69,6 +69,7 @@ struct WeatherView: View {
                         .font(.footnote)
                         .multilineTextAlignment(.center)
                 }
+                .frame(width: 280, alignment: .center)
                 .padding()
     //            .toolbar {
     //                ToolbarItem(placement: .navigationBarTrailing) {
