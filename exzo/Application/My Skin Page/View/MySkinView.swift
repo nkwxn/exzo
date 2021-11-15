@@ -44,10 +44,11 @@ struct MySkinView: View {
                 
                 // Header view needs to be pinned on the top
                 
-                LazyVStack(alignment: .center, spacing: 10, pinnedViews: [.sectionHeaders]) {
+                LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
                     // Parallax weather header
                     WeatherView()
                         .frame(width: UIScreen.main.bounds.width)
+                        .padding(.bottom, 20)
                     Section {
                         if journalViewModel.journals.isEmpty {
                             ZStack {
@@ -62,6 +63,7 @@ struct MySkinView: View {
                             ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
                                 JournalRowView(journal: $1)
                                     .padding(.horizontal)
+                                    .padding(.bottom, 14)
                             }
                         }
                     } header: {
