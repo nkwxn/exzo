@@ -21,7 +21,7 @@ struct CalendarHeader: View {
             .frame(height: 118, alignment: .top)
             
             CalendarView(dateSelected: $selectedDate, pageCurrent: $currentPage)
-                .frame(width: 300, height: 200, alignment: .init(horizontal: .center, vertical: .center))
+                .frame(width: 300, height: 225, alignment: .init(horizontal: .center, vertical: .center))
             
             Button { self.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.currentPage)!
             } label: {
@@ -34,7 +34,7 @@ struct CalendarHeader: View {
 }
 
 struct MySkinView: View {
-    @State var journalViewModel = JournalViewModel()
+    @StateObject var journalViewModel = JournalViewModel()
     @State var isAddingJournal = false
     @ObservedObject private var calendarModel = CalendarModel()
     
@@ -79,7 +79,7 @@ struct MySkinView: View {
                                 Text("Skin History")
                                     .font(Lexend(.headline).getFont().bold())
                             }
-                            .padding(.horizontal)
+                            .padding()
                         }
                     }
                 }
@@ -99,6 +99,9 @@ struct MySkinView: View {
                     Spacer()
                 }
             }
+//            .onChange(of: isAddingJournal) { newValue in
+//                calendarModel.selectedDate = Date()
+//            }
         }
     }
 }
