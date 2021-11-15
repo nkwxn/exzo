@@ -17,14 +17,13 @@ struct TempInsightPlaceholder: View {
             VStack {
                 Text("Insight not available")
                     .font(Lexend(.title).getFont().weight(.bold))
-                Text("Insights will be available a week after appending journal entries for a week.")
+                Text("Insights will be available after appending journal entries for a week.")
             }
-            .multilineTextAlignment(.center)
             .padding()
+            .multilineTextAlignment(.center)
             .background {
                 RoundedRectangle(cornerRadius: 19)
                     .foregroundColor(Color.white)
-                    .frame(width: 309, alignment: .center)
                     .shadow(color: Color.init(uiColor: UIColor.init(red: 0.45, green: 0.29, blue: 0.22, alpha: 0.2)), radius: 10, x: 2, y: 5)
             }
             .padding()

@@ -6,183 +6,172 @@
 //
 
 import SwiftUI
-import Lottie
 
 struct JournalRowView: View {
     let journal: Journal
     let width = 300.0
-    let dummyData = Journals.journals
+    //    let dummyData = Journals.journals
+    let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 19)
-                .foregroundColor(Color.antique)
-            //                .frame(width: self.width, height: 201, alignment: .center)
+                .foregroundColor(Color.white)
+                .shadow(radius: 10)
             
             VStack {
                 HStack(alignment: .top) {
                     Text(journal.dateAndTime!, style: .time)
-                        .padding()
                     Spacer()
-                    Button("See details") {
-                        print("See journal details")
-                    }
-                    .padding()
+//                    Button("See details") {
+//                        print("See journal details")
+//                    }
                 } // HStack close
                 Divider()
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Stress Level")
-                        .font(.system(size: 11))
-                    ZStack {
-                        Circle()
-                            .foregroundColor(Color.accentColor)
-                            .frame(width: 32, height: 32, alignment: .center)
-                        Text(String(journal.stressLevel))
-                            .bold()
-                            .foregroundColor(Color.white)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("Food Intake")
+                                .font(.system(size: 11))
+                            HStack(alignment: .center, spacing: -8) {
+                                if let foodIntakes = journal.foodIntake as? [IEAData] {
+                                    if foodIntakes.isEmpty {
+                                    } else {
+                                        ForEach(0..<foodIntakes.count, id: \.self) { idx in
+                                            if idx < 4 {
+                                                Image(foodIntakes[idx].thumb)
+                                                    .resizable()
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 32, height: 32, alignment: .center)
+                                                    .background {
+                                                        Circle()
+                                                            .foregroundColor(accentArr[idx])
+                                                            .frame(width: 32, height: 32, alignment: .center)
+                                                            .shadow(radius: 2)
+                                                    }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(accentArr[1])
+                                            .frame(width: 32, height: 32, alignment: .center)
+                                            .shadow(radius: 2)
+                                        Text("N/A")
+                                            .foregroundColor(.white)
+                                            .bold()
+                                    }
+                                }
+                            }
+                        }
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("Exposure")
+                                .font(.system(size: 11))
+                            HStack(alignment: .center, spacing: -8) {
+                                if let exposure = journal.skinExposure as? [IEAData] {
+                                    if exposure.isEmpty {
+                                        
+                                    } else {
+                                        ForEach(0..<exposure.count, id: \.self) { idx in
+                                            if idx < 4 {
+                                                Image(exposure[idx].thumb)
+                                                    .resizable()
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 32, height: 32, alignment: .center)
+                                                    .background {
+                                                        Circle()
+                                                            .foregroundColor(accentArr[idx])
+                                                            .frame(width: 32, height: 32, alignment: .center)
+                                                            .shadow(radius: 2)
+                                                    }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(accentArr[1])
+                                            .frame(width: 32, height: 32, alignment: .center)
+                                            .shadow(radius: 2)
+                                        Text("N/A")
+                                            .foregroundColor(.white)
+                                            .bold()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                    VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("Activities")
+                                .font(.system(size: 11))
+                            HStack(alignment: .center, spacing: -8) {
+                                if let activities = journal.activities as? [IEAData] {
+                                    if activities.isEmpty {
+                                        
+                                    } else {
+                                        ForEach(0..<activities.count, id: \.self) { idx in
+                                            if idx < 4 {
+                                                Image(activities[idx].thumb)
+                                                    .resizable()
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 32, height: 32, alignment: .center)
+                                                    .background {
+                                                        Circle()
+                                                            .foregroundColor(accentArr[idx])
+                                                            .frame(width: 32, height: 32, alignment: .center)
+                                                            .shadow(radius: 2)
+                                                    }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(accentArr[1])
+                                            .frame(width: 32, height: 32, alignment: .center)
+                                            .shadow(radius: 2)
+                                        Text("N/A")
+                                            .foregroundColor(.white)
+                                            .bold()
+                                    }
+                                }
+                            }
+                        }
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("PO Scorad")
+                                .font(.system(size: 11))
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(accentArr[1])
+                                    .frame(width: 32, height: 32, alignment: .center)
+                                    .shadow(radius: 2)
+                                Text("\(journal.skinCondition!.poScorad)")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                        }
+                    }
+                    Spacer()
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Stress Level")
+                            .font(.system(size: 11))
+                        ZStack {
+                            Circle()
+                                .foregroundColor(accentArr[1])
+                                .frame(width: 32, height: 32, alignment: .center)
+                                .shadow(radius: 2)
+                            Text("\(journal.stressLevel)")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
                     }
                 }
-                .padding()
-            } // Vstack close
+            }
+            .padding()// Vstack close
             //            .frame(width: self.width, height: 201, alignment: .center)
         } // ZStack close
     }
-    
-    //    var body: some View {
-    //        ZStack {
-    //            RoundedRectangle(cornerRadius: 19)
-    //                .foregroundColor(Color("accent_antique"))
-    //                .frame(width: 347, height: 201, alignment: .center)
-    //            VStack {
-    //                HStack(alignment: .top) {
-    //                    Text("13.00")
-    //                        .padding()
-    //                    Spacer()
-    //                    Button("See details") {
-    //                        print("see journal detail")
-    //                    }
-    //                    .padding()
-    //                }
-    //                Divider()
-    //                HStack(alignment: .top) {
-    //                    VStack(alignment: .leading) {
-    //                        VStack(alignment: .leading) {
-    //                            Text("Food Intake")
-    //                                .font(.system(size: 11))
-    //                            HStack {
-    //                                ForEach((1...dummyData.foodIntake.count + 1), id: \.self) { index in
-    //                                    if index > 1 {
-    //                                        ZStack {
-    //                                            Circle()
-    //                                                .strokeBorder(Color.gray, lineWidth: 2)
-    //                                                .background(Circle().foregroundColor(Color.green))
-    //                                                .frame(width: 32, height: 32, alignment: .leading)
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                            Image(systemName: "a.circle")
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                            Text("a")
-    //                                                .offset(x: CGFloat(-25 * index))
-    //                                        }
-    //                                    } else {
-    //                                        Circle()
-    //                                            .frame(width: 32, height: 32, alignment: .leading)
-    //                                    }
-    //                                }
-    //                            }
-    //                            .frame(width: 82, height: 32, alignment: .top)
-    //                            .offset(x: CGFloat(-5 + 20 * (dummyData.foodIntake.count - 1)))
-    //                        }
-    //
-    //                        VStack(alignment: .leading) {
-    //                            Text("Exposure")
-    //                                .font(.system(size: 11))
-    //                            HStack {
-    //                                ForEach((1...dummyData.skinExposure.count + 1), id: \.self) { index in
-    //                                    if index > 1 {
-    //                                        ZStack {
-    //                                            Circle()
-    //                                                .strokeBorder(Color.gray, lineWidth: 2)
-    //                                                .background(Circle().foregroundColor(Color.orange))
-    //                                                .frame(width: 32, height: 32, alignment: .leading)
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                            Text("b")
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                        }
-    //                                    } else {
-    //                                        Circle()
-    //                                            .frame(width: 32, height: 32, alignment: .leading)
-    //                                    }
-    //                                }
-    //                            }
-    //                            .frame(width: 82, height: 32, alignment: .top)
-    //                            .offset(x: CGFloat(-5 + 20 * (dummyData.skinExposure.count - 1)))
-    //                            Text("Bulet bulet")
-    //                        }
-    //                    }
-    //                    .padding()
-    //
-    //                    VStack(alignment: .leading) {
-    //                        VStack(alignment: .leading) {
-    //                            Text("Activities")
-    //                                .font(.system(size: 11))
-    //                            HStack {
-    //                                ForEach((1...dummyData.activities.count + 1), id: \.self) { index in
-    //                                    if index > 1 {
-    //                                        ZStack {
-    //                                            Circle()
-    //                                                .strokeBorder(Color.gray, lineWidth: 2)
-    //                                                .background(Circle().foregroundColor(Color.blue))
-    //                                                .frame(width: 32, height: 32, alignment: .leading)
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                            Text("c")
-    //                                                .offset(x: CGFloat(-20 * index))
-    //                                        }
-    //                                    } else {
-    //                                        Circle()
-    //                                            .frame(width: 32, height: 32, alignment: .leading)
-    //                                    }
-    //                                }
-    //                            }
-    //                            .frame(width: 82, height: 32, alignment: .top)
-    //                            .offset(x: CGFloat(-5 + 20 * (dummyData.activities.count - 1)))
-    //                            Text("Bulet bulet")
-    //                        }
-    //
-    //                        VStack(alignment: .leading, spacing: 4) {
-    //                            Text("PO-Scorad")
-    //                                .font(.system(size: 11))
-    //                            ZStack {
-    //                                Circle()
-    //                                    .foregroundColor(Color.accentColor)
-    //                                    .frame(width: 32, height: 32, alignment: .center)
-    //                                Text("\(dummyData.skinCondition.poScorad)")
-    //                                    .bold()
-    //                                    .foregroundColor(Color.white)
-    //                            }
-    //                        }
-    //                    }
-    //                    .padding()
-    //
-    //                    VStack(alignment: .leading, spacing: 4) {
-    //                        Text("Stress Level")
-    //                            .font(.system(size: 11))
-    //                        ZStack {
-    //                            Circle()
-    //                                .foregroundColor(Color.accentColor)
-    //                                .frame(width: 32, height: 32, alignment: .center)
-    //                            Text(journal.stressLevel)
-    //                                .bold()
-    //                                .foregroundColor(Color.white)
-    //                            Text("\(dummyData.stressLevel)")
-    //                                .bold()
-    //                                .foregroundColor(Color.white)
-    //                        }
-    //                    }
-    //                    .padding()
-    //                }
-    //                .frame(width: 347, height: 117, alignment: .center)
-    //            }
-    //        }
-    //        .frame(width: 347, height: 201, alignment: .center)
-    //    }
 }

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct TabContainer: View {
-    @State var selection = 0
-    
     var body: some View {
-        TabView(selection: $selection) {
+        TabView {
             MySkinView()
                 .tabItem {
                     Image(systemName: "face.smiling")
