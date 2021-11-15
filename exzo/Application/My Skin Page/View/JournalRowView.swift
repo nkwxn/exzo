@@ -11,13 +11,13 @@ import Lottie
 struct JournalRowView: View {
     let journal: Journal
     let width = 300.0
-    //    let dummyData = Journals.journals
+    let dummyData = Journals.journals
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 19)
                 .foregroundColor(Color.antique)
-//                .frame(width: self.width, height: 201, alignment: .center)
+            //                .frame(width: self.width, height: 201, alignment: .center)
             
             VStack {
                 HStack(alignment: .top) {
@@ -44,7 +44,7 @@ struct JournalRowView: View {
                 }
                 .padding()
             } // Vstack close
-//            .frame(width: self.width, height: 201, alignment: .center)
+            //            .frame(width: self.width, height: 201, alignment: .center)
         } // ZStack close
     }
     
@@ -171,7 +171,7 @@ struct JournalRowView: View {
     //                                .foregroundColor(Color.accentColor)
     //                                .frame(width: 32, height: 32, alignment: .center)
     //                            Text(journal.stressLevel)
-    //                               .bold()
+    //                                .bold()
     //                                .foregroundColor(Color.white)
     //                            Text("\(dummyData.stressLevel)")
     //                                .bold()

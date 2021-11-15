@@ -16,7 +16,6 @@
 		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
-		5D68F14D273B894600C506FF /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D68F14C273B894600C506FF /* CalendarViewModel.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
 		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
@@ -80,6 +79,7 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
+		D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */; };
 		D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */; };
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
@@ -94,7 +94,6 @@
 		E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */; };
 		E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA8273B74A100FFEDD8 /* FEAListView.swift */; };
 		E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */; };
-		E2479EDC273103CF00C4E278 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */; };
 		E290561E273D647900A22CB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290561D273D647900A22CB2 /* SettingsView.swift */; };
 		E2905620273D6DD500A22CB2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */; };
 		E2905622273D6E8600A22CB2 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2905621273D6E8600A22CB2 /* SettingRowView.swift */; };
@@ -140,8 +139,6 @@
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
-		5D68F14C273B894600C506FF /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		5D7831412738D80500A4094C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataQuestion.swift; path = "New Group/DataQuestion.swift"; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD92CE52734DA8200F4C319 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -212,6 +209,7 @@
 		D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsightPlaceholder.swift; sourceTree = "<group>"; };
 		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoButtonStyle.swift; sourceTree = "<group>"; };
 		D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 		5D68F147273B7A0A00C506FF /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				D56D7F252738D8040023686C /* DataQuestion.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -542,7 +539,6 @@
 			isa = PBXGroup;
 			children = (
 				D542BD1C273A5CE7008BB68A /* Haptic Helper */,
-				D5ADA8772735143D00425E43 /* JournalEntry  */,
 				D5325FBE272D0AE7007FAFED /* CloudKitModels */,
 				D5163E6B272803AE00DF09D0 /* Core Data */,
 			);
@@ -580,6 +576,7 @@
 				D5163E382727FF9600DF09D0 /* ExzoApp.swift */,
 				D5163E8B2728108A00DF09D0 /* TabContainer.swift */,
 				D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */,
+				D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1186,7 +1183,6 @@
 				E2EF69152738B20900B2E321 /* CustomNavBarPreferenceKeys.swift in Sources */,
 				5D23EE8D272FA77800541E7A /* ProductView.swift in Sources */,
 				5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */,
-				5D7831422738D80600A4094C /* DataQuestion.swift in Sources */,
 				E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */,
 				D5163E452727FF9800DF09D0 /* Atemis.xcdatamodeld in Sources */,
 				D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */,
@@ -1194,6 +1190,7 @@
 				BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */,
+				D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */,
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
@@ -1414,7 +1411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = WH8Y79ZARL;
+				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
