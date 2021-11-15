@@ -48,7 +48,7 @@ class CDStorage: NSObject, ObservableObject {
         journalFetchRequest.sortDescriptors = [journalSort]
         journalFetchController = NSFetchedResultsController(fetchRequest: journalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: true)
+        let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: false)
         
         let intakeFetchRequest = FoodIntake.fetchRequest()
         intakeFetchRequest.sortDescriptors = [ieaSort]
@@ -115,7 +115,7 @@ class CDStorage: NSObject, ObservableObject {
         do {
             try context.save()
         } catch {
-            print("Error saving: \(error.localizedDescription)")
+            print("Error saving: \(error)")
         }
     }
 }
@@ -158,16 +158,7 @@ struct SkinConditionBeforeCD {
 
 // MARK: - CRUD Journal
 extension CDStorage {
-    func createJournal(foodIntake: String) {
-        let newJournal = Journal(context: PersistenceController.shared.container.viewContext)
-        newJournal.idJournal = UUID()
-        newJournal.foodIntake = foodIntake as NSObject
-        
-        save()
-    }
-    
-    // TODO: Tambahin 1 lg parameter buat ngeload gambar nya
-    func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD) {
+    func createJournal(foodIntake: [IEAData], exposure: [IEAData], activities: [IEAData], skinCondition: SkinConditionBeforeCD, triggerAreas: [TriggerAreaItem]) {
         // Get the weather data
         
         // Append Skin Condition
@@ -179,6 +170,8 @@ extension CDStorage {
         newSC.swelling = Int64(skinCondition.swelling)
         newSC.redness = Int64(skinCondition.redness)
         newSC.dryness = Int64(skinCondition.dryness)
+        newSC.scratch = Int64(skinCondition.traces)
+        newSC.poScorad = Int64(80)
         
         save()
         
@@ -206,15 +199,24 @@ extension CDStorage {
         newJournal.weatherTemp = 0.0
         newJournal.weatherHumid = 0.0
         newJournal.weatherTemp = 0.0
-        newJournal.skinCondition = newSC
+        newJournal.skinCondition = newSC.self
         
         save()
         
         // TODO: Kasih looping sesuai dengan array skin condition + gambarnya
+        for trigger in triggerAreas {
+            if let _ = trigger.image {
+                addTriggerAreas(journal: newJournal, trigger: trigger)
+            }
+        }
+    }
+    
+    func addTriggerAreas(journal: Journal, trigger: TriggerAreaItem) {
         let triggerArea = TriggerAreas(context: context)
         triggerArea.idTrigger = UUID()
-        triggerArea.journal = newJournal
-        
+        triggerArea.journal = journal
+        triggerArea.areaName = trigger.name
+        triggerArea.areaImage = trigger.safeImage() as NSObject
         save()
     }
     
@@ -264,6 +266,12 @@ struct RawIEAData {
     ]
 }
 
+enum IEA: String {
+    case activity = "Activity"
+    case exposure = "Exposure"
+    case intake = "Food Intake"
+}
+
 // MARK: - CRUD Exposure, Food Intake, dan Activity Template
 extension CDStorage {
     func createIEATemplate() {
@@ -308,32 +316,52 @@ extension CDStorage {
         }
     }
     
-    enum IEA: String {
-        case activity = "Activity"
-        case exposure = "Exposure"
-        case intake = "Intake"
-    }
-    
     func createIEA(_ type: IEA, name: String, thumb: String) {
         switch type {
         case .activity:
             let activity = Activity(context: self.context)
+            activity.idActivity = UUID()
             activity.activityName = name
             activity.activityThumb = thumb
             activity.deletable = true
             activity.isFavorite = false
+            save()
         case .exposure:
             let exposure = Exposure(context: self.context)
+            exposure.idExposure = UUID()
             exposure.exposureName = name
             exposure.exposureThumb = thumb
             exposure.deletable = true
             exposure.isFavorite = false
+            save()
         case .intake:
             let intake = FoodIntake(context: self.context)
+            intake.idFoodIntake = UUID()
             intake.intakeName = name
             intake.intakeThumb = thumb
             intake.deletable = true
             intake.isFavorite = false
+            save()
+        }
+    }
+    
+    func updateFavoriteIEA(_ type: IEA, id: UUID) {
+        switch type {
+        case .activity:
+            let act = activities.value.filter { act in
+                act.idActivity == id
+            }[0]
+            act.isFavorite.toggle()
+        case .exposure:
+            let act = envExposures.value.filter { act in
+                act.idExposure == id
+            }[0]
+            act.isFavorite.toggle()
+        case .intake:
+            let act = foodIntakes.value.filter { act in
+                act.idFoodIntake == id
+            }[0]
+            act.isFavorite.toggle()
         }
         save()
     }
@@ -349,10 +377,11 @@ extension CDStorage {
                 item.idExposure == id
             }[0])
         case .intake:
-            context.delete(activities.value.filter { item in
-                item.idActivity == id
+            context.delete(foodIntakes.value.filter { item in
+                item.idFoodIntake == id
             }[0])
         }
+        save()
     }
     
     // Bulk delete all IEA

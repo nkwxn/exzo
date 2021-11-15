@@ -38,8 +38,10 @@ struct AddJournalView: View {
                     JournalSection(type: .foodIntake) {
                         CategoryGrid($viewModel.foodIntake, color: .accentYellow)
                     } openPage: {
-                        // TODO: Edit hingga bisa buka intake editor
-                        print("Open Food Intake Editor")
+                        viewModel.showEditFoodIntake.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditFoodIntake) {
+                        FEAListView(ieaCategory: .intake)
                     }
                     JournalSection(type: .stressLevel) {
                         ExzoSlider(value: $viewModel.stressLevelSlider, range: viewModel.sliderRange1)
@@ -47,14 +49,18 @@ struct AddJournalView: View {
                     JournalSection(type: .exposure) {
                         CategoryGrid($viewModel.exposure, color: .copper)
                     } openPage: {
-                        // TODO: Edit hingga bisa buka exposure editor
-                        print("Open Exposure Editor")
+                        viewModel.showEditExposure.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditExposure) {
+                        FEAListView(ieaCategory: .exposure)
                     }
                     JournalSection(type: .activities) {
                         CategoryGrid($viewModel.activities, color: .brandy)
                     } openPage: {
-                        // TODO: Edit hingga bisa buka activity editor
-                        print("Open Activity Editor")
+                        viewModel.showEditActivities.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditActivities) {
+                        FEAListView(ieaCategory: .activity)
                     }
                     JournalSection(type: .skinConditions) {
                         VStack(spacing: 20) {

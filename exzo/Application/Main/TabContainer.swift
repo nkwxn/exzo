@@ -12,7 +12,6 @@ struct TabContainer: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            // TODO: Replace ModalPlaceholder with the list of journal made by Stef
             MySkinView()
                 .tabItem {
                     Image(systemName: "face.smiling")
@@ -23,14 +22,12 @@ struct TabContainer: View {
                     Image(systemName: "viewfinder.circle")
                     Text("Product")
                 }
-            Text("Insights Coming Soon")
-                .font(.custom("Avenir", size: 50))
+            TempInsightPlaceholder()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Insights")
                 }
-            Text("Settings")
-                .font(.custom("Lexend", size: 50))
+            SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Settings")

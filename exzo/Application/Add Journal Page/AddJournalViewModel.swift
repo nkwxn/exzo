@@ -40,7 +40,7 @@ class AddJournalViewModel: ObservableObject {
     @Published var sleepLoss = 6.0
     
     // Trigger areas
-    @Published var triggerAreas = [TriggerAreaItem(name: "Right arm", image: UIImage(named: "login_image")), TriggerAreaItem(name: "Neck", image: nil)]
+    @Published var triggerAreas = [TriggerAreaItem(name: "Right arm", image: nil), TriggerAreaItem(name: "Neck", image: nil)]
     
     private var intakeSubs: AnyCancellable?
     private var exposureSubs: AnyCancellable?
@@ -52,6 +52,11 @@ class AddJournalViewModel: ObservableObject {
     
     // doneDisabled
     @Published var doneDisabled = true
+    
+    // Showing modal on each edit (food intake, exposure, and activity)
+    @Published var showEditFoodIntake = false
+    @Published var showEditExposure = false
+    @Published var showEditActivities = false
     
     // swiftlint:disable function_body_length
     init() {
@@ -140,7 +145,8 @@ class AddJournalViewModel: ObservableObject {
                 stressLevel: Int(stressLevelSlider), dryness: Int(dryness), redness: Int(redness),
                 swelling: Int(swelling), crust: Int(crust), traces: Int(scratchTraces),
                 thickSkin: Int(thickSkin), itchy: Int(itchiness), sleepLoss: Int(sleepLoss)
-            )
+            ),
+            triggerAreas: triggerAreas
         )
         
         completion(true)

@@ -19,6 +19,7 @@ struct ExzoApp: App {
     var body: some Scene {
         WindowGroup {
             ExzoAppContainer()
+                .preferredColorScheme(.light)
                 .font(Avenir.shared.getFont())
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {

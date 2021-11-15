@@ -6,64 +6,68 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddFEAView: View {
-    let title: String = "Food Intake"
-    
-    static let defaultFoodCategory: String = "Food Category"
-    static let defaultFoodIcon: String = "Food Icon"
-    static let defaultFoodName: String = "Food Name"
+    @Environment(\.dismiss) var dismiss
+    let category: IEA
+    let accent: Color
     
     @State var selectedCategory: Bool = true
     @State var selectedIcon: Bool = true
     
+    @State var imageChoice = ""
+    @State var doneDisabled = true
+    @State var name = "..."
+    @State var alertNameShown = false
+    
+    init(category: IEA, accent: Color) {
+        self.category = category
+        self.accent = accent
+    }
+    
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    AddFEARowView(title: "Category", chooseImage: false, icon: nil, name: title)
-                    AddFEARowView(title: "Icon", chooseImage: false, icon: nil, name: "...")
-                    AddFEARowView(title: "Name", chooseImage: false, icon: nil, name: "...")
+        List {
+            Section {
+                AddFEARowView(title: "Category", chooseImage: false, icon: nil, name: category.rawValue, color: accent)
+                NavigationLink {
+                    SelectIconView(iconSelection: $imageChoice, accentColor: accent)
+                } label: {
+                    AddFEARowView(title: "Icon", chooseImage: true, icon: imageChoice.isEmpty ? Image(systemName: "circle.righthalf.filled") : Image(imageChoice), name: "...", color: accent)
                 }
-                .listRowBackground(Color.init(red: 242/255, green: 242/255, blue: 242/255))
-                
+                Button {
+                    alertNameShown.toggle()
+                } label: {
+                    AddFEARowView(title: "Name", chooseImage: false, icon: nil, name: name, color: accent)
+                }
+                .foregroundColor(Color.primary)
+                .alert(isPresented: $alertNameShown, TextAlert(title: "Name", message: "Please fill it with your own \(category.rawValue)") { result in
+                        if let result = result {
+                            self.name = result.isEmpty ? "..." : result
+                        }
+                    })
             }
-            .listStyle(InsetGroupedListStyle())
-            
-//            Form {
-//                Section{
-//                    Picker(selection: $selectedCategory, label: Text("Category")) {
-//                    }
-//                    Picker(selection: $selectedIcon, label: Text("Icons")) {
-//
-//                    }
-//                }
-//            }
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
+        }
+        .onReceive(Publishers.CombineLatest3(Just(imageChoice.isEmpty), Just(name.isEmpty), Just(name == "...")), perform: { output in
+            self.doneDisabled = (output.0 || output.1 || output.2)
+        })
+        .listStyle(InsetGroupedListStyle())
+        .navigationTitle("Add \(category.rawValue)")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done") {
+                    CDStorage.shared.createIEA(category, name: self.name, thumb: imageChoice)
+                    dismiss()
+                }
+                .disabled(doneDisabled)
             }
-            .onDisappear {
-                UITableView.appearance().backgroundColor = .systemGray
-            }
-//            .background(Color.white)
-            .navigationTitle("Add \(title)")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: {
-                
-            }, label: {
-                Text("Cancel")
-            }))
-            .navigationBarItems(trailing: Button(action: {
-                
-            }, label: {
-                Text("Done")
-            }).disabled(true))
         }
     }
 }
 
 struct AddFEAView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFEAView()
+        AddFEAView(category: .activity, accent: Color.brandy)
     }
 }

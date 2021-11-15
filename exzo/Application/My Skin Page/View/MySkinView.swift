@@ -7,59 +7,99 @@
 
 import SwiftUI
 
+struct CalendarHeader: View {
+    @Binding var selectedDate: Date
+    @Binding var currentPage: Date
+    
+    var body: some View {
+        // Headings
+        HStack {
+            Button { self.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self.currentPage)!
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+            .frame(height: 118, alignment: .top)
+            
+            CalendarView(dateSelected: $selectedDate, pageCurrent: $currentPage)
+                .frame(width: 300, height: 200, alignment: .init(horizontal: .center, vertical: .center))
+            
+            Button { self.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.currentPage)!
+            } label: {
+                Image(systemName: "chevron.right")
+            }
+            .frame(height: 118, alignment: .top)
+        }
+        
+    }
+}
+
 struct MySkinView: View {
     @State var journalViewModel = JournalViewModel()
-//    @State var calendarViewModel = CalendarViewModel()
     @State var isAddingJournal = false
     @ObservedObject private var calendarModel = CalendarModel()
     
     var body: some View {
         NavigationView {
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 19)
-                        .foregroundColor(Color.white)
-                        .frame(width: 309, height: 130, alignment: .center)
-                        .shadow(color: Color.init(uiColor: UIColor.init(red: 0.45, green: 0.29, blue: 0.22, alpha: 0.2)), radius: 10, x: 2, y: 5)
-//                        .shadow(color: Color.init(red: 0.45, green: 0.29, blue: 0.22), radius: 10, x: 2, y: 5)
-                    WeatherView()
-                        .frame(width: 309, height: 130, alignment: .center)
-                }
-                HStack {
-                    Button(action: { self.calendarModel.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self.calendarModel.currentPage)! }) {
-                        Image(systemName: "chevron.left")
-                    }
-                    .frame(height: 118, alignment: .top)
-                    
-                    CalendarView(dateSelected: $calendarModel.selectedDate, pageCurrent: $calendarModel.currentPage)
-                        .frame(width: 300, height: 250, alignment: .init(horizontal: .center, vertical: .center))
-                    
-                    Button(action: { self.calendarModel.currentPage = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self.calendarModel.currentPage)! }) {
-                        Image(systemName: "chevron.right")
-                    }
-                    .frame(height: 118, alignment: .top)
-                }
+            ScrollView {
                 
-                Button {
-                    isAddingJournal = true
-                } label: {
-                    Image(systemName: "plus")
-                    Text("Add Journal")
-                }.buttonStyle(ExzoButtonStyle(type: .primary))
-                    .padding()
-                List {
-                    ForEach(journalViewModel.journals) {
-                        Text("\($0) text")
+                // Header view needs to be pinned on the top
+                
+                LazyVStack(alignment: .center, spacing: 10, pinnedViews: [.sectionHeaders]) {
+                    // Parallax weather header
+                    WeatherView()
+                        .frame(width: UIScreen.main.bounds.width)
+                    Section {
+                        if journalViewModel.journals.isEmpty {
+                            ZStack {
+                                Color(uiColor: .systemGray5)
+                                    .cornerRadius(15)
+                                Text("No skin history at the moment")
+                                    .foregroundColor(.gray)
+                                    .padding()
+                            }
+                                .padding(.horizontal)
+                        } else {
+                            ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
+                                JournalRowView(journal: $1)
+                                    .padding(.horizontal)
+                            }
+                        }
+                    } header: {
+                        ZStack(alignment: .bottom) {
+                            Color.white
+                                .ignoresSafeArea(.all, edges: .top)
+                            CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
+                            VStack(alignment: .leading, spacing: 20) {
+                                Button {
+                                    isAddingJournal = true
+                                } label: {
+                                    Image(systemName: "plus")
+                                    Text("Add Journal")
+                                }.buttonStyle(ExzoButtonStyle(type: .primary))
+                                Text("Skin History")
+                                    .font(Lexend(.headline).getFont().bold())
+                            }
+                            .padding(.horizontal)
+                        }
                     }
                 }
-                Text("Journal List")
+                .sheet(isPresented: $isAddingJournal) {
+                    AddJournalView()
+                }
+            }
+            .navigationBarHidden(true)
+            .overlay {
+                VStack {
+                    Image("NavBar-Background")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
+                        .clipShape(Rectangle())
+                        .ignoresSafeArea(.all, edges: .top)
+                    Spacer()
+                }
             }
         }
-        .sheet(isPresented: $isAddingJournal) {
-            AddJournalView()
-        }
-        .navigationBarHidden(true)
-        
     }
 }
 
