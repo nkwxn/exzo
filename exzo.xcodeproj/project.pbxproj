@@ -36,6 +36,8 @@
 		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
 		BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */; };
 		BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */; };
+		BF36A947273DEBDE00943F94 /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36A946273DEBDE00943F94 /* ResultRow.swift */; };
+		BF36A949273DEC1800943F94 /* ScanningIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36A948273DEC1800943F94 /* ScanningIngredientView.swift */; };
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
 		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
@@ -161,6 +163,8 @@
 		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
 		BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontBodyView.swift; sourceTree = "<group>"; };
 		BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBodyView.swift; sourceTree = "<group>"; };
+		BF36A946273DEBDE00943F94 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
+		BF36A948273DEC1800943F94 /* ScanningIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningIngredientView.swift; sourceTree = "<group>"; };
 		BF651D762734B94200276CD1 /* QuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageView.swift; sourceTree = "<group>"; };
 		BF651D792734C49100276CD1 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightOnboardingView.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				5D23EE8E272FA78400541E7A /* ProductViewModel.swift */,
+				BF36A948273DEC1800943F94 /* ScanningIngredientView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -433,6 +438,15 @@
 			path = BodyPartsView;
 			sourceTree = "<group>";
 		};
+		BF36A945273DEBD100943F94 /* Parallax */ = {
+			isa = PBXGroup;
+			children = (
+				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
+				BF36A946273DEBDE00943F94 /* ResultRow.swift */,
+			);
+			path = Parallax;
+			sourceTree = "<group>";
+		};
 		BF651D782734BA7700276CD1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,11 +477,11 @@
 		BFD2B454273382560011F064 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF36A945273DEBD100943F94 /* Parallax */,
 				BF2F5D38273A30C90059FB23 /* BodyPartsView */,
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				BFD2B4572733827A0011F064 /* OnBoardingQuestionView.swift */,
 				BF651D792734C49100276CD1 /* ProgressView.swift */,
-				BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1157,6 +1171,7 @@
 				D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */,
 				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
 				5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */,
+				BF36A947273DEBDE00943F94 /* ResultRow.swift in Sources */,
 				5DE09037273950D100B2882B /* WeatherView.swift in Sources */,
 				5DF4ADF127338F0200F51423 /* Skin Conditions.swift in Sources */,
 				5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */,
@@ -1208,6 +1223,7 @@
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
+				BF36A949273DEC1800943F94 /* ScanningIngredientView.swift in Sources */,
 				D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */,
 				E2905622273D6E8600A22CB2 /* SettingRowView.swift in Sources */,
 				E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */,
