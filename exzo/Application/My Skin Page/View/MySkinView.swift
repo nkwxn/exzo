@@ -63,7 +63,7 @@ struct MySkinView: View {
                             ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
                                 JournalRowView(journal: $1)
                                     .padding(.horizontal)
-                                    .padding(.bottom, 14)
+                                    .padding(.vertical, 14)
                             }
                         }
                     } header: {
@@ -84,6 +84,7 @@ struct MySkinView: View {
                             .padding()
                         }
                     }
+                    Divider()
                 }
                 .sheet(isPresented: $isAddingJournal) {
                     AddJournalView()
