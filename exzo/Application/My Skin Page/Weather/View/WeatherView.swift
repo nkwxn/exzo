@@ -32,7 +32,7 @@ struct WeatherView: View {
                         .shadow(color: Color.init(uiColor: UIColor.init(red: 0.45, green: 0.29, blue: 0.22, alpha: 0.2)), radius: 10, x: 2, y: 5)
                 }
             case .done:
-                VStack {
+                VStack(spacing: 10) {
                     HStack {
                         AsyncImage(url: URL(string: viewModel.iconLink)) { image in
                             image.resizable()
@@ -67,6 +67,7 @@ struct WeatherView: View {
                         .lineLimit(3)
                     Text("Weather data provided by OpenWeather")
                         .font(.footnote)
+                        .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
                 .frame(width: 280, alignment: .center)
