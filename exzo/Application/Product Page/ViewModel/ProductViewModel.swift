@@ -35,4 +35,8 @@ class ProductViewModel: ObservableObject {
             productModel.deleteProduct(with: id)
         }
     }
+    
+    func deleteItem(id: UUID) {
+        productModel.deleteProduct(with: id)
+    }
 }

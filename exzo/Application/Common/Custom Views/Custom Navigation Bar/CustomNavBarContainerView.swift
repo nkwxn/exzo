@@ -21,7 +21,7 @@ struct CustomNavBarContainerView<Content: View>: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavBarView(twoColumnsNavBar: twoColumnsNavBar, title: title, subtitle: subtitle, showButton: showButton)
+            CustomNavBarView(twoColumnsNavBar: twoColumnsNavBar, title: title, subtitle: subtitle, showButton: showButton) {}
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

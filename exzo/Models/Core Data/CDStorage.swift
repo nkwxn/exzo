@@ -141,6 +141,7 @@ extension CDStorage {
             item.idProduct == id
         }
         context.delete(productItem[0])
+        save()
     }
 }
 

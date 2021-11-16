@@ -16,6 +16,7 @@ struct CustomNavBarView: View {
     let title: String
     let subtitle: String?
     let showButton: NavBarButton
+    var action: () -> Void
 
     var body: some View {
         HStack {
@@ -40,7 +41,8 @@ struct CustomNavBarView: View {
         .background(
             Image("NavBar-Background")
                 .resizable()
-                .cornerRadius(30)
+                .cornerRadius(radius: 30, corners: .bottomRight)
+                .cornerRadius(radius: 30, corners: .bottomLeft)
                 .ignoresSafeArea()
         )
     }
@@ -80,7 +82,7 @@ extension CustomNavBarView {
     
     private var addButton: some View {
         Button(action: {
-            
+            action()
         }, label: {
             Image("Button-Add")
         })
@@ -88,7 +90,7 @@ extension CustomNavBarView {
     
     private var editButton: some View {
         Button(action: {
-            
+            action()
         }, label: {
             Image(systemName: "pencil")
         })
@@ -98,7 +100,7 @@ extension CustomNavBarView {
 struct CustomNavBarView_Previews: PreviewProvider {
     static var previews: some View {
             VStack {
-                CustomNavBarView(twoColumnsNavBar: true, title: "9 Feb 2000", subtitle: "20:00", showButton: NavBarButton.editButton)
+                CustomNavBarView(twoColumnsNavBar: true, title: "9 Feb 2000", subtitle: "20:00", showButton: NavBarButton.editButton) {}
                 Spacer()
             }
     }
