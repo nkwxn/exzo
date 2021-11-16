@@ -1,14 +1,14 @@
 //
-//  FrontBodyView.swift
-//  exzo
+//   FrontBodyView.swift
+//   exzo
 //
-//  Created by Difa N Pratama on 09/11/21.
+//   Created by Difa N Pratama on 09/11/21.
 //
 
 import SwiftUI
 
 struct FrontBodyView: View {
-    // Front Body
+    //  Front Body
     @State var isFrontHead: Bool = false
     @State var isFrontShoulder: Bool = false
     @State var isFrontChest: Bool = false
@@ -16,7 +16,7 @@ struct FrontBodyView: View {
     @State var isFrontLeftThigh: Bool = false
     @State var isFrontBelly: Bool = false
     @State var isFrontX: Bool = false
-    // Front Arm
+    //  Front Arm
     @State var isFrontRightShoulder: Bool = false
     @State var isFrontRightBisep: Bool = false
     @State var isFrontRightArm: Bool = false
@@ -25,7 +25,7 @@ struct FrontBodyView: View {
     @State var isFrontLeftBisep: Bool = false
     @State var isFrontLeftArm: Bool = false
     @State var isFrontLeftFinger: Bool = false
-    // Front Knee
+    //  Front Knee
     @State var isFrontRightKnee: Bool = false
     @State var isFrontRightFoot: Bool = false
     @State var isFrontLeftKnee: Bool = false
@@ -35,13 +35,13 @@ struct FrontBodyView: View {
     @Binding var bodyArr: [String]
     var body: some View {
         ZStack {
-            //MARK: - Front Body
+            // MARK: - Front Body
             Group {
-                //MARK: - Body
+                // MARK: - Body
                 Group {
                     Button {
                         self.isFrontHead.toggle()
-                        if (isFrontHead) {
+                        if(isFrontHead) {
                             score += 4.5
                             bodyArr.append("F - Head")
                         } else {
@@ -166,7 +166,7 @@ struct FrontBodyView: View {
 
                 }
                 
-                //MARK: - Right Hand
+                // MARK: - Right Hand
                 Group {
                     Button {
                         self.isFrontRightShoulder.toggle()
@@ -243,7 +243,7 @@ struct FrontBodyView: View {
                     
                 }
                 
-                //MARK: - Left Hand
+                // MARK: - Left Hand
                 Group {
                     Button {
                         self.isFrontLeftShoulder.toggle()
@@ -320,7 +320,7 @@ struct FrontBodyView: View {
 
                 }
                 
-                // MARK: - Right Knee
+                //  MARK: - Right Knee
                 Group {
                     Button {
                         self.isFrontRightKnee.toggle()
@@ -360,7 +360,7 @@ struct FrontBodyView: View {
 
                 }
                 
-                // Left Knee
+                //  Left Knee
                 Group {
                     Button {
                         self.isFrontLeftKnee.toggle()
@@ -404,8 +404,8 @@ struct FrontBodyView: View {
     }
 }
 
-//struct FrontBodyView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FrontBodyView(score: Binding.constant(0))
-//    }
-//}
+// struct FrontBodyView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         FrontBodyView(score: Binding.constant(0))
+//     }
+// }

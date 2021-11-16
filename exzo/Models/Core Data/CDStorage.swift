@@ -122,13 +122,13 @@ class CDStorage: NSObject, ObservableObject {
 
 // MARK: - CRUD Product
 extension CDStorage {
-    func createProduct(name: String, type: ProductType, image: UIImage? = nil) {
+    func createProduct(name: String, type: ProductType, image: UIImage? = nil, ingredients: String? = nil) {
         let newProduct = Product(context: PersistenceController.shared.container.viewContext)
         newProduct.idProduct = UUID()
         newProduct.productName = name
         newProduct.productType = type.rawValue
         newProduct.productImage = (image ?? UIImage()) as NSObject
-        
+        newProduct.productIngr = (ingredients ?? "") as NSObject
         save()
     }
     
