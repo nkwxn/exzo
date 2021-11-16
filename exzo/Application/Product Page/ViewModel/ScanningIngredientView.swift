@@ -66,18 +66,9 @@ struct ScanIngredientView: UIViewControllerRepresentable {
                 let maximumRecognitionCandidates = 1
                 for observation in observations {
                     guard let candidate = observation.topCandidates(maximumRecognitionCandidates).first else { continue }
-//                    var addCandidate: String {
-//                        if (candidate.string in fragrance) {
-//                            return
-//                        }
-//                        return candidate.string
-//                    }
+                    
                     entireRecognizedText += "-\(candidate.string)\n"
-                    /* ForEach(section.paintings[painting].title.filter {$0.contains(searchText) || searchText.isEmpty}, id:\.self) { searchText in
-                     NavigationLink(destination: SearchDetail(painting: section.paintings[painting])) {
-                                         Text(section.paintings[painting].title)
-                     }
-                 }*/
+                                        
                 }
             }
             recognizeTextRequest.recognitionLevel = .accurate
