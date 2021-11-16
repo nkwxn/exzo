@@ -10,6 +10,7 @@ import SwiftUI
 struct ExzoSlider: View {
     @Environment(\.colorScheme) private var colorScheme
     
+    // swiftlint:disable redundant_optional_initialization
     var title: String? = nil
     @Binding var value: Double {
         didSet {
