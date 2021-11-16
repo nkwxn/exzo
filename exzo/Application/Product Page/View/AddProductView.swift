@@ -14,10 +14,17 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    @State var image = UIImage(systemName: "camera")! //kayanya mesti bikin asset buat empty state? idk lol haha
+    //FIXME:  //kayanya mesti bikin asset buat empty state? idk lol haha
+    @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
+    @State private var recognizedText = ""
+    
+    //Vision state
+    @State var isScan: Bool = false
+    @State private var showingScanningView = false
+    
     @State var selectedType = ProductType.others
     
     var productType: [ProType] = ProductType.allCases.map { type in
@@ -30,19 +37,30 @@ struct AddProduct: View {
     
     var body: some View {
         NavigationView {
-            Form {
+            VStack(alignment: .leading) {
+                
                 HStack(alignment: .center, spacing: 11.0) {
                     Section {
-                        Image(uiImage: self.image)
-                            .resizable()
-                            .cornerRadius(15)
-                            .frame(width: 141, height: 181, alignment: .leading)
-                            .background(Color.white.opacity(0.2))
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
-                            .onTapGesture {
-                                showOption = true
+                        ZStack(alignment: .trailing){
+                            if let image = image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .cornerRadius(15)
+                                    .frame(width: 141, height: 181, alignment: .leading)
+                                    .background(Color.white.opacity(0.2))
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                    .onTapGesture {
+                                        showOption = true
+                                    }
                             }
+                            Image("camer")
+                                .resizable()
+                                .frame(width: 29, height: 29)
+                                .opacity(image != UIImage(imageLiteralResourceName: "PhotoProduct") ? 1 : 0)
+                                .offset(x: -10, y: -65)
+                        }
+                        
                     }
                     .confirmationDialog("Choose photo source", isPresented: $showOption, titleVisibility: .visible) {
                         Button("Photo Library") {
@@ -63,8 +81,9 @@ struct AddProduct: View {
                         Section(header: Text("Type of Product")) {
                             Picker("", selection: $selectedType) {
                                 ForEach(productType) { typeOfProduct in
-                                    Text(typeOfProduct.productType.rawValue).tag(typeOfProduct.productType)
-                                        .frame(alignment: .leading)
+                                    Text(typeOfProduct.productType.rawValue)
+                                        .tag(typeOfProduct.productType)
+                                        
                                 }
                             }
                         }
@@ -75,7 +94,43 @@ struct AddProduct: View {
                         Divider()
                     }
                 }
+                HStack {
+                    Text("List of Ingredients")
+                    Spacer()
+                    Button {
+                        self.showingScanningView.toggle()
+                    } label: {
+                        Image("camer")
+                            .resizable()
+                            .frame(width: 29, height: 29)
+                    }.opacity(recognizedText != "" ? 1 : 0)
+
+                }
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .strokeBorder(Color.copper, lineWidth: 2)
+                    Button {
+                        self.isScan.toggle()
+                        self.showingScanningView.toggle()
+                    } label: {
+                        VStack {
+                            Image(systemName: "camera")
+                                .frame(width: 18, height: 18)
+                            Text("Scan your Ingredients")
+                                .scaledFont(name: "Avenir", size: 18)
+                        }
+                    }.opacity(isScan ? 0 : 1)
+
+                    Text(recognizedText)
+                        .padding()
+                }.sheet(isPresented: $showingScanningView) {
+                    ScanIngredientView(recognizedText: self.$recognizedText)
+                }
+                
+                Spacer()
             }
+            .padding()
             .navigationTitle(Text("Add Product"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

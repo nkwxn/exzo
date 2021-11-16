@@ -10,27 +10,24 @@ import SwiftUI
 struct TabContainer: View {
     var body: some View {
         TabView {
-            // TODO: Replace ModalPlaceholder with the list of journal made by Stef
             MySkinView()
                 .tabItem {
-                    Image(systemName: "scribble.variable")
+                    Image(systemName: "face.smiling")
                     Text("My Skin")
                 }
             ProductView()
                 .tabItem {
-                    Image(systemName: "scribble.variable")
+                    Image(systemName: "viewfinder.circle")
                     Text("Product")
                 }
-            Text("Avenir")
-                .font(.custom("Avenir", size: 50))
+            TempInsightPlaceholder()
                 .tabItem {
-                    Image(systemName: "scribble.variable")
+                    Image(systemName: "chart.pie")
                     Text("Insights")
                 }
-            Text("Lexend")
-                .font(.custom("Lexend", size: 50))
+            SettingsView()
                 .tabItem {
-                    Image(systemName: "scribble.variable")
+                    Image(systemName: "gearshape")
                     Text("Settings")
                 }
         }

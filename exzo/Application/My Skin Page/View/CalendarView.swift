@@ -24,16 +24,18 @@ struct CalendarView: UIViewRepresentable {
         calendar.scope = .week
         calendar.appearance.headerDateFormat = "MMM YYYY"
         calendar.appearance.headerMinimumDissolvedAlpha = 0
-        calendar.appearance.headerTitleColor = .brown //warna month
-        calendar.appearance.selectionColor = UIColor(red: 150, green: 0, blue: 0, alpha: 0.5) //warna kalo choose date
-        calendar.appearance.titleSelectionColor = UIColor.brown
-        calendar.appearance.titleTodayColor = .white //warna tanggal today
-        calendar.appearance.weekdayTextColor = .black //warna harinya
-        calendar.appearance.todayColor = .brown //warna buletan today
+        calendar.appearance.headerTitleColor = UIColor(Color.copper) // warna month
+        calendar.appearance.selectionColor = UIColor(Color.antique) // warna buletan kalo choose date
+        calendar.appearance.titleSelectionColor = UIColor(Color.copper) // warna tanggal yang choose
+        calendar.appearance.titleTodayColor = UIColor(Color.copper) // warna tanggal today
+        calendar.appearance.weekdayTextColor = .black // warna harinya
+        calendar.appearance.todayColor = .clear // warna buletan today
         calendar.appearance.titlePlaceholderColor = .white
         
         calendar.dataSource = context.coordinator
         calendar.delegate = context.coordinator
+        
+        calendar.select(calendar.today)
         
         return calendar
     }
@@ -68,7 +70,7 @@ struct CalendarView: UIViewRepresentable {
             } else if date.removeTimestamp!.compare(Date().removeTimestamp!) == .orderedDescending {
                 return .gray
             } else {
-                return .systemOrange
+                return UIColor(Color.copper)
             }
         }
     }

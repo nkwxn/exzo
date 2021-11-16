@@ -37,15 +37,30 @@ struct AddJournalView: View {
                 VStack {
                     JournalSection(type: .foodIntake) {
                         CategoryGrid($viewModel.foodIntake, color: .accentYellow)
+                    } openPage: {
+                        viewModel.showEditFoodIntake.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditFoodIntake) {
+                        FEAListView(ieaCategory: .intake)
                     }
                     JournalSection(type: .stressLevel) {
                         ExzoSlider(value: $viewModel.stressLevelSlider, range: viewModel.sliderRange1)
                     }
                     JournalSection(type: .exposure) {
                         CategoryGrid($viewModel.exposure, color: .copper)
+                    } openPage: {
+                        viewModel.showEditExposure.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditExposure) {
+                        FEAListView(ieaCategory: .exposure)
                     }
                     JournalSection(type: .activities) {
                         CategoryGrid($viewModel.activities, color: .brandy)
+                    } openPage: {
+                        viewModel.showEditActivities.toggle()
+                    }
+                    .sheet(isPresented: $viewModel.showEditActivities) {
+                        FEAListView(ieaCategory: .activity)
                     }
                     JournalSection(type: .skinConditions) {
                         VStack(spacing: 20) {
@@ -60,15 +75,10 @@ struct AddJournalView: View {
                         }
                     }
                     JournalSection(type: .triggerAreas) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(0..<7) { _ in
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 150, height: 175)
-                                }
-                            }
-                        }
-                        .frame(width: nil, height: 175)
+                        TriggerAreaHScroll(items: $viewModel.triggerAreas)
+                    } openPage: {
+                        // TODO: Edit hingga bisa buka trigger area editor
+                        print("Open Trigger Area Editor")
                     }
                 }
                 .padding()
@@ -81,10 +91,13 @@ struct AddJournalView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        // close the modal view and back to the screen
-                        dismiss()
+                        viewModel.doneBtnPressed {
+                            if $0 {
+                                dismiss()
+                            }
+                        }
                     }
-                    .disabled(true)
+                    .disabled(viewModel.doneDisabled)
                 }
             }
         }

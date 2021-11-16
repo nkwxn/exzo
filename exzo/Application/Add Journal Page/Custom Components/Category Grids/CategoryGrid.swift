@@ -12,6 +12,7 @@ struct CategoryItem: Identifiable {
     var iconName: String
     var name: String
     var selected: Bool
+    var deletable: Bool?
 }
 
 struct CategoryGrid: View {
@@ -31,8 +32,8 @@ struct CategoryGrid: View {
     
     var body: some View {
         LazyVGrid(columns: gridItems, spacing: 20) {
-            ForEach(grid) {
-                CategoryGridItem(category: $0, accent: gridColor)
+            ForEach(Array(grid.enumerated()), id: \.0) { idx, _ in
+                CategoryGridItem(category: $grid[idx], accent: gridColor)
                     .aspectRatio(0.7, contentMode: .fit)
             }
         }
@@ -40,7 +41,7 @@ struct CategoryGrid: View {
 }
 
 struct CategoryGridItem: View {
-    @State var category: CategoryItem
+    @Binding var category: CategoryItem
     var accent: Color
     
     var body: some View {

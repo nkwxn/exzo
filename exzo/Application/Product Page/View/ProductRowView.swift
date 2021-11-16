@@ -19,15 +19,12 @@ struct ProductRow: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 15)
                 .fill(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .shadow(radius: 3, x: 2, y: 5)
-                .frame(width: 320, height: 120)
             HStack {
-                Spacer()
-                    .frame(width: 12)
                 Image(uiImage: getImage())
                     .resizable()
                     .frame(width: 112, height: 104, alignment: .leading)
