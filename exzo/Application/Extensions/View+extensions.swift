@@ -88,6 +88,13 @@ extension View {
         AlertWrapper(isPresented: isPresented, alert: alert, content: self)
     }
     
+    /**
+     Adding a corner radius for a specific corner
+     
+     - parameters:
+        - radius: the radius
+        - corners: The specific corners where it belongs (allCorners, bottomLeft, bottomRight, topLeft, topRight)
+     */
     func cornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
         ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
     }
