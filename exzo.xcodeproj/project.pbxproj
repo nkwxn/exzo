@@ -89,6 +89,11 @@
 		D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */; };
 		D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87A2735152D00425E43 /* CategoryGrid.swift */; };
 		D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87C27364DB500425E43 /* ExzoSlider.swift */; };
+		D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */; };
+		D5ADFE8E274640210099E7FC /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8D274640210099E7FC /* InsightsView.swift */; };
+		D5ADFE902746493A0099E7FC /* InsightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */; };
+		D5ADFE9327465F1B0099E7FC /* InsightsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */; };
+		D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */; };
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
@@ -221,6 +226,11 @@
 		D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewModel.swift; sourceTree = "<group>"; };
 		D5ADA87A2735152D00425E43 /* CategoryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGrid.swift; sourceTree = "<group>"; };
 		D5ADA87C27364DB500425E43 /* ExzoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoSlider.swift; sourceTree = "<group>"; };
+		D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareContainer.swift; sourceTree = "<group>"; };
+		D5ADFE8D274640210099E7FC /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewModel.swift; sourceTree = "<group>"; };
+		D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsDetail.swift; sourceTree = "<group>"; };
+		D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightLineGraph.swift; sourceTree = "<group>"; };
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -562,6 +572,7 @@
 		D5163E68272802D400DF09D0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D5ADFE8827463B820099E7FC /* Insights */,
 				E290561C273D645E00A22CB2 /* Settings Page */,
 				D51CFC842733C75D00DE63CC /* Add Journal Page */,
 				BFD2B4532733824E0011F064 /* OnBoarding */,
@@ -816,6 +827,42 @@
 				D5ADA87A2735152D00425E43 /* CategoryGrid.swift */,
 			);
 			path = "Category Grids";
+			sourceTree = "<group>";
+		};
+		D5ADFE8827463B820099E7FC /* Insights */ = {
+			isa = PBXGroup;
+			children = (
+				D5ADFE9127465F080099E7FC /* Detail */,
+				D5ADFE8A27463C510099E7FC /* Reusables */,
+				D5ADFE8927463C480099E7FC /* Main Page */,
+			);
+			path = Insights;
+			sourceTree = "<group>";
+		};
+		D5ADFE8927463C480099E7FC /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
+				D5ADFE8D274640210099E7FC /* InsightsView.swift */,
+				D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */,
+			);
+			path = "Main Page";
+			sourceTree = "<group>";
+		};
+		D5ADFE8A27463C510099E7FC /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */,
+				D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
+		D5ADFE9127465F080099E7FC /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		D5B53288273CF8F0003EC433 /* List of IEA */ = {
@@ -1137,11 +1184,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */,
+				D5ADFE8E274640210099E7FC /* InsightsView.swift in Sources */,
 				BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */,
 				BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */,
 				E2EF6919273A086E00B2E321 /* AddFEAView.swift in Sources */,
 				E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */,
 				E290561E273D647900A22CB2 /* SettingsView.swift in Sources */,
+				D5ADFE902746493A0099E7FC /* InsightsViewModel.swift in Sources */,
 				D5494AD8272FA8EA00DA1CF7 /* PreOnboardingView.swift in Sources */,
 				BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */,
 				D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */,
@@ -1173,6 +1222,7 @@
 				5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */,
 				BF36A947273DEBDE00943F94 /* ResultRow.swift in Sources */,
 				5DE09037273950D100B2882B /* WeatherView.swift in Sources */,
+				D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */,
 				5DF4ADF127338F0200F51423 /* Skin Conditions.swift in Sources */,
 				5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */,
 				5DE09035273950C600B2882B /* WeatherViewModel.swift in Sources */,
@@ -1209,6 +1259,7 @@
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
+				D5ADFE9327465F1B0099E7FC /* InsightsDetail.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
@@ -1220,6 +1271,7 @@
 				5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */,
 				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
 				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
+				D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
 				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,

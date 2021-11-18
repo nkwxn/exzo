@@ -20,7 +20,7 @@ struct TabContainer: View {
                     Image(systemName: "viewfinder.circle")
                     Text("Product")
                 }
-            TempInsightPlaceholder()
+            InsightsView()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Insights")
