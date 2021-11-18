@@ -41,7 +41,7 @@ struct AddProduct: View {
                 
                 HStack(alignment: .center, spacing: 11.0) {
                     Section {
-                        ZStack(alignment: .trailing){
+                        ZStack(alignment: .trailing) {
                             if let image = image {
                                 Image(uiImage: image)
                                     .resizable()
@@ -149,7 +149,7 @@ struct AddProduct: View {
     }
     
     private func addProductAction() {
-        CDStorage.shared.createProduct(name: name, type: selectedType, image: image)
+        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: recognizedText)
         self.presentationMode.wrappedValue.dismiss()
     }
 }
