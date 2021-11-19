@@ -61,7 +61,7 @@
 		D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8327280E3000DF09D0 /* WaitAlert.swift */; };
 		D5163E8627280F6400DF09D0 /* Lexend.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5163E8027280CBD00DF09D0 /* Lexend.ttf */; };
 		D5163E8727280F6E00DF09D0 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5163E7F2728098E00DF09D0 /* Avenir.ttc */; };
-		D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8827280F9A00DF09D0 /* Extensions.swift */; };
+		D5163E8927280F9A00DF09D0 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8827280F9A00DF09D0 /* Color+extensions.swift */; };
 		D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E8B2728108A00DF09D0 /* TabContainer.swift */; };
 		D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */; };
 		D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC862733C78100DE63CC /* AddJournalView.swift */; };
@@ -82,6 +82,7 @@
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
 		D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */; };
+		D575967D274799100053D39B /* InsightBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575967C274799100053D39B /* InsightBarChart.swift */; };
 		D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */; };
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
@@ -92,7 +93,7 @@
 		D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */; };
 		D5ADFE8E274640210099E7FC /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8D274640210099E7FC /* InsightsView.swift */; };
 		D5ADFE902746493A0099E7FC /* InsightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */; };
-		D5ADFE9327465F1B0099E7FC /* InsightsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */; };
+		D5ADFE9327465F1B0099E7FC /* InsightsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE9227465F1B0099E7FC /* InsightsDetailView.swift */; };
 		D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */; };
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
@@ -197,7 +198,7 @@
 		D5163E7F2728098E00DF09D0 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		D5163E8027280CBD00DF09D0 /* Lexend.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lexend.ttf; sourceTree = "<group>"; };
 		D5163E8327280E3000DF09D0 /* WaitAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAlert.swift; sourceTree = "<group>"; };
-		D5163E8827280F9A00DF09D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D5163E8827280F9A00DF09D0 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		D5163E8B2728108A00DF09D0 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
 		D51CFC82273392D100DE63CC /* ExzoAppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoAppContainer.swift; sourceTree = "<group>"; };
 		D51CFC862733C78100DE63CC /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsightPlaceholder.swift; sourceTree = "<group>"; };
 		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
+		D575967C274799100053D39B /* InsightBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightBarChart.swift; sourceTree = "<group>"; };
 		D58AF75327310E3000E67214 /* ExzoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoButtonStyle.swift; sourceTree = "<group>"; };
 		D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoTextFieldStyle.swift; sourceTree = "<group>"; };
 		D58AF7582731492100E67214 /* QuarterArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterArc.swift; sourceTree = "<group>"; };
@@ -229,7 +231,7 @@
 		D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareContainer.swift; sourceTree = "<group>"; };
 		D5ADFE8D274640210099E7FC /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewModel.swift; sourceTree = "<group>"; };
-		D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsDetail.swift; sourceTree = "<group>"; };
+		D5ADFE9227465F1B0099E7FC /* InsightsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsDetailView.swift; sourceTree = "<group>"; };
 		D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightLineGraph.swift; sourceTree = "<group>"; };
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
@@ -671,7 +673,7 @@
 		D5163E8527280E4900DF09D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D5163E8827280F9A00DF09D0 /* Extensions.swift */,
+				D5163E8827280F9A00DF09D0 /* Color+extensions.swift */,
 				BFD2B44E2733809B0011F064 /* Color.swift */,
 				D5B53289273D573C003EC433 /* View+extensions.swift */,
 			);
@@ -853,6 +855,7 @@
 			children = (
 				D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */,
 				D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */,
+				D575967C274799100053D39B /* InsightBarChart.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -860,7 +863,7 @@
 		D5ADFE9127465F080099E7FC /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				D5ADFE9227465F1B0099E7FC /* InsightsDetail.swift */,
+				D5ADFE9227465F1B0099E7FC /* InsightsDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1195,7 +1198,8 @@
 				BFD2B4582733827A0011F064 /* OnBoardingQuestionView.swift in Sources */,
 				D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */,
 				D5494AE1272FFA5E00DA1CF7 /* SetNicknameView.swift in Sources */,
-				D5163E8927280F9A00DF09D0 /* Extensions.swift in Sources */,
+				D575967D274799100053D39B /* InsightBarChart.swift in Sources */,
+				D5163E8927280F9A00DF09D0 /* Color+extensions.swift in Sources */,
 				BFD2B44F2733809B0011F064 /* Color.swift in Sources */,
 				E29FCB2B272FA28400721FFD /* UDHelper.swift in Sources */,
 				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
@@ -1259,7 +1263,7 @@
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */,
-				D5ADFE9327465F1B0099E7FC /* InsightsDetail.swift in Sources */,
+				D5ADFE9327465F1B0099E7FC /* InsightsDetailView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
@@ -1453,7 +1457,6 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1488,7 +1491,6 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Exzo needs access to your photo library to select image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

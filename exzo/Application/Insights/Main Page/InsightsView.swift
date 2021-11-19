@@ -7,26 +7,70 @@
 
 import SwiftUI
 
+enum InsightDetails: String {
+    case foodIntake = "Food intake"
+    case exposure = "Exposure"
+    case stress = "Stress"
+    case product = "Product / treatment"
+    case skinCon = "Skin condition"
+    
+    func getDescription(items: [String]) -> String {
+        switch self {
+        case .foodIntake, .exposure:
+            let type = self
+            let itemsStr = items.joined(separator: ", ")
+            return "You had \(self.rawValue.lowercased()) of \(itemsStr) this month. Try to minimize those \(type.rawValue.split(separator: " ").last!.lowercased())"
+        default:
+            return "hmm copywriting bener2"
+        }
+    }
+    
+    func getDescription(stressLevel: Int) -> String {
+        getDescription(items: ["\(stressLevel)"])
+    }
+}
+
 struct InsightRow: View {
+    var detail: InsightDetails
     @State var title: String
     @State var desc: String
     
+    init(_ detail: InsightDetails, items: [String]) {
+        self.detail = detail
+        self.title = detail.rawValue
+        self.desc = detail.getDescription(items: items)
+    }
+    
+    init(_ detail: InsightDetails, stressLevel: Int) {
+        self.detail = detail
+        self.title = detail.rawValue
+        self.desc = detail.getDescription(stressLevel: stressLevel)
+    }
+    
     var body: some View {
-        RoundedSquareContainer(autoPadding: true) {
-            HStack(spacing: 16) {
-                Image("icon_products")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .clipShape(Circle())
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.title3)
-                        .bold()
-                    Text(desc)
+        NavigationLink {
+            InsightsDetailView(detail: detail)
+        } label: {
+            RoundedSquareContainer(autoPadding: true) {
+                HStack(spacing: 16) {
+                    Image("icon_products")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .font(.title3)
+                            .bold()
+                        Text(desc)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(Color.accentColor)
                 }
             }
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -65,18 +109,19 @@ struct InsightsView: View {
                                 }
                                 Text("You have score of **\(score)** which indicates that you have **moderate eczema**")
                                 Text("This means that your eczema **covers pretty large areas** of your skin, **periodically feels itchy,** and **visible skin signs.**")
+                                HStack {
+                                    Spacer()
+                                    NavigationLink("See details") {
+                                        InsightsDetailView(detail: .skinCon)
+                                    }
+                                }
                             }
                         }
-                        NavigationLink {
-                            InsightsDetail()
-                        } label: {
-                            InsightRow(title: "Food intake", desc: "You had high food intakes of dairy and gluten this month. Try to minimize those intakes.")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-                        InsightRow(title: "Exposure", desc: "You had high exposure of dust and pollen this month. Try to minimize those exposures.")
-                        InsightRow(title: "Stress", desc: "You did not suffer from stress this month. Keep maintain your child's stress.")
-                        InsightRow(title: "Product / treatment", desc: "You used high amount of Lotion: Cerave SA. Try to minimize those products.")
+                        InsightRow(.foodIntake, items: ["dairy", "gluten"])
+                        InsightRow(.exposure, items: ["dairy", "gluten"])
+                        InsightRow(.stress, items: ["dairy", "gluten"])
+                        InsightRow(.product, items: ["dairy", "gluten"])
+                        
                     }
                 }
             }

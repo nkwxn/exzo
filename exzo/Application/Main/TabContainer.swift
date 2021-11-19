@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabContainer: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         TabView {
             MySkinView()
@@ -31,6 +33,7 @@ struct TabContainer: View {
                     Text("Settings")
                 }
         }
+        .tabViewStyle(backgroundColor: colorScheme == .light ? .white : .black, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)
     }
 }
 
