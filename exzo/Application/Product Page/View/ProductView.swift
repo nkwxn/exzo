@@ -41,13 +41,6 @@ struct ProductView: View {
             }
             .navigationBarHidden(true)
             .navigationTitle("Products")
-//            .toolbar {
-//                ToolbarItem(placement: .automatic) {
-//                    Button(action: { self.isPresented.toggle() }) {
-//                        Image(systemName: "plus")
-//                    }
-//                }
-//            }
         }
     }
 }

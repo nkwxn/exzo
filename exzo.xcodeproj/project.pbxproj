@@ -23,7 +23,6 @@
 		5DE09033273950AE00B2882B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09032273950AE00B2882B /* APIRequest.swift */; };
 		5DE09035273950C600B2882B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09034273950C600B2882B /* WeatherViewModel.swift */; };
 		5DE09037273950D100B2882B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09036273950D100B2882B /* WeatherView.swift */; };
-		5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE65108273245F800CCAA39 /* ImagePicker.swift */; };
 		5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE42733837800F51423 /* MySkinView.swift */; };
 		5DF4ADE92733856700F51423 /* JournalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADE82733856700F51423 /* JournalRowView.swift */; };
 		5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADEA27338ADA00F51423 /* Food Intakes.swift */; };
@@ -154,7 +153,6 @@
 		5DE09032273950AE00B2882B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		5DE09034273950C600B2882B /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5DE09036273950D100B2882B /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		5DE65108273245F800CCAA39 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5DF4ADE42733837800F51423 /* MySkinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySkinView.swift; sourceTree = "<group>"; };
 		5DF4ADE82733856700F51423 /* JournalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalRowView.swift; sourceTree = "<group>"; };
 		5DF4ADEA27338ADA00F51423 /* Food Intakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food Intakes.swift"; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 			children = (
 				BFD2B463273392FF0011F064 /* ImagePicker.swift */,
 				5D23EE90272FA79200541E7A /* ProductModel.swift */,
-				5DE65108273245F800CCAA39 /* ImagePicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1272,7 +1269,6 @@
 				5D034A732732AE04005DB9B9 /* ProductDetailView.swift in Sources */,
 				5D23E523273942AF007B6988 /* Constant.swift in Sources */,
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
-				5DE65109273245F800CCAA39 /* ImagePicker.swift in Sources */,
 				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
 				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
 				D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */,

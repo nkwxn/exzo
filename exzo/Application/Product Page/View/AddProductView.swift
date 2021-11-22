@@ -135,9 +135,11 @@ struct AddProduct: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { presentationMode.wrappedValue.dismiss() }) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
                         Text("Cancel")
-                    }
+                    })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: addProductAction) {
