@@ -40,67 +40,60 @@ struct MySkinView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack(spacing: 0) {
+                JournalNavBarView(twoColumnsNavBar: false, title: "Skin Journal", subtitle: nil, showButton: .addButton) {
+                    self.isAddingJournal.toggle()
+                }
+                .aspectRatio(contentMode: .fit)
                 
-                // Header view needs to be pinned on the top
-                
-                LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
-                    // Parallax weather header
-                    WeatherView()
-                        .frame(width: UIScreen.main.bounds.width)
-                        .padding(.bottom, 20)
-                    Section {
-                        if journalViewModel.journals.isEmpty {
-                            ZStack {
-                                Color(uiColor: .systemGray5)
-                                    .cornerRadius(15)
-                                Text("No skin history at the moment")
-                                    .foregroundColor(.gray)
-                                    .padding()
-                            }
+                ScrollView {
+                    LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
+                        WeatherView()
+                            .frame(width: UIScreen.main.bounds.width)
+                            .padding(.bottom, 20)
+                        Section {
+                            if journalViewModel.journals.isEmpty {
+                                ZStack {
+                                    Color(uiColor: .systemGray5)
+                                        .cornerRadius(15)
+                                    Text("No skin history at the moment")
+                                        .foregroundColor(.gray)
+                                        .padding()
+                                }
                                 .padding(.horizontal)
-                        } else {
-                            ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
-                                JournalRowView(journal: $1)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 14)
+                            } else {
+                                ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
+                                    JournalRowView(journal: $1)
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 14)
+                                }
+                            }
+                        } header: {
+                            ZStack(alignment: .bottom) {
+                                Color.white
+                                    .ignoresSafeArea(.all, edges: .top)
+                                CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
+                                VStack(alignment: .leading, spacing: 20) {
+                                    Button {
+                                        isAddingJournal = true
+                                    } label: {
+                                        Image(systemName: "plus")
+                                        Text("Add Journal")
+                                    }.buttonStyle(ExzoButtonStyle(type: .primary))
+                                    Text("Skin History")
+                                        .font(Lexend(.headline).getFont().bold())
+                                }
+                                .padding()
                             }
                         }
-                    } header: {
-                        ZStack(alignment: .bottom) {
-                            Color.white
-                                .ignoresSafeArea(.all, edges: .top)
-                            CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
-                            VStack(alignment: .leading, spacing: 20) {
-                                Button {
-                                    isAddingJournal = true
-                                } label: {
-                                    Image(systemName: "plus")
-                                    Text("Add Journal")
-                                }.buttonStyle(ExzoButtonStyle(type: .primary))
-                                Text("Skin History")
-                                    .font(Lexend(.headline).getFont().bold())
-                            }
-                            .padding()
-                        }
+                        Divider()
                     }
-                    Divider()
+                    .sheet(isPresented: $isAddingJournal) {
+                        AddJournalView()
+                    }
                 }
-                .sheet(isPresented: $isAddingJournal) {
-                    AddJournalView()
-                }
-            }
-            .navigationBarHidden(true)
-            .overlay {
-                VStack {
-                    Image("NavBar-Background")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
-                        .clipShape(Rectangle())
-                        .ignoresSafeArea(.all, edges: .top)
-                    Spacer()
-                }
+                .navigationBarHidden(true)
+                .navigationTitle("Skin Journal")
             }
         }
     }

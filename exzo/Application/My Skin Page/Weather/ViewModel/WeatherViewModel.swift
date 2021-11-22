@@ -11,6 +11,7 @@ import MapKit
 
 class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var fetchStatus: FetchWeatherStatus = .loading
+    @Published var cityName = ""
     @Published var tempString = ""
     @Published var weatherDesc = ""
     @Published var humidityString = ""
@@ -78,6 +79,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             } else {
                 self.tempString = "\(data.main.temp)°C"
             }
+            self.cityName = "\(data.name)"
             self.humidityString = "\(data.main.humidity)%"
             self.weatherDesc = data.weather[0].main
             self.iconLink = "https://openweathermap.org/img/wn/" + "\(data.weather[0].icon)" + "@2x.png"
@@ -87,6 +89,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         print("\(self.tempString), \(self.humidityString), \(self.weatherDesc), \(self.iconLink)")
     }
     
+    // TODO: change to motivational quotes, not recommendation
     func getRecommendationString(withWeather desc: String, temperature temp: Double) -> String {
         switch desc {
         case "Clear":
