@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+/**
+ A customized slider with a rounded rectangle as a background.
+ - parameters:
+    - title: String to represent the title, can be nil
+    - range: Closed range for slider
+    - value: The slider value, which binds to the parent variable
+ */
 struct ExzoSlider: View {
     @Environment(\.colorScheme) private var colorScheme
     
+    // swiftlint:disable redundant_optional_initialization
     var title: String? = nil
     @Binding var value: Double {
         didSet {
