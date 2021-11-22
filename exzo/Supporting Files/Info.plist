@@ -12,5 +12,10 @@
 		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>launch_image</string>
+	</dict>
 </dict>
 </plist>

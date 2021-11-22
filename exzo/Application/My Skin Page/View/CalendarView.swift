@@ -24,12 +24,12 @@ struct CalendarView: UIViewRepresentable {
         calendar.scope = .week
         calendar.appearance.headerDateFormat = "MMM YYYY"
         calendar.appearance.headerMinimumDissolvedAlpha = 0
-        calendar.appearance.headerTitleColor = UIColor(Color.copper) // warna month
-        calendar.appearance.selectionColor = UIColor(Color.antique) // warna buletan kalo choose date
-        calendar.appearance.titleSelectionColor = UIColor(Color.copper) // warna tanggal yang choose
-        calendar.appearance.titleTodayColor = UIColor(Color.copper) // warna tanggal today
-        calendar.appearance.weekdayTextColor = .black // warna harinya
-        calendar.appearance.todayColor = .clear // warna buletan today
+        calendar.appearance.headerTitleColor = UIColor(Color.copper)
+        calendar.appearance.selectionColor = UIColor(Color.antique)
+        calendar.appearance.titleSelectionColor = UIColor(Color.copper)
+        calendar.appearance.titleTodayColor = UIColor(Color.copper)
+        calendar.appearance.weekdayTextColor = .black
+        calendar.appearance.todayColor = .clear
         calendar.appearance.titlePlaceholderColor = .white
         
         calendar.dataSource = context.coordinator

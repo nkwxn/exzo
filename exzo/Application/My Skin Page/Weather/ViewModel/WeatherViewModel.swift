@@ -11,11 +11,11 @@ import MapKit
 
 class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var fetchStatus: FetchWeatherStatus = .loading
-    @Published var tempString = "32°C"
-    @Published var weatherDesc = "Cloudy"
-    @Published var humidityString = "57%"
-    @Published var iconLink = "https://openweathermap.org/img/wn/10d@2x.png"
-    @Published var recommendationString = "Manage your eczema."
+    @Published var tempString = ""
+    @Published var weatherDesc = ""
+    @Published var humidityString = ""
+    @Published var iconLink = ""
+    @Published var recommendationString = ""
     
     var locationManager: CLLocationManager?
     

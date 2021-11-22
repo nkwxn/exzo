@@ -7,14 +7,24 @@
 
 import SwiftUI
 
+/**
+ A customized button style made for Exzo App
+ */
 struct ExzoButtonStyle: PrimitiveButtonStyle {
     private let width: CGFloat?
     private let height: CGFloat?
     private let type: CustomButtonType
     
-    init(type: CustomButtonType, width: CGFloat? = nil, height: CGFloat? = 50) {
-        self.width = width
-        self.height = height
+    /**
+     Initializes a Button Style made for Exzo to be created on Views
+     
+     - Parameters:
+        - type: The style of the button (primary, secondary, and small icon)
+     - Returns: A button customized specifically for Exzo
+     */
+    init(type: CustomButtonType) {
+        self.width = nil
+        self.height = 50
         self.type = type
     }
     
@@ -29,11 +39,18 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
         }
     }
     
+    /// A Button Style customized for Exzo app
     enum CustomButtonType {
+        /// A rounded corner button style with a solid color background (Brandy color)  and a white text
         case primary
+        
+        /// A rounded corner button style with a transparent background, a border and a text with a color matching with border
         case secondary
+        
+        /// A rounded corner button
         case smallIconPrimary
         
+        /// Get the background color for each button type
         func getBgColor(enabled: Bool, scheme: ColorScheme) -> Color {
             switch self {
             case .primary:
@@ -61,6 +78,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
             }
         }
         
+        /// Get the border color for each button style
         func getBorderColor(enabled: Bool, scheme: ColorScheme) -> Color {
             if enabled {
                 switch self {
@@ -78,6 +96,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
             }
         }
         
+        /// Get the text color for each button style
         func getLabelColor(enabled: Bool, scheme: ColorScheme) -> Color {
             switch self {
             case .primary:
@@ -98,6 +117,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
         }
     }
     
+    /// A Small rounded corner button
     struct ExzoSmallButton: View {
         @GestureState private var pressed = false
         
@@ -142,6 +162,7 @@ struct ExzoButtonStyle: PrimitiveButtonStyle {
         }
     }
     
+    /// A full width button with rounded corner which can adapt to primary and secondary style.
     struct ExzoButton: View {
         @GestureState private var pressed = false
         

@@ -25,8 +25,8 @@ class ProductViewModel: ObservableObject {
         }
     }
     
-    func addNewItem(name: String, type: ProductType, image: UIImage? = nil) {
-        productModel.createProduct(name: name, type: type, image: image)
+    func addNewItem(name: String, type: ProductType, image: UIImage? = nil, ingredient: String) {
+        productModel.createProduct(name: name, type: type, image: image, ingredients: ingredient)
     }
     
     func deleteItem(index offset: IndexSet) {

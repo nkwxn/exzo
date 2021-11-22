@@ -72,13 +72,6 @@ struct WeatherView: View {
                 }
                 .frame(width: 280, alignment: .center)
                 .padding()
-    //            .toolbar {
-    //                ToolbarItem(placement: .navigationBarTrailing) {
-    //                    Button(action: viewModel.loadWeather) {
-    //                        Image(systemName: "arrow.clockwise")
-    //                    }
-    //                }
-    //            }
                 .background {
                     RoundedRectangle(cornerRadius: 19)
                         .foregroundColor(Color.white)
@@ -98,11 +91,5 @@ struct WeatherView: View {
                 Spacer()
             }
         }
-    }
-}
-
-struct WeatherPreview: PreviewProvider {
-    static var previews: some View {
-        WeatherView()
     }
 }
