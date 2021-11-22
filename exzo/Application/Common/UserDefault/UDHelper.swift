@@ -6,10 +6,16 @@
 //
 
 import Foundation
-enum UDKey: String{
+
+enum UDKey: String {
     case loginUserID = "loginUserID"
     case newUser = "newUser"
     case triggeredBodyParts = "triggeredBodyParts"
+    
+    // MARK: - Addition from Nic
+    case userName = "name"
+    case childAge = "age"
+    case profilePicture = "pfp"
 }
 
 class UDHelper{

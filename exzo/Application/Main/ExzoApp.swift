@@ -18,7 +18,8 @@ struct ExzoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabContainer()
+            // MARK: - Bikin sesuai dengan itunya
+            ChildAdultView()
                 .preferredColorScheme(.light)
                 .font(Avenir.shared.getFont())
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
@@ -49,6 +50,7 @@ struct ExzoApp: App {
                         print("Continue to the app")
                     }
                 }
+                print(UDHelper.sharedUD.isNewUser())
             case .inactive:
                 print("Inactive")
             case .background:

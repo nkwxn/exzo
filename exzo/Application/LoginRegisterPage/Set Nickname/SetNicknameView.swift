@@ -13,7 +13,6 @@ struct SetNicknameView: View {
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                // FIXME: Ganti image sesuai dengan profile picture yang dibuatkan tim design
                 Image(viewModel.selectedPic)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -34,7 +33,7 @@ struct SetNicknameView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: viewModel.viewOnAppear)
         .fullScreenCover(isPresented: $viewModel.showOnboarding) {
-            OnBoardingView()
+            OnBoardingView(category: .adult)
         }
     }
 }

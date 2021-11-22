@@ -167,5 +167,6 @@ struct JournalRowView: View {
                 }
             }
             .padding()
+        }
     }
 }
