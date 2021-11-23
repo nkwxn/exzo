@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreML
 
 struct AddProduct: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -19,7 +20,7 @@ struct AddProduct: View {
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
-    @State private var recognizedText = ""
+    @State private var recognizedText: [String] = []
     
     //Vision state
     @State var isScan: Bool = false
@@ -103,7 +104,7 @@ struct AddProduct: View {
                         Image("camer")
                             .resizable()
                             .frame(width: 29, height: 29)
-                    }.opacity(recognizedText != "" ? 1 : 0)
+                    }.opacity(recognizedText.count != 0 ? 1 : 0)
 
                 }
                 
@@ -122,8 +123,13 @@ struct AddProduct: View {
                         }
                     }.opacity(isScan ? 0 : 1)
 
-                    Text(recognizedText)
-                        .padding()
+                    VStack {
+                        ForEach(recognizedText, id: \.self) {
+                            index in
+                            Text(index)
+                                .padding()
+                        }
+                    }
                 }.sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText)
                 }

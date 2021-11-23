@@ -19,7 +19,7 @@ struct DetailProductView: View {
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
-    @State private var recognizedText = ""
+    @State private var recognizedText: [String] = []
     
     //Vision state
     @State var isScan: Bool = false
@@ -110,9 +110,18 @@ struct DetailProductView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
-
-                    Text(product.productIngr ?? "")
-                        .padding()
+                    VStack {
+                        if let ingredients = product.productIngr as? [String] {
+                            ForEach(ingredients, id: \.self){ index in
+                                Text("\(index)")
+                                    .padding()
+                            }
+                        }
+                        
+                    }
+                    
+//                    Text((product.productIngr ?? "" as NSObject) as! DateInterval)
+//                        .padding()
                 }.sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText)
                 }
