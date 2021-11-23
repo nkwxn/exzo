@@ -20,25 +20,49 @@ struct JournalQuestions {
     let info: String
 }
 
-var journalQuestions = [
-    JournalQuestions(name: "Redness", info: ""),
-    JournalQuestions(name: "Swelling", info: ""),
-    JournalQuestions(name: "Scratch marks", info: "")
-]
-
 struct SkinConditionJournalView: View {
+    @Environment(\.dismiss) var dismiss
+    
     var mode: JournalMode
+    var journalQuestions = [
+        JournalQuestions(name: "Redness", info: ""),
+        JournalQuestions(name: "Swelling", info: ""),
+        JournalQuestions(name: "Scratch marks", info: "")
+    ]
+    
+    var questionSect = 0
+    @State var isBodyPart = true
+    
+    // Redness
+    var rednessPart = [String]()
+    var rednessValue = 2.0
+    
+    // Swelling
+    var swellingPart = [String]()
+    var swellingValue = 2.0
+    
+    // Scratch Mark
+    var scratchPart = [String]()
+    var scratchValue = 2.0
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
                 CustomProgressView(percent: .constant(0.2))
-                JournalQuestionView()
-                Spacer()
+                switch questionSect {
+                case 0:
+                    JournalQuestionView(conditionCategory: journalQuestions[0], isBodyPart: $isBodyPart)
+                case 1:
+                    JournalQuestionView(conditionCategory: journalQuestions[1], isBodyPart: $isBodyPart)
+                case 2:
+                    JournalQuestionView(conditionCategory: journalQuestions[2], isBodyPart: $isBodyPart)
+                default:
+                    Text("Should be going to the next journal")
+                }
                 Button("Next") {
                     // action to go next
                 }
-                .disabled(true)
+                .disabled(false)
                 .buttonStyle(ExzoButtonStyle(type: .primary))
             }
             .padding()
@@ -48,8 +72,17 @@ struct SkinConditionJournalView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         // To cancel (close modal) or go back to previous page
+                        if questionSect == 0 && isBodyPart {
+                            dismiss()
+                        }
                     } label: {
-                        
+                        // tambahin if
+                        if questionSect == 0 && isBodyPart {
+                            Text("Cancel")
+                        } else {
+                            Image(systemName: "chevron.backward")
+                            Text("Back")
+                        }
                     }
                 }
             }
@@ -58,11 +91,14 @@ struct SkinConditionJournalView: View {
 }
 
 struct JournalQuestionView: View {
-    @State var value = 2.0
+    var conditionCategory: JournalQuestions
+    @Binding var isBodyPart: Bool
+    @State var bodyPart = [""]
+    @State var sliderValue = 2.0
     var range = 0.0...3.0
     
     var body: some View {
-        VStack {
+        VStack(spacing: 14) {
             HStack {
                 Text("Redness")
                     .font(Lexend(.title2).getFont().bold())
@@ -72,11 +108,29 @@ struct JournalQuestionView: View {
                     // label contains img
                     Image(systemName: "info.circle")
                 }
+                Spacer()
             }
-            Text("Based on the chosen body part, how do you rate your inflamation now?")
-            Image("redness_0")
+            HStack {
+                Text("Based on the chosen body part, how do you rate your inflamation now?")
+                Spacer()
+            }
+            Spacer()
+            if isBodyPart {
+                BodyPartsView(score: .constant(0), bodyArr: $bodyPart)
+                    .padding(.horizontal)
+                    .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
+            } else {
+            Image("redness_\(String(format: "%.0f", sliderValue))")
+                .resizable()
+                .frame(width: 220, height: 220)
+                .clipShape(Circle())
             
-            Slider(value: $value, in: range, step: 1)
+            Slider(value: $sliderValue, in: range, step: 1)
+            Text(String(format: "%.0f", sliderValue))
+                .font(Lexend(.title3).getFont().bold())
+            Text("Dull red color, borders are clearly defined")
+            }
+            Spacer()
         }
     }
 }

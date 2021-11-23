@@ -31,7 +31,8 @@ class UDHelper{
         defaults.bool(forKey: UDKey.newUser.rawValue)
     }
     
+    // set not new user anymore
     func setNewUser() {
-        defaults.setValue(false, forKey: UDKey.newUser.rawValue)
+        defaults.setValue(true, forKey: UDKey.newUser.rawValue)
     }    
 }

@@ -41,7 +41,13 @@ class AtemisTests: XCTestCase {
         
         if let prods = CDStorage.shared.newJournalItems.value[0].productIDs as? [String] {
             XCTAssert(prods[0] == "Skin Essence")
+            XCTAssertEqual(prods[0], "Skin Essence")
         }
+    }
+    
+    func testReadJournal() throws {
+        let journalItems = CDStorage.shared.newJournalItems.value
+        XCTAssert(journalItems.isEmpty)
     }
 
     func testPerformanceExample() throws {
