@@ -10,45 +10,12 @@ import SwiftUI
 struct CustomNavBarView: View {
     @Environment(\.presentationMode) var presentationMode
     let twoColumnsNavBar: Bool
-//    let showBackButton: Bool
-//    let showDate: Bool
-//    let showTitle: Bool
+
     let title: String
     let subtitle: String?
     let showButton: NavBarButton
     var action: () -> Void
 
-    var body: some View {
-        HStack {
-            if twoColumnsNavBar {
-                backButton
-                Spacer()
-                dateTime
-            } else {
-                titleSection
-            }
-            Spacer()
-            if showButton == NavBarButton.addButton {
-                addButton
-            } else if showButton == NavBarButton.editButton {
-                editButton
-            }
-        }
-        .padding()
-        .accentColor(.white)
-        .foregroundColor(.white)
-        .font(.headline)
-        .background(
-            Image("NavBar-Background")
-                .resizable()
-                .cornerRadius(radius: 30, corners: .bottomRight)
-                .cornerRadius(radius: 30, corners: .bottomLeft)
-                .ignoresSafeArea()
-        )
-    }
-}
-
-extension CustomNavBarView {
     private var backButton: some View {
         Button(action: {
             presentationMode
@@ -95,6 +62,39 @@ extension CustomNavBarView {
             Image(systemName: "pencil")
         })
     }
+    
+    var body: some View {
+        HStack {
+            if twoColumnsNavBar {
+                backButton
+                Spacer()
+                dateTime
+            } else {
+                titleSection
+            }
+            Spacer()
+            if showButton == NavBarButton.addButton {
+                addButton
+            } else if showButton == NavBarButton.editButton {
+                editButton
+            }
+        }
+        .padding()
+        .accentColor(.white)
+        .foregroundColor(.white)
+        .font(.headline)
+        .background(
+            Image("NavBar-Background")
+                .resizable()
+                .cornerRadius(radius: 30, corners: .bottomRight)
+                .cornerRadius(radius: 30, corners: .bottomLeft)
+                .ignoresSafeArea()
+        )
+    }
+}
+
+extension CustomNavBarView {
+
 }
 
 struct CustomNavBarView_Previews: PreviewProvider {

@@ -27,7 +27,7 @@ struct TabContainer: View {
                     Image(systemName: "chart.pie")
                     Text("Insights")
                 }
-            SettingsView()
+            SettingsView(profileImage: "pp_004", profileName: "Regina Georgia")
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Settings")

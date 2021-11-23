@@ -112,6 +112,7 @@
 		E2EF6919273A086E00B2E321 /* AddFEAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF6918273A086E00B2E321 /* AddFEAView.swift */; };
 		E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */; };
 		E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */; };
+		E2FBDE7C274B703D00EB01C0 /* SetReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +251,7 @@
 		E2EF6918273A086E00B2E321 /* AddFEAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFEAView.swift; sourceTree = "<group>"; };
 		E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFEARowView.swift; sourceTree = "<group>"; };
 		E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
+		E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -885,6 +887,10 @@
 		E290561C273D645E00A22CB2 /* Settings Page */ = {
 			isa = PBXGroup;
 			children = (
+				E2FBDE7F274B7A1E00EB01C0 /* Rate Page */,
+				E2FBDE7E274B7A1600EB01C0 /* Privacy Policy Page */,
+				E2FBDE7D274B79DF00EB01C0 /* Language Page */,
+				E2FBDE7A274B700400EB01C0 /* Set Reminder Page */,
 				E290561D273D647900A22CB2 /* SettingsView.swift */,
 				E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */,
 				E2905621273D6E8600A22CB2 /* SettingRowView.swift */,
@@ -923,6 +929,35 @@
 				E2EF69142738B20900B2E321 /* CustomNavBarPreferenceKeys.swift */,
 			);
 			path = "Custom Navigation Bar";
+			sourceTree = "<group>";
+		};
+		E2FBDE7A274B700400EB01C0 /* Set Reminder Page */ = {
+			isa = PBXGroup;
+			children = (
+				E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */,
+			);
+			path = "Set Reminder Page";
+			sourceTree = "<group>";
+		};
+		E2FBDE7D274B79DF00EB01C0 /* Language Page */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Language Page";
+			sourceTree = "<group>";
+		};
+		E2FBDE7E274B7A1600EB01C0 /* Privacy Policy Page */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Privacy Policy Page";
+			sourceTree = "<group>";
+		};
+		E2FBDE7F274B7A1E00EB01C0 /* Rate Page */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Rate Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1208,6 +1243,7 @@
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
+				E2FBDE7C274B703D00EB01C0 /* SetReminderView.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,
 				D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
@@ -1444,7 +1480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1460,7 +1496,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverdn.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1478,7 +1514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1494,7 +1530,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverdn.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

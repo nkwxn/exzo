@@ -6,18 +6,18 @@
 //
 
 import Foundation
-enum UDKey: String{
-    case loginUserID = "loginUserID"
-    case newUser = "newUser"
-    case triggeredBodyParts = "triggeredBodyParts"
+enum UDKey: String {
+    case loginUserID
+    case newUser
+    case triggeredBodyParts
 }
 
-class UDHelper{
+class UDHelper {
     static let sharedUD = UDHelper()
     
     let defaults = UserDefaults.standard
     
-    func createUD(key: String, value: Any){
+    func createUD(key: String, value: Any) {
         defaults.setValue(value, forKey: key)
     }
     
