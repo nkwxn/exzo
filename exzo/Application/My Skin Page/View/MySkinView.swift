@@ -36,6 +36,7 @@ struct CalendarHeader: View {
 struct MySkinView: View {
     @StateObject var journalViewModel = JournalViewModel()
     @State var isAddingJournal = false
+    @State var isOpen = false
     @ObservedObject private var calendarModel = CalendarModel()
     
     var body: some View {
@@ -66,22 +67,23 @@ struct MySkinView: View {
                                     JournalRowView(journal: $1)
                                         .padding(.horizontal)
                                         .padding(.vertical, 14)
+                                        .onTapGesture {
+                                            isOpen.toggle()
+                                        }
+                                    NavigationLink(destination: JournalDetailView(journal: $1), isActive: $isOpen) {
+                                    }.opacity(0)
+                                    
                                 }
                             }
                         } header: {
-                            ZStack(alignment: .bottom) {
+                            ZStack(alignment: .center) {
                                 Color.white
                                     .ignoresSafeArea(.all, edges: .top)
                                 CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
-                                VStack(alignment: .leading, spacing: 20) {
-                                    Button {
-                                        isAddingJournal = true
-                                    } label: {
-                                        Image(systemName: "plus")
-                                        Text("Add Journal")
-                                    }.buttonStyle(ExzoButtonStyle(type: .primary))
+                                HStack {
                                     Text("Skin History")
                                         .font(Lexend(.headline).getFont().bold())
+                                    Spacer()
                                 }
                                 .padding()
                             }

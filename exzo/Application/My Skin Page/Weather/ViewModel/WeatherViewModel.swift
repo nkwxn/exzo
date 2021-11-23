@@ -91,6 +91,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // TODO: change to motivational quotes, not recommendation
     func getRecommendationString(withWeather desc: String, temperature temp: Double) -> String {
+        
         switch desc {
         case "Clear":
             if temp >= 30.0 {
