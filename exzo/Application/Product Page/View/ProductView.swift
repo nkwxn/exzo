@@ -12,7 +12,7 @@ struct ProductView: View {
     @State var isPresented = false
     @State var isGo = false
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack(spacing: 0) {
                 CustomNavBarView(twoColumnsNavBar: false, title: "Products", subtitle: nil, showButton: .addButton) {
                     self.isPresented.toggle()
@@ -33,6 +33,7 @@ struct ProductView: View {
                     .listRowSeparator(.hidden)
                 }
                 .environment(\.defaultMinListRowHeight, 2)
+
                 .sheet(isPresented: $isPresented) {
                     AddProduct()
                 }
