@@ -23,8 +23,25 @@ class AtemisTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func createNewJournalTest() throws {
+    func testCreateNewJournalTest() throws {
+        CDStorage.shared.createNewJournal(
+            rednessPart: ["arm", "elbow"],
+            rednessScore: 3,
+            swellingPart: ["neck"],
+            swellingScore: 2,
+            scratchPart: ["leftArm"],
+            scratchScore: 2,
+            foodIntakes: [IEAData(name: "Food", thumb: "Icon002")],
+            exposure: [IEAData(name: "Sun", thumb: "Icon006")],
+            products: ["Skin Essence"],
+            stressLevel: 2
+        )
         
+        print(CDStorage.shared.newJournalItems.value)
+        
+        if let prods = CDStorage.shared.newJournalItems.value[0].productIDs as? [String] {
+            XCTAssert(prods[0] == "Skin Essence")
+        }
     }
 
     func testPerformanceExample() throws {

@@ -22,7 +22,7 @@ struct OnBoardingView: View {
                 .font(.custom("Avenir", size: 34))
                 .multilineTextAlignment(.center)
             
-            Text("Please answer 3 questions about your child’s current skin conditions and several questions about your concern to understand your kid and get personalization better.")
+            Text("Please answer 3 questions about your\(category == .child ? " child's " : " ")current skin conditions and several questions about your concern to understand you\(category == .child ? "r kid " : " ")and get personalization better.")
                 .padding()
                 .multilineTextAlignment(.center)
             Spacer()
@@ -42,6 +42,7 @@ struct OnBoardingView: View {
             }
             Spacer()
         }
+        .navigationBarHidden(true)
     }
 }
 

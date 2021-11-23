@@ -81,6 +81,7 @@
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
 		D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */; };
+		D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */; };
 		D575967D274799100053D39B /* InsightBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575967C274799100053D39B /* InsightBarChart.swift */; };
 		D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542BD19273A55EE008BB68A /* DataQuestion.swift */; };
 		D58422BC274B51A800F495E3 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58422BB274B51A800F495E3 /* UserProfileView.swift */; };
@@ -224,6 +225,7 @@
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsightPlaceholder.swift; sourceTree = "<group>"; };
 		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
+		D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStorage+NewJournal+Extension.swift"; sourceTree = "<group>"; };
 		D575967C274799100053D39B /* InsightBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightBarChart.swift; sourceTree = "<group>"; };
 		D58422BB274B51A800F495E3 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		D58422BF274B51EB00F495E3 /* ChildAdultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildAdultView.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				D5163E412727FF9800DF09D0 /* Persistence.swift */,
 				D5163E432727FF9800DF09D0 /* Atemis.xcdatamodeld */,
 				5DCA14852730E13D00F541AC /* CDStorage.swift */,
+				D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -1289,6 +1292,7 @@
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
+				D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,
 				D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,

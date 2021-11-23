@@ -13,6 +13,19 @@ enum JournalMode {
     case update
 }
 
+struct JournalQuestions {
+    let name: String
+    let desc: String? = nil
+    let desc1: String? = nil
+    let info: String
+}
+
+var journalQuestions = [
+    JournalQuestions(name: "Redness", info: ""),
+    JournalQuestions(name: "Swelling", info: ""),
+    JournalQuestions(name: "Scratch marks", info: "")
+]
+
 struct SkinConditionJournalView: View {
     var mode: JournalMode
     
@@ -20,26 +33,50 @@ struct SkinConditionJournalView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
                 CustomProgressView(percent: .constant(0.2))
-                HStack {
-                    Text("Redness")
-                        .font(Lexend(.title2).getFont().bold())
-                    Button {
-                        // show info
-                    } label: {
-                        // label contains img
-                        Image(systemName: "info.circle")
-                    }
-                }
-                Text("Which part of your chid's body that gets inflamed the most?")
+                JournalQuestionView()
                 Spacer()
                 Button("Next") {
                     // action to go next
                 }
+                .disabled(true)
                 .buttonStyle(ExzoButtonStyle(type: .primary))
             }
             .padding()
             .navigationTitle("Skin Condition")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        // To cancel (close modal) or go back to previous page
+                    } label: {
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct JournalQuestionView: View {
+    @State var value = 2.0
+    var range = 0.0...3.0
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Redness")
+                    .font(Lexend(.title2).getFont().bold())
+                Button {
+                    // show info
+                } label: {
+                    // label contains img
+                    Image(systemName: "info.circle")
+                }
+            }
+            Text("Based on the chosen body part, how do you rate your inflamation now?")
+            Image("redness_0")
+            
+            Slider(value: $value, in: range, step: 1)
         }
     }
 }

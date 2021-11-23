@@ -32,6 +32,9 @@ class CDStorage: NSObject, ObservableObject {
     var triggerArea = CurrentValueSubject<[TriggerAreas], Never>([])
     private var triggerAreaFetchController: NSFetchedResultsController<TriggerAreas>
     
+    var newJournalItems = CurrentValueSubject<[NewJournal], Never>([])
+    private var newJournalFetchController: NSFetchedResultsController<NewJournal>
+    
     // ---- End of Tambahannya Nic ---- //
     
     static let shared = CDStorage()
@@ -47,6 +50,11 @@ class CDStorage: NSObject, ObservableObject {
         let journalFetchRequest: NSFetchRequest<Journal> = Journal.fetchRequest()
         journalFetchRequest.sortDescriptors = [journalSort]
         journalFetchController = NSFetchedResultsController(fetchRequest: journalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        let newJournalSort = NSSortDescriptor(keyPath: \NewJournal.dateAndTime, ascending: true)
+        let newJournalFetchRequest = NewJournal.fetchRequest()
+        newJournalFetchRequest.sortDescriptors = [newJournalSort]
+        newJournalFetchController = NSFetchedResultsController(fetchRequest: newJournalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: false)
         
@@ -76,6 +84,7 @@ class CDStorage: NSObject, ObservableObject {
         
         productFetchController.delegate = self
         journalFetchController.delegate = self
+        newJournalFetchController.delegate = self
         intakeFetchController.delegate = self
         exposureFetchController.delegate = self
         activityFetchController.delegate = self
@@ -88,6 +97,9 @@ class CDStorage: NSObject, ObservableObject {
             
             try journalFetchController.performFetch()
             journalItems.value = journalFetchController.fetchedObjects ?? []
+            
+            try newJournalFetchController.performFetch()
+            newJournalItems.value = newJournalFetchController.fetchedObjects ?? []
             
             try intakeFetchController.performFetch()
             foodIntakes.value = intakeFetchController.fetchedObjects ?? []
@@ -410,6 +422,8 @@ extension CDStorage: NSFetchedResultsControllerDelegate {
             self.productItems.value = productItems
         } else if let journalItems = controller.fetchedObjects as? [Journal] {
             self.journalItems.value = journalItems
+        } else if let newJournalItems = controller.fetchedObjects as? [NewJournal] {
+            self.newJournalItems.value = newJournalItems
         } else if let activityItems = controller.fetchedObjects as? [Activity] {
             self.activities.value = activityItems
         } else if let exposureItems = controller.fetchedObjects as? [Exposure] {
