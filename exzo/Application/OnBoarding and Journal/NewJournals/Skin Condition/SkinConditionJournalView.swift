@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum JournalMode {
     case onboarding
@@ -18,6 +19,11 @@ struct JournalQuestions {
     let desc: String? = nil
     let desc1: String? = nil
     let info: String
+    let imageName: String
+}
+
+class SkinConditionJournalViewModel: ObservableObject {
+    
 }
 
 struct SkinConditionJournalView: View {
@@ -25,12 +31,12 @@ struct SkinConditionJournalView: View {
     
     var mode: JournalMode
     var journalQuestions = [
-        JournalQuestions(name: "Redness", info: ""),
-        JournalQuestions(name: "Swelling", info: ""),
-        JournalQuestions(name: "Scratch marks", info: "")
+        JournalQuestions(name: "Redness", info: "", imageName: "redness_"),
+        JournalQuestions(name: "Swelling", info: "", imageName: "Swelling"),
+        JournalQuestions(name: "Scratch marks", info: "", imageName: "Scratch")
     ]
     
-    var questionSect = 0
+    @State var questionSect = 0
     @State var isBodyPart = true
     
     // Redness
@@ -60,7 +66,12 @@ struct SkinConditionJournalView: View {
                     Text("Should be going to the next journal")
                 }
                 Button("Next") {
-                    // action to go next
+                    if isBodyPart {
+                        isBodyPart.toggle()
+                    } else {
+                        isBodyPart.toggle()
+                        questionSect += 1
+                    }
                 }
                 .disabled(false)
                 .buttonStyle(ExzoButtonStyle(type: .primary))
@@ -74,6 +85,12 @@ struct SkinConditionJournalView: View {
                         // To cancel (close modal) or go back to previous page
                         if questionSect == 0 && isBodyPart {
                             dismiss()
+                        } else {
+                            if questionSect > 0 && isBodyPart {
+                                questionSect -= 1
+                            } else {
+                                isBodyPart.toggle()
+                            }
                         }
                     } label: {
                         // tambahin if
@@ -85,6 +102,15 @@ struct SkinConditionJournalView: View {
                         }
                     }
                 }
+            }
+            .onReceive(
+                Publishers.CombineLatest3(
+                    Just(rednessPart.isEmpty),
+                    Just(swellingPart.isEmpty),
+                    Just(scratchPart.isEmpty)
+                )
+            ) { output in
+                
             }
         }
     }
@@ -100,7 +126,7 @@ struct JournalQuestionView: View {
     var body: some View {
         VStack(spacing: 14) {
             HStack {
-                Text("Redness")
+                Text(conditionCategory.name)
                     .font(Lexend(.title2).getFont().bold())
                 Button {
                     // show info
@@ -120,15 +146,15 @@ struct JournalQuestionView: View {
                     .padding(.horizontal)
                     .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
             } else {
-            Image("redness_\(String(format: "%.0f", sliderValue))")
-                .resizable()
-                .frame(width: 220, height: 220)
-                .clipShape(Circle())
-            
-            Slider(value: $sliderValue, in: range, step: 1)
-            Text(String(format: "%.0f", sliderValue))
-                .font(Lexend(.title3).getFont().bold())
-            Text("Dull red color, borders are clearly defined")
+                Image("\(conditionCategory.imageName)\(String(format: "%.0f", sliderValue))")
+                    .resizable()
+                    .frame(width: 220, height: 220)
+                    .clipShape(Circle())
+                
+                Slider(value: $sliderValue, in: range, step: 1)
+                Text(String(format: "%.0f", sliderValue))
+                    .font(Lexend(.title3).getFont().bold())
+                Text("Dull red color, borders are clearly defined")
             }
             Spacer()
         }
