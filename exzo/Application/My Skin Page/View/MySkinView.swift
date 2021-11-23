@@ -102,9 +102,6 @@ struct MySkinView: View {
                     Spacer()
                 }
             }
-//            .onChange(of: isAddingJournal) { newValue in
-//                calendarModel.selectedDate = Date()
-//            }
         }
     }
 }

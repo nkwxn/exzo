@@ -10,7 +10,6 @@ import SwiftUI
 struct JournalRowView: View {
     let journal: Journal
     let width = 300.0
-    //    let dummyData = Journals.journals
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
     var body: some View {
@@ -23,10 +22,7 @@ struct JournalRowView: View {
                 HStack(alignment: .top) {
                     Text(journal.dateAndTime!, style: .time)
                     Spacer()
-//                    Button("See details") {
-//                        print("See journal details")
-//                    }
-                } // HStack close
+                }
                 Divider()
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
@@ -170,8 +166,6 @@ struct JournalRowView: View {
                     }
                 }
             }
-            .padding()// Vstack close
-            //            .frame(width: self.width, height: 201, alignment: .center)
-        } // ZStack close
+            .padding()
     }
 }
