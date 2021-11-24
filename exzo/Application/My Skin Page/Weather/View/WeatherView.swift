@@ -13,7 +13,7 @@ struct WeatherView: View {
     var body: some View {
         ZStack {
             Image("NavBar-Background")
-                .resizable(resizingMode: .tile)
+                .resizable()
                 .cornerRadius(radius: 30, corners: .bottomLeft)
                 .cornerRadius(radius: 30, corners: .bottomRight)
                 .ignoresSafeArea(.all)
