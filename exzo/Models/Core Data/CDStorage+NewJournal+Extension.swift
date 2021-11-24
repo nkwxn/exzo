@@ -50,11 +50,15 @@ extension CDStorage {
                 newJournal.weatherHumid = apiData.main.humidity
                 newJournal.weatherTemp = apiData.main.temp
                 newJournal.weatherPressure = apiData.main.pressure
+                self.save()
             } failCompletion: { failMsg in
                 print(failMsg)
+                newJournal.weatherHumid = 0
+                newJournal.weatherTemp = 0
+                newJournal.weatherPressure = 0
+                self.save()
             }
         }
-        save()
     }
     
     func getSpecificNewJournal(id: UUID) -> NewJournal {
