@@ -29,81 +29,74 @@ struct JournalQuestions {
 struct SkinConditionJournalView: View {
     @Environment(\.dismiss) var dismiss
     
-    //    init() {
-    //        viewModel.mode = .create
-    //    }
-    //
-    //    init(entry: ) {}
-    //
-    //    @Binding var entryForInsight
+    init() {
+        // TODO: Ubah ke viewmodel khusus
+        self.viewModel = JournalInputViewModel(.adult, mode: .create)
+    }
     
-    var mode: JournalMode
+    init(jourVM: JournalInputViewModel) {
+        self.viewModel = jourVM
+    }
+    
+    @ObservedObject var viewModel: JournalInputViewModel
+    
     var journalQuestions = [
         JournalQuestions(name: "Redness", info: "", imageName: "redness_"),
         JournalQuestions(name: "Swelling", info: "", imageName: "Swelling"),
-        JournalQuestions(name: "Scratch marks", info: "", imageName: "Scratch"),
-        JournalQuestions(name: "Food Intake", info: "Do your child consume these food that are listed below today?", imageName: "")
+        JournalQuestions(name: "Scratch marks", info: "", imageName: "Scratch")
     ]
     
     @State var questionSect = 0
     @State var isBodyPart = true
     
-    // Redness
-    @State var rednessPart = [String]()
-    @State var rednessValue = 2.0
-    
-    // Swelling
-    @State var swellingPart = [String]()
-    @State var swellingValue = 2.0
-    
-    // Scratch Mark
-    @State var scratchPart = [String]()
-    @State var scratchValue = 2.0
-    
     @State var isDoneButtonDisabled = true
     @State var showNextPage = false
+    
+    @State var percentageDone: CGFloat = 0.2
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
-                CustomProgressView(percent: .constant(0.2))
+                CustomProgressView(percent: $percentageDone)
                 switch questionSect {
                 case 0:
                     // Redness
-                    JournalQuestionView(conditionCategory: journalQuestions[0], isBodyPart: $isBodyPart, bodyPart: $rednessPart, slider: $rednessValue)
+                    JournalQuestionView(conditionCategory: journalQuestions[0], isBodyPart: $isBodyPart, bodyPart: $viewModel.rednessPart, slider: $viewModel.rednessValue)
                 case 1:
                     // Swelling
-                    JournalQuestionView(conditionCategory: journalQuestions[1], isBodyPart: $isBodyPart, bodyPart: $swellingPart, slider: $swellingValue)
+                    JournalQuestionView(conditionCategory: journalQuestions[1], isBodyPart: $isBodyPart, bodyPart: $viewModel.swellingPart, slider: $viewModel.swellingValue)
                 case 2:
                     // Scratch Mark
-                    JournalQuestionView(conditionCategory: journalQuestions[2], isBodyPart: $isBodyPart, bodyPart: $scratchPart, slider: $scratchValue)
+                    JournalQuestionView(conditionCategory: journalQuestions[2], isBodyPart: $isBodyPart, bodyPart: $viewModel.scratchPart, slider: $viewModel.scratchValue)
                 default:
                     Text("Should be going to the next journal")
                 }
                 Button("Next") {
                     if isBodyPart {
+                        percentageDone += 0.05
                         isBodyPart.toggle()
                     } else if questionSect == 2 {
                         showNextPage.toggle()
                     } else {
                         isBodyPart.toggle()
                         questionSect += 1
+                        percentageDone += 0.05
                         isDoneButtonDisabled = true
                     }
                 }
                 .disabled(isDoneButtonDisabled)
                 .buttonStyle(ExzoButtonStyle(type: .primary))
-                .onChange(of: rednessPart) { newValue in
+                .onChange(of: viewModel.rednessPart) { newValue in
                     isDoneButtonDisabled = newValue.isEmpty
                 }
-                .onChange(of: scratchPart) { newValue in
+                .onChange(of: viewModel.scratchPart) { newValue in
                     isDoneButtonDisabled = newValue.isEmpty
                 }
-                .onChange(of: swellingPart) { newValue in
+                .onChange(of: viewModel.swellingPart) { newValue in
                     isDoneButtonDisabled = newValue.isEmpty
                 }
                 NavigationLink(isActive: $showNextPage) {
-                    JournalChoiceQuestionView(inputMode: mode)
+                    JournalConcernView(viewModel: viewModel)
                 } label: {
                     
                 }
@@ -121,8 +114,10 @@ struct SkinConditionJournalView: View {
                         } else {
                             if questionSect > 0 && isBodyPart {
                                 questionSect -= 1
+                                percentageDone -= 0.05
                             } else {
                                 isBodyPart.toggle()
+                                percentageDone -= 0.05
                             }
                         }
                     } label: {
@@ -195,6 +190,6 @@ struct JournalStressLevelView: View {
 
 struct SkinConditionJournaView_Previews: PreviewProvider {
     static var previews: some View {
-        SkinConditionJournalView(mode: .onboarding)
+        SkinConditionJournalView(jourVM: JournalInputViewModel(.adult, mode: .onboarding))
     }
 }

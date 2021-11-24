@@ -67,7 +67,7 @@
 		D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */; };
 		D51CFC9027342F4500DE63CC /* JournalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC8F27342F4500DE63CC /* JournalSection.swift */; };
 		D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */; };
-		D5266D62274E014D00C2DE4A /* JournalChoiceQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5266D61274E014D00C2DE4A /* JournalChoiceQuestionView.swift */; };
+		D5266D62274E014D00C2DE4A /* JournalConcernView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5266D61274E014D00C2DE4A /* JournalConcernView.swift */; };
 		D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */; };
 		D5325FBD272BA812007FAFED /* AtemisBackendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */; };
 		D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */; };
@@ -103,6 +103,7 @@
 		D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */; };
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
+		D5DEF0BF274E2FD1006415E5 /* OnboardingInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E228CEA5273ABD9A00FFEDD8 /* SelectIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */; };
 		E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */; };
@@ -210,7 +211,7 @@
 		D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewModel.swift; sourceTree = "<group>"; };
 		D51CFC8F27342F4500DE63CC /* JournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSection.swift; sourceTree = "<group>"; };
 		D51CFC9127342F6F00DE63CC /* JournalSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSectionType.swift; sourceTree = "<group>"; };
-		D5266D61274E014D00C2DE4A /* JournalChoiceQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalChoiceQuestionView.swift; sourceTree = "<group>"; };
+		D5266D61274E014D00C2DE4A /* JournalConcernView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalConcernView.swift; sourceTree = "<group>"; };
 		D5325FBA272B9C37007FAFED /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5325FBC272BA812007FAFED /* AtemisBackendTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtemisBackendTest.swift; sourceTree = "<group>"; };
 		D5325FBF272D0AFB007FAFED /* NewUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserAccount.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 		D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightLineGraph.swift; sourceTree = "<group>"; };
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
+		D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInputViewModel.swift; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconView.swift; sourceTree = "<group>"; };
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
@@ -717,7 +719,7 @@
 		D5266D60274DFCD500C2DE4A /* JournalChoice (Food and Exposure) */ = {
 			isa = PBXGroup;
 			children = (
-				D5266D61274E014D00C2DE4A /* JournalChoiceQuestionView.swift */,
+				D5266D61274E014D00C2DE4A /* JournalConcernView.swift */,
 			);
 			path = "JournalChoice (Food and Exposure)";
 			sourceTree = "<group>";
@@ -834,6 +836,7 @@
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				D58422BD274B51B800F495E3 /* Profile */,
 				D58422BA274B518A00F495E3 /* Who Use Exzo */,
+				D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */,
 			);
 			path = "Onboarding Sections";
 			sourceTree = "<group>";
@@ -1300,6 +1303,7 @@
 				D58422C3274B590200F495E3 /* ProfileCategory.swift in Sources */,
 				E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
+				D5DEF0BF274E2FD1006415E5 /* OnboardingInputViewModel.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
@@ -1362,7 +1366,7 @@
 				D5ADFE9327465F1B0099E7FC /* InsightsDetailView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
-				D5266D62274E014D00C2DE4A /* JournalChoiceQuestionView.swift in Sources */,
+				D5266D62274E014D00C2DE4A /* JournalConcernView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 				5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */,
 				D5787EBC273BD2C50060B9B8 /* DataQuestion.swift in Sources */,
