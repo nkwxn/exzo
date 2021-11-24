@@ -3,15 +3,7 @@
 //  exzo
 //
 //  Created by Daniella Stefani on 04/11/21.
-// Image("NavBar-Background")
-// GeometryReader {reader in
-// Image("NavBar-Background")
-//    .resizable()
-//    .aspectRatio(contentMode: .fill)
-//    .offset(y: -reader.frame(in: .global).minY)
-//    .frame(width: UIScreen.main.bounds.width, height: reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 10 : 10)
-// }
-// .frame(height: 10)
+// 
 
 import SwiftUI
 
@@ -56,19 +48,19 @@ struct MySkinView: View {
                 .aspectRatio(contentMode: .fit)
                 
                 ScrollView {
-                    VStack(spacing: 0) {
+                    ZStack {
                         GeometryReader {reader in
-                            Color.copper
+                            Image("NavBar-Background")
+                                .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .offset(y: -reader.frame(in: .global).minY)
-                                .frame(width: UIScreen.main.bounds.width, height: reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 1 : 1)
+                                .frame(width: UIScreen.main.bounds.width, height: reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 10 : 10)
                         }
-                        .frame(height: 1)
+                        .frame(height: 10)
                         
                         LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
                             WeatherView()
                                 .frame(width: UIScreen.main.bounds.width)
-                                .padding(.bottom, 20)
                             Section {
                                 if journalViewModel.journals.isEmpty {
                                     ZStack {
@@ -87,15 +79,17 @@ struct MySkinView: View {
                                             .onTapGesture {
                                                 isOpen.toggle()
                                             }
+                                            .background(Color.white)
                                         NavigationLink(destination: JournalDetailView(journal: $1), isActive: $isOpen) {
                                         }.opacity(0)
-                                        
                                     }
                                 }
                             } header: {
                                 ZStack(alignment: .center) {
                                     Color.white
                                         .ignoresSafeArea(.all, edges: .top)
+                                        .cornerRadius(radius: 30, corners: .topLeft)
+                                        .cornerRadius(radius: 30, corners: .topRight)
                                     CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
                                     
                                     HStack {
@@ -117,7 +111,6 @@ struct MySkinView: View {
             }
             .navigationBarHidden(true)
             .navigationTitle("Skin Journal")
-            
         }
     }
 }
