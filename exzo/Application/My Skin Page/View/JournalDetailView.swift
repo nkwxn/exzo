@@ -46,7 +46,7 @@ struct JournalDetailView: View {
             VStack(alignment: .leading) {
                 Text("Stress level")
                     .font(Avenir(.headline).getFont().bold())
-                Text("6")
+                Text("\(journal.stressLevel)")
                     .font(Avenir(.title).getFont().bold())
                     .foregroundColor(Color.white)
                     .background {

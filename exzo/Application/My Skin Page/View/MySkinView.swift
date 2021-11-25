@@ -35,15 +35,17 @@ struct CalendarHeader: View {
 
 struct MySkinView: View {
     @StateObject var journalViewModel = JournalViewModel()
+    @State var isOpeningSettings = false
     @State var isAddingJournal = false
-    @State var isOpen = false
+    @State var isOpeningDetail = false
     @ObservedObject private var calendarModel = CalendarModel()
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                JournalNavBarView(twoColumnsNavBar: false, title: "Skin Journal", subtitle: nil, showButton: .addButton) {
-                    self.isAddingJournal.toggle()
+                JournalNavBarView(twoColumnsNavBar: false, title: "Skin Journal", subtitle: nil, showButton: .settingsButton) {
+                    self.isOpeningDetail.toggle()
+                    print("\(self.isOpeningSettings)")
                 }
                 .aspectRatio(contentMode: .fit)
                 
@@ -77,25 +79,30 @@ struct MySkinView: View {
                                             .padding(.horizontal)
                                             .padding(.vertical, 14)
                                             .onTapGesture {
-                                                isOpen.toggle()
+                                                isOpeningDetail.toggle()
                                             }
                                             .background(Color.white)
-                                        NavigationLink(destination: JournalDetailView(journal: $1), isActive: $isOpen) {
+                                        NavigationLink(destination: JournalDetailView(journal: $1), isActive: $isOpeningDetail) {
                                         }.opacity(0)
                                     }
                                 }
                             } header: {
-                                ZStack(alignment: .center) {
+                                ZStack(alignment: .bottom) {
                                     Color.white
                                         .ignoresSafeArea(.all, edges: .top)
                                         .cornerRadius(radius: 30, corners: .topLeft)
                                         .cornerRadius(radius: 30, corners: .topRight)
                                     CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
                                     
-                                    HStack {
+                                    VStack(alignment: .leading, spacing: 20) {
+                                        Button {
+                                            isAddingJournal = true
+                                        } label: {
+                                            Image(systemName: "plus")
+                                            Text("Add Journal")
+                                        }.buttonStyle(ExzoButtonStyle(type: .primary))
                                         Text("Skin History")
                                             .font(Lexend(.headline).getFont().bold())
-                                        Spacer()
                                     }
                                     .padding()
                                 }

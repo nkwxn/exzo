@@ -32,6 +32,8 @@ struct JournalNavBarView: View {
                 addButton
             } else if showButton == NavBarButton.editButton {
                 editButton
+            } else if showButton == NavBarButton.settingsButton {
+                settingsButton
             }
         }
         .padding()
@@ -82,15 +84,38 @@ extension JournalNavBarView {
         Button(action: {
             action()
         }, label: {
-            Image("Button-Add")
-        })
+            Image(systemName: "plus")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
     }
     
     private var editButton: some View {
         Button(action: {
             action()
         }, label: {
-            Image(systemName: "pencil")
-        })
+            Image(systemName: "highlighter")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
+    }
+    
+    private var settingsButton: some View {
+        Button(action: {
+            action()
+        }, label: {
+            Image(systemName: "gearshape")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
     }
 }

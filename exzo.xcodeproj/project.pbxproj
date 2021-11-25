@@ -240,7 +240,6 @@
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		E228CEA8273B74A100FFEDD8 /* FEAListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListView.swift; sourceTree = "<group>"; };
 		E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListRowView.swift; sourceTree = "<group>"; };
-		E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavBarView.swift; path = "Custom Navigation Bar/CustomNavBarView.swift"; sourceTree = "<group>"; };
 		E290561D273D647900A22CB2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		E2905621273D6E8600A22CB2 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
@@ -665,7 +664,6 @@
 			children = (
 				E2F99DFB2734D991004C2456 /* Custom Navigation Bar */,
 				D5163E8327280E3000DF09D0 /* WaitAlert.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";

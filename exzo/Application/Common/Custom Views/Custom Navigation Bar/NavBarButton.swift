@@ -10,5 +10,6 @@ import Foundation
 enum NavBarButton: String {
     case addButton = "Button-Add"
     case editButton = "Button-Edit"
+    case settingsButton = "Button-Settings"
     case none = ""
 }

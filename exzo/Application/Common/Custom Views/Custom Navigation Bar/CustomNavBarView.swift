@@ -84,16 +84,26 @@ extension CustomNavBarView {
         Button(action: {
             action()
         }, label: {
-            Image("Button-Add")
-        })
+            Image(systemName: "plus")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
     }
     
     private var editButton: some View {
         Button(action: {
             action()
         }, label: {
-            Image(systemName: "pencil")
-        })
+            Image(systemName: "highlighter")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
     }
 }
 
