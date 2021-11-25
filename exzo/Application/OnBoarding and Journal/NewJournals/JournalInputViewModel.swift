@@ -28,8 +28,9 @@ class JournalInputViewModel: ObservableObject {
     @Published var percentageDone: CGFloat = 0.2
     
     // Food Intake, exposure, stress, product
+    @Published var stressLevel = 2.0
     @Published var chosenFoodIntakes = [IEAData]()
-    @Published var chosenFoodIntakes = [IEAData]()
+    @Published var chosenExposure = [IEAData]()
     @Published var chosenProducts = [UUID]()
     
     init(_ cat: ProfileCategory, mode: JournalMode) {

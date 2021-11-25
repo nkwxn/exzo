@@ -82,6 +82,7 @@
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
 		D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55092D6274F566B0047A14C /* OnboardingSetTimerView.swift */; };
+		D55092DA274FA3D10047A14C /* StressLevelSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55092D9274FA3D10047A14C /* StressLevelSliderView.swift */; };
 		D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */; };
 		D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */; };
 		D575967D274799100053D39B /* InsightBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575967C274799100053D39B /* InsightBarChart.swift */; };
@@ -228,6 +229,7 @@
 		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D55092D6274F566B0047A14C /* OnboardingSetTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSetTimerView.swift; sourceTree = "<group>"; };
+		D55092D9274FA3D10047A14C /* StressLevelSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressLevelSliderView.swift; sourceTree = "<group>"; };
 		D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsightPlaceholder.swift; sourceTree = "<group>"; };
 		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStorage+NewJournal+Extension.swift"; sourceTree = "<group>"; };
@@ -718,12 +720,12 @@
 			path = "Custom Components";
 			sourceTree = "<group>";
 		};
-		D5266D60274DFCD500C2DE4A /* JournalChoice (Food and Exposure) */ = {
+		D5266D60274DFCD500C2DE4A /* JournalRoutineOnboarding */ = {
 			isa = PBXGroup;
 			children = (
 				D5266D61274E014D00C2DE4A /* JournalConcernView.swift */,
 			);
-			path = "JournalChoice (Food and Exposure)";
+			path = JournalRoutineOnboarding;
 			sourceTree = "<group>";
 		};
 		D5325FB9272B99A9007FAFED /* CloudKit Helpers */ = {
@@ -829,6 +831,14 @@
 			path = "Set Timer";
 			sourceTree = "<group>";
 		};
+		D55092D8274FA3C00047A14C /* StressLevel */ = {
+			isa = PBXGroup;
+			children = (
+				D55092D9274FA3D10047A14C /* StressLevelSliderView.swift */,
+			);
+			path = StressLevel;
+			sourceTree = "<group>";
+		};
 		D58422B7274B513400F495E3 /* OnBoarding and Journal */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,8 +864,9 @@
 		D58422B9274B515900F495E3 /* NewJournals */ = {
 			isa = PBXGroup;
 			children = (
+				D55092D8274FA3C00047A14C /* StressLevel */,
 				D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */,
-				D5266D60274DFCD500C2DE4A /* JournalChoice (Food and Exposure) */,
+				D5266D60274DFCD500C2DE4A /* JournalRoutineOnboarding */,
 				D58422C9274B8F9E00F495E3 /* Skin Condition */,
 			);
 			path = NewJournals;
@@ -1318,6 +1329,7 @@
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
+				D55092DA274FA3D10047A14C /* StressLevelSliderView.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */,
 				5D23E5212739424C007B6988 /* WeatherFetchedData.swift in Sources */,

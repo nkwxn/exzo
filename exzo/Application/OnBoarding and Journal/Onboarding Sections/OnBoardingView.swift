@@ -24,18 +24,17 @@ struct OnBoardingView: View {
         VStack {
             Image("onBoarding")
                 .edgesIgnoringSafeArea(.top)
-            Text("We want to know more about \(viewModel.category == .child ? "your child" : "you")!")
-                .fontWeight(.bold)
+            Text("Kami akan menanyakan 3 pertanyaan mengenai kondisi kulit \(viewModel.category == .child ? "anak " : "")Anda!")
+                .font(Lexend(.title).getFont().bold())
                 .padding()
-                .font(.custom("Avenir", size: 34))
                 .multilineTextAlignment(.center)
             
             // swiftlint:disable line_length
-            Text("Please answer 3 questions about your\(viewModel.category == .child ? " child's " : " ")current skin conditions and several questions about your concern to understand you\(viewModel.category == .child ? "r kid " : " ")and get personalization better.")
+            Text("Pertanyaan terkait seberapa parah kondisi kulit \(viewModel.category == .child ? "anak " : "")Anda sekarang dan memulai untuk mengisi jurnal pertama berdasarkan yang Anda khawatirkan.")
                 .padding()
                 .multilineTextAlignment(.center)
             Spacer()
-            Button("Start") {
+            Button("Mulai") {
                 self.showInputModal.toggle()
             }
             .sheet(isPresented: $showInputModal) {
@@ -43,12 +42,10 @@ struct OnBoardingView: View {
             } content: {
                 // Go to the page
                 SkinConditionJournalView(jourVM: viewModel)
+                    .interactiveDismissDisabled(true)
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
             .padding()
-            Button("Find out more about the test") {
-                self.showInfoModal.toggle()
-            }
             NavigationLink("Should be hidden", isActive: $nextPage) {
                 Text("Halaman insight dr onboarding")
             }

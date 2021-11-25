@@ -36,9 +36,9 @@ struct SkinConditionJournalView: View {
     @ObservedObject var viewModel: JournalInputViewModel
     
     var journalQuestions = [
-        JournalQuestions(name: "Peradangan", info: "", imageName: "redness_"),
-        JournalQuestions(name: "Pembengkakan", info: "", imageName: "Swelling"),
-        JournalQuestions(name: "Bekas ga", info: "", imageName: "Scratch")
+        JournalQuestions(name: "Peradangan", info: "kemerahan", imageName: "redness_"),
+        JournalQuestions(name: "Pembengkakan", info: "pembengkakan", imageName: "Swelling"),
+        JournalQuestions(name: "Bekas garukan", info: "bekas garuk", imageName: "Scratch")
     ]
     
     @State var questionSect = 0
@@ -51,6 +51,24 @@ struct SkinConditionJournalView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
                 CustomProgressView(percent: $viewModel.percentageDone)
+                HStack {
+                    Text(journalQuestions[questionSect].name)
+                        .font(Lexend(.title2).getFont().bold())
+                    Button {
+                        // show info
+                    } label: {
+                        // label contains img
+                        Image(systemName: "info.circle")
+                    }
+                    Spacer()
+                }
+                HStack {
+                    // swiftlint:disable line_length
+                    Text(
+                        isBodyPart ? "Bagian mana dari tubuh \(viewModel.category == .child ? "anak " : "")Anda yang paling sering mengalami \(journalQuestions[questionSect].info)?" : "Berdasarkan bagian tubuh yang Anda pilih, seberapa parah \(journalQuestions[questionSect].info) kulit Anda saat ini?"
+                    )
+                    Spacer()
+                }
                 switch questionSect {
                 case 0:
                     // Redness
@@ -72,6 +90,7 @@ struct SkinConditionJournalView: View {
                         if viewModel.journalMode == .onboarding {
                             showTrackRoutine.toggle()
                         } else {
+                            print("Should take value from UD")
                         }
                     } else {
                         isBodyPart.toggle()
@@ -112,9 +131,9 @@ struct SkinConditionJournalView: View {
                                 questionSect -= 1
                                 viewModel.percentageDone -= 0.05
                             } else {
-                                isBodyPart.toggle()
                                 viewModel.percentageDone -= 0.05
                             }
+                            isBodyPart.toggle()
                         }
                     } label: {
                         // tambahin if
@@ -140,21 +159,6 @@ struct JournalQuestionView: View {
     
     var body: some View {
         VStack(spacing: 14) {
-            HStack {
-                Text(conditionCategory.name)
-                    .font(Lexend(.title2).getFont().bold())
-                Button {
-                    // show info
-                } label: {
-                    // label contains img
-                    Image(systemName: "info.circle")
-                }
-                Spacer()
-            }
-            HStack {
-                Text("Based on the chosen body part, how do you rate your inflamation now?")
-                Spacer()
-            }
             Spacer()
             if isBodyPart {
                 BodyPartsView(score: .constant(0), bodyArr: $bodyPart)
