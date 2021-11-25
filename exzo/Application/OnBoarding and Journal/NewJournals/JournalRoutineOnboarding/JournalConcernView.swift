@@ -10,7 +10,7 @@ import SwiftUI
 enum EczemaTriggers: String, CaseIterable {
     case foodIntake = "Asupan makanan"
     case exposure = "Paparan"
-    case stress = "Stress"
+    case stress = "Stres"
     case medProd = "Produk atau Pengobatan"
 }
 
