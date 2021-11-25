@@ -16,22 +16,23 @@ struct ChildAdultButton: View {
             UserProfileView(category: self.category)
         } label: {
             HStack {
-                Text(category.rawValue)
-                    .font(
-                        Lexend(.title2)
-                            .getFont().bold()
-                    )
-                    .padding()
-                Spacer()
                 category.getImageName()
+                    .resizable()
+                    .frame(width: 160, height: 160)
+                    .offset(x: 0, y: category == .adult ? 5 : 0)
+                Spacer()
+                Text(category.rawValue)
+                    .font(Lexend(.title).getFont().bold())
+                    .padding()
+                    .padding()
             }
             .frame(width: nil, height: 130)
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(.vertical, 10)
             .background {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.white)
-                    .shadow(radius: 5)
+                    .foregroundColor(.antique)
+                    .shadow(radius: 2)
                     .padding(.vertical, 10)
             }
         }
@@ -42,18 +43,19 @@ struct ChildAdultButton: View {
 struct ChildAdultView: View {
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                Text("Who will be using exzo?")
-                    .font(Lexend(.title2).getFont().bold())
-                Text("Who are you using exzo for:\nis it for yourself or for your child?")
+            VStack(alignment: .center) {
                 Spacer()
-                ChildAdultButton(category: .child)
+                Text("Siapa yang akan menggunakan exzo?")
+                    .font(Lexend(.title2).getFont().bold())
+                Text("Untuk siapakah exzo akan digunakan:\napakah untuk diri Anda sendiri atau untuk anak Anda?")
                 ChildAdultButton(category: .adult)
+                ChildAdultButton(category: .child)
+                Spacer()
                 Spacer()
             }
-            .navigationTitle("Set Profile")
             .navigationBarTitleDisplayMode(.inline)
             .padding()
+            .multilineTextAlignment(.center)
         }
     }
 }

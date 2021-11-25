@@ -81,6 +81,7 @@
 		D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */; };
 		D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */; };
 		D5494AE8272FFC3400DA1CF7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */; };
+		D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55092D6274F566B0047A14C /* OnboardingSetTimerView.swift */; };
 		D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */; };
 		D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */; };
 		D575967D274799100053D39B /* InsightBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575967C274799100053D39B /* InsightBarChart.swift */; };
@@ -103,7 +104,7 @@
 		D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */; };
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
-		D5DEF0BF274E2FD1006415E5 /* OnboardingInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */; };
+		D5DEF0BF274E2FD1006415E5 /* JournalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E228CEA5273ABD9A00FFEDD8 /* SelectIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */; };
 		E228CEA7273ABF8600FFEDD8 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */; };
@@ -226,6 +227,7 @@
 		D5494AE2272FFB6200DA1CF7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D5494AE5272FFC1700DA1CF7 /* PreOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOnboardingViewModel.swift; sourceTree = "<group>"; };
 		D5494AE7272FFC3400DA1CF7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D55092D6274F566B0047A14C /* OnboardingSetTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSetTimerView.swift; sourceTree = "<group>"; };
 		D554768B2741FCD000519540 /* TempInsightPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsightPlaceholder.swift; sourceTree = "<group>"; };
 		D56D7F252738D8040023686C /* DataQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataQuestion.swift; sourceTree = "<group>"; };
 		D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStorage+NewJournal+Extension.swift"; sourceTree = "<group>"; };
@@ -248,7 +250,7 @@
 		D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightLineGraph.swift; sourceTree = "<group>"; };
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
-		D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInputViewModel.swift; sourceTree = "<group>"; };
+		D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalInputViewModel.swift; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E228CEA4273ABD9A00FFEDD8 /* SelectIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconView.swift; sourceTree = "<group>"; };
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
@@ -819,6 +821,14 @@
 			path = "Set Nickname";
 			sourceTree = "<group>";
 		};
+		D55092D5274F55DB0047A14C /* Set Timer */ = {
+			isa = PBXGroup;
+			children = (
+				D55092D6274F566B0047A14C /* OnboardingSetTimerView.swift */,
+			);
+			path = "Set Timer";
+			sourceTree = "<group>";
+		};
 		D58422B7274B513400F495E3 /* OnBoarding and Journal */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,10 +843,10 @@
 		D58422B8274B514B00F495E3 /* Onboarding Sections */ = {
 			isa = PBXGroup;
 			children = (
+				D55092D5274F55DB0047A14C /* Set Timer */,
 				BFD2B455273382620011F064 /* OnBoardingView.swift */,
 				D58422BD274B51B800F495E3 /* Profile */,
 				D58422BA274B518A00F495E3 /* Who Use Exzo */,
-				D5DEF0BE274E2FD1006415E5 /* OnboardingInputViewModel.swift */,
 			);
 			path = "Onboarding Sections";
 			sourceTree = "<group>";
@@ -844,6 +854,7 @@
 		D58422B9274B515900F495E3 /* NewJournals */ = {
 			isa = PBXGroup;
 			children = (
+				D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */,
 				D5266D60274DFCD500C2DE4A /* JournalChoice (Food and Exposure) */,
 				D58422C9274B8F9E00F495E3 /* Skin Condition */,
 			);
@@ -1303,8 +1314,9 @@
 				D58422C3274B590200F495E3 /* ProfileCategory.swift in Sources */,
 				E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
-				D5DEF0BF274E2FD1006415E5 /* OnboardingInputViewModel.swift in Sources */,
+				D5DEF0BF274E2FD1006415E5 /* JournalInputViewModel.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
+				D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */,

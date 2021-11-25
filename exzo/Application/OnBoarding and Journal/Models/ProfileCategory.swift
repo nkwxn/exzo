@@ -9,24 +9,24 @@ import Foundation
 import SwiftUI
 
 enum ProfileCategory: String, CaseIterable {
-    case child = "Child"
-    case adult = "Adult"
+    case child = "Anak"
+    case adult = "Dewasa"
     
     func getImageName() -> Image {
         switch self {
         case .child:
-            return Image("childbtn")
+            return Image("L0 - KidsB")
         case .adult:
-            return Image("adultbtn")
+            return Image("L0 - Boy")
         }
     }
     
     func getProfileDesc() -> String {
         switch self {
         case .child:
-            return "We would be happy if you introduce us with your child! Please input some information about him/her."
+            return "Kami senang jika Anda memperkenalkan kami dengan anak Anda! Silakan masukkan beberapa informasi tentangnya."
         case .adult:
-            return "We would be happy if you introduce yourself to us! Please input some information about you."
+            return "Kami senang jika Anda memperkenalkan dir Anda agar menjadi lebih dekat. Silakan masukkan beberapa informasi Anda."
         }
     }
 }

@@ -22,15 +22,10 @@ struct JournalQuestions {
     let imageName: String
 }
 
-//class SkinConditionJournalViewModel: ObservableObject {
-//    var mode: JournalMode
-//}
-
 struct SkinConditionJournalView: View {
     @Environment(\.dismiss) var dismiss
     
     init() {
-        // TODO: Ubah ke viewmodel khusus
         self.viewModel = JournalInputViewModel(.adult, mode: .create)
     }
     
@@ -41,23 +36,21 @@ struct SkinConditionJournalView: View {
     @ObservedObject var viewModel: JournalInputViewModel
     
     var journalQuestions = [
-        JournalQuestions(name: "Redness", info: "", imageName: "redness_"),
-        JournalQuestions(name: "Swelling", info: "", imageName: "Swelling"),
-        JournalQuestions(name: "Scratch marks", info: "", imageName: "Scratch")
+        JournalQuestions(name: "Peradangan", info: "", imageName: "redness_"),
+        JournalQuestions(name: "Pembengkakan", info: "", imageName: "Swelling"),
+        JournalQuestions(name: "Bekas ga", info: "", imageName: "Scratch")
     ]
     
     @State var questionSect = 0
     @State var isBodyPart = true
     
     @State var isDoneButtonDisabled = true
-    @State var showNextPage = false
-    
-    @State var percentageDone: CGFloat = 0.2
+    @State var showTrackRoutine = false
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
-                CustomProgressView(percent: $percentageDone)
+                CustomProgressView(percent: $viewModel.percentageDone)
                 switch questionSect {
                 case 0:
                     // Redness
@@ -73,14 +66,17 @@ struct SkinConditionJournalView: View {
                 }
                 Button("Next") {
                     if isBodyPart {
-                        percentageDone += 0.05
+                        viewModel.percentageDone += 0.05
                         isBodyPart.toggle()
                     } else if questionSect == 2 {
-                        showNextPage.toggle()
+                        if viewModel.journalMode == .onboarding {
+                            showTrackRoutine.toggle()
+                        } else {
+                        }
                     } else {
                         isBodyPart.toggle()
                         questionSect += 1
-                        percentageDone += 0.05
+                        viewModel.percentageDone += 0.05
                         isDoneButtonDisabled = true
                     }
                 }
@@ -95,7 +91,7 @@ struct SkinConditionJournalView: View {
                 .onChange(of: viewModel.swellingPart) { newValue in
                     isDoneButtonDisabled = newValue.isEmpty
                 }
-                NavigationLink(isActive: $showNextPage) {
+                NavigationLink(isActive: $showTrackRoutine) {
                     JournalConcernView(viewModel: viewModel)
                 } label: {
                     
@@ -103,7 +99,7 @@ struct SkinConditionJournalView: View {
                 .hidden()
             }
             .padding()
-            .navigationTitle("Skin Condition")
+            .navigationTitle("Kondisi Kulit")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -114,10 +110,10 @@ struct SkinConditionJournalView: View {
                         } else {
                             if questionSect > 0 && isBodyPart {
                                 questionSect -= 1
-                                percentageDone -= 0.05
+                                viewModel.percentageDone -= 0.05
                             } else {
                                 isBodyPart.toggle()
-                                percentageDone -= 0.05
+                                viewModel.percentageDone -= 0.05
                             }
                         }
                     } label: {

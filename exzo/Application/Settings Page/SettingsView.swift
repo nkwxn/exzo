@@ -10,7 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack {
-            ProfileHeaderView(profileImage: "pp_004", profileName: "Regina George")
+            // Edit tipis ya dev, ada perubahan nama aset
+            ProfileHeaderView(profileImage: "L0 - Girl", profileName: "Regina George")
                 .padding(.bottom)
             List {
                 Section(header: Text("REMINDER")) {

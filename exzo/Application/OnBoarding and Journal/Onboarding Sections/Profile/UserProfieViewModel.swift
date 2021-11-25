@@ -8,17 +8,31 @@
 import Foundation
 
 class UserProfileViewModel: ObservableObject {
+    let category: ProfileCategory
+    
     var arrLoc = 0
-    var imageName = ["pp_001", "pp_002", "pp_003", "pp_004"]
-    @Published var selectedPic = "pp_001"
+    var imageName: [String]
+    @Published var selectedPic: String
     @Published var myNickName = ""
-    @Published var ageInt = 72
+    @Published var ageInt = 10
     
     @Published var profileName: String = ""
     @Published var childAge: Int = 10
     
+    init(_ category: ProfileCategory) {
+        self.category = category
+        switch category {
+        case .child:
+            imageName = ["KidsB", "KidsG"]
+        case .adult:
+            imageName = ["Man", "Woman", "Boy", "Girl"]
+        }
+        selectedPic = imageName[arrLoc]
+        print(imageName.count)
+    }
+    
     func shuffleImage() {
-        if arrLoc < 3 {
+        if arrLoc < imageName.count - 1 {
             arrLoc += 1
         } else {
             arrLoc = 0
@@ -29,8 +43,6 @@ class UserProfileViewModel: ObservableObject {
     func saveData(_ category: ProfileCategory) {
         UDHelper.sharedUD.createUD(key: UDKey.userName.rawValue, value: myNickName)
         UDHelper.sharedUD.createUD(key: UDKey.profilePicture.rawValue, value: selectedPic)
-        if category == .child {
-            UDHelper.sharedUD.createUD(key: UDKey.childAge.rawValue, value: selectedPic)
-        }
+        UDHelper.sharedUD.createUD(key: UDKey.childAge.rawValue, value: ageInt)
     }
 }

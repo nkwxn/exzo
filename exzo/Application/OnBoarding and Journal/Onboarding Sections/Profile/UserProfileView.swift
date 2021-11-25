@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    var category: ProfileCategory
-    @StateObject var viewModel = UserProfileViewModel()
+    @ObservedObject var viewModel: UserProfileViewModel
+    
+    init(category: ProfileCategory) {
+        viewModel = UserProfileViewModel(category)
+    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                    Text("Set your\(category == .child ? " child's " : " ")profile")
+                Text("Atur profil \(viewModel.category == .child ? "anak " : " ")Anda")
                         .font(Lexend(.title2).getFont().bold())
-                    Text(category.getProfileDesc())
+                Text(viewModel.category.getProfileDesc())
                 HStack {
                     Spacer()
                     ZStack(alignment: .bottomTrailing) {
-                        Image(viewModel.selectedPic)
+                        Image("L0 - \(viewModel.selectedPic)")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 200, height: 200)
@@ -33,23 +36,21 @@ struct UserProfileView: View {
                     }
                     Spacer()
                 }
-                ExzoTextField("What's your\(category == .child ? " child's " : " ")name", input: $viewModel.profileName)
-                if category == .child {
-                    ExzoTextField("How old is your child?", input: .constant("9 years old"))
-                }
+                ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.profileName)
+                ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: .constant("9 tahun"))
                 Spacer()
-                NavigationLink("Done") {
-                    OnBoardingView(category: self.category)
+                NavigationLink("Lanjut") {
+                    OnBoardingView(category: self.viewModel.category)
                 }
                 .simultaneousGesture(TapGesture().onEnded { xxx in
-                    viewModel.saveData(category)
+                    viewModel.saveData(viewModel.category)
                 })
                 .buttonStyle(ExzoButtonStyle(type: .primary))
                 Spacer()
             }
             .padding()
         }
-        .navigationTitle("Set Name")
+        .navigationTitle("Atur Profil")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

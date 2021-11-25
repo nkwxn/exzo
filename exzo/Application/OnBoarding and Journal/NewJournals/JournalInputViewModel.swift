@@ -1,11 +1,11 @@
 //
-//  OnboardingInputViewModel.swift
+//  JournalInputViewModel.swift
 //  exzo
 //
 //  Created by Nicholas on 24/11/21.
 //
 
-import Foundation
+import UIKit
 
 class JournalInputViewModel: ObservableObject {
     var category: ProfileCategory
@@ -24,8 +24,13 @@ class JournalInputViewModel: ObservableObject {
     @Published var scratchPart = [String]()
     @Published var scratchValue = 2.0
     
-    // Food Intake and Exposure
+    // Percentage done
+    @Published var percentageDone: CGFloat = 0.2
     
+    // Food Intake, exposure, stress, product
+    @Published var chosenFoodIntakes = [IEAData]()
+    @Published var chosenFoodIntakes = [IEAData]()
+    @Published var chosenProducts = [UUID]()
     
     init(_ cat: ProfileCategory, mode: JournalMode) {
         self.category = cat
