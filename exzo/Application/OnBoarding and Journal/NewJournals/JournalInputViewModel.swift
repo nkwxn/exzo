@@ -33,6 +33,8 @@ class JournalInputViewModel: ObservableObject {
     @Published var chosenExposure = [IEAData]()
     @Published var chosenProducts = [UUID]()
     
+    @Published var chosenTriggerCategory = UDHelper.sharedUD.getTriggers()
+    
     init(_ cat: ProfileCategory, mode: JournalMode) {
         self.category = cat
         self.journalMode = mode

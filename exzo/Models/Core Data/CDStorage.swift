@@ -255,28 +255,35 @@ struct IEAData: Identifiable {
 struct RawIEAData {
     static let foodIntakeTemplate = [
         IEAData(name: "Gluten", thumb: "Icon004"),
-        IEAData(name: "Seafood", thumb: "Icon003"),
-        IEAData(name: "Poultry", thumb: "Icon002"),
-        IEAData(name: "Egg", thumb: "Icon005"),
-        IEAData(name: "Nut", thumb: "Icon006"),
-        IEAData(name: "Dairy", thumb: "Icon001"),
-        IEAData(name: "Grain", thumb: "Icon007")
+        IEAData(name: "Ikan", thumb: "Icon003"),
+        IEAData(name: "Ayam", thumb: "Icon002"),
+        IEAData(name: "Bebek", thumb: "Icon002"),
+        IEAData(name: "Udang", thumb: "Icon003"),
+        IEAData(name: "Gurita", thumb: "Icon003"),
+        IEAData(name: "Susu", thumb: "Icon001"),
+        IEAData(name: "Grain", thumb: "Icon007"),
+        IEAData(name: "Kacang Tanah", thumb: "Icon006"),
+        IEAData(name: "Almond", thumb: "Icon006"),
+        IEAData(name: "Telur", thumb: "Icon005"),
+        IEAData(name: "Wijen", thumb: "Icon007")
     ]
     static let exposureTemplate = [
-        IEAData(name: "Pollen", thumb: "Icon008"),
-        IEAData(name: "Dust", thumb: "Icon010"),
-        IEAData(name: "Sun", thumb: "Icon018"),
-        IEAData(name: "Moulds", thumb: "Icon011")
+        IEAData(name: "Serbuk sari", thumb: "Icon009"),
+        IEAData(name: "Debu", thumb: "Icon010"),
+        IEAData(name: "Matahari", thumb: "Icon018"),
+        IEAData(name: "Jamur", thumb: "Icon011"),
+        IEAData(name: "Bulu hewan", thumb: "Icon019"),
+        IEAData(name: "Latex", thumb: "Icon010")
     ]
-    static let activityTemplate = [
-        IEAData(name: "Exercise", thumb: "Icon013"),
-        IEAData(name: "Work", thumb: "Icon014"),
-        IEAData(name: "Jogging", thumb: "Icon015"),
-        IEAData(name: "Running", thumb: "Icon017"),
-        IEAData(name: "Washing Dishes", thumb: "Icon012"),
-        IEAData(name: "Yoga", thumb: "Icon008"),
-        IEAData(name: "Cooking", thumb: "Icon016")
-    ]
+//    static let activityTemplate = [
+//        IEAData(name: "Exercise", thumb: "Icon013"),
+//        IEAData(name: "Work", thumb: "Icon014"),
+//        IEAData(name: "Jogging", thumb: "Icon015"),
+//        IEAData(name: "Running", thumb: "Icon017"),
+//        IEAData(name: "Washing Dishes", thumb: "Icon012"),
+//        IEAData(name: "Yoga", thumb: "Icon008"),
+//        IEAData(name: "Cooking", thumb: "Icon016")
+//    ]
 }
 
 enum IEA: String {
@@ -315,18 +322,18 @@ extension CDStorage {
             save()
         }
         
-        if activities.value.isEmpty {
-            for rawActivity in RawIEAData.activityTemplate {
-                let newActivity = Activity(context: self.context)
-                newActivity.idActivity = rawActivity.id
-                newActivity.activityName = rawActivity.name
-                newActivity.activityThumb = rawActivity.thumb
-                newActivity.isFavorite = true
-                newActivity.deletable = false
-                save()
-            }
-            save()
-        }
+//        if activities.value.isEmpty {
+//            for rawActivity in RawIEAData.activityTemplate {
+//                let newActivity = Activity(context: self.context)
+//                newActivity.idActivity = rawActivity.id
+//                newActivity.activityName = rawActivity.name
+//                newActivity.activityThumb = rawActivity.thumb
+//                newActivity.isFavorite = true
+//                newActivity.deletable = false
+//                save()
+//            }
+//            save()
+//        }
     }
     
     func createIEA(_ type: IEA, name: String, thumb: String) {
@@ -337,7 +344,7 @@ extension CDStorage {
             activity.activityName = name
             activity.activityThumb = thumb
             activity.deletable = true
-            activity.isFavorite = false
+            activity.isFavorite = true
             save()
         case .exposure:
             let exposure = Exposure(context: self.context)
@@ -345,7 +352,7 @@ extension CDStorage {
             exposure.exposureName = name
             exposure.exposureThumb = thumb
             exposure.deletable = true
-            exposure.isFavorite = false
+            exposure.isFavorite = true
             save()
         case .intake:
             let intake = FoodIntake(context: self.context)
@@ -353,7 +360,7 @@ extension CDStorage {
             intake.intakeName = name
             intake.intakeThumb = thumb
             intake.deletable = true
-            intake.isFavorite = false
+            intake.isFavorite = true
             save()
         }
     }

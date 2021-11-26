@@ -37,19 +37,18 @@ struct OnBoardingView: View {
             Button("Mulai") {
                 self.showInputModal.toggle()
             }
-            .sheet(isPresented: $showInputModal) {
-                // On Dismiss when value is appended
-            } content: {
+            .sheet(isPresented: $showInputModal, onDismiss: {}) {
                 // Go to the page
                 SkinConditionJournalView(jourVM: viewModel)
+//                    .environment(.modalMode, self.$showInputModal)
                     .interactiveDismissDisabled(true)
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
             .padding()
-            NavigationLink("Should be hidden", isActive: $nextPage) {
-                Text("Halaman insight dr onboarding")
+            NavigationLink("Show set timer", isActive: $nextPage) {
+                OnboardingSetTimerView()
             }
-            .hidden()
+//            .hidden()
         }
         .navigationBarHidden(true)
     }
@@ -59,5 +58,22 @@ struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnBoardingView(category: .adult)
         OnBoardingView(category: .child)
+    }
+}
+
+// Buat dismiss modal parent di navigation view
+struct ModalModeKey: EnvironmentKey {
+    static let defaultValue = Binding<Bool>.constant(false) // < required
+}
+
+// define modalMode value
+extension EnvironmentValues {
+    var modalMode: Binding<Bool> {
+        get {
+            return self[ModalModeKey.self]
+        }
+        set {
+            self[ModalModeKey.self] = newValue
+        }
     }
 }

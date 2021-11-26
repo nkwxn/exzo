@@ -14,7 +14,7 @@ struct ExzoApp: App {
     @State var isNewUser = false
     
     init() {
-        print("Exzo runs")
+         print("Exzo runs")
     }
     
     var body: some Scene {

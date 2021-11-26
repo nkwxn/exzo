@@ -96,6 +96,7 @@
 		D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */; };
 		D58AF7592731492100E67214 /* QuarterArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF7582731492100E67214 /* QuarterArc.swift */; };
 		D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */; };
+		D59B8A622750AB0300BB33FE /* NewJournalIEPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59B8A612750AB0300BB33FE /* NewJournalIEPView.swift */; };
 		D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87A2735152D00425E43 /* CategoryGrid.swift */; };
 		D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87C27364DB500425E43 /* ExzoSlider.swift */; };
 		D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */; };
@@ -243,6 +244,7 @@
 		D58AF755273148D400E67214 /* ExzoTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoTextFieldStyle.swift; sourceTree = "<group>"; };
 		D58AF7582731492100E67214 /* QuarterArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterArc.swift; sourceTree = "<group>"; };
 		D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewModel.swift; sourceTree = "<group>"; };
+		D59B8A612750AB0300BB33FE /* NewJournalIEPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJournalIEPView.swift; sourceTree = "<group>"; };
 		D5ADA87A2735152D00425E43 /* CategoryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGrid.swift; sourceTree = "<group>"; };
 		D5ADA87C27364DB500425E43 /* ExzoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoSlider.swift; sourceTree = "<group>"; };
 		D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareContainer.swift; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 		D58422B9274B515900F495E3 /* NewJournals */ = {
 			isa = PBXGroup;
 			children = (
+				D59B8A602750A3B300BB33FE /* Intake and Exposure */,
 				D55092D8274FA3C00047A14C /* StressLevel */,
 				D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */,
 				D5266D60274DFCD500C2DE4A /* JournalRoutineOnboarding */,
@@ -927,6 +930,14 @@
 				D58AF7582731492100E67214 /* QuarterArc.swift */,
 			);
 			path = "Custom Shapes";
+			sourceTree = "<group>";
+		};
+		D59B8A602750A3B300BB33FE /* Intake and Exposure */ = {
+			isa = PBXGroup;
+			children = (
+				D59B8A612750AB0300BB33FE /* NewJournalIEPView.swift */,
+			);
+			path = "Intake and Exposure";
 			sourceTree = "<group>";
 		};
 		D5ADA878273514CB00425E43 /* Journal Section */ = {
@@ -1327,6 +1338,7 @@
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
 				D5DEF0BF274E2FD1006415E5 /* JournalInputViewModel.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
+				D59B8A622750AB0300BB33FE /* NewJournalIEPView.swift in Sources */,
 				D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				D55092DA274FA3D10047A14C /* StressLevelSliderView.swift in Sources */,

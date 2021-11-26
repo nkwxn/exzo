@@ -14,10 +14,11 @@ class UserProfileViewModel: ObservableObject {
     var imageName: [String]
     @Published var selectedPic: String
     @Published var myNickName = ""
-    @Published var ageInt = 10
+    @Published var ageInt = "10"
     
     @Published var profileName: String = ""
-    @Published var childAge: Int = 10
+    
+    @Published var userConcern = UDHelper.sharedUD.getTriggers()
     
     init(_ category: ProfileCategory) {
         self.category = category
@@ -40,7 +41,8 @@ class UserProfileViewModel: ObservableObject {
         selectedPic = imageName[arrLoc]
     }
     
-    func saveData(_ category: ProfileCategory) {
+    func saveData() {
+        UDHelper.sharedUD.createUD(key: UDKey.userType.rawValue, value: category.rawValue)
         UDHelper.sharedUD.createUD(key: UDKey.userName.rawValue, value: myNickName)
         UDHelper.sharedUD.createUD(key: UDKey.profilePicture.rawValue, value: selectedPic)
         UDHelper.sharedUD.createUD(key: UDKey.childAge.rawValue, value: ageInt)

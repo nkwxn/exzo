@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     @ObservedObject var viewModel: UserProfileViewModel
+    @State var pushToNextPage = false
     
     init(category: ProfileCategory) {
         viewModel = UserProfileViewModel(category)
@@ -18,7 +19,7 @@ struct UserProfileView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("Atur profil \(viewModel.category == .child ? "anak " : " ")Anda")
-                        .font(Lexend(.title2).getFont().bold())
+                    .font(Lexend(.title2).getFont().bold())
                 Text(viewModel.category.getProfileDesc())
                 HStack {
                     Spacer()
@@ -37,15 +38,18 @@ struct UserProfileView: View {
                     Spacer()
                 }
                 ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.profileName)
-                ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: .constant("9 tahun"))
+                ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt)
+                    .keyboardType(.numberPad)
                 Spacer()
-                NavigationLink("Lanjut") {
+                Button("Lanjut") {
+                    viewModel.saveData()
+                    pushToNextPage.toggle()
+                }
+                .buttonStyle(ExzoButtonStyle(type: .primary))
+                NavigationLink("Lanjut", isActive: $pushToNextPage) {
                     OnBoardingView(category: self.viewModel.category)
                 }
-                .simultaneousGesture(TapGesture().onEnded { xxx in
-                    viewModel.saveData(viewModel.category)
-                })
-                .buttonStyle(ExzoButtonStyle(type: .primary))
+                .hidden()
                 Spacer()
             }
             .padding()
