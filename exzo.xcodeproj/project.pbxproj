@@ -16,6 +16,7 @@
 		5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE90272FA79200541E7A /* ProductModel.swift */; };
 		5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE92272FA87500541E7A /* ProductRowView.swift */; };
 		5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23EE94272FB4B400541E7A /* AddProductView.swift */; };
+		5D8F2572274B6970008A3430 /* JournalNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F2571274B6970008A3430 /* JournalNavBarView.swift */; };
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
 		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
@@ -153,6 +154,7 @@
 		5D23EE90272FA79200541E7A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D23EE92272FA87500541E7A /* ProductRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRowView.swift; sourceTree = "<group>"; };
 		5D23EE94272FB4B400541E7A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		5D8F2571274B6970008A3430 /* JournalNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalNavBarView.swift; sourceTree = "<group>"; };
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD92CE52734DA8200F4C319 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -248,7 +250,6 @@
 		E228CEA6273ABF8600FFEDD8 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		E228CEA8273B74A100FFEDD8 /* FEAListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListView.swift; sourceTree = "<group>"; };
 		E228CEAA273B74B500FFEDD8 /* FEAListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FEAListRowView.swift; sourceTree = "<group>"; };
-		E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavBarView.swift; path = "Custom Navigation Bar/CustomNavBarView.swift"; sourceTree = "<group>"; };
 		E290561D273D647900A22CB2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		E2905621273D6E8600A22CB2 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
@@ -425,6 +426,7 @@
 				5DF4ADE82733856700F51423 /* JournalRowView.swift */,
 				5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */,
 				5DD92CE52734DA8200F4C319 /* CalendarView.swift */,
+				5D8F2571274B6970008A3430 /* JournalNavBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -676,7 +678,6 @@
 			children = (
 				E2F99DFB2734D991004C2456 /* Custom Navigation Bar */,
 				D5163E8327280E3000DF09D0 /* WaitAlert.swift */,
-				E2479EDB273103CF00C4E278 /* CustomNavBarView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1340,6 +1341,7 @@
 				E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */,
 				E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */,
 				E2905620273D6DD500A22CB2 /* ProfileHeaderView.swift in Sources */,
+				5D8F2572274B6970008A3430 /* JournalNavBarView.swift in Sources */,
 				E2FBDE85274CA7E100EB01C0 /* SetReminderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
