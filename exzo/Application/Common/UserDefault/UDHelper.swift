@@ -10,9 +10,12 @@ enum UDKey: String {
     case loginUserID
     case newUser
     case triggeredBodyParts
+
+    case reminders
 }
 
 class UDHelper {
+    
     static let sharedUD = UDHelper()
     
     let defaults = UserDefaults.standard
@@ -27,5 +30,7 @@ class UDHelper {
     
     func setNewUser() {
         defaults.setValue(false, forKey: UDKey.newUser.rawValue)
-    }    
+    }
+    
+    
 }

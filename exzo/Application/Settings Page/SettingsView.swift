@@ -12,7 +12,9 @@ struct SettingsView: View {
     var profileName: String
     
     @State var alertDeleteAccountShown: Bool = false
-    @State var alertSignOutShown:Bool = false
+    @State var alertSignOutShown: Bool = false
+    
+    @State var isWriteReview: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,7 +33,7 @@ struct SettingsView: View {
                     
                     Section(header: Text("LANGUAGE")) {
                         NavigationLink {
-//                            SetReminderView()
+                            LanguagePageView()
                         } label: {
                             SettingRowView(settingIcon: "globe", settingTitle: "Language")
                         }
@@ -39,7 +41,7 @@ struct SettingsView: View {
                     
                     Section(header: Text("LEGAL MATTERS")) {
                         NavigationLink {
-//                            SetReminderView()
+                            PrivacyPolicyView()
                         } label: {
                             SettingRowView(settingIcon: "lock", settingTitle: "Privacy Policy")
                         }
@@ -51,41 +53,49 @@ struct SettingsView: View {
                     }
                     
                     Section(header: Text("OTHERS")) {
+//                        Button {
+//                            isWriteReview.toggle()
+//                        } label: {
+//                            SettingRowView(settingIcon: "star", settingTitle: "Rate our App", showChevron: true)
+//                        }
+//                        NavigationLink {
+////                            SetReminderView()
+//                        } label: {
+//                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Frequently Asked Questions")
+//                        }
                         NavigationLink {
-                            SetReminderView()
-                        } label: {
-                            SettingRowView(settingIcon: "star", settingTitle: "Rate our App")
-                        }
-                        NavigationLink {
-                            SetReminderView()
+                            
                         } label: {
                             SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Frequently Asked Questions")
                         }
                         NavigationLink {
-                            SetReminderView()
+
                         } label: {
                             SettingRowView(settingIcon: "phone", settingTitle: "Contact Us")
                         }
-                        Button {
-                            alertDeleteAccountShown.toggle()
-                        } label: {
-                            SettingRowView(settingIcon: "trash", settingTitle: "Delete Account", showChevron: true)
-                        }
-//                        .alert(isPresented: $alertDeleteAccountShown, TextAlert(title: "Delete Account" ,message:"Are you sure you want to delete your account?") {
-//                            .alert(isPresented: $alertDeleteAccountShown, TextAlert(title: "Delete Account" ,message: "Are you sure want to sign out now?") {_ in
-//                                Button("Sign Out", role: .destructive) {}
-//                                Button("Cancel", role: .cancel) {}
-//                            })
-//                        })
-                        Button {
-                            alertSignOutShown.toggle()
-                        } label: {
-                            SettingRowView(settingIcon: "arrowshape.turn.up.backward", settingTitle: "Sign Out", showChevron: true)
-                        }
-//                        .alert(isPresented: $alertSignOutShown, TextAlert(title: "Sign Out" ,message: "Are you sure want to sign out now?") {_ in
-//                            Button("Sign Out", role: .destructive) {}
+//                        Button {
+//                            alertDeleteAccountShown.toggle()
+//                        } label: {
+//                            SettingRowView(settingIcon: "trash", settingTitle: "Delete Account", showChevron: true)
+//                        }
+//                        .alert("Delete Account", isPresented: $alertDeleteAccountShown) {
 //                            Button("Cancel", role: .cancel) {}
-//                        })
+//                            Button("I'm Sure", role: .destructive) {}
+//                        } message: {
+//                            Text("Are you sure you want to delete your account?")
+//                        }
+//
+//                        Button {
+//                            alertSignOutShown.toggle()
+//                        } label: {
+//                            SettingRowView(settingIcon: "arrowshape.turn.up.backward", settingTitle: "Sign Out", showChevron: true)
+//                        }
+//                        .alert("Delete Account", isPresented: $alertSignOutShown) {
+//                            Button("Cancel", role: .cancel) {}
+//                            Button("Sign Out", role: .destructive) {}
+//                        } message: {
+//                            Text("Are you sure want to sign out now?")
+//                        }
                     }
                 }
                 .cornerRadius(30)
@@ -93,9 +103,12 @@ struct SettingsView: View {
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarHidden(true)
+            
+        }
+        .sheet(isPresented: $isWriteReview) {
+            RateView()
         }
     }
-    
 }
 
 struct SettingsView_Previews: PreviewProvider {

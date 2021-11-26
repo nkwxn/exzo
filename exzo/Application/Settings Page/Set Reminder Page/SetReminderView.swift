@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct SetReminderView: View {
+    @ObservedObject var setReminderViewModel = SetReminderViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            ForEach(setReminderViewModel.reminders) { reminder in
+                ReminderRowView(reminder: reminder)
+                
+            }
+            Button(action: {
+                setReminderViewModel.addReminder(dateAndTime: Date())
+            }, label: {
+                Text("+ Add Time")
+            })
+                .buttonStyle(ExzoButtonStyle(type: .secondary))
+                .padding(20)
+        }
+        
+        .navigationTitle("Reminder")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
