@@ -40,7 +40,7 @@ struct OnBoardingView: View {
             .sheet(isPresented: $showInputModal, onDismiss: {}) {
                 // Go to the page
                 SkinConditionJournalView(jourVM: viewModel)
-//                    .environment(.modalMode, self.$showInputModal)
+                    .environment(\.modalMode, self.$showInputModal)
                     .interactiveDismissDisabled(true)
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))

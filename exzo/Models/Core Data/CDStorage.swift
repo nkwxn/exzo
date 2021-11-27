@@ -287,9 +287,20 @@ struct RawIEAData {
 }
 
 enum IEA: String {
-    case activity = "Activity"
+    case activity = "Activity" // -> BATAL PAKAI
     case exposure = "Exposure"
     case intake = "Food Intake"
+    
+    func getLocalizedName() -> String {
+        switch self {
+        case .activity:
+            return "Aktivitas"
+        case .exposure:
+            return "Paparan"
+        case .intake:
+            return "Asupan Makanan"
+        }
+    }
 }
 
 // MARK: - CRUD Exposure, Food Intake, dan Activity Template

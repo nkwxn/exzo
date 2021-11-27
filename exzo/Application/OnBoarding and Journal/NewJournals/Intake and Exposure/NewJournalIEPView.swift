@@ -103,13 +103,15 @@ class IEPViewModel: ObservableObject {
 }
 
 struct NewJournalIEPView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.modalMode) var modalMode
     
     var inputMode: EczemaTriggers
     @ObservedObject var viewModel: JournalInputViewModel
     @ObservedObject var iepViewModel: IEPViewModel
     
     @State var nextPage = false
+    @State var buttonText = "Lanjut"
+    @State var addThingsShown = false
     
     init(_ inputMode: EczemaTriggers, viewModel: JournalInputViewModel) {
         self.inputMode = inputMode
@@ -147,8 +149,28 @@ struct NewJournalIEPView: View {
                     }
                     Button("Tambah \(inputMode.rawValue)") {
                         // Show or hide modal
+                        self.addThingsShown.toggle()
                     }
                     .buttonStyle(ExzoButtonStyle(type: .secondary))
+                    .sheet(isPresented: $addThingsShown) {
+                        // on dismiss
+                    } content: {
+                        switch inputMode {
+                        case .foodIntake:
+                            NavigationView {
+                                AddFEAView(category: .intake, accent: .accentYellow)
+                            }
+                        case .exposure:
+                            NavigationView {
+                                AddFEAView(category: .exposure, accent: .copper)
+                            }
+                        case .medProd:
+                            AddProduct()
+                        case .stress:
+                            Text("Should never show prodict")
+                        }
+                    }
+
                 }
                 Button("Lanjut") {
                     switch inputMode {
@@ -161,7 +183,7 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
-                            dismiss()
+                            dismissModal()
                         }
                     case .exposure:
                         if viewModel.chosenTriggerCategory.contains(where: { cate in
@@ -171,14 +193,41 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
-                            dismiss()
+                            dismissModal()
                         }
                     default:
-                        dismiss()
+                        dismissModal()
                     }
                 }
                 .buttonStyle(ExzoButtonStyle(type: .primary))
-                NavigationLink("Lanjut", isActive: $nextPage, destination: {
+                .onAppear {
+                    switch inputMode {
+                    case .foodIntake:
+                        if viewModel.chosenTriggerCategory.contains(where: { cate in
+                            let isExposure = cate == EczemaTriggers.exposure.rawValue
+                            let isProd = cate == EczemaTriggers.medProd.rawValue
+                            
+                            return isExposure || isProd
+                        }) {
+                            self.buttonText = "Lanjut"
+                        } else {
+                            self.buttonText = "Selesai"
+                        }
+                    case .exposure:
+                        if viewModel.chosenTriggerCategory.contains(where: { cate in
+                            let isProd = cate == EczemaTriggers.medProd.rawValue
+                            
+                            return isProd
+                        }) {
+                            self.buttonText = "Lanjut"
+                        } else {
+                            self.buttonText = "Selesai"
+                        }
+                    default:
+                        self.buttonText = "Selesai"
+                    }
+                }
+                NavigationLink(buttonText, isActive: $nextPage, destination: {
                     switch inputMode {
                     case .foodIntake:
                         if viewModel.chosenTriggerCategory.contains(EczemaTriggers.exposure.rawValue) {
@@ -201,6 +250,14 @@ struct NewJournalIEPView: View {
         }
         .padding()
         .navigationTitle(inputMode.rawValue)
+    }
+    
+    func dismissModal() {
+        // Save to core data (NewJournal)
+        
+        
+        // Dismiss parent modal / navigation view
+        modalMode.wrappedValue.toggle()
     }
 }
 

@@ -16,44 +16,41 @@ struct UserProfileView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Atur profil \(viewModel.category == .child ? "anak " : " ")Anda")
-                    .font(Lexend(.title2).getFont().bold())
-                Text(viewModel.category.getProfileDesc())
-                HStack {
-                    Spacer()
-                    ZStack(alignment: .bottomTrailing) {
-                        Image("L0 - \(viewModel.selectedPic)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 200, height: 200)
-                            .clipShape(Circle())
-                        Button(action: viewModel.shuffleImage) {
-                            Image(systemName: "arrow.2.circlepath")
-                        }
-                        .buttonStyle(ExzoButtonStyle(type: .smallIconPrimary))
-                        .padding(.horizontal)
-                    }
-                    Spacer()
-                }
-                ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.profileName)
-                ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt)
-                    .keyboardType(.numberPad)
+        VStack(alignment: .leading) {
+            Text("Atur profil \(viewModel.category == .child ? "anak " : " ")Anda")
+                .font(Lexend(.title2).getFont().bold())
+            Text(viewModel.category.getProfileDesc())
+            HStack {
                 Spacer()
-                Button("Lanjut") {
-                    viewModel.saveData()
-                    pushToNextPage.toggle()
+                ZStack(alignment: .bottomTrailing) {
+                    Image("L0 - \(viewModel.selectedPic)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 200, height: 200)
+                        .clipShape(Circle())
+                    Button(action: viewModel.shuffleImage) {
+                        Image(systemName: "arrow.2.circlepath")
+                    }
+                    .buttonStyle(ExzoButtonStyle(type: .smallIconPrimary))
+                    .padding(.horizontal)
                 }
-                .buttonStyle(ExzoButtonStyle(type: .primary))
-                NavigationLink("Lanjut", isActive: $pushToNextPage) {
-                    OnBoardingView(category: self.viewModel.category)
-                }
-                .hidden()
                 Spacer()
             }
-            .padding()
+            ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.profileName)
+            ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt)
+                .keyboardType(.numberPad)
+            Spacer()
+            Button("Lanjut") {
+                viewModel.saveData()
+                pushToNextPage.toggle()
+            }
+            .buttonStyle(ExzoButtonStyle(type: .primary))
+            NavigationLink("Lanjut", isActive: $pushToNextPage) {
+                OnBoardingView(category: self.viewModel.category)
+            }
+            .hidden()
         }
+        .padding()
         .navigationTitle("Atur Profil")
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StressLevelSliderView: View {
-    @Environment(\.dismiss) var isPresented
+    @Environment(\.modalMode) var modalMode
     @ObservedObject var viewModel: JournalInputViewModel
     
     init(_ vm: JournalInputViewModel) {
@@ -17,6 +17,7 @@ struct StressLevelSliderView: View {
     
     var userPFP = UDHelper.sharedUD.getPFP()
     
+    @State var buttonText = "Lanjut"
     @State var stressValue: Double = 2
     var captionText: [String] {
         return [
@@ -51,7 +52,7 @@ struct StressLevelSliderView: View {
             }
             .multilineTextAlignment(.center)
             Spacer()
-            Button("Lanjut") {
+            Button(buttonText) {
                 if viewModel.chosenTriggerCategory.contains(where: { cate in
                     let isIntake = cate == EczemaTriggers.foodIntake.rawValue
                     let isExposure = cate == EczemaTriggers.exposure.rawValue
@@ -61,11 +62,24 @@ struct StressLevelSliderView: View {
                 }) {
                     goToNextPage.toggle()
                 } else {
-                    isPresented()
+                    self.modalMode.wrappedValue.toggle()
                     // Save to Core Data
                 }
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
+            .onAppear {
+                if viewModel.chosenTriggerCategory.contains(where: { cate in
+                    let isIntake = cate == EczemaTriggers.foodIntake.rawValue
+                    let isExposure = cate == EczemaTriggers.exposure.rawValue
+                    let isProd = cate == EczemaTriggers.medProd.rawValue
+                    
+                    return isIntake || isExposure || isProd
+                }) {
+                    self.buttonText = "Lanjut"
+                } else {
+                    self.buttonText = "Selesai"
+                }
+            }
             NavigationLink("Lanjut", isActive: $goToNextPage) {
                 if viewModel.chosenTriggerCategory.contains(EczemaTriggers.foodIntake.rawValue) {
                     NewJournalIEPView(.foodIntake, viewModel: viewModel)
