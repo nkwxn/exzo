@@ -11,16 +11,23 @@ import SwiftUI
 struct ExzoApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State var loginAlert = false
+    @State var isNewUser = false
     
     init() {
-        print("Exzo runs")
+         print("Exzo runs")
     }
     
     var body: some Scene {
+        
         WindowGroup {
+            // MARK: - Bikin sesuai dengan itunya
             TabContainer()
                 .preferredColorScheme(.light)
                 .font(Avenir.shared.getFont())
+                .fullScreenCover(isPresented: $isNewUser) {
+                    ChildAdultView()
+                        .environment(\.modalMode, $isNewUser)
+                }
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
                         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -49,6 +56,10 @@ struct ExzoApp: App {
                         print("Continue to the app")
                     }
                 }
+                if !UDHelper.sharedUD.isNewUser() {
+                    isNewUser = true
+                }
+                print(UDHelper.sharedUD.isNewUser())
             case .inactive:
                 print("Inactive")
             case .background:

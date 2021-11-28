@@ -6,6 +6,7 @@
 // Resource : [https://www.youtube.com/watch?v=6XcAXVG1hrs&t=567s]
 
 import SwiftUI
+
 // swiftlint:disable all
 struct InsightOnboardingView: View {
     let maxHeight = UIScreen.main.bounds.height / 2.3
