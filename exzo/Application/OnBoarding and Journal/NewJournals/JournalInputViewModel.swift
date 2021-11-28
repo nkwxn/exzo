@@ -29,14 +29,39 @@ class JournalInputViewModel: ObservableObject {
     
     // Food Intake, exposure, stress, product
     @Published var stressLevel = 2.0
-    @Published var chosenFoodIntakes = [IEAData]()
-    @Published var chosenExposure = [IEAData]()
-    @Published var chosenProducts = [UUID]()
+    var chosenFoodIntakes = [IEAData]()
+    var chosenExposure = [IEAData]()
+    var chosenProducts = [ListProduct]()
     
     @Published var chosenTriggerCategory = UDHelper.sharedUD.getTriggers()
+    
+    // For onboarding only, push navigation to timer
+    @Published var pushToTimer = false
     
     init(_ cat: ProfileCategory, mode: JournalMode) {
         self.category = cat
         self.journalMode = mode
+    }
+    
+    func pushNavToTimer() {
+        if journalMode == .onboarding {
+            self.pushToTimer.toggle()
+        }
+    }
+    
+    func saveJournal(completion: @escaping () -> Void) {
+        CDStorage.shared.createNewJournal(
+            rednessPart: self.rednessPart,
+            rednessScore: Int(self.rednessValue),
+            swellingPart: self.swellingPart,
+            swellingScore: Int(self.swellingValue),
+            scratchPart: self.scratchPart,
+            scratchScore: Int(self.scratchValue),
+            foodIntakes: self.chosenFoodIntakes,
+            exposure: self.chosenExposure,
+            products: self.chosenProducts,
+            stressLevel: Int(self.stressLevel),
+            completion: completion
+        )
     }
 }

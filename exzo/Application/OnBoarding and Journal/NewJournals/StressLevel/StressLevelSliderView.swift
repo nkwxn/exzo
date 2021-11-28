@@ -62,8 +62,12 @@ struct StressLevelSliderView: View {
                 }) {
                     goToNextPage.toggle()
                 } else {
-                    self.modalMode.wrappedValue.toggle()
                     // Save to Core Data
+                    viewModel.saveJournal {
+                        // Completion
+                        self.modalMode.wrappedValue.toggle()
+                        viewModel.pushNavToTimer()
+                    }
                 }
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))

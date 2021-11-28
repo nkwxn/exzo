@@ -18,8 +18,6 @@ struct OnBoardingView: View {
     @State var showInputModal = false
     @State var showInfoModal = false
     
-    @State var nextPage = false
-    
     var body: some View {
         VStack {
             Image("onBoarding")
@@ -45,10 +43,10 @@ struct OnBoardingView: View {
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
             .padding()
-            NavigationLink("Show set timer", isActive: $nextPage) {
+            NavigationLink("Show set timer", isActive: $viewModel.pushToTimer) {
                 OnboardingSetTimerView()
             }
-//            .hidden()
+            .hidden()
         }
         .navigationBarHidden(true)
     }

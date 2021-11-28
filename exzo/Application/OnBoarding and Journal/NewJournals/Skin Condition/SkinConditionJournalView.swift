@@ -111,7 +111,22 @@ struct SkinConditionJournalView: View {
                     isDoneButtonDisabled = newValue.isEmpty
                 }
                 NavigationLink(isActive: $showTrackRoutine) {
-                    JournalConcernView(viewModel: viewModel)
+                    switch viewModel.journalMode {
+                    case .onboarding:
+                        JournalConcernView(viewModel: viewModel)
+                    default:
+                        if viewModel.chosenTriggerCategory.contains(EczemaTriggers.stress.rawValue) {
+                            StressLevelSliderView(viewModel)
+                        } else if viewModel.chosenTriggerCategory.contains(EczemaTriggers.foodIntake.rawValue) {
+                            NewJournalIEPView(.foodIntake, viewModel: viewModel)
+                        } else if viewModel.chosenTriggerCategory.contains(EczemaTriggers.exposure.rawValue) {
+                            NewJournalIEPView(.exposure, viewModel: viewModel)
+                        } else if viewModel.chosenTriggerCategory.contains(EczemaTriggers.medProd.rawValue) {
+                            NewJournalIEPView(.medProd, viewModel: viewModel)
+                        } else {
+                            Text("DISMISS THIS VIEW")
+                        }
+                    }
                 } label: {
                     
                 }

@@ -245,13 +245,6 @@ extension CDStorage {
     }
 }
 
-// MARK: - Buat Intake, Exposure dan Activity
-struct IEAData: Identifiable {
-    let id = UUID()
-    var name: String
-    var thumb: String
-}
-
 struct RawIEAData {
     static let foodIntakeTemplate = [
         IEAData(name: "Gluten", thumb: "Icon004"),

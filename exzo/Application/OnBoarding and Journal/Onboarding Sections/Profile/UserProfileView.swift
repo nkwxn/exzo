@@ -37,8 +37,7 @@ struct UserProfileView: View {
                 Spacer()
             }
             ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.profileName)
-            ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt)
-                .keyboardType(.numberPad)
+            ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt, style: .numberTextField)
             Spacer()
             Button("Lanjut") {
                 viewModel.saveData()

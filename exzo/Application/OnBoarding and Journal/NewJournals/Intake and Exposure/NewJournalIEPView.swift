@@ -8,40 +8,42 @@
 import SwiftUI
 import Combine
 
-//struct FEGridView: View {
-//    inputMode.
-//    let gridItem = Array(repeating: GridItem(), count: 5)
-//
-//    var body: some View {
-//        LazyVGrid(columns: gridItem) {
-//
-//        }
-//    }
-//}
-
-struct ListProduct {
-    var id: UUID
-    var productCat: String
-    var productName: String
-    var selected: Bool = false
-}
-
 struct JournalProductListView: View {
     @Binding var productList: [ListProduct]
     
     var body: some View {
         ForEach(productList, id: \.id) { item in
+            ProductListRow(product: item) { prodItem, selected in
+                
+            }
+        }
+    }
+}
+
+struct ProductListRow: View {
+    var product: ListProduct
+    @State var selected = false
+    var completion: (ListProduct, Bool) -> Void
+    
+    var body: some View {
+        Button {
+            // action
+            self.selected.toggle()
+            completion(product, selected)
+        } label: {
+            // label
             HStack {
-                Text(item.productCat)
-                    .foregroundColor(.primary)
+                Text(product.productCat)
+                    .foregroundColor(selected ? .white : .primary)
                 Spacer()
-                Text(item.productName)
+                Text(product.productName)
                     .foregroundColor(.secondary)
             }
             .padding()
             .background {
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(item.selected ? .copper : .white)
+                    .foregroundColor(selected ? .copper : .white)
+                    .border(Color.gray, width: 1)
             }
         }
     }
@@ -51,8 +53,13 @@ class IEPViewModel: ObservableObject {
     @Published var ieaData = [CategoryItem]()
     @Published var medProd = [ListProduct]()
     
-    private var cancellable: AnyCancellable?
+    @Published var selectedIEA = [IEAData]()
+    @Published var selectedMedProd = [ListProduct]()
     
+    private var cancellable: AnyCancellable?
+    var selectionCancellable: AnyCancellable?
+    
+    // swiftlint:disable function_body_length
     init(_ inputMode: EczemaTriggers) {
         switch inputMode {
         case .foodIntake:
@@ -68,6 +75,15 @@ class IEPViewModel: ObservableObject {
                     return CategoryItem(iconName: "Icon001", name: "NULL", selected: false)
                 }
             }
+            
+            selectionCancellable = $ieaData.eraseToAnyPublisher().sink { items in
+                self.selectedIEA = items.filter { item in
+                    item.selected
+                }.map { item -> IEAData in
+                    IEAData(name: item.name, thumb: item.iconName)
+                }
+            }
+            
             medProd = []
         case .exposure:
             self.cancellable = CDStorage.shared.envExposures.eraseToAnyPublisher().sink { items in
@@ -82,6 +98,15 @@ class IEPViewModel: ObservableObject {
                     return CategoryItem(iconName: "Icon001", name: "NULL", selected: false)
                 })
             }
+            
+            selectionCancellable = $ieaData.eraseToAnyPublisher().sink { items in
+                self.selectedIEA = items.filter { item in
+                    item.selected
+                }.map { item -> IEAData in
+                    IEAData(name: item.name, thumb: item.iconName)
+                }
+            }
+            
             self.medProd = []
         case .stress:
             print("Stress level have been defined. Please SKIP THIS")
@@ -95,6 +120,12 @@ class IEPViewModel: ObservableObject {
                         return ListProduct(id: id, productCat: category, productName: name)
                     }
                     return ListProduct(id: UUID(), productCat: "Category", productName: "Name")
+                }
+            }
+            
+            selectionCancellable = $medProd.eraseToAnyPublisher().sink { items in
+                self.selectedMedProd = items.filter { item in
+                    item.selected
                 }
             }
             self.ieaData = []
@@ -145,7 +176,11 @@ struct NewJournalIEPView: View {
                     case .stress:
                         Text("Should not belongs here")
                     case .medProd:
-                        JournalProductListView(productList: $iepViewModel.medProd)
+                        ForEach(iepViewModel.medProd, id: \.id) { item in
+                            ProductListRow(product: item) { prodItem, selected in
+                                
+                            }
+                        }
                     }
                     Button("Tambah \(inputMode.rawValue)") {
                         // Show or hide modal
@@ -170,7 +205,24 @@ struct NewJournalIEPView: View {
                             Text("Should never show prodict")
                         }
                     }
-
+                    .onChange(of: iepViewModel.selectedIEA) { newValue in
+                        switch inputMode {
+                        case .foodIntake:
+                            viewModel.chosenFoodIntakes = newValue
+                        case .exposure:
+                            viewModel.chosenExposure = newValue
+                        default:
+                            print("Insufficient category")
+                        }
+                    }
+                    .onChange(of: iepViewModel.selectedMedProd) { newValue in
+                        switch inputMode {
+                        case .medProd:
+                            viewModel.chosenProducts = newValue
+                        default:
+                            print("Insufficient category")
+                        }
+                    }
                 }
                 Button("Lanjut") {
                     switch inputMode {
@@ -183,7 +235,11 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
-                            dismissModal()
+                            viewModel.saveJournal {
+                                // Completion
+                                dismissModal()
+                                viewModel.pushNavToTimer()
+                            }
                         }
                     case .exposure:
                         if viewModel.chosenTriggerCategory.contains(where: { cate in
@@ -193,7 +249,17 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
+                            viewModel.saveJournal {
+                                // Completion
+                                dismissModal()
+                                viewModel.pushNavToTimer()
+                            }
+                        }
+                    case .medProd:
+                        viewModel.saveJournal {
+                            // Completion
                             dismissModal()
+                            viewModel.pushNavToTimer()
                         }
                     default:
                         dismissModal()
@@ -227,7 +293,7 @@ struct NewJournalIEPView: View {
                         self.buttonText = "Selesai"
                     }
                 }
-                NavigationLink(buttonText, isActive: $nextPage, destination: {
+                NavigationLink(buttonText, isActive: $nextPage) {
                     switch inputMode {
                     case .foodIntake:
                         if viewModel.chosenTriggerCategory.contains(EczemaTriggers.exposure.rawValue) {
@@ -244,7 +310,7 @@ struct NewJournalIEPView: View {
                     case .medProd:
                         Text("Should dismiss modal")
                     }
-                })
+                }
                     .hidden()
             }
         }

@@ -33,16 +33,19 @@ class AtemisTests: XCTestCase {
             scratchScore: 2,
             foodIntakes: [IEAData(name: "Food", thumb: "Icon002")],
             exposure: [IEAData(name: "Sun", thumb: "Icon006")],
-            products: ["Skin Essence"],
+            products: [ListProduct(productCat: "Moisturizer", productName: "Cetapil")],
             stressLevel: 2
-        )
+        ) {
+            // completion handler
+        }
         
         print(CDStorage.shared.newJournalItems.value)
         
-        if let prods = CDStorage.shared.newJournalItems.value[0].productIDs as? [String] {
-            XCTAssert(prods[0] == "Skin Essence")
-            XCTAssertEqual(prods[0], "Skin Essence")
-        }
+//        if let prodys = CDStorage.shared.newJournalItems.value[0].productIDs as? ListProducts {
+//            let productToCheck = prodys.prods[0]
+//            XCTAssert(productToCheck.prod == "Skin Essence")
+//            XCTAssertEqual(prodys.prods[0], "Skin Essence")
+//        }
     }
     
     func testReadJournal() throws {

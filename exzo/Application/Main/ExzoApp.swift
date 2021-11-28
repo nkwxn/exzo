@@ -26,6 +26,7 @@ struct ExzoApp: App {
                 .font(Avenir.shared.getFont())
                 .fullScreenCover(isPresented: $isNewUser) {
                     ChildAdultView()
+                        .environment(\.modalMode, $isNewUser)
                 }
                 .alert("Please sign in your Apple ID to continue", isPresented: $loginAlert) {
                     Button("Open Settings") {
