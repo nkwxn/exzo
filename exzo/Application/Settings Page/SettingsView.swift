@@ -19,7 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ProfileHeaderView(profileImage: "L0 - Girl", profileName: "Regina George")
+                ProfileHeaderView(profileImage: "L0 - \(profileImage)", profileName: profileName)
                     .padding(.bottom)
                 List {
                     Section(header: Text("REMINDER")) {

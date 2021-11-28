@@ -10,7 +10,7 @@ import SwiftUI
 struct JournalDetailView: View {
     @State var isEditing = false
     
-    let journal: Journal
+    let journal: NewJournal
     
     var body: some View {
         VStack(spacing: 0) {

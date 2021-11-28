@@ -16,8 +16,6 @@ class UserProfileViewModel: ObservableObject {
     @Published var myNickName = ""
     @Published var ageInt = "10"
     
-    @Published var profileName: String = ""
-    
     @Published var userConcern = UDHelper.sharedUD.getTriggers()
     
     init(_ category: ProfileCategory) {

@@ -87,11 +87,7 @@ struct SkinConditionJournalView: View {
                         viewModel.percentageDone += 0.05
                         isBodyPart.toggle()
                     } else if questionSect == 2 {
-                        if viewModel.journalMode == .onboarding {
-                            showTrackRoutine.toggle()
-                        } else {
-                            print("Should take value from UD")
-                        }
+                        showTrackRoutine.toggle()
                     } else {
                         isBodyPart.toggle()
                         questionSect += 1

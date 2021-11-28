@@ -14,7 +14,7 @@ enum UDKey: String {
     case reminders
     
     // MARK: - Addition from Nic (Profile)
-    case userName = "name"
+    case userName = "uName"
     case childAge = "age"
     case profilePicture = "pfp"
     case userType = "userProf"
@@ -50,7 +50,11 @@ class UDHelper {
     // get the profile picture / user profile
     func getPFP() -> String {
         let pfp = defaults.string(forKey: UDKey.profilePicture.rawValue) ?? "KidsB"
-        print(pfp)
         return pfp
+    }
+    
+    func getName() -> String {
+        let name = defaults.string(forKey: UDKey.userName.rawValue) ?? "Regina George"
+        return name
     }
 }
