@@ -14,23 +14,18 @@ struct TabContainer: View {
         TabView {
             MySkinView()
                 .tabItem {
-                    Image(systemName: "face.smiling")
-                    Text("My Skin")
+                    Image(systemName: "book.closed")
+                    Text("Jurnal")
                 }
             ProductView()
                 .tabItem {
                     Image(systemName: "viewfinder.circle")
-                    Text("Product")
+                    Text("Produk")
                 }
             InsightsView()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Insights")
-                }
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape")
-                    Text("Settings")
                 }
         }
         .tabViewStyle(backgroundColor: colorScheme == .light ? .white : .black, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)

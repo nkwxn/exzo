@@ -56,7 +56,7 @@ import SwiftUI
 
 struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressView()
+        CustomProgressView(percent: .constant(0.2))
     }
 }
 

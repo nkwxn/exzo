@@ -57,7 +57,7 @@ struct ExzoTextField: View {
     }
     
     enum ExzoTextFieldStyle {
-        case normalTextField, emailTextField, pwdTextField
+        case normalTextField, emailTextField, pwdTextField, numberTextField
         
         func getKeyboardType() -> UIKeyboardType {
             switch self {
@@ -67,6 +67,8 @@ struct ExzoTextField: View {
                 return .emailAddress
             case .pwdTextField:
                 return .default
+            case .numberTextField:
+                return .numberPad
             }
         }
     }

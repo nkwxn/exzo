@@ -12,12 +12,12 @@ import UIKit
 class JournalViewModel: ObservableObject {
     var journalModel = CDStorage.shared
     
-    @Published var journals = [Journal]()
+    @Published var journals = [NewJournal]()
     
     private var cancellable: AnyCancellable?
     
     init(
-        journalPublisher: AnyPublisher<[Journal], Never> = CDStorage.shared.journalItems.eraseToAnyPublisher()
+        journalPublisher: AnyPublisher<[NewJournal], Never> = CDStorage.shared.newJournalItems.eraseToAnyPublisher()
     ) {
         cancellable = journalPublisher.sink { journalItem in
             print("update journal")
@@ -28,7 +28,7 @@ class JournalViewModel: ObservableObject {
     
     func deleteItem(index offset: IndexSet) {
         offset.map {
-            guard let id = journals[$0].idJournal else { return }
+            guard let id = journals[$0].id else { return }
             journalModel.deleteJournal(with: id)
         }
     }

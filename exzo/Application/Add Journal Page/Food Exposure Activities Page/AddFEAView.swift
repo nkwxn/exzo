@@ -29,19 +29,19 @@ struct AddFEAView: View {
     var body: some View {
         List {
             Section {
-                AddFEARowView(title: "Category", chooseImage: false, icon: nil, name: category.rawValue, color: accent)
+                AddFEARowView(title: "Kategori", chooseImage: false, icon: nil, name: category.rawValue, color: accent)
                 NavigationLink {
                     SelectIconView(iconSelection: $imageChoice, accentColor: accent)
                 } label: {
-                    AddFEARowView(title: "Icon", chooseImage: true, icon: imageChoice.isEmpty ? Image(systemName: "circle.righthalf.filled") : Image(imageChoice), name: "...", color: accent)
+                    AddFEARowView(title: "Ikon", chooseImage: true, icon: imageChoice.isEmpty ? Image(systemName: "circle.righthalf.filled") : Image(imageChoice), name: "...", color: accent)
                 }
                 Button {
                     alertNameShown.toggle()
                 } label: {
-                    AddFEARowView(title: "Name", chooseImage: false, icon: nil, name: name, color: accent)
+                    AddFEARowView(title: "Nama", chooseImage: false, icon: nil, name: name, color: accent)
                 }
                 .foregroundColor(Color.primary)
-                .alert(isPresented: $alertNameShown, TextAlert(title: "Name", message: "Please fill it with your own \(category.rawValue)") { result in
+                .alert(isPresented: $alertNameShown, TextAlert(title: "Nama", message: "Silakan isi dengan nama \(category.getLocalizedName())mu sendiri") { result in
                         if let result = result {
                             self.name = result.isEmpty ? "..." : result
                         }
@@ -52,11 +52,16 @@ struct AddFEAView: View {
             self.doneDisabled = (output.0 || output.1 || output.2)
         })
         .listStyle(InsetGroupedListStyle())
-        .navigationTitle("Add \(category.rawValue)")
+        .navigationTitle("Tambahkan \(category.getLocalizedName())")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Batalkan") {
+                    self.dismiss()
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Done") {
+                Button("Selesai") {
                     CDStorage.shared.createIEA(category, name: self.name, thumb: imageChoice)
                     dismiss()
                 }
