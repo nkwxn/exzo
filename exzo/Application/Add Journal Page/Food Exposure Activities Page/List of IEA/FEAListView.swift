@@ -132,7 +132,6 @@ struct FEAListView: View {
                         Image(systemName: "plus")
                         Text("Add new \(title)")
                     }
-                    .multilineTextAlignment(.center)
                     .buttonStyle(PlainButtonStyle())
                     .padding(0)
                     .foregroundColor(.white)

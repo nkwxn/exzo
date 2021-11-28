@@ -62,6 +62,22 @@ struct JournalRowView: View {
                             }
                         }
                         VStack(alignment: .leading, spacing: 5) {
+                            Text("PO Scorad")
+                                .font(.system(size: 11))
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(accentArr[1])
+                                    .frame(width: 32, height: 32, alignment: .center)
+                                    .shadow(radius: 2)
+                                Text("\(journal.skinCondition!.poScorad)")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                        }
+                    }
+                    Spacer()
+                    VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text("Exposure")
                                 .font(.system(size: 11))
                             HStack(alignment: .center, spacing: -8) {
@@ -97,73 +113,21 @@ struct JournalRowView: View {
                                 }
                             }
                         }
-                    }
-                    Spacer()
-                    VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Activities")
-                                .font(.system(size: 11))
-                            HStack(alignment: .center, spacing: -8) {
-                                if let activities = journal.activities as? [IEAData] {
-                                    if activities.isEmpty {
-                                        
-                                    } else {
-                                        ForEach(0..<activities.count, id: \.self) { idx in
-                                            if idx < 4 {
-                                                Image(activities[idx].thumb)
-                                                    .resizable()
-                                                    .foregroundColor(.white)
-                                                    .frame(width: 32, height: 32, alignment: .center)
-                                                    .background {
-                                                        Circle()
-                                                            .foregroundColor(accentArr[idx])
-                                                            .frame(width: 32, height: 32, alignment: .center)
-                                                            .shadow(radius: 2)
-                                                    }
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .foregroundColor(accentArr[1])
-                                            .frame(width: 32, height: 32, alignment: .center)
-                                            .shadow(radius: 2)
-                                        Text("N/A")
-                                            .foregroundColor(.white)
-                                            .bold()
-                                    }
-                                }
-                            }
-                        }
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("PO Scorad")
+                            Text("Stress Level")
                                 .font(.system(size: 11))
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
                                     .frame(width: 32, height: 32, alignment: .center)
                                     .shadow(radius: 2)
-                                Text("\(journal.skinCondition!.poScorad)")
+                                Text("\(journal.stressLevel)")
                                     .foregroundColor(.white)
                                     .bold()
                             }
                         }
                     }
                     Spacer()
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("Stress Level")
-                            .font(.system(size: 11))
-                        ZStack {
-                            Circle()
-                                .foregroundColor(accentArr[1])
-                                .frame(width: 32, height: 32, alignment: .center)
-                                .shadow(radius: 2)
-                            Text("\(journal.stressLevel)")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
-                    }
                 }
             }
             .padding()

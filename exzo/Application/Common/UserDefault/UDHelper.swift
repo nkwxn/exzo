@@ -6,11 +6,12 @@
 //
 
 import Foundation
-
 enum UDKey: String {
-    case loginUserID = "loginUserID"
-    case newUser = "newUser"
-    case triggeredBodyParts = "triggeredBodyParts"
+    case loginUserID
+    case newUser
+    case triggeredBodyParts
+
+    case reminders
     
     // MARK: - Addition from Nic (Profile)
     case userName = "name"
