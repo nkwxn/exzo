@@ -14,9 +14,9 @@ class Constant: NSObject {
         apiKey: String = "0e6887936fd035827d0f5195a68a844c"
     ) -> String {
         if NSLocale.autoupdatingCurrent.identifier.hasSuffix("US") {
-            return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=imperial&appid=\(apiKey)"
+            return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=imperial&appid=\(apiKey)&lang=en"
         } else {
-            return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=metric&appid=\(apiKey)"
+            return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=metric&appid=\(apiKey)&lang=id"
         }
     }
     
@@ -25,9 +25,9 @@ class Constant: NSObject {
         apiKey: String = "0e6887936fd035827d0f5195a68a844c"
     ) -> String {
         if NSLocale.autoupdatingCurrent.identifier.hasSuffix("US") {
-            return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=imperial&appid=\(apiKey)"
+            return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=imperial&appid=\(apiKey)&lang=en"
         } else {
-            return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=metric&appid=\(apiKey)"
+            return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=metric&appid=\(apiKey)&lang=id"
         }
     }
 }

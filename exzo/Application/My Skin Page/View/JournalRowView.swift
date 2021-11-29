@@ -21,17 +21,29 @@ struct JournalRowView: View {
             VStack {
                 HStack(alignment: .top) {
                     Text(journal.dateAndTime!, style: .time)
+                        .font(Lexend(.caption).getFont())
                     Spacer()
                 }
                 Divider()
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Food Intake")
-                                .font(.system(size: 11))
+                            Text("Asupan makanan")
+                                .font(Avenir(.caption).getFont())
                             HStack(alignment: .center, spacing: -8) {
-                                if let foodIntakes = journal.foodIntakes as? IEADatas {
+                                if let foodIntakes = journal.foodIntakes {
                                     if foodIntakes.ieaDatas.isEmpty {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(accentArr[1])
+                                                .frame(width: 32, height: 32, alignment: .center)
+                                                .shadow(radius: 2)
+                                            Text("N/A")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                .font(Lexend(.footnote).getFont())
+                                                .fontWeight(.semibold)
+                                        }
                                     } else {
                                         ForEach(0..<foodIntakes.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
@@ -57,13 +69,15 @@ struct JournalRowView: View {
                                         Text("N/A")
                                             .foregroundColor(.white)
                                             .bold()
+                                            .font(Lexend(.footnote).getFont())
+                                            .fontWeight(.semibold)
                                     }
                                 }
                             }
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("PO Scorad")
-                                .font(.system(size: 11))
+                            Text("Kondisi Kulit")
+                                .font(Avenir(.caption).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
@@ -72,18 +86,30 @@ struct JournalRowView: View {
                                 Text("10")
                                     .foregroundColor(.white)
                                     .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
                             }
                         }
                     }
                     Spacer()
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Exposure")
-                                .font(.system(size: 11))
+                            Text("Paparan")
+                                .font(Avenir(.caption).getFont())
                             HStack(alignment: .center, spacing: -8) {
                                 if let exposure = journal.exposures {
                                     if exposure.ieaDatas.isEmpty {
-                                        
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(accentArr[1])
+                                                .frame(width: 32, height: 32, alignment: .center)
+                                                .shadow(radius: 2)
+                                            Text("N/A")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                .font(Lexend(.footnote).getFont())
+                                                .fontWeight(.semibold)
+                                        }
                                     } else {
                                         ForEach(0..<exposure.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
@@ -109,13 +135,15 @@ struct JournalRowView: View {
                                         Text("N/A")
                                             .foregroundColor(.white)
                                             .bold()
+                                            .font(Lexend(.footnote).getFont())
+                                            .fontWeight(.semibold)
                                     }
                                 }
                             }
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Stress Level")
-                                .font(.system(size: 11))
+                            Text("Nilai stress")
+                                .font(Avenir(.caption).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
@@ -124,6 +152,8 @@ struct JournalRowView: View {
                                 Text("\(String(format: "%.0f", journal.stressLevel))")
                                     .foregroundColor(.white)
                                     .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
                             }
                         }
                     }
