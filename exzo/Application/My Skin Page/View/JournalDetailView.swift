@@ -19,17 +19,26 @@ struct JournalDetailView: View {
                 isEditing.toggle()
             }
             
-            VStack(alignment: .leading) {
-                Text("Food intake")
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Asupan makanan")
                     .font(Avenir(.headline).getFont().bold())
                 HStack(alignment: .center) {
-                    if let foodIntakes = journal.foodIntake as? [IEAData] {
-                        if foodIntakes.isEmpty {
+                    if let foodIntakes = journal.foodIntakes {
+                        if foodIntakes.ieaDatas.isEmpty {
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(accentArr[1])
+                                    .frame(width: 66, height: 66, alignment: .center)
+                                    .shadow(radius: 2)
+                                Text("N/A")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
                         } else {
-                            ForEach(0..<foodIntakes.count, id: \.self) { idx in
+                            ForEach(0..<foodIntakes.ieaDatas.count, id: \.self) { idx in
                                 if idx < 4 {
                                     VStack {
-                                        Image(foodIntakes[idx].thumb)
+                                        Image(foodIntakes.ieaDatas[idx].thumb)
                                             .resizable()
                                             .foregroundColor(.white)
                                             .frame(width: 66, height: 66, alignment: .center)
@@ -39,7 +48,7 @@ struct JournalDetailView: View {
                                                     .frame(width: 66, height: 66, alignment: .center)
                                                     .shadow(radius: 2)
                                             }
-                                        Text(foodIntakes[idx].name)
+                                        Text(foodIntakes.ieaDatas[idx].name)
                                             .font(Avenir(.caption).getFont())
                                             .fontWeight(.semibold)
                                     }
@@ -63,35 +72,42 @@ struct JournalDetailView: View {
             }
             .padding(.horizontal)
             .padding(.top)
-            VStack(alignment: .leading) {
-                Text("Stress level")
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Nilai stres")
                     .font(Avenir(.headline).getFont().bold())
-                Text("\(journal.stressLevel)")
-                    .font(Avenir(.title).getFont().bold())
-                    .foregroundColor(Color.white)
-                    .background {
-                        Circle()
-                            .frame(width: 66, height: 66)
-                            .foregroundColor(Color.copper)
-                        
-                    }
-                    .frame(width: 66, height: 66)
+                ZStack {
+                    Circle()
+                        .foregroundColor(accentArr[1])
+                        .frame(width: 66, height: 66, alignment: .center)
+                        .shadow(radius: 2)
+                    Text("\(String(format: "%.0f", journal.stressLevel))")
+                        .foregroundColor(.white)
+                        .bold()
+                }
                 Divider()
             }
             .padding(.horizontal)
             .padding(.top)
             VStack(alignment: .leading) {
-                Text("Exposure")
+                Text("Paparan")
                     .font(Avenir(.headline).getFont().bold())
                 HStack(alignment: .center) {
-                    if let exposure = journal.skinExposure as? [IEAData] {
-                        if exposure.isEmpty {
-                            
+                    if let exposure = journal.exposures {
+                        if exposure.ieaDatas.isEmpty {
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(accentArr[1])
+                                    .frame(width: 66, height: 66, alignment: .center)
+                                    .shadow(radius: 2)
+                                Text("N/A")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
                         } else {
-                            ForEach(0..<exposure.count, id: \.self) { idx in
+                            ForEach(0..<exposure.ieaDatas.count, id: \.self) { idx in
                                 if idx < 4 {
                                     VStack {
-                                        Image(exposure[idx].thumb)
+                                        Image(exposure.ieaDatas[idx].thumb)
                                             .resizable()
                                             .foregroundColor(.white)
                                             .frame(width: 66, height: 66, alignment: .center)
@@ -101,7 +117,7 @@ struct JournalDetailView: View {
                                                     .frame(width: 66, height: 66, alignment: .center)
                                                     .shadow(radius: 2)
                                             }
-                                        Text(exposure[idx].name)
+                                        Text(exposure.ieaDatas[idx].name)
                                             .font(Avenir(.caption).getFont())
                                             .fontWeight(.semibold)
                                     }
@@ -125,12 +141,12 @@ struct JournalDetailView: View {
             .padding(.horizontal)
             .padding(.top)
             VStack(alignment: .leading) {
-                Text("Product")
+                Text("Produk")
                     .font(Avenir(.headline).getFont().bold())
                 Text("Moisturizer - Somethinc")
                     .font(Avenir(.headline).getFont())
                 Divider()
-                Text("Skin conditions")
+                Text("Kondisi kulit")
                     .font(Avenir(.headline).getFont().bold())
                 VStack {
                     HStack {
