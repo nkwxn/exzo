@@ -14,7 +14,7 @@ struct SettingsView: View {
     @State var alertDeleteAccountShown: Bool = false
     @State var alertSignOutShown: Bool = false
     
-    @State var isWriteReview: Bool = false
+//    @State var isWriteReview: Bool = false
     
     var body: some View {
         NavigationView {
@@ -22,24 +22,24 @@ struct SettingsView: View {
                 ProfileHeaderView(profileImage: "L0 - Girl", profileName: "Regina George")
                     .padding(.bottom)
                 List {
-                    Section(header: Text("REMINDER")) {
+                    Section(header: Text("PENGINGAT")) {
                         
                         NavigationLink {
                             SetReminderView()
                         } label: {
-                            SettingRowView(settingIcon: "timer", settingTitle: "Set Reminder")
+                            SettingRowView(settingIcon: "timer", settingTitle: "Atur Pengingat")
                         }
                     }
                     
-                    Section(header: Text("LANGUAGE")) {
+                    Section(header: Text("BAHASA")) {
                         NavigationLink {
                             LanguagePageView()
                         } label: {
-                            SettingRowView(settingIcon: "globe", settingTitle: "Language")
+                            SettingRowView(settingIcon: "globe", settingTitle: "Bahasa")
                         }
                     }
                     
-                    Section(header: Text("LEGAL MATTERS")) {
+                    Section(header: Text("MASALAH HUKUM")) {
                         NavigationLink {
                             PrivacyPolicyView()
                         } label: {
@@ -105,9 +105,9 @@ struct SettingsView: View {
             .navigationBarHidden(true)
             
         }
-        .sheet(isPresented: $isWriteReview) {
-            RateView()
-        }
+//        .sheet(isPresented: $isWriteReview) {
+//            RateView()
+//        }
     }
 }
 

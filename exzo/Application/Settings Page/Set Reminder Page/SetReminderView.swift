@@ -9,24 +9,40 @@ import SwiftUI
 
 struct SetReminderView: View {
     @ObservedObject var setReminderViewModel = SetReminderViewModel()
-    
+
     var body: some View {
-        ScrollView {
-            ForEach(setReminderViewModel.reminders) { reminder in
+        
+        List {
+            ForEach(setReminderViewModel.reminders, id: \.self) { reminder in
                 ReminderRowView(reminder: reminder)
-                
+//                        UDHelper.sharedUD.saveReminders(reminders: setReminderViewModel.reminders)
+//                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            setReminderViewModel.deleteReminder(id: reminder.id)
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        
+                    }
+                    .listRowSeparator(.hidden)
             }
             Button(action: {
-                setReminderViewModel.addReminder(dateAndTime: Date())
+                setReminderViewModel.isAddReminder.toggle()
             }, label: {
-                Text("+ Add Time")
+                Text("+ Tambah Pengingat")
             })
                 .buttonStyle(ExzoButtonStyle(type: .secondary))
                 .padding(20)
+                .listRowSeparator(.hidden)
         }
-        
-        .navigationTitle("Reminder")
+        .listStyle(.plain)
+        .navigationTitle("Pengingat")
         .navigationBarTitleDisplayMode(.inline)
+        
+        .sheet(isPresented: $setReminderViewModel.isAddReminder) {
+            AddReminderPage(setReminderViewModel: setReminderViewModel)
+        }
     }
 }
 

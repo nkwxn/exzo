@@ -126,6 +126,8 @@
 		E2EF69172738E9BD00B2E321 /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF69162738E9BD00B2E321 /* NavBarButton.swift */; };
 		E2EF6919273A086E00B2E321 /* AddFEAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF6918273A086E00B2E321 /* AddFEAView.swift */; };
 		E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */; };
+		E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F52C9D2750CE3000F64AA8 /* roundedSwipeAction.swift */; };
+		E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F52C9F2750D18700F64AA8 /* AddReminderPage.swift */; };
 		E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */; };
 		E2FBDE7C274B703D00EB01C0 /* SetReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */; };
 		E2FBDE81274C973000EB01C0 /* ReminderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDE80274C973000EB01C0 /* ReminderRowView.swift */; };
@@ -282,6 +284,8 @@
 		E2EF69162738E9BD00B2E321 /* NavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
 		E2EF6918273A086E00B2E321 /* AddFEAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFEAView.swift; sourceTree = "<group>"; };
 		E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFEARowView.swift; sourceTree = "<group>"; };
+		E2F52C9D2750CE3000F64AA8 /* roundedSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedSwipeAction.swift; sourceTree = "<group>"; };
+		E2F52C9F2750D18700F64AA8 /* AddReminderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderPage.swift; sourceTree = "<group>"; };
 		E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
 		E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderView.swift; sourceTree = "<group>"; };
 		E2FBDE80274C973000EB01C0 /* ReminderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRowView.swift; sourceTree = "<group>"; };
@@ -1060,6 +1064,14 @@
 			path = "Food Exposure Activities Page";
 			sourceTree = "<group>";
 		};
+		E2F52C9C2750BB8F00F64AA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2FBDE82274CA2C600EB01C0 /* Reminder.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E2F99DFB2734D991004C2456 /* Custom Navigation Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,10 +1088,12 @@
 		E2FBDE7A274B700400EB01C0 /* Set Reminder Page */ = {
 			isa = PBXGroup;
 			children = (
+				E2F52C9C2750BB8F00F64AA8 /* Model */,
 				E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */,
 				E2FBDE80274C973000EB01C0 /* ReminderRowView.swift */,
-				E2FBDE82274CA2C600EB01C0 /* Reminder.swift */,
 				E2FBDE84274CA7E100EB01C0 /* SetReminderViewModel.swift */,
+				E2F52C9D2750CE3000F64AA8 /* roundedSwipeAction.swift */,
+				E2F52C9F2750D18700F64AA8 /* AddReminderPage.swift */,
 			);
 			path = "Set Reminder Page";
 			sourceTree = "<group>";
@@ -1410,6 +1424,7 @@
 				D58422C0274B51EB00F495E3 /* ChildAdultView.swift in Sources */,
 				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */,
+				E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
 				D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */,
 				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
@@ -1434,6 +1449,7 @@
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
 				D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */,
+				E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */,
 				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
 				5DE09033273950AE00B2882B /* APIRequest.swift in Sources */,
 				5D23EE95272FB4B400541E7A /* AddProductView.swift in Sources */,

@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ReminderRowView: View {
     @State var reminder: Reminder
-    
+
     let width = 300.0
     
     var body: some View {
         HStack {
             HStack {
                 Toggle(isOn: $reminder.isOn) {
-                    Text(Date(), style: .time)
+                    Text(reminder.dateAndTime, style: .time)
                         .font(Lexend(.largeTitle).getFont())
                         .fontWeight(.light)
                 }
-                .onChange(of: reminder.isOn, perform: { value in
-//                    reminder = reminder.updateIsOn()
+                .onChange(of: reminder.isOn, perform: { newValue in
+                    print(newValue)
                 })
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
             }

@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct Reminder: Identifiable, Codable {
-    var id: String
+struct Reminder: Identifiable, Codable, Hashable {
+    var id: UUID
     let dateAndTime: Date
     var isOn: Bool
     
-    init(id: String = UUID().uuidString, dateAndTime: Date, isOn: Bool = true) {
+    init(id: UUID = UUID(), dateAndTime: Date, isOn: Bool = true) {
         self.id = id
         self.dateAndTime = dateAndTime
         self.isOn = isOn
