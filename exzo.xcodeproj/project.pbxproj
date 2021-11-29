@@ -1195,10 +1195,10 @@
 			};
 			buildConfigurationList = D5163E302727FF9600DF09D0 /* Build configuration list for PBXProject "exzo" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = id;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				id,
 				Base,
 			);
 			mainGroup = D5163E2C2727FF9600DF09D0;
