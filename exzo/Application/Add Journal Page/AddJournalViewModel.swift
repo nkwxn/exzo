@@ -28,7 +28,7 @@ class AddJournalViewModel: ObservableObject {
     var exposureSelect = [IEAData]()
     var activitySelect = [IEAData]()
     
-    // Skin conditions
+    // Skin conditionsx
     @Published var dryness = 2.0
     @Published var redness = 2.0
     @Published var swelling = 2.0

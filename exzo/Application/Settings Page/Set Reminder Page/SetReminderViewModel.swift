@@ -11,25 +11,21 @@ class SetReminderViewModel: ObservableObject {
     
     @Published var reminders: [Reminder] = [] {
         didSet {
-            saveReminders()
+            UDHelper.sharedUD.saveReminders(reminders: reminders)
         }
     }
     
+    @Published var isAddReminder: Bool = false
+    @Published var isEditReminder: Bool = false
+    
     init() {
-        getReminders()
+        reminders = UDHelper.sharedUD.getReminders()
     }
     
-    func getReminders() {
-        guard
-            let data = UDHelper.sharedUD.defaults.data(forKey: UDKey.reminders.rawValue),
-            let savedReminders = try? JSONDecoder().decode([Reminder].self, from: data)
-        else { return }
-        
-        self.reminders = savedReminders
-    }
-    
-    func deleteReminder(indexSet: IndexSet) {
-        reminders.remove(atOffsets: indexSet)
+    func deleteReminder(id: UUID) {
+        reminders.removeAll {
+            $0.id == id
+        }
     }
     
     func addReminder(dateAndTime: Date) {
@@ -37,9 +33,7 @@ class SetReminderViewModel: ObservableObject {
         reminders.append(newReminder)
     }
     
-    func saveReminders() {
-        if let encodedData = try? JSONEncoder().encode(reminders) {
-            UDHelper.sharedUD.createUD(key: UDKey.reminders.rawValue, value: encodedData)
-        }
+    func editReminder(id: UUID) {
+        
     }
 }
