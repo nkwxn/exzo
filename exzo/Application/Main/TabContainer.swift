@@ -17,18 +17,18 @@ struct TabContainer: View {
                     Image(systemName: "book.closed")
                     Text("Jurnal")
                 }
+            InsightsView()
+                .tabItem {
+                    Image(systemName: "chart.pie")
+                    Text("Analisis")
+                }
             ProductView()
                 .tabItem {
                     Image(systemName: "viewfinder.circle")
                     Text("Produk")
                 }
-            InsightsView()
-                .tabItem {
-                    Image(systemName: "chart.pie")
-                    Text("Insights")
-                }
         }
-        .tabViewStyle(backgroundColor: colorScheme == .light ? .white : .black, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)
+        .tabViewStyle(backgroundColor: .white, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)
     }
 }
 
