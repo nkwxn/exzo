@@ -46,16 +46,16 @@ struct ExzoApp: App {
             switch phase {
             case .active:
                 print("Active")
-                CKCrudOperators.checkiCloud { status, error in
-                    switch status {
-                    case .noAccount:
-                        print("alert please login")
-                        self.loginAlert = true
-                    default:
-                        // continue to app
-                        print("Continue to the app")
-                    }
-                }
+//                CKCrudOperators.checkiCloud { status, error in
+//                    switch status {
+//                    case .noAccount:
+//                        print("alert please login")
+//                        self.loginAlert = true
+//                    default:
+//                        // continue to app
+//                        print("Continue to the app")
+//                    }
+//                }
                 if !UDHelper.sharedUD.isNewUser() {
                     isNewUser = true
                 }

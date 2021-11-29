@@ -16,9 +16,24 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var weatherDesc = ""
     @Published var humidityString = ""
     @Published var iconLink = ""
-    @Published var recommendationString = ""
     
     var locationManager: CLLocationManager?
+    
+    // Encouragement words
+    let encouragements: [String] = [
+        "4 dari 5 anak akan sembuh dari eksim",
+        "Jangan bersedih, ada 80% kemungkinan anak mu sembuh dari eksim!",
+        "Anak yang ceria akan membuat kulit yang lebih sehat!",
+        "Kulit yang lembab adalah kunci!",
+        "Ruangan yang bersih akan mengurangi resiko untuk kulit kambuh!",
+        "Sepertinya terlihat ada perubahan cuaca, perhatikan kulit anak mu ya.",
+        "Katakan secara lantang: \"Aku akan sembuh dari eksim!\"",
+        "Jika ingin sehat dari luar harus dimulai dalam",
+        "Perjuanganmu ini tidak sendiri",
+        "Saat kamu fokus di hal yang baik, hal yang baik akan menjadi semakin baik",
+        "Pemandangan terbaik datang setelah pendakian yang sulit",
+        "Walaupun hanya sedikit membaik itu tetap membaik, harus semangat!"
+    ]
     
     // MARK: - Check the Location Services if it's enabled
     func checkLocationEnabled() {
@@ -83,41 +98,14 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.humidityString = "\(data.main.humidity)%"
             self.weatherDesc = data.weather[0].main
             self.iconLink = "https://openweathermap.org/img/wn/" + "\(data.weather[0].icon)" + "@2x.png"
-            self.recommendationString = self.getRecommendationString(withWeather: self.weatherDesc, temperature: data.main.temp)
         }
         self.fetchStatus = .done
         print("\(self.tempString), \(self.humidityString), \(self.weatherDesc), \(self.iconLink)")
     }
     
     // TODO: change to motivational quotes, not recommendation
-    func getRecommendationString(withWeather desc: String, temperature temp: Double) -> String {
-        
-        switch desc {
-        case "Clear":
-            if temp >= 30.0 {
-                return "Cool down from the heat to prevent sweating! Don't forget to use sunscreen."
-            } else {
-                return "Make sure to wear breathable clothes for today. Don't forget to use sunscreen."
-            }
-        case "Clouds":
-            if temp >= 30.0 {
-                return "Cool down from the heat to prevent sweating!"
-            } else {
-                let recommendations = ["Make sure to wear breathable clothes for today.", "Don't forget to moisturize your skin."]
-                let recommendation = recommendations.randomElement()!
-                return recommendation
-            }
-        case "Rain":
-            let recommendations = ["Don't forget to moisturize your skin.", "Stay away from rain drops, it might flare you up."]
-            let recommendation = recommendations.randomElement()!
-            return recommendation
-        case "Mist":
-            return "Don't forget to moisturize your skin."
-        case "Thunderstorm":
-            return "Stay away from rain drops, it might flare you up."
-        default:
-            return "Exzo helps you manage your eczema."
-        }
+    func getMotivationKeyword() -> String {
+        return encouragements[Int.random(in: 0..<encouragements.count)]
     }
     
     enum FetchWeatherStatus {

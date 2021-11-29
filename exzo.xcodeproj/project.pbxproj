@@ -20,7 +20,6 @@
 		5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA14852730E13D00F541AC /* CDStorage.swift */; };
 		5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */; };
 		5DD92CE62734DA8200F4C319 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE52734DA8200F4C319 /* CalendarView.swift */; };
-		5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD92CE72734DB0100F4C319 /* CalendarModel.swift */; };
 		5DE09033273950AE00B2882B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09032273950AE00B2882B /* APIRequest.swift */; };
 		5DE09035273950C600B2882B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09034273950C600B2882B /* WeatherViewModel.swift */; };
 		5DE09037273950D100B2882B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE09036273950D100B2882B /* WeatherView.swift */; };
@@ -98,6 +97,7 @@
 		D58AF7592731492100E67214 /* QuarterArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF7582731492100E67214 /* QuarterArc.swift */; };
 		D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */; };
 		D59B8A622750AB0300BB33FE /* NewJournalIEPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59B8A612750AB0300BB33FE /* NewJournalIEPView.swift */; };
+		D5AD70AE27548F83000F8C9D /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD70AD27548F83000F8C9D /* Date+extension.swift */; };
 		D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87A2735152D00425E43 /* CategoryGrid.swift */; };
 		D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA87C27364DB500425E43 /* ExzoSlider.swift */; };
 		D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */; };
@@ -174,7 +174,6 @@
 		5DCA14852730E13D00F541AC /* CDStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDStorage.swift; sourceTree = "<group>"; };
 		5DD92CE32734D9CB00F4C319 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD92CE52734DA8200F4C319 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		5DD92CE72734DB0100F4C319 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		5DE09032273950AE00B2882B /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		5DE09034273950C600B2882B /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5DE09036273950D100B2882B /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -259,6 +258,7 @@
 		D58AF7582731492100E67214 /* QuarterArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterArc.swift; sourceTree = "<group>"; };
 		D58AF75A27322C0E00E67214 /* SetNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewModel.swift; sourceTree = "<group>"; };
 		D59B8A612750AB0300BB33FE /* NewJournalIEPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJournalIEPView.swift; sourceTree = "<group>"; };
+		D5AD70AD27548F83000F8C9D /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		D5ADA87A2735152D00425E43 /* CategoryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGrid.swift; sourceTree = "<group>"; };
 		D5ADA87C27364DB500425E43 /* ExzoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoSlider.swift; sourceTree = "<group>"; };
 		D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareContainer.swift; sourceTree = "<group>"; };
@@ -480,7 +480,6 @@
 				5DF4ADEE27338E2D00F51423 /* Activities.swift */,
 				5DF4ADF027338F0200F51423 /* Skin Conditions.swift */,
 				5DF4ADF4273392ED00F51423 /* Journals.swift */,
-				5DD92CE72734DB0100F4C319 /* CalendarModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -722,6 +721,7 @@
 				D5163E8827280F9A00DF09D0 /* Color+extensions.swift */,
 				BFD2B44E2733809B0011F064 /* Color.swift */,
 				D5B53289273D573C003EC433 /* View+extensions.swift */,
+				D5AD70AD27548F83000F8C9D /* Date+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1400,6 +1400,7 @@
 				D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */,
 				D5ADFE8E274640210099E7FC /* InsightsView.swift in Sources */,
 				BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */,
+				D5AD70AE27548F83000F8C9D /* Date+extension.swift in Sources */,
 				BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */,
 				E2EF6919273A086E00B2E321 /* AddFEAView.swift in Sources */,
 				E228CEA9273B74A100FFEDD8 /* FEAListView.swift in Sources */,
@@ -1504,7 +1505,6 @@
 				5D034A732732AE04005DB9B9 /* ProductDetailView.swift in Sources */,
 				5D23E523273942AF007B6988 /* Constant.swift in Sources */,
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
-				5DD92CE82734DB0100F4C319 /* CalendarModel.swift in Sources */,
 				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
 				D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */,
 				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
