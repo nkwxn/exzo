@@ -44,10 +44,15 @@ struct MySkinView: View {
         NavigationView {
             VStack(spacing: 0) {
                 JournalNavBarView(twoColumnsNavBar: false, title: "Skin Journal", subtitle: nil, showButton: .settingsButton) {
-                    self.isOpeningDetail.toggle()
+                    self.isOpeningSettings.toggle()
                     print("\(self.isOpeningSettings)")
                 }
                 .aspectRatio(contentMode: .fit)
+                .sheet(isPresented: $isOpeningSettings) {
+                    // onDismiss
+                } content: {
+                    SettingsView(profileImage: UDHelper.sharedUD.getPFP(), profileName: UDHelper.sharedUD.getName())
+                }
                 
                 ScrollView {
                     ZStack {
@@ -109,12 +114,23 @@ struct MySkinView: View {
                             }
                             Divider()
                         }
-                        .sheet(isPresented: $isAddingJournal) {
-                            AddJournalView()
+                        .sheet(
+                            isPresented: $isAddingJournal
+                        ) {
+                            SkinConditionJournalView(
+                                jourVM: JournalInputViewModel(
+                                    ProfileCategory(
+                                        rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf"
+                                    ) ?? .adult,
+                                    mode: .create
+                                )
+                            ).environment(\.modalMode, $isAddingJournal)
                         }
                     }
                 }
-                
+                .sheet(isPresented: $isAddingJournal) {
+                    AddJournalView()
+                }
             }
             .navigationBarHidden(true)
             .navigationTitle("Skin Journal")

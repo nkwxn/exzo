@@ -64,8 +64,8 @@ struct QuestionPageView: View {
     }
 }
 
-//struct QuestionPageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionPageView(score: Binding.constant(0), index: Binding.constant(0), bodyScore: Binding.constant(0))
-//    }
-//}
+struct QuestionPageView_Previews: PreviewProvider {
+    static var previews: some View {
+        QuestionPageView(score: Binding.constant(0), index: Binding.constant(0), bodyScore: Binding.constant(0), bodyArr: .constant([""]))
+    }
+}

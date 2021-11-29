@@ -32,6 +32,9 @@ class CDStorage: NSObject, ObservableObject {
     var triggerArea = CurrentValueSubject<[TriggerAreas], Never>([])
     private var triggerAreaFetchController: NSFetchedResultsController<TriggerAreas>
     
+    var newJournalItems = CurrentValueSubject<[NewJournal], Never>([])
+    private var newJournalFetchController: NSFetchedResultsController<NewJournal>
+    
     // ---- End of Tambahannya Nic ---- //
     
     static let shared = CDStorage()
@@ -47,6 +50,11 @@ class CDStorage: NSObject, ObservableObject {
         let journalFetchRequest: NSFetchRequest<Journal> = Journal.fetchRequest()
         journalFetchRequest.sortDescriptors = [journalSort]
         journalFetchController = NSFetchedResultsController(fetchRequest: journalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        let newJournalSort = NSSortDescriptor(keyPath: \NewJournal.dateAndTime, ascending: true)
+        let newJournalFetchRequest = NewJournal.fetchRequest()
+        newJournalFetchRequest.sortDescriptors = [newJournalSort]
+        newJournalFetchController = NSFetchedResultsController(fetchRequest: newJournalFetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         let ieaSort = NSSortDescriptor(key: "isFavorite", ascending: false)
         
@@ -76,6 +84,7 @@ class CDStorage: NSObject, ObservableObject {
         
         productFetchController.delegate = self
         journalFetchController.delegate = self
+        newJournalFetchController.delegate = self
         intakeFetchController.delegate = self
         exposureFetchController.delegate = self
         activityFetchController.delegate = self
@@ -88,6 +97,9 @@ class CDStorage: NSObject, ObservableObject {
             
             try journalFetchController.performFetch()
             journalItems.value = journalFetchController.fetchedObjects ?? []
+            
+            try newJournalFetchController.performFetch()
+            newJournalItems.value = newJournalFetchController.fetchedObjects ?? []
             
             try intakeFetchController.performFetch()
             foodIntakes.value = intakeFetchController.fetchedObjects ?? []
@@ -233,44 +245,55 @@ extension CDStorage {
     }
 }
 
-// MARK: - Buat Intake, Exposure dan Activity
-struct IEAData: Identifiable {
-    let id = UUID()
-    var name: String
-    var thumb: String
-}
-
 struct RawIEAData {
     static let foodIntakeTemplate = [
         IEAData(name: "Gluten", thumb: "Icon004"),
-        IEAData(name: "Seafood", thumb: "Icon003"),
-        IEAData(name: "Poultry", thumb: "Icon002"),
-        IEAData(name: "Egg", thumb: "Icon005"),
-        IEAData(name: "Nut", thumb: "Icon006"),
-        IEAData(name: "Dairy", thumb: "Icon001"),
-        IEAData(name: "Grain", thumb: "Icon007")
+        IEAData(name: "Ikan", thumb: "Icon003"),
+        IEAData(name: "Ayam", thumb: "Icon002"),
+        IEAData(name: "Bebek", thumb: "Icon002"),
+        IEAData(name: "Udang", thumb: "Icon003"),
+        IEAData(name: "Gurita", thumb: "Icon003"),
+        IEAData(name: "Susu", thumb: "Icon001"),
+        IEAData(name: "Grain", thumb: "Icon007"),
+        IEAData(name: "Kacang Tanah", thumb: "Icon006"),
+        IEAData(name: "Almond", thumb: "Icon006"),
+        IEAData(name: "Telur", thumb: "Icon005"),
+        IEAData(name: "Wijen", thumb: "Icon007")
     ]
     static let exposureTemplate = [
-        IEAData(name: "Pollen", thumb: "Icon008"),
-        IEAData(name: "Dust", thumb: "Icon010"),
-        IEAData(name: "Sun", thumb: "Icon018"),
-        IEAData(name: "Moulds", thumb: "Icon011")
+        IEAData(name: "Serbuk sari", thumb: "Icon009"),
+        IEAData(name: "Debu", thumb: "Icon010"),
+        IEAData(name: "Matahari", thumb: "Icon018"),
+        IEAData(name: "Jamur", thumb: "Icon011"),
+        IEAData(name: "Bulu hewan", thumb: "Icon019"),
+        IEAData(name: "Latex", thumb: "Icon010")
     ]
-    static let activityTemplate = [
-        IEAData(name: "Exercise", thumb: "Icon013"),
-        IEAData(name: "Work", thumb: "Icon014"),
-        IEAData(name: "Jogging", thumb: "Icon015"),
-        IEAData(name: "Running", thumb: "Icon017"),
-        IEAData(name: "Washing Dishes", thumb: "Icon012"),
-        IEAData(name: "Yoga", thumb: "Icon008"),
-        IEAData(name: "Cooking", thumb: "Icon016")
-    ]
+//    static let activityTemplate = [
+//        IEAData(name: "Exercise", thumb: "Icon013"),
+//        IEAData(name: "Work", thumb: "Icon014"),
+//        IEAData(name: "Jogging", thumb: "Icon015"),
+//        IEAData(name: "Running", thumb: "Icon017"),
+//        IEAData(name: "Washing Dishes", thumb: "Icon012"),
+//        IEAData(name: "Yoga", thumb: "Icon008"),
+//        IEAData(name: "Cooking", thumb: "Icon016")
+//    ]
 }
 
 enum IEA: String {
-    case activity = "Activity"
+    case activity = "Activity" // -> BATAL PAKAI
     case exposure = "Exposure"
     case intake = "Food Intake"
+    
+    func getLocalizedName() -> String {
+        switch self {
+        case .activity:
+            return "Aktivitas"
+        case .exposure:
+            return "Paparan"
+        case .intake:
+            return "Asupan Makanan"
+        }
+    }
 }
 
 // MARK: - CRUD Exposure, Food Intake, dan Activity Template
@@ -303,18 +326,18 @@ extension CDStorage {
             save()
         }
         
-        if activities.value.isEmpty {
-            for rawActivity in RawIEAData.activityTemplate {
-                let newActivity = Activity(context: self.context)
-                newActivity.idActivity = rawActivity.id
-                newActivity.activityName = rawActivity.name
-                newActivity.activityThumb = rawActivity.thumb
-                newActivity.isFavorite = true
-                newActivity.deletable = false
-                save()
-            }
-            save()
-        }
+//        if activities.value.isEmpty {
+//            for rawActivity in RawIEAData.activityTemplate {
+//                let newActivity = Activity(context: self.context)
+//                newActivity.idActivity = rawActivity.id
+//                newActivity.activityName = rawActivity.name
+//                newActivity.activityThumb = rawActivity.thumb
+//                newActivity.isFavorite = true
+//                newActivity.deletable = false
+//                save()
+//            }
+//            save()
+//        }
     }
     
     func createIEA(_ type: IEA, name: String, thumb: String) {
@@ -325,7 +348,7 @@ extension CDStorage {
             activity.activityName = name
             activity.activityThumb = thumb
             activity.deletable = true
-            activity.isFavorite = false
+            activity.isFavorite = true
             save()
         case .exposure:
             let exposure = Exposure(context: self.context)
@@ -333,7 +356,7 @@ extension CDStorage {
             exposure.exposureName = name
             exposure.exposureThumb = thumb
             exposure.deletable = true
-            exposure.isFavorite = false
+            exposure.isFavorite = true
             save()
         case .intake:
             let intake = FoodIntake(context: self.context)
@@ -341,7 +364,7 @@ extension CDStorage {
             intake.intakeName = name
             intake.intakeThumb = thumb
             intake.deletable = true
-            intake.isFavorite = false
+            intake.isFavorite = true
             save()
         }
     }
@@ -410,6 +433,8 @@ extension CDStorage: NSFetchedResultsControllerDelegate {
             self.productItems.value = productItems
         } else if let journalItems = controller.fetchedObjects as? [Journal] {
             self.journalItems.value = journalItems
+        } else if let newJournalItems = controller.fetchedObjects as? [NewJournal] {
+            self.newJournalItems.value = newJournalItems
         } else if let activityItems = controller.fetchedObjects as? [Activity] {
             self.activities.value = activityItems
         } else if let exposureItems = controller.fetchedObjects as? [Exposure] {

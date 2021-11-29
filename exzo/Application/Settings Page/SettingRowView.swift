@@ -10,13 +10,17 @@ import SwiftUI
 struct SettingRowView: View {
     let settingIcon: String
     let settingTitle: String
-    
+    var showChevron: Bool = false
     var body: some View {
         HStack {
             Image(systemName: settingIcon)
             Text(settingTitle)
             Spacer()
-            Image(systemName: "chevron.right")
+            if showChevron {
+                Image(systemName: "chevron.right")
+
+            }
         }
+        .foregroundColor(.black)
     }
 }

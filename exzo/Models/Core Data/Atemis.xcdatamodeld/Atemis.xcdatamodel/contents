@@ -35,6 +35,23 @@
         <relationship name="skinCondition" maxCount="1" deletionRule="Nullify" destinationEntity="SkinCondition" inverseName="journal" inverseEntity="SkinCondition"/>
         <relationship name="triggerAreas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TriggerAreas" inverseName="journal" inverseEntity="TriggerAreas"/>
     </entity>
+    <entity name="NewJournal" representedClassName="NewJournal" syncable="YES" codeGenerationType="class">
+        <attribute name="dateAndTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="exposures" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="IEADatas"/>
+        <attribute name="foodIntakes" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="IEADatas"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="productIDs" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="ListProducts"/>
+        <attribute name="rednessPart" optional="YES" attributeType="Transformable"/>
+        <attribute name="rednessScore" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="scratchPart" optional="YES" attributeType="Transformable"/>
+        <attribute name="scratchScore" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="stressLevel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="swellingPart" optional="YES" attributeType="Transformable"/>
+        <attribute name="swellingScore" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherHumid" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherPressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherTemp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="idProduct" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="productImage" optional="YES" attributeType="Transformable"/>
@@ -66,6 +83,7 @@
         <element name="Exposure" positionX="119.68896484375" positionY="-41.2166748046875" width="128" height="104"/>
         <element name="FoodIntake" positionX="-143.2540283203125" positionY="175.64306640625" width="128" height="104"/>
         <element name="Journal" positionX="-294.7469482421875" positionY="-174.7620239257812" width="128" height="209"/>
+        <element name="NewJournal" positionX="-396" positionY="-162" width="128" height="254"/>
         <element name="Product" positionX="-151.774658203125" positionY="-316.2908935546875" width="128" height="104"/>
         <element name="SkinCondition" positionX="25.5316162109375" positionY="-316.4061889648438" width="164.2552490234375" height="208"/>
         <element name="TriggerAreas" positionX="-596.8915405273438" positionY="-97.33343505859375" width="128" height="89"/>

@@ -10,7 +10,7 @@ import SwiftUI
 struct JournalDetailView: View {
     @State var isEditing = false
     
-    let journal: Journal
+    let journal: NewJournal
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
     var body: some View {
