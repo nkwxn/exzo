@@ -11,6 +11,7 @@ struct JournalDetailView: View {
     @State var isEditing = false
     
     let journal: NewJournal
+    let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,21 +22,40 @@ struct JournalDetailView: View {
             VStack(alignment: .leading) {
                 Text("Food intake")
                     .font(Avenir(.headline).getFont().bold())
-                HStack {
-                    VStack(alignment: .center, spacing: 8) {
-                        Image(systemName: "paperplane.fill")
-                            .resizable()
-                            .foregroundColor(Color.white)
-                            .background {
-                                Circle()
-                                    .frame(width: 66, height: 66)
-                                    .foregroundColor(Color.accentYellow)
-                                
+                HStack(alignment: .center) {
+                    if let foodIntakes = journal.foodIntake as? [IEAData] {
+                        if foodIntakes.isEmpty {
+                        } else {
+                            ForEach(0..<foodIntakes.count, id: \.self) { idx in
+                                if idx < 4 {
+                                    VStack {
+                                        Image(foodIntakes[idx].thumb)
+                                            .resizable()
+                                            .foregroundColor(.white)
+                                            .frame(width: 66, height: 66, alignment: .center)
+                                            .background {
+                                                Circle()
+                                                    .foregroundColor(accentArr[idx])
+                                                    .frame(width: 66, height: 66, alignment: .center)
+                                                    .shadow(radius: 2)
+                                            }
+                                        Text(foodIntakes[idx].name)
+                                            .font(Avenir(.caption).getFont())
+                                            .fontWeight(.semibold)
+                                    }
+                                }
                             }
-                            .frame(width: 66, height: 66)
-                        Text("Gluten")
-                            .font(Avenir(.caption).getFont())
-                            .fontWeight(.semibold)
+                        }
+                    } else {
+                        ZStack {
+                            Circle()
+                                .foregroundColor(accentArr[1])
+                                .frame(width: 66, height: 66, alignment: .center)
+                                .shadow(radius: 2)
+                            Text("N/A")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
                     }
                 }
                 
@@ -63,21 +83,41 @@ struct JournalDetailView: View {
             VStack(alignment: .leading) {
                 Text("Exposure")
                     .font(Avenir(.headline).getFont().bold())
-                HStack {
-                    VStack(alignment: .center, spacing: 8) {
-                        Image(systemName: "car.fill")
-                            .resizable()
-                            .foregroundColor(Color.white)
-                            .background {
-                                Circle()
-                                    .frame(width: 66, height: 66)
-                                    .foregroundColor(Color.accentYellow)
-                                
+                HStack(alignment: .center) {
+                    if let exposure = journal.skinExposure as? [IEAData] {
+                        if exposure.isEmpty {
+                            
+                        } else {
+                            ForEach(0..<exposure.count, id: \.self) { idx in
+                                if idx < 4 {
+                                    VStack {
+                                        Image(exposure[idx].thumb)
+                                            .resizable()
+                                            .foregroundColor(.white)
+                                            .frame(width: 66, height: 66, alignment: .center)
+                                            .background {
+                                                Circle()
+                                                    .foregroundColor(accentArr[idx])
+                                                    .frame(width: 66, height: 66, alignment: .center)
+                                                    .shadow(radius: 2)
+                                            }
+                                        Text(exposure[idx].name)
+                                            .font(Avenir(.caption).getFont())
+                                            .fontWeight(.semibold)
+                                    }
+                                }
                             }
-                            .frame(width: 66, height: 66)
-                        Text("Car")
-                            .font(Avenir(.caption).getFont())
-                            .fontWeight(.semibold)
+                        }
+                    } else {
+                        ZStack {
+                            Circle()
+                                .foregroundColor(accentArr[1])
+                                .frame(width: 66, height: 66, alignment: .center)
+                                .shadow(radius: 2)
+                            Text("N/A")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
                     }
                 }
                 Divider()
