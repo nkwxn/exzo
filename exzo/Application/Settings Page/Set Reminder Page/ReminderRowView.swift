@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ReminderRowView: View {
-    @State var reminder: Reminder
+    @StateObject var reminder: Reminder
 
-    let width = 300.0
-    
     var body: some View {
         HStack {
             HStack {

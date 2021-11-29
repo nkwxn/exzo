@@ -52,11 +52,6 @@ class UDHelper {
             createUD(key: UDKey.reminders.rawValue, value: encodedData)
         }
     }
-    // Get array of triggers
-    func getTriggers() -> [String] {
-        guard let skinCond = defaults.object(forKey: UDKey.userSkinPart.rawValue) as? [String] else { return [] }
-        return skinCond
-    }
     
     func getReminders() -> [Reminder] {
         guard
@@ -70,6 +65,13 @@ class UDHelper {
     func removeAllReminder() {
         defaults.removeObject(forKey: UDKey.reminders.rawValue)
     }
+    
+    // Get array of triggers
+    func getTriggers() -> [String] {
+        guard let skinCond = defaults.object(forKey: UDKey.userSkinPart.rawValue) as? [String] else { return [] }
+        return skinCond
+    }
+    
     // get the profile picture / user profile
     func getPFP() -> String {
         let pfp = defaults.string(forKey: UDKey.profilePicture.rawValue) ?? "KidsB"

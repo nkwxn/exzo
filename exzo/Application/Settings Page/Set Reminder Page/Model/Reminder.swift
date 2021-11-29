@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Reminder: Identifiable, Codable, Hashable {
+class Reminder: ObservableObject, Identifiable, Codable {
     var id: UUID
     let dateAndTime: Date
     var isOn: Bool
@@ -17,9 +17,5 @@ struct Reminder: Identifiable, Codable, Hashable {
         self.id = id
         self.dateAndTime = dateAndTime
         self.isOn = isOn
-    }
-    
-    func updateIsOn() -> Reminder {
-        return Reminder(id: id, dateAndTime: dateAndTime, isOn: !isOn)
     }
 }

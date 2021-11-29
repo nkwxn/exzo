@@ -13,10 +13,11 @@ struct SetReminderView: View {
     var body: some View {
         
         List {
-            ForEach(setReminderViewModel.reminders, id: \.self) { reminder in
+            ForEach(setReminderViewModel.reminders) { reminder in
                 ReminderRowView(reminder: reminder)
-//                        UDHelper.sharedUD.saveReminders(reminders: setReminderViewModel.reminders)
-//                    }
+                    .onChange(of: reminder.isOn, perform: { newValue in
+                        print("BERUBAH!")
+                    })
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
                             setReminderViewModel.deleteReminder(id: reminder.id)
@@ -39,7 +40,10 @@ struct SetReminderView: View {
         .listStyle(.plain)
         .navigationTitle("Pengingat")
         .navigationBarTitleDisplayMode(.inline)
-        
+        .onDisappear(perform: {
+            print("Keluar Pengingat")
+            UDHelper.sharedUD.saveReminders(reminders: setReminderViewModel.reminders)
+        })
         .sheet(isPresented: $setReminderViewModel.isAddReminder) {
             AddReminderPage(setReminderViewModel: setReminderViewModel)
         }
