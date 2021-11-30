@@ -3,24 +3,20 @@ PODS:
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
   - FSCalendar (2.8.2)
-  - lottie-ios (3.2.3)
 
 DEPENDENCIES:
   - Charts (~> 3.5.0)
   - FSCalendar
-  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - Charts
     - FSCalendar
-    - lottie-ios
 
 SPEC CHECKSUMS:
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
-  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
 
-PODFILE CHECKSUM: fe07d82f6f4293aa6f339a79779c798d8e25f869
+PODFILE CHECKSUM: 9f7ee4a25cae4cfada705201db51663256ecba2e
 
 COCOAPODS: 1.11.2

@@ -28,6 +28,12 @@ class UDHelper {
     
     let defaults = UserDefaults.standard
     
+    @Published var reminders: [Reminder] = [] {
+        didSet {
+            saveReminders(reminders: reminders)
+        }
+    }
+    
     func createUD(key: String, value: Any) {
         defaults.setValue(value, forKey: key)
     }
@@ -39,6 +45,25 @@ class UDHelper {
     // set not new user anymore
     func setNewUser() {
         defaults.setValue(true, forKey: UDKey.newUser.rawValue)
+    }
+    
+    func saveReminders(reminders: [Reminder]) {
+        if let encodedData = try? JSONEncoder().encode(reminders) {
+            createUD(key: UDKey.reminders.rawValue, value: encodedData)
+        }
+    }
+    
+    func getReminders() -> [Reminder] {
+        guard
+            let data = defaults.data(forKey: UDKey.reminders.rawValue),
+            let savedReminders = try? JSONDecoder().decode([Reminder].self, from: data)
+        else { return [] }
+        
+        return savedReminders
+    }
+    
+    func removeAllReminder() {
+        defaults.removeObject(forKey: UDKey.reminders.rawValue)
     }
     
     // Get array of triggers

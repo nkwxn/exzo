@@ -37,6 +37,8 @@ struct CalendarView: UIViewRepresentable {
         
         calendar.select(calendar.today)
         
+        calendar.locale = NSLocale.init() as Locale
+        
         return calendar
     }
 
