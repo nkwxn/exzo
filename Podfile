@@ -8,7 +8,6 @@ target 'exzo' do
   # Pods for Atemis
   pod 'Charts', '~> 3.5.0'
   pod 'FSCalendar'
-  pod 'lottie-ios'
 
   target 'exzoTests' do
     inherit! :search_paths
