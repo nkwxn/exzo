@@ -149,10 +149,10 @@ struct SkinConditionJournalView: View {
                     } label: {
                         // tambahin if
                         if questionSect == 0 && isBodyPart {
-                            Text("Cancel")
+                            Text("Batal")
                         } else {
                             Image(systemName: "chevron.backward")
-                            Text("Back")
+                            Text("Kembali")
                         }
                     }
                 }
