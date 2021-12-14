@@ -148,7 +148,7 @@ struct BackBodyView: View {
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackLeftShoulder ? "SB - Right Shoulder" : "B - Right Shoulder")
+                        Image(isBackRightShoulder ? "SB - Right Shoulder" : "B - Right Shoulder")
                             .resizable()
                             .frame(width: 21.13, height: 54.14)
                             .aspectRatio(contentMode: .fit)

@@ -49,7 +49,7 @@ struct ChildBackView: View {
                         self.isChildBackHead.toggle()
                         if isChildBackHead {
                             score += 4.5
-                            bodyArr.append("CB - Head")
+                            bodyArr.append("B - Head")
                         } else {
                             score -= 4.5
                             bodyArr.removeLast()
@@ -67,7 +67,7 @@ struct ChildBackView: View {
                         self.isChildBackNeck.toggle()
                         if isChildBackNeck {
                             score += 6.0
-                            bodyArr.append("CB - Neck")
+                            bodyArr.append("B - Neck")
                         } else {
                             score -= 6.0
                             bodyArr.removeLast()
@@ -85,7 +85,7 @@ struct ChildBackView: View {
                         self.isChildBackShoulder.toggle()
                         if isChildBackShoulder {
                             score += 6.0
-                            bodyArr.append("CB - Shoulder")
+                            bodyArr.append("B - Shoulder")
                         } else {
                             score -= 6.0
                             bodyArr.removeLast()
@@ -103,7 +103,7 @@ struct ChildBackView: View {
                         self.isChildBackUpperBack.toggle()
                         if isChildBackUpperBack {
                             score += 6.0
-                            bodyArr.append("CB - Upper Back")
+                            bodyArr.append("B - Upper Back")
                         } else {
                             score -= 6.0
                             bodyArr.removeLast()
@@ -121,7 +121,7 @@ struct ChildBackView: View {
                         self.isChildBackLowerBack.toggle()
                         if isChildBackLowerBack {
                             score += 6.0
-                            bodyArr.append("CB - Lower Back")
+                            bodyArr.append("B - Lower Back")
                         } else {
                             score -= 6.0
                             bodyArr.removeLast()
@@ -142,7 +142,7 @@ struct ChildBackView: View {
                         self.isChildBackRightShoulder.toggle()
                         if isChildBackRightShoulder {
                             score += 1.5
-                            bodyArr.append("CB - Right Shoulder")
+                            bodyArr.append("B - Right Shoulder")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -160,7 +160,7 @@ struct ChildBackView: View {
                         self.isChildBackRightElbow.toggle()
                         if isChildBackRightElbow {
                             score += 1.5
-                            bodyArr.append("CB - Right Elbow")
+                            bodyArr.append("B - Right Elbow")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -178,7 +178,7 @@ struct ChildBackView: View {
                         self.isChildBackRightArm.toggle()
                         if isChildBackRightArm {
                             score += 1.5
-                            bodyArr.append("CB - Right Arm")
+                            bodyArr.append("B - Right Arm")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -196,7 +196,7 @@ struct ChildBackView: View {
                         self.isChildBackRightFinger.toggle()
                         if isChildBackRightFinger {
                             score += 1.5
-                            bodyArr.append("CB - Right Finger")
+                            bodyArr.append("B - Right Finger")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -219,7 +219,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftShoulder.toggle()
                         if isChildBackLeftShoulder {
                             score += 1.5
-                            bodyArr.append("CB - Left Shoulder")
+                            bodyArr.append("B - Left Shoulder")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -238,7 +238,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftElbow.toggle()
                         if isChildBackLeftElbow {
                             score += 1.5
-                            bodyArr.append("CB - Left Elbow")
+                            bodyArr.append("B - Left Elbow")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -256,7 +256,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftArm.toggle()
                         if isChildBackLeftArm {
                             score += 1.5
-                            bodyArr.append("CB - Left Arm")
+                            bodyArr.append("B - Left Arm")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -274,7 +274,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftFinger.toggle()
                         if (isChildBackLeftFinger) {
                             score += 1.5
-                            bodyArr.append("CB - Left Finger")
+                            bodyArr.append("B - Left Finger")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
@@ -296,10 +296,12 @@ struct ChildBackView: View {
                         self.isChildBackLeftBottom.toggle()
                         if isChildBackLeftBottom {
                             score += 3.0
-                            bodyArr.append("CB - Left Bottom")
+                            bodyArr.append("B - Left Bottom")
                         } else {
                             score -= 3.0
-                            bodyArr.removeLast()
+                            bodyArr.removeAll { items in
+                                items == "B - Left Bottom"
+                            }
                         }
                     } label: {
                         Image(isChildBackLeftBottom ? "SCB - Left Bottom" : "CB - Left Bottom")
@@ -314,7 +316,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftThigh.toggle()
                         if isChildBackLeftThigh {
                             score += 3.0
-                            bodyArr.append("CB - Left Thigh")
+                            bodyArr.append("B - Left Thigh")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -332,7 +334,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftKnee.toggle()
                         if isChildBackLeftKnee {
                             score += 3.0
-                            bodyArr.append("CB - Left Knee")
+                            bodyArr.append("B - Left Knee")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -350,7 +352,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftLeg.toggle()
                         if isChildBackLeftLeg {
                             score += 3.0
-                            bodyArr.append("CB - Left Leg")
+                            bodyArr.append("B - Left Leg")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -368,7 +370,7 @@ struct ChildBackView: View {
                         self.isChildBackLeftFoot.toggle()
                         if isChildBackLeftFoot {
                             score += 3.0
-                            bodyArr.append("CB - Left Foot")
+                            bodyArr.append("B - Left Foot")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -390,7 +392,7 @@ struct ChildBackView: View {
                         self.isChildBackRightBottom.toggle()
                         if isChildBackRightBottom {
                             score += 3.0
-                            bodyArr.append("CB - Right Bottom")
+                            bodyArr.append("B - Right Bottom")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -408,10 +410,12 @@ struct ChildBackView: View {
                         self.isChildBackRightThigh.toggle()
                         if isChildBackRightThigh {
                             score += 3.0
-                            bodyArr.append("CB - Right Thigh")
+                            bodyArr.append("B - Right Thigh")
                         } else {
                             score -= 3.0
-                            bodyArr.removeLast()
+                            bodyArr.removeAll { partName in
+                                partName == "B - Right Thigh"
+                            }
                         }
                     } label: {
                         Image(isChildBackRightThigh ? "SCB - Right Thigh" : "CB - Right Thigh")
@@ -426,7 +430,7 @@ struct ChildBackView: View {
                         self.isChildBackRightKnee.toggle()
                         if isChildBackRightKnee {
                             score += 3.0
-                            bodyArr.append("CB - Right Knee")
+                            bodyArr.append("B - Right Knee")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -444,7 +448,7 @@ struct ChildBackView: View {
                         self.isChildBackRightLeg.toggle()
                         if isChildBackRightLeg {
                             score += 3.0
-                            bodyArr.append("CB - Right Leg")
+                            bodyArr.append("B - Right Leg")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
@@ -462,7 +466,7 @@ struct ChildBackView: View {
                         self.isChildBackRightFoot.toggle()
                         if isChildBackRightFoot {
                             score += 3.0
-                            bodyArr.append("CB - Right Foot")
+                            bodyArr.append("B - Right Foot")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()

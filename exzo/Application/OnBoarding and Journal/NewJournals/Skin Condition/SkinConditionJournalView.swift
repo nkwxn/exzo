@@ -20,6 +20,7 @@ struct JournalQuestions {
     let desc1: String? = nil
     let info: String
     let imageName: String
+    let sliderValues: [String]
 }
 
 struct SkinConditionJournalView: View {
@@ -39,22 +40,54 @@ struct SkinConditionJournalView: View {
         self.viewModel = jourVM
     }
     
+    // For update
     init(journalContent: NewJournal) {
+        let category = ProfileCategory(rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf") ?? .adult
         self.viewModel = JournalInputViewModel(
-            ProfileCategory(
-                rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf"
-            ) ?? .adult,
-            mode: .update
+            category,
+            item: journalContent
         )
     }
     
     @ObservedObject var viewModel: JournalInputViewModel
     
-    var journalQuestions = [
-        JournalQuestions(name: "Peradangan", info: "kemerahan", imageName: "redness_"),
-        JournalQuestions(name: "Pembengkakan", info: "pembengkakan", imageName: "Swelling"),
-        JournalQuestions(name: "Bekas garukan", info: "bekas garuk", imageName: "Scratch")
-    ]
+    var journalQuestions: [JournalQuestions] {
+        return [
+            JournalQuestions(
+                name: "Peradangan",
+                info: "kemerahan",
+                imageName: "redness_",
+                sliderValues: [
+                    "Tidak ada kemerahan dan warna kulit yang sama dengan kulit normal \(self.viewModel.category == .child ? "anak " : "")Anda pada umumnya",
+                    "Kulit \(self.viewModel.category == .child ? "anak " : "")anda memiliki warna merah muda yang terang dan pudar",
+                    "Kulit \(self.viewModel.category == .child ? "anak " : "")Anda memiliki warna merah kusam dan terlihat dengan jelas",
+                    "Kulit \(self.viewModel.category == .child ? "anak " : "") Anda memiliki warna merah tua serta cenderung gelap, pembuluh kapiler dan memar mungkin terlihat"
+                ]
+            ),
+            JournalQuestions(
+                name: "Pembengkakan",
+                info: "pembengkakan",
+                imageName: "Swelling",
+                sliderValues: [
+                    "Tidak ada pembengkakan",
+                    "Setelah menekan area pembengkakan, kulit langsung kembali membengkak, proses kembali membengkak hampir tidak terlihat.",
+                    "Setelah menekan area pembengkakan, kulit perlahan kembali membengkak dalam waktu 10-15 detik.",
+                    "Kulit terlihat berkerak dan setelah menekan area pembengkakan, kulit kembali membengkak dalam waktu lebih dari 60 detik."
+                ]
+            ),
+            JournalQuestions(
+                name: "Bekas garukan",
+                info: "bekas garuk",
+                imageName: "Scratch",
+                sliderValues: [
+                    "Tidak ada tanda bekas garuk",
+                    "Kemunculan tanda bekas garuk yang sedikit, tidak ada erosi atau kerak di area sekitar bekas garukan",
+                    "Terdapat beberapa tanda garis lurus dari bekas garuk yang jelas dan kulit menunjukkan erosi atau kerak yang terlihat",
+                    "Terdapat banyak garis lurus dan dalam yang terlihat sangat jelas dan kulit menujukkan banyak erosi atau kerak"
+                ]
+            )
+        ]
+    }
     
     @State var questionSect = 0
     @State var isBodyPart = true
@@ -87,13 +120,31 @@ struct SkinConditionJournalView: View {
                 switch questionSect {
                 case 0:
                     // Redness
-                    JournalQuestionView(conditionCategory: journalQuestions[0], isBodyPart: $isBodyPart, bodyPart: $viewModel.rednessPart, slider: $viewModel.rednessValue)
+                    JournalQuestionView(
+                        userCategory: viewModel.category,
+                        conditionCategory: journalQuestions[0],
+                        isBodyPart: $isBodyPart,
+                        bodyPart: $viewModel.rednessPart,
+                        slider: $viewModel.rednessValue
+                    )
                 case 1:
                     // Swelling
-                    JournalQuestionView(conditionCategory: journalQuestions[1], isBodyPart: $isBodyPart, bodyPart: $viewModel.swellingPart, slider: $viewModel.swellingValue)
+                    JournalQuestionView(
+                        userCategory: viewModel.category,
+                        conditionCategory: journalQuestions[1],
+                        isBodyPart: $isBodyPart,
+                        bodyPart: $viewModel.swellingPart,
+                        slider: $viewModel.swellingValue
+                    )
                 case 2:
                     // Scratch Mark
-                    JournalQuestionView(conditionCategory: journalQuestions[2], isBodyPart: $isBodyPart, bodyPart: $viewModel.scratchPart, slider: $viewModel.scratchValue)
+                    JournalQuestionView(
+                        userCategory: viewModel.category,
+                        conditionCategory: journalQuestions[2],
+                        isBodyPart: $isBodyPart,
+                        bodyPart: $viewModel.scratchPart,
+                        slider: $viewModel.scratchValue
+                    )
                 default:
                     Text("Should be going to the next journal")
                 }
@@ -177,19 +228,46 @@ struct SkinConditionJournalView: View {
 }
 
 struct JournalQuestionView: View {
+    var userCategory: ProfileCategory
     var conditionCategory: JournalQuestions
+    
     @Binding var isBodyPart: Bool
     @Binding var bodyPart: [String]
     @Binding var slider: Double
+    @State var quote = ""
     var range = 0.0...3.0
     
     var body: some View {
         VStack(spacing: 14) {
             Spacer()
             if isBodyPart {
-                BodyPartsView(score: .constant(0), bodyArr: $bodyPart)
-                    .padding(.horizontal)
-                    .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
+                HStack {
+                    Spacer()
+                    Text("Depan")
+                        .fixedSize(horizontal: true, vertical: false)
+                        .frame(width: 75, height: 30, alignment: .center)
+                    Spacer(minLength: 140)
+                    Text("Belakang")
+                        .fixedSize(horizontal: true, vertical: false)
+                        .frame(width: 75, height: 30, alignment: .center)
+                    Spacer()
+                }
+                switch userCategory {
+                case .child:
+                    ChildBodiesView(score: .constant(0), bodyArr: $bodyPart)
+                        .padding(.horizontal)
+                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
+                        .onChange(of: bodyPart) { newValue in
+                            print(newValue)
+                        }
+                case .adult:
+                    BodyPartsView(score: .constant(0), bodyArr: $bodyPart)
+                        .padding(.horizontal)
+                        .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
+                        .onChange(of: bodyPart) { newValue in
+                            print(newValue)
+                        }
+                }
             } else {
                 Image("\(conditionCategory.imageName)\(String(format: "%.0f", slider))")
                     .resizable()
@@ -199,7 +277,7 @@ struct JournalQuestionView: View {
                 Slider(value: $slider, in: range, step: 1)
                 Text(String(format: "%.0f", slider))
                     .font(Lexend(.title3).getFont().bold())
-                Text("Dull red color, borders are clearly defined")
+                Text(conditionCategory.sliderValues[Int(slider)])
             }
             Spacer()
         }

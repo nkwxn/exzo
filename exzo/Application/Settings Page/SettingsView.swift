@@ -23,6 +23,23 @@ struct SettingsView: View {
                 ProfileHeaderView(profileImage: "L0 - \(profileImage)", profileName: profileName)
                     .padding(.bottom)
                 List {
+                    /*
+                     // Tambah section buat update profile dan concern
+                    Section {
+                        NavigationLink {
+                            
+                        } label: {
+                            SettingRowView(settingIcon: "person.crop.circle", settingTitle: "Ubah Nama dan Foto")
+                        }
+                        NavigationLink {
+                            
+                        } label: {
+                            SettingRowView(settingIcon: "bolt", settingTitle: "Ubah Pemicu")
+                        }
+                    } header: {
+                        Text("PROFIL ANDA")
+                    }
+*/
                     Section(header: Text("PENGINGAT")) {
                         
                         NavigationLink {

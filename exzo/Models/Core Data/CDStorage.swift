@@ -139,8 +139,8 @@ extension CDStorage {
         newProduct.idProduct = UUID()
         newProduct.productName = name
         newProduct.productType = type.rawValue
-        newProduct.productImage = (image ?? UIImage()) as NSObject
-        newProduct.productIngr = ingredients as NSObject?
+        newProduct.productImage = image
+        newProduct.productIngr = ingredients as? NSObject
         save()
     }
     

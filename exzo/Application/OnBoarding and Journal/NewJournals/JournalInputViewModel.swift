@@ -23,7 +23,7 @@ class JournalInputViewModel: ObservableObject {
             self.scratchValue = journalItem.scratchScore
             self.swellingValue = journalItem.swellingScore
             
-            self.stressLevel = Int(journalItem.stressLevel)
+            self.stressLevel = journalItem.stressLevel
             self.chosenFoodIntakes = journalItem.foodIntakes?.ieaDatas ?? [IEAData]()
             self.chosenExposure = journalItem.exposures?.ieaDatas ?? [IEAData]()
             self.chosenProducts = journalItem.productIDs?.prods ?? [ListProduct]()
@@ -47,7 +47,7 @@ class JournalInputViewModel: ObservableObject {
     @Published var percentageDone: CGFloat = 0.2
     
     // Food Intake, exposure, stress, product
-    @Published var stressLevel = 0
+    @Published var stressLevel = 0.0
     var chosenFoodIntakes = [IEAData]()
     var chosenExposure = [IEAData]()
     var chosenProducts = [ListProduct]()

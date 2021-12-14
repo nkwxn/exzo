@@ -18,7 +18,6 @@ struct StressLevelSliderView: View {
     var userPFP = UDHelper.sharedUD.getPFP()
     
     @State var buttonText = "Lanjut"
-    @State var stressValue: Double = 2
     var captionText: [String] {
         return [
             "\(viewModel.category == .child ? "Anak " : "")Anda merasa sangat bahagia dan penuh senyum, tidak menunjukkan kesedihan, kecemasan, atau gejala mental negatif apa pun",
@@ -39,16 +38,17 @@ struct StressLevelSliderView: View {
                     .font(Lexend(.title2).getFont().bold())
                 Text("Bagaimana suasana hati anak Anda sekarang?")
             }
-            Image("L\(String(format: "%.0f", stressValue)) - \(userPFP)")
+            Image("L\(String(format: "%.0f", viewModel.stressLevel)) - \(userPFP)")
                 .resizable()
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .padding()
-            Slider(value: $stressValue, in: 0...4, step: 1)
+            Slider(value: $viewModel.stressLevel, in: 0...4, step: 1)
             VStack(alignment: .center, spacing: 4) {
-                Text(String(format: "%.0f", stressValue))
+                Text(String(format: "%.0f", viewModel.stressLevel))
                     .font(Lexend(.title3).getFont().bold())
-                Text(captionText[Int(stressValue)])
+                Text(captionText[Int(viewModel.stressLevel)])
+                    .lineLimit(0)
             }
             .multilineTextAlignment(.center)
             Spacer()

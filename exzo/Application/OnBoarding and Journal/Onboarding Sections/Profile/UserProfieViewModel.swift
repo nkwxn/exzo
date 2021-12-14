@@ -14,7 +14,7 @@ class UserProfileViewModel: ObservableObject {
     var imageName: [String]
     @Published var selectedPic: String
     @Published var myNickName = ""
-    @Published var ageInt = "10"
+    @Published var ageInt = ""
     
     @Published var userConcern = UDHelper.sharedUD.getTriggers()
     
