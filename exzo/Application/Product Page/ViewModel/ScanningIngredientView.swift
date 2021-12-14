@@ -9,10 +9,16 @@ import SwiftUI
 import VisionKit
 import Vision
 
+class ContentViewModel: ObservableObject {
+    @Published var showVision = false
+    @Published var arrayString = [String]()
+}
+
+
 struct ScanIngredientView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var recognizedText: String
+    @Binding var recognizedText: [String]
     
     func makeCoordinator() -> Coordinator {
         Coordinator(recognizedText: $recognizedText, parent: self)
@@ -29,10 +35,10 @@ struct ScanIngredientView: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
-        var recognizedText: Binding<String>
+        var recognizedText: Binding<[String]>
         var parent: ScanIngredientView
         
-        init(recognizedText: Binding<String>, parent: ScanIngredientView) {
+        init(recognizedText: Binding<[String]>, parent: ScanIngredientView) {
             self.recognizedText = recognizedText
             self.parent = parent
         }
@@ -40,7 +46,8 @@ struct ScanIngredientView: UIViewControllerRepresentable {
         func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
             let extractedImages = extractImages(from: scan)
             let processedText = recognizeText(from: extractedImages)
-            recognizedText.wrappedValue = processedText
+            let separateProcess = processedText.components(separatedBy: ", ")
+            recognizedText.wrappedValue = separateProcess
             
             parent.presentationMode.wrappedValue.dismiss()
         }

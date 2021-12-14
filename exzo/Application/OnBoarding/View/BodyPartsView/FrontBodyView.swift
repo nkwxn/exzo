@@ -7,405 +7,497 @@
 
 import SwiftUI
 
+// swiftlint:disable all
 struct FrontBodyView: View {
     //  Front Body
     @State var isFrontHead: Bool = false
-    @State var isFrontShoulder: Bool = false
-    @State var isFrontChest: Bool = false
-    @State var isFrontRightThigh: Bool = false
-    @State var isFrontLeftThigh: Bool = false
     @State var isFrontBelly: Bool = false
-    @State var isFrontX: Bool = false
+    @State var isFrontChest: Bool = false
+    @State var isFrontShoulder: Bool = false
+    @State var isFrontNeck: Bool = false
+    @State var isFrontVital: Bool = false
     //  Front Arm
-    @State var isFrontRightShoulder: Bool = false
-    @State var isFrontRightBisep: Bool = false
+    @State var isFrontRightMuscle: Bool = false
+    @State var isFrontRightElbow: Bool = false
     @State var isFrontRightArm: Bool = false
     @State var isFrontRightFinger: Bool = false
-    @State var isFrontLeftShoulder: Bool = false
-    @State var isFrontLeftBisep: Bool = false
+    @State var isFrontLeftMuscle: Bool = false
+    @State var isFrontLeftElbow: Bool = false
     @State var isFrontLeftArm: Bool = false
     @State var isFrontLeftFinger: Bool = false
     //  Front Knee
+    @State var isFrontRightHip: Bool = false
+    @State var isFrontRightThigh: Bool = false
     @State var isFrontRightKnee: Bool = false
+    @State var isFrontRightLeg: Bool = false
     @State var isFrontRightFoot: Bool = false
+    @State var isFrontLeftHip: Bool = false
+    @State var isFrontLeftThigh: Bool = false
     @State var isFrontLeftKnee: Bool = false
+    @State var isFrontLeftLeg: Bool = false
     @State var isFrontLeftFoot: Bool = false
     
     @Binding var score: Float
     @Binding var bodyArr: [String]
     var body: some View {
         ZStack {
-            // MARK: - Front Body
+            // MARK: - Body
             Group {
-                // MARK: - Body
-                Group {
-                    Button {
-                        self.isFrontHead.toggle()
-                        if(isFrontHead) {
-                            score += 4.5
-                            bodyArr.append("F - Head")
-                        } else {
-                            score -= 4.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontHead ? "SF - Head" : "F - Head")
-                            .resizable()
-                            .frame(width: 45, height: 52)
-                            .aspectRatio(contentMode: .fit)
+                Button {
+                    self.isFrontHead.toggle()
+                    if isFrontHead {
+                        score += 4.5
+                        bodyArr.append("F - Head")
+                    } else {
+                        score -= 4.5
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 45, height: 52)
-                    .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 3.95))
-
-                    Button {
-                        self.isFrontShoulder.toggle()
-                        if (isFrontShoulder) {
-                            score += 6.0
-                            bodyArr.append("F - Shoulder")
-                        } else {
-                            score -= 6.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontShoulder ? "SF - Shoulder" : "B - Shoulder")
-                            .resizable()
-                            .frame(width: 72, height: 40)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 72, height: 40)
-                    .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 3.25))
-
-                    Button {
-                        self.isFrontChest.toggle()
-                        if (isFrontChest) {
-                            score += 6.0
-                            bodyArr.append("F - Chest")
-                        } else {
-                            score -= 6.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontChest ? "SF - Chest" : "B - Chest")
-                            .resizable()
-                            .frame(width: 76, height: 42)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 76, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.80))
-                    
-                    Button {
-                        self.isFrontRightThigh.toggle()
-                        if (isFrontRightThigh) {
-                            score += 3.0
-                            bodyArr.append("F - Right Thigh")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightThigh ? "SF - Right Thigh" : "F- Right Thigh")
-                            .resizable()
-                            .frame(width: 40, height: 79)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 40, height: 79)
-                    .position(x: (UIScreen.main.bounds.width / 3.45), y: (UIScreen.main.bounds.height / 2.11))
-                    
-                    Button {
-                        self.isFrontLeftThigh.toggle()
-                        if (isFrontLeftThigh) {
-                            score += 3.0
-                            bodyArr.append("F - Left Thigh")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftThigh ? "SF - Left Thigh" : "F - Left Thigh")
-                            .resizable()
-                            .frame(width: 40, height: 79)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 40, height: 79)
-                    .position(x: (UIScreen.main.bounds.width / 5.35), y: (UIScreen.main.bounds.height / 2.11))
-                    
-                    Button {
-                        self.isFrontBelly.toggle()
-                        if (isFrontBelly) {
-                            score += 6.0
-                            bodyArr.append("F - Belly")
-                        } else {
-                            score -= 6.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontBelly ? "SF - Belly" : "F - Belly")
-                            .resizable()
-                            .frame(width: 76, height: 53)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 76, height: 53)
-                    .position(x: (UIScreen.main.bounds.width / 4.24), y: (UIScreen.main.bounds.height / 2.405))
-                    
-                    Button {
-                        self.isFrontX.toggle()
-                        if (isFrontX) {
-                            bodyArr.append("F - XXX")
-                            score += 1.0
-                        } else {
-                            score -= 1.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Circle()
-                            .fill(isFrontX ? Color.copper : .gray)
-                            .frame(width: 20, height: 20)
-                    }
-                    .frame(width: 20, height: 20)
-                    .position(x: (UIScreen.main.bounds.width / 4.25), y: (UIScreen.main.bounds.height / 2.22))
-
+                } label: {
+                    Image(isFrontHead ? "SF - Head" : "F - Head")
+                        .resizable()
+                        .frame(width: 34.78, height: 37.5)
+                        .aspectRatio(contentMode: .fit)
                 }
+                .frame(width: 45, height: 52)
+                .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 3.95))
                 
-                // MARK: - Right Hand
-                Group {
-                    Button {
-                        self.isFrontRightShoulder.toggle()
-                        if (isFrontRightShoulder) {
-                            score += 1.5
-                            bodyArr.append("F - Right Shoulder")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightShoulder ? "SF - Right Shoulder" : "B - Right Shoulder")
-                            .resizable()
-                            .frame(width: 28, height: 42)
-                            .aspectRatio(contentMode: .fit)
+                Button {
+                    self.isFrontNeck.toggle()
+                    if isFrontNeck {
+                        score += 6.0
+                        bodyArr.append("F - Neck")
+                    } else {
+                        score -= 6.0
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 28, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 2.76), y: (UIScreen.main.bounds.height / 3.08))
-                    
-                    Button {
-                        self.isFrontRightBisep.toggle()
-                        if (isFrontRightBisep) {
-                            score += 1.5
-                            bodyArr.append("F - Right Bisep")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightBisep ? "SF - Right Bisep" : "B - Right Bisep")
-                            .resizable()
-                            .frame(width: 31, height: 43)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 31, height: 43)
-                    .position(x: (UIScreen.main.bounds.width / 2.67), y: (UIScreen.main.bounds.height / 2.7))
-
-                    Button {
-                        self.isFrontRightArm.toggle()
-                        if (isFrontRightArm) {
-                            score += 1.5
-                            bodyArr.append("F - Right Arm")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightArm ? "SF - Right Arm" : "B - Right Arm")
-                            .resizable()
-                            .frame(width: 29, height: 53)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 29, height: 53)
-                    .position(x: (UIScreen.main.bounds.width / 2.54), y: (UIScreen.main.bounds.height / 2.38))
-                    
-                    Button {
-                        self.isFrontRightFinger.toggle()
-                        if (isFrontRightFinger) {
-                            score += 1.5
-                            bodyArr.append("F - Right Finger")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightFinger ? "SF - Right Finger" : "B - Right Finger")
-                            .resizable()
-                            .frame(width: 24, height: 39)
-                            .aspectRatio(contentMode: .fit)
-                            
-                    }
-                    .frame(width: 24, height: 39)
-                    .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 2.11))
-                    
+                } label: {
+                    Image(isFrontNeck ? "SF - Neck" : "F - Neck")
+                        .resizable()
+                        .frame(width: 26.51, height: 5.95)
+                        .aspectRatio(contentMode: .fit)
                 }
+                .frame(width: 26.51, height: 5.95)
+                .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 3.57))
                 
-                // MARK: - Left Hand
-                Group {
-                    Button {
-                        self.isFrontLeftShoulder.toggle()
-                        if (isFrontLeftShoulder) {
-                            score += 1.5
-                            bodyArr.append("F - Left Shoulder")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftShoulder ? "SF - Left Shoulder" : "B - Left Shoulder")
-                            .resizable()
-                            .frame(width: 28, height: 42)
-                            .aspectRatio(contentMode: .fit)
-                            
+                Button {
+                    self.isFrontShoulder.toggle()
+                    if isFrontShoulder {
+                        score += 6.0
+                        bodyArr.append("F - Shoulder")
+                    } else {
+                        score -= 6.0
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 28, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 9.59), y: (UIScreen.main.bounds.height / 3.08))
-
-                    Button {
-                        self.isFrontLeftBisep.toggle()
-                        if (isFrontLeftBisep) {
-                            score += 1.5
-                            bodyArr.append("F - Left Bisep")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftBisep ? "SF - Left Bisep" : "B - Left Bisep")
-                            .resizable()
-                            .frame(width: 31, height: 43)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 31, height: 43)
-                    .position(x: (UIScreen.main.bounds.width / 10.62), y: (UIScreen.main.bounds.height / 2.7))
-                    
-                    Button {
-                        self.isFrontLeftArm.toggle()
-                        if (isFrontLeftArm) {
-                            score += 1.5
-                            bodyArr.append("F - Left Arm")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftArm ? "SF - Left Arm" : "B - Left Arm")
-                            .resizable()
-                            .frame(width: 29, height: 53)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 29, height: 53)
-                    .position(x: (UIScreen.main.bounds.width / 13), y: (UIScreen.main.bounds.height / 2.38))
-                    
-                    Button {
-                        self.isFrontLeftFinger.toggle()
-                        if (isFrontLeftFinger) {
-                            score += 1.5
-                            bodyArr.append("F - Left Finger")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftFinger ? "SF - Left Finger" : "B - Left Finger")
-                            .resizable()
-                            .frame(width: 24, height: 39)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 24, height: 39)
-                    .position(x: (UIScreen.main.bounds.width / 13.684), y: (UIScreen.main.bounds.height / 2.11))
-
+                } label: {
+                    Image(isFrontShoulder ? "SF - Shoulder" : "B - Shoulder")
+                        .resizable()
+                        .frame(width: 56.64, height: 25.89)
+                        .aspectRatio(contentMode: .fit)
                 }
+                .frame(width: 56.64, height: 25.89)
+                .position(x: (UIScreen.main.bounds.width / 4.35), y: (UIScreen.main.bounds.height / 3.33))
                 
-                //  MARK: - Right Knee
-                Group {
-                    Button {
-                        self.isFrontRightKnee.toggle()
-                        if (isFrontRightKnee) {
-                            score += 3.0
-                            bodyArr.append("F - Right Knee")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightKnee ? "SF - Right Knee" : "B - Right Knee")
-                            .resizable()
-                            .frame(width: 35, height: 69)
-                            .aspectRatio(contentMode: .fit)
+                Button {
+                    self.isFrontChest.toggle()
+                    if isFrontChest {
+                        score += 6.0
+                        bodyArr.append("F - Chest")
+                    } else {
+                        score -= 6.0
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 35, height: 69)
-                    .position(x: (UIScreen.main.bounds.width / 3.5), y: (UIScreen.main.bounds.height / 1.78))
-
-                    Button {
-                        self.isFrontRightFoot.toggle()
-                        if (isFrontRightFoot) {
-                            score += 3.0
-                            bodyArr.append("F - Right Foot")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontRightFoot ? "SF - Right Foot" : "B - Right Foot")
-                            .resizable()
-                            .frame(width: 34, height: 65)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 34, height: 65)
-                    .position(x: (UIScreen.main.bounds.width / 3.55), y: (UIScreen.main.bounds.height / 1.555))
-
+                } label: {
+                    Image(isFrontChest ? "SF - Chest" : "F - Chest")
+                        .resizable()
+                        .frame(width: 58, height: 36.4)
+                        .aspectRatio(contentMode: .fill)
                 }
+                .frame(width: 58, height: 36.4)
+                .position(x: (UIScreen.main.bounds.width / 4.33), y: (UIScreen.main.bounds.height / 2.96))
                 
-                //  Left Knee
-                Group {
-                    Button {
-                        self.isFrontLeftKnee.toggle()
-                        if (isFrontLeftKnee) {
-                            score += 3.0
-                            bodyArr.append("F - Left Knee")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftKnee ? "SF - Left Knee" : "B - Left Knee")
-                            .resizable()
-                            .frame(width: 35, height: 69)
-                            .aspectRatio(contentMode: .fit)
+                Button {
+                    self.isFrontBelly.toggle()
+                    if isFrontBelly {
+                        score += 6.0
+                        bodyArr.append("F - Belly")
+                    } else {
+                        score -= 6.0
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 35, height: 69)
-                    .position(x: (UIScreen.main.bounds.width / 5.32), y: (UIScreen.main.bounds.height / 1.78))
-                    
-                    Button {
-                        self.isFrontLeftFoot.toggle()
-                        if (isFrontLeftFoot) {
-                            score += 3.0
-                            bodyArr.append("F - Left Foot")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isFrontLeftFoot ? "SF - Left Foot" : "B - Left Foot")
-                            .resizable()
-                            .frame(width: 34, height: 65)
-                            .aspectRatio(contentMode: .fit)
+                } label: {
+                    Image(isFrontBelly ? "SF - Belly" : "F - Belly")
+                        .resizable()
+                        .frame(width: 56.39, height: 50.87)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 56.39, height: 50.87)
+                .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.56))
+                
+                Button {
+                    self.isFrontVital.toggle()
+                    if (isFrontVital) {
+                        bodyArr.append("F - Vital")
+                        score += 1.0
+                    } else {
+                        score -= 1.0
+                        bodyArr.removeLast()
                     }
-                    .frame(width: 34, height: 65)
-                    .position(x: (UIScreen.main.bounds.width / 5.32), y: (UIScreen.main.bounds.height / 1.555))
+                } label: {
+                    Image(isFrontVital ? "SF - Vital" : "F - Vital")
+                        .resizable()
+                        .frame(width: 13.02, height: 13.02)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 13.02, height: 13.02)
+                .position(x: (UIScreen.main.bounds.width / 4.33), y: (UIScreen.main.bounds.height / 2.375))
+                
+                Button {
+                    self.isFrontRightHip.toggle()
+                    if isFrontRightHip {
+                        score += 3.0
+                        bodyArr.append("F - Right Hip")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightHip ? "SF - Right Hip" : "F - Right Hip")
+                        .resizable()
+                        .frame(width: 30.49, height: 45.62)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 30.49, height: 45.62)
+                .position(x: (UIScreen.main.bounds.width / 5.24), y: (UIScreen.main.bounds.height / 2.3))
+                Button {
+                    self.isFrontLeftHip.toggle()
+                    if isFrontLeftHip {
+                        score += 3.0
+                        bodyArr.append("F - Left Hip")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftHip ? "SF - Left Hip" : "F - Left Hip")
+                        .resizable()
+                        .frame(width: 30.02, height: 44.87)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 30.02, height: 44.87)
+                .position(x: (UIScreen.main.bounds.width / 3.72), y: (UIScreen.main.bounds.height / 2.3))
+            }
+            
+            // MARK: - Left Hand
+            Group {
+                Button {
+                    self.isFrontLeftMuscle.toggle()
+                    if isFrontLeftMuscle {
+                        score += 1.5
+                        bodyArr.append("F - Left Muscle")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftMuscle ? "SF - Left Muscle" : "F - Left Muscle")
+                        .resizable()
+                        .frame(width: 21.13, height: 54.14)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 21.13, height: 54.14)
+                .position(x: (UIScreen.main.bounds.width / 3), y: (UIScreen.main.bounds.height / 3.07))
+                
+                Button {
+                    self.isFrontLeftElbow.toggle()
+                    if isFrontLeftElbow {
+                        score += 1.5
+                        bodyArr.append("F - Left Elbow")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftElbow ? "SF - Left Elbow" : "F - Left Elbow")
+                        .resizable()
+                        .frame(width: 16.17, height: 16.83)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 16.17, height: 16.83)
+                .position(x: (UIScreen.main.bounds.width / 2.91), y: (UIScreen.main.bounds.height / 2.74))
+                
+                Button {
+                    self.isFrontLeftArm.toggle()
+                    if isFrontLeftArm {
+                        score += 1.5
+                        bodyArr.append("F - Left Arm")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftArm ? "SF - Left Arm" : "F - Left Arm")
+                        .resizable()
+                        .frame(width: 18.67, height: 38.54)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 18.67, height: 38.54)
+                .position(x: (UIScreen.main.bounds.width / 2.852), y: (UIScreen.main.bounds.height / 2.53))
+                
+                Button {
+                    self.isFrontLeftFinger.toggle()
+                    if isFrontLeftFinger {
+                        score += 1.5
+                        bodyArr.append("F - Left Finger")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftFinger ? "SF - Left Finger" : "F - Left Finger")
+                        .resizable()
+                        .frame(width: 13.42, height: 28.09)
+                        .aspectRatio(contentMode: .fit)
                     
                 }
+                .frame(width: 13.42, height: 28.09)
+                .position(x: (UIScreen.main.bounds.width / 2.8), y: (UIScreen.main.bounds.height / 2.305))
+                
+            }
+            
+            // MARK: - Right Hand
+            Group {
+                Button {
+                    self.isFrontRightMuscle.toggle()
+                    if isFrontRightMuscle {
+                        score += 1.5
+                        bodyArr.append("F - Right Muscle")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightMuscle ? "SF - Right Muscle" : "F - Right Muscle")
+                        .resizable()
+                        .frame(width: 21.13, height: 54.14)
+                        .aspectRatio(contentMode: .fit)
+                    
+                }
+                .frame(width: 21.13, height: 54.14)
+                .position(x: (UIScreen.main.bounds.width / 7.8), y: (UIScreen.main.bounds.height / 3.07))
+                
+                Button {
+                    self.isFrontRightElbow.toggle()
+                    if isFrontRightElbow {
+                        score += 1.5
+                        bodyArr.append("F - Right Elbow")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightElbow ? "SF - Right Elbow" : "F - Right Elbow")
+                        .resizable()
+                        .frame(width: 16.17, height: 16.83)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 16.17, height: 16.83)
+                .position(x: (UIScreen.main.bounds.width / 8.45), y: (UIScreen.main.bounds.height / 2.74))
+                
+                Button {
+                    self.isFrontRightArm.toggle()
+                    if isFrontRightArm {
+                        score += 1.5
+                        bodyArr.append("F - Right Arm")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightArm ? "SF - Right Arm" : "F - Right Arm")
+                        .resizable()
+                        .frame(width: 18.67, height: 38.54)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 18.67, height: 38.54)
+                .position(x: (UIScreen.main.bounds.width / 9), y: (UIScreen.main.bounds.height / 2.53))
+                
+                Button {
+                    self.isFrontRightFinger.toggle()
+                    if (isFrontRightFinger) {
+                        score += 1.5
+                        bodyArr.append("F - Right Finger")
+                    } else {
+                        score -= 1.5
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightFinger ? "SF - Right Finger" : "F - Right Finger")
+                        .resizable()
+                        .frame(width: 13.42, height: 28.09)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 13.42, height: 28.09)
+                .position(x: (UIScreen.main.bounds.width / 9.6), y: (UIScreen.main.bounds.height / 2.305))
+                
+            }
+            
+            //  MARK: - Right Knee
+            Group {
+                Button {
+                    self.isFrontRightThigh.toggle()
+                    if isFrontRightThigh {
+                        score += 3.0
+                        bodyArr.append("F - Right Thigh")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightThigh ? "SF - Right Thigh" : "F - Right Thigh")
+                        .resizable()
+                        .frame(width: 26.44, height: 34.05)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 26.44, height: 34.05)
+                .position(x: (UIScreen.main.bounds.width / 5.24), y: (UIScreen.main.bounds.height / 2.07))
+                
+                Button {
+                    self.isFrontRightKnee.toggle()
+                    if isFrontRightKnee {
+                        score += 3.0
+                        bodyArr.append("F - Right Knee")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightKnee ? "SF - Right Knee" : "F - Right Knee")
+                        .resizable()
+                        .frame(width: 16.72, height: 17.07)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 16.72, height: 17.07)
+                .position(x: (UIScreen.main.bounds.width / 5.26), y: (UIScreen.main.bounds.height / 1.97))
+                
+                Button {
+                    self.isFrontRightLeg.toggle()
+                    if isFrontRightLeg {
+                        score += 3.0
+                        bodyArr.append("F - Right Leg")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightLeg ? "SF - Right Leg" : "F - Right Leg")
+                        .resizable()
+                        .frame(width: 22.56, height: 60.19)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 22.56, height: 60.19)
+                .position(x: (UIScreen.main.bounds.width / 5.3), y: (UIScreen.main.bounds.height / 1.83))
+                
+                Button {
+                    self.isFrontRightFoot.toggle()
+                    if isFrontRightFoot {
+                        score += 3.0
+                        bodyArr.append("F - Right Foot")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontRightFoot ? "SF - Right Foot" : "F - Right Foot")
+                        .resizable()
+                        .frame(width: 22.75, height: 20.18)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 22.75, height: 20.18)
+                .position(x: (UIScreen.main.bounds.width / 5.2), y: (UIScreen.main.bounds.height / 1.68))
+                
+            }
+            
+            //  Left Knee
+            Group {
+                Button {
+                    self.isFrontLeftThigh.toggle()
+                    if isFrontLeftThigh {
+                        score += 3.0
+                        bodyArr.append("F - Left Thigh")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftThigh ? "SF - Left Thigh" : "F - Left Thigh")
+                        .resizable()
+                        .frame(width: 26.44, height: 34.05)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 26.44, height: 34.05)
+                .position(x: (UIScreen.main.bounds.width / 3.74), y: (UIScreen.main.bounds.height / 2.07))
+                
+                Button {
+                    self.isFrontLeftKnee.toggle()
+                    if isFrontLeftKnee {
+                        score += 3.0
+                        bodyArr.append("F - Left Knee")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftKnee ? "SF - Left Knee" : "F - Left Knee")
+                        .resizable()
+                        .frame(width: 16.72, height: 17.07)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 16.72, height: 17.07)
+                .position(x: (UIScreen.main.bounds.width / 3.7), y: (UIScreen.main.bounds.height / 1.97))
+                
+                Button {
+                    self.isFrontLeftLeg.toggle()
+                    if isFrontLeftLeg {
+                        score += 3.0
+                        bodyArr.append("F - Left Leg")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftLeg ? "SF - Left Leg" : "F - Left Leg")
+                        .resizable()
+                        .frame(width: 22.56, height: 60.19)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 22.56, height: 60.19)
+                .position(x: (UIScreen.main.bounds.width / 3.715), y: (UIScreen.main.bounds.height / 1.83))
+                
+                Button {
+                    self.isFrontLeftFoot.toggle()
+                    if isFrontLeftFoot {
+                        score += 3.0
+                        bodyArr.append("F - Left Foot")
+                    } else {
+                        score -= 3.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontLeftFoot ? "SF - Left Foot" : "F - Left Foot")
+                        .resizable()
+                        .frame(width: 22.75, height: 20.18)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 22.75, height: 20.18)
+                .position(x: (UIScreen.main.bounds.width / 3.75), y: (UIScreen.main.bounds.height / 1.68))
             }
         }
     }
 }
 
-// struct FrontBodyView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         FrontBodyView(score: Binding.constant(0))
-//     }
-// }
+
+struct FrontBodyView_Previews: PreviewProvider {
+    static var previews: some View {
+        FrontBodyView(score: Binding.constant(0), bodyArr: Binding.constant([""]))
+    }
+}
