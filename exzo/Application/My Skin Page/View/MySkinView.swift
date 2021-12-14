@@ -126,9 +126,6 @@ struct MySkinView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $isAddingJournal) {
-                    AddJournalView()
-                }
             }
             .navigationBarHidden(true)
             .navigationTitle("Skin Journal")

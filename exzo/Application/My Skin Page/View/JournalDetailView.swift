@@ -12,6 +12,9 @@ class JournalDetailViewModel: ObservableObject {
     @Published var isEditing = false
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
+    // Item of concerns
+    let concerns = UDHelper.sharedUD.getConcern()
+    
     init(_ journal: NewJournal) {
         self.journal = journal
     }
@@ -49,6 +52,13 @@ class JournalDetailViewModel: ObservableObject {
             guard let array = journal.foodIntakes
             else { return [] }
             return array.ieaDatas
+        }
+    }
+    
+    func getProductUsed() -> [String] {
+        guard let products = journal.productIDs else { return ["None of the products are used"] }
+        return products.prods.map { products -> String in
+            return "\(products.productCat) - \(products.productName)"
         }
     }
 }
@@ -134,6 +144,7 @@ struct JournalDetailCircleGrid: View {
                 Circle()
                     .foregroundColor(.copper)
                 Text(text)
+                    .font(Lexend(.title).getFont())
                     .foregroundColor(.white)
                     .bold()
                     .padding()
@@ -161,27 +172,43 @@ struct JournalDetailView: View {
             ) {
                 viewModel.isEditing.toggle()
             }
+            .sheet(isPresented: $viewModel.isEditing) {
+                // onDismiss: update the content
+                let toBeUpdated = CDStorage.shared.getSpecificNewJournal(id: viewModel.journal.id ?? UUID())
+                self.viewModel.journal = toBeUpdated
+            } content: {
+                SkinConditionJournalView(journalContent: viewModel.journal)
+                    .environment(\.modalMode, $viewModel.isEditing)
+            }
+            
             // TODO: Kasih if statement agar bs muncul / tidak sesuai dengan User Defaults
             ScrollView(.vertical, showsIndicators: true) {
-                JournalDetailHeadingView(title: "Asupan makanan") {
-                    JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.intake))
+                if viewModel.concerns.contains(EczemaTriggers.foodIntake.rawValue) {
+                    JournalDetailHeadingView(title: "Asupan makanan") {
+                        JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.intake))
+                    }
                 }
-                JournalDetailHeadingView(title: "Tingkat stres") {
-                    JournalDetailCircleGrid(Int(viewModel.journal.stressLevel))
+                if viewModel.concerns.contains(EczemaTriggers.stress.rawValue) {
+                    JournalDetailHeadingView(title: "Tingkat stres") {
+                        JournalDetailCircleGrid(Int(viewModel.journal.stressLevel))
+                    }
                 }
-                JournalDetailHeadingView(title: "Paparan") {
-                    JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.exposure))
+                if viewModel.concerns.contains(EczemaTriggers.exposure.rawValue) {
+                    JournalDetailHeadingView(title: "Paparan") {
+                        JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.exposure))
+                    }
                 }
-                JournalDetailHeadingView(title: "Produk") {
-                    // TODO: Connect to CD Item
-                    VStack(alignment: .leading) {
-                        Text("Moisturizer - Somethinc")
-                        Text("Moisturizer - Somethinc")
-                        Text("Moisturizer - Somethinc")
+                if viewModel.concerns.contains(EczemaTriggers.medProd.rawValue) {
+                    JournalDetailHeadingView(title: "Produk") {
+                        VStack(alignment: .leading) {
+                            ForEach(viewModel.getProductUsed(), id: \.self) {
+                                Text($0)
+                            }
+                        }
                     }
                 }
                 JournalDetailHeadingView(title: "Kondisi kulit") {
-                    VStack {
+                    VStack(alignment: .leading) {
                         JDSkinConditionView(score: Int(viewModel.journal.rednessScore), title: "Peradangan")
                         JDSkinConditionView(score: Int(viewModel.journal.swellingScore), title: "Pembengkakan")
                         JDSkinConditionView(score: Int(viewModel.journal.scratchScore), title: "Bekas garukan")
@@ -201,7 +228,7 @@ struct JDSkinConditionView: View {
     var body: some View {
         HStack {
             Text("\(score)")
-                .font(Lexend(.footnote).getFont().bold())
+                .font(Avenir.shared.getFont().bold())
                 .foregroundColor(Color.white)
                 .background {
                     Circle()
@@ -211,7 +238,7 @@ struct JDSkinConditionView: View {
                 }
                 .frame(width: 32, height: 32)
             Text(title)
-                .font(Avenir(.footnote).getFont())
+                .font(Avenir.shared.getFont())
         }
     }
 }

@@ -25,12 +25,27 @@ struct JournalQuestions {
 struct SkinConditionJournalView: View {
     @Environment(\.dismiss) var dismiss
     
+    // Init for create
     init() {
-        self.viewModel = JournalInputViewModel(.adult, mode: .create)
+        self.viewModel = JournalInputViewModel(
+            ProfileCategory(
+                rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf"
+            ) ?? .adult,
+            mode: .create
+        )
     }
     
     init(jourVM: JournalInputViewModel) {
         self.viewModel = jourVM
+    }
+    
+    init(journalContent: NewJournal) {
+        self.viewModel = JournalInputViewModel(
+            ProfileCategory(
+                rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf"
+            ) ?? .adult,
+            mode: .update
+        )
     }
     
     @ObservedObject var viewModel: JournalInputViewModel

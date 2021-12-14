@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DetailProductView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    static let DefaultProductType = "Product Type"
-    static let DefaultProductName = "Product Name"
+    static let DefaultProductType = "Tipe Produk"
+    static let DefaultProductName = "Nama Produk"
     
     @State var name = ""
     @State var type = ""
@@ -69,11 +69,11 @@ struct DetailProductView: View {
                         }
                         
                     }
-                    .confirmationDialog("Choose photo source", isPresented: $showOption, titleVisibility: .visible) {
-                        Button("Photo Library") {
+                    .confirmationDialog("Pilih sumber foto", isPresented: $showOption, titleVisibility: .visible) {
+                        Button("Galeri") {
                             showPhotoLibrarySheet = true
                         }
-                        Button("Camera") {
+                        Button("Kamera") {
                             showCameraSheet = true
                         }
                     }
@@ -85,18 +85,18 @@ struct DetailProductView: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Section(header: Text("Type of Product")) {
-                            Text(product.productType ?? "")
+                        Section(header: Text("Tipe Produk")) {
+                            Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")
                         }
                         Divider()
-                        Section(header: Text("Product Name")) {
+                        Section(header: Text("Nama Produk")) {
                             Text(product.productName ?? "")
                         }
                         Divider()
                     }
                 }
                 HStack {
-                    Text("List of Ingredients")
+                    Text("Daftar Bahan")
                     Spacer()
                     Button {
                         self.showingScanningView.toggle()

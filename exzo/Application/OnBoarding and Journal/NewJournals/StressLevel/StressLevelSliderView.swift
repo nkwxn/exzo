@@ -63,7 +63,7 @@ struct StressLevelSliderView: View {
                     goToNextPage.toggle()
                 } else {
                     // Save to Core Data
-                    viewModel.saveJournal {
+                    viewModel.finishInput {
                         // Completion
                         self.modalMode.wrappedValue.toggle()
                         viewModel.pushNavToTimer()

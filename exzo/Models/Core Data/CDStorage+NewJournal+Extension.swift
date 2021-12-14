@@ -61,6 +61,55 @@ extension CDStorage {
         }[0]
         return newJournal
     }
+    
+    func updateNewJournal(
+        id: UUID,
+        rednessPart: [String],
+        rednessScore: Int,
+        swellingPart: [String],
+        swellingScore: Int,
+        scratchPart: [String],
+        scratchScore: Int,
+        foodIntakes: [IEAData],
+        exposure: [IEAData],
+        products: [ListProduct],
+        stressLevel: Int,
+        completion: @escaping () -> Void
+    ) {
+        let toBeUpdated = self.newJournalItems.value.filter { tbu in
+            tbu.id == id
+        }[0]
+        
+        // 3 bagian penting pada scoring TIS
+        toBeUpdated.rednessPart = rednessPart as NSObject
+        toBeUpdated.rednessScore = Double(rednessScore)
+        toBeUpdated.swellingPart = swellingPart as NSObject
+        toBeUpdated.swellingScore = Double(swellingScore)
+        toBeUpdated.scratchPart = scratchPart as NSObject
+        toBeUpdated.scratchScore = Double(scratchScore)
+        
+        // Food Intake dan Exposure yang dimasukkin
+        let intks = IEADatas(ieaDatas: foodIntakes)
+        let expsrs = IEADatas(ieaDatas: exposure)
+        toBeUpdated.foodIntakes = intks
+        toBeUpdated.exposures = expsrs
+        
+        // Product Item (pake NSObject instead of just uuid krn kalo di delete kecenderungan untuk error nya tinggi)
+        let prods = ListProducts(prods: products)
+        toBeUpdated.productIDs = prods
+        
+        // Stress Level
+        toBeUpdated.stressLevel = Double(stressLevel)
+        
+        save()
+        completion()
+    }
+    
+    func deleteNewJournal(id: UUID, completion: () -> Void) {
+        context.delete(newJournalItems.value.filter{ newJournal in
+            newJournal.id == id
+        }[0])
+    }
 }
 
 // MARK: - Custom collections

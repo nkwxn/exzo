@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AddProduct: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    static let DefaultProductType = "Product Type"
-    static let DefaultProductName = "Product Name"
+    static let DefaultProductType = "Tipe Produk"
+    static let DefaultProductName = "Nama Produk"
     
     @State var name = ""
     @State var type = ""
@@ -62,11 +62,11 @@ struct AddProduct: View {
                         }
                         
                     }
-                    .confirmationDialog("Choose photo source", isPresented: $showOption, titleVisibility: .visible) {
-                        Button("Photo Library") {
+                    .confirmationDialog("Pilih sumber foto", isPresented: $showOption, titleVisibility: .visible) {
+                        Button("Galeri") {
                             showPhotoLibrarySheet = true
                         }
-                        Button("Camera") {
+                        Button("Kamera") {
                             showCameraSheet = true
                         }
                     }
@@ -81,21 +81,21 @@ struct AddProduct: View {
                         Section(header: Text("Type of Product")) {
                             Picker("", selection: $selectedType) {
                                 ForEach(productType) { typeOfProduct in
-                                    Text(typeOfProduct.productType.rawValue)
+                                    Text(typeOfProduct.productType.getLocalizedName())
                                         .tag(typeOfProduct.productType)
                                         
                                 }
                             }
                         }
                         Divider()
-                        Section(header: Text("Product Name")) {
+                        Section(header: Text("Nama Produk")) {
                             TextField("Name", text: $name)
                         }
                         Divider()
                     }
                 }
                 HStack {
-                    Text("List of Ingredients")
+                    Text("Daftar Bahan Produk")
                     Spacer()
                     Button {
                         self.showingScanningView.toggle()
@@ -117,7 +117,7 @@ struct AddProduct: View {
                         VStack {
                             Image(systemName: "camera")
                                 .frame(width: 18, height: 18)
-                            Text("Scan your Ingredients")
+                            Text("Pindai Bahan Produk Anda")
                                 .scaledFont(name: "Avenir", size: 18)
                         }
                     }.opacity(isScan ? 0 : 1)
