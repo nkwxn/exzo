@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import exzo
+//@testable import exzo
 
 class AtemisTests: XCTestCase {
 

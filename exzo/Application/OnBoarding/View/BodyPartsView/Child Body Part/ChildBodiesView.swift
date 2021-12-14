@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ChildBodiesView: View {
+    @Binding var score: Float
+    @Binding var bodyArr: [String]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ZStack {
+            ChildBackView(score: $score, bodyArr: $bodyArr)
+            ChildFrontView(score: $score, bodyArr: $bodyArr)
+        }
     }
 }
 
 struct ChildBodiesView_Previews: PreviewProvider {
     static var previews: some View {
-        ChildBodiesView()
+        ChildBodiesView(score: Binding.constant(0), bodyArr: Binding.constant([""]))
     }
 }

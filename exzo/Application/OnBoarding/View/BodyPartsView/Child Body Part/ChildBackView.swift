@@ -7,386 +7,474 @@
 
 import SwiftUI
 
+// swiftlint:disable all
 struct ChildBackView: View {
-    // Back Body
-    @State var isBackHead: Bool = false
-    @State var isBackShoulder: Bool = false
-    @State var isBackChest: Bool = false
-    @State var isBackBottom: Bool = false
-    @State var isBackBelly: Bool = false
-    @State var isBackRightBottom: Bool = false
-    @State var isBackLeftBottom: Bool = false
-    // Back Arm
-    @State var isBackRightBisep: Bool = false
-    @State var isBackRightArm: Bool = false
-    @State var isBackRightFinger: Bool = false
-    @State var isBackRightShoulder: Bool = false
-    @State var isBackLeftShoulder: Bool = false
-    @State var isBackLeftBisep: Bool = false
-    @State var isBackLeftArm: Bool = false
-    @State var isBackLeftFinger: Bool = false
-    // Back Knee
-    @State var isBackRightKnee: Bool = false
-    @State var isBackRightFoot: Bool = false
-    @State var isBackLeftKnee: Bool = false
-    @State var isBackLeftFoot: Bool = false
+    //  Back Body
+    @State var isChildBackHead: Bool = false
+    @State var isChildBackLowerBack: Bool = false
+    @State var isChildBackUpperBack: Bool = false
+    @State var isChildBackShoulder: Bool = false
+    @State var isChildBackNeck: Bool = false
+    @State var isChildBackVital: Bool = false
+    //  Back Arm
+    @State var isChildBackRightShoulder: Bool = false
+    @State var isChildBackRightElbow: Bool = false
+    @State var isChildBackRightArm: Bool = false
+    @State var isChildBackRightFinger: Bool = false
+    @State var isChildBackLeftShoulder: Bool = false
+    @State var isChildBackLeftElbow: Bool = false
+    @State var isChildBackLeftArm: Bool = false
+    @State var isChildBackLeftFinger: Bool = false
+    //  Back Knee
+    @State var isChildBackRightBottom: Bool = false
+    @State var isChildBackRightThigh: Bool = false
+    @State var isChildBackRightKnee: Bool = false
+    @State var isChildBackRightLeg: Bool = false
+    @State var isChildBackRightFoot: Bool = false
+    @State var isChildBackLeftBottom: Bool = false
+    @State var isChildBackLeftThigh: Bool = false
+    @State var isChildBackLeftKnee: Bool = false
+    @State var isChildBackLeftLeg: Bool = false
+    @State var isChildBackLeftFoot: Bool = false
     
-    @State var score: Float = 0
-    @State var bodyArr: [String] = []
+    @Binding var score: Float
+    @Binding var bodyArr: [String]
     var body: some View {
         ZStack {
-            // Back Body
+            // MARK: - Back Body
             Group {
-                //MARK: - Body
+                // MARK: - Body
                 Group {
                     Button {
-                        self.isBackHead.toggle()
-                        print("Head Press")
-                        if (isBackHead){
+                        self.isChildBackHead.toggle()
+                        if isChildBackHead {
                             score += 4.5
-                            bodyArr.append("BB - Head")
+                            bodyArr.append("CB - Head")
                         } else {
                             score -= 4.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackHead ? "SBB - Head" : "BB - Head")
+                        Image(isChildBackHead ? "SCB - Head" : "CB - Head")
                             .resizable()
+                            .frame(width: 44.93, height: 54.81)
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 45, height: 52)
-                        
-                    }.frame(width: 45, height: 52)
-                        .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 3.95))
+                    }
+                    .frame(width: 44.93, height: 54.81)
+                    .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 3.95))
+                    
+                    Button {
+                        self.isChildBackNeck.toggle()
+                        if isChildBackNeck {
+                            score += 6.0
+                            bodyArr.append("CB - Neck")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackNeck ? "SCB - Neck" : "CB - Neck")
+                            .resizable()
+                            .frame(width: 20.31, height: 6.26)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 20.31, height: 6.26)
+                    .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 3.45))
+                    
+                    Button {
+                        self.isChildBackShoulder.toggle()
+                        if isChildBackShoulder {
+                            score += 6.0
+                            bodyArr.append("CB - Shoulder")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackShoulder ? "SCB - Shoulder" : "CB - Shoulder")
+                            .resizable()
+                            .frame(width: 52.22, height: 21.11)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 52.22, height: 21.11)
+                    .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 3.26))
+
+                    Button {
+                        self.isChildBackUpperBack.toggle()
+                        if isChildBackUpperBack {
+                            score += 6.0
+                            bodyArr.append("CB - Upper Back")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackUpperBack ? "SCB - Upper Back" : "CB - Upper Back")
+                            .resizable()
+                            .frame(width: 50.42, height: 29.5)
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    .frame(width: 50.42, height: 29.5)
+                    .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 2.97))
+                    
+                    Button {
+                        self.isChildBackLowerBack.toggle()
+                        if isChildBackLowerBack {
+                            score += 6.0
+                            bodyArr.append("CB - Lower Back")
+                        } else {
+                            score -= 6.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLowerBack ? "SCB - Lower Back" : "CB - Lower Back")
+                            .resizable()
+                            .frame(width: 54.53, height: 35.11)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 54.53, height: 35.11)
+                    .position(x: (UIScreen.main.bounds.width / 1.322), y: (UIScreen.main.bounds.height / 2.7))
                 }
-                Button {
-                    self.isBackShoulder.toggle()
-                    if (isBackShoulder){
-                        score += 6.0
-                        bodyArr.append("BB - Shoulder")
-                    } else {
-                        score -= 6.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isBackShoulder ? "SBB - Shoulder" : "BB - Shoulder")
-                        .resizable()
-                        .frame(width: 72, height: 40)
-                        .aspectRatio(contentMode: .fit)
-                    
-                }
-                .frame(width: 72, height: 40)
-                .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 3.25))
                 
-                Button {
-                    self.isBackChest.toggle()
-                    if (isBackChest){
-                        score += 6.0
-                        bodyArr.append("BB - Chest")
-                    } else {
-                        score -= 6.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isBackChest ? "SBB - Chest" : "BB - Chest")
-                        .resizable()
-                        .frame(width: 76, height: 42)
-                        .aspectRatio(contentMode: .fit)
-                    
-                }.frame(width: 76, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 2.80))
-                
-                Button {
-                    self.isBackBelly.toggle()
-                    if (isBackBelly){
-                        score += 6.0
-                        bodyArr.append("BB - Belly")
-                    } else {
-                        score -= 6.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isBackBelly ? "SBB - Belly" : "BB - Belly")
-                        .resizable()
-                        .frame(width: 72, height: 37)
-                        .aspectRatio(contentMode: .fit)
-                }
-                .frame(width: 72, height: 37)
-                .position(x: (UIScreen.main.bounds.width / 1.32), y: (UIScreen.main.bounds.height / 2.46))
-                
-                Button {
-                    self.isBackRightBottom.toggle()
-                    if (isBackRightBottom){
-                        score += 3.0
-                        bodyArr.append("BB - Right Bottom")
-                    } else {
-                        score -= 3.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isBackRightBottom ? "SBB - Right Bottom" : "BB - Right Bottom")
-                        .resizable()
-                        .frame(width: 40, height: 79)
-                        .aspectRatio(contentMode: .fit)
-                    
-                }.frame(width: 40, height: 79)
-                    .position(x: (UIScreen.main.bounds.width / 1.25), y: (UIScreen.main.bounds.height / 2.11))
-                
-                Button {
-                    self.isBackLeftBottom.toggle()
-                    if (isBackLeftBottom){
-                        score += 3.0
-                        bodyArr.append("BB - Left Bottom")
-                    } else {
-                        score -= 3.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isBackLeftBottom ? "SBB - Left Bottom" : "BB - Left Bottom")
-                        .resizable()
-                        .frame(width: 40, height: 79)
-                        .aspectRatio(contentMode: .fit)
-                    
-                } .frame(width: 40, height: 79)
-                    .position(x: (UIScreen.main.bounds.width / 1.42), y: (UIScreen.main.bounds.height / 2.11))
-                //MARK: - Right Hand
+                // MARK: - Right Hand
                 Group {
                     Button {
-                        self.isBackRightShoulder.toggle()
-                        if (isBackRightShoulder){
+                        self.isChildBackRightShoulder.toggle()
+                        if isChildBackRightShoulder {
                             score += 1.5
-                            bodyArr.append("BB - Right Shoulder")
+                            bodyArr.append("CB - Right Shoulder")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackRightShoulder ? "SBB - Right Shoulder" : "BB - Right Shoulder")
+                        Image(isChildBackLeftShoulder ? "SCB - Right Shoulder" : "CB - Right Shoulder")
                             .resizable()
-                            .frame(width: 28, height: 42)
+                            .frame(width: 16.13, height: 44.03)
                             .aspectRatio(contentMode: .fit)
-                        
                     }
-                    .frame(width: 28, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 1.13), y: (UIScreen.main.bounds.height / 3.08))
+                    .frame(width: 16.13, height: 44.03)
+                    .position(x: (UIScreen.main.bounds.width / 1.182), y: (UIScreen.main.bounds.height / 3.05))
                     
                     Button {
-                        self.isBackRightBisep.toggle()
-                        if (isBackRightBisep){
+                        self.isChildBackRightElbow.toggle()
+                        if isChildBackRightElbow {
                             score += 1.5
-                            bodyArr.append("BB - Right Elbow")
+                            bodyArr.append("CB - Right Elbow")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackRightBisep ? "SBB - Right Elbow" :"BB - Right Elbow")
+                        Image(isChildBackRightElbow ? "SCB - Right Elbow" : "CB - Right Elbow")
                             .resizable()
-                            .frame(width: 31, height: 43)
+                            .frame(width: 12.7, height: 13.21)
                             .aspectRatio(contentMode: .fit)
-                        
                     }
-                    .frame(width: 31, height: 43)
-                    .position(x: (UIScreen.main.bounds.width / 1.12), y: (UIScreen.main.bounds.height / 2.7))
+                    .frame(width: 12.7, height: 13.21)
+                    .position(x: (UIScreen.main.bounds.width / 1.167), y: (UIScreen.main.bounds.height / 2.79))
+
+                    Button {
+                        self.isChildBackRightArm.toggle()
+                        if isChildBackRightArm {
+                            score += 1.5
+                            bodyArr.append("CB - Right Arm")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackRightArm ? "SCB - Right Arm" : "CB - Right Arm")
+                            .resizable()
+                            .frame(width: 18.55, height: 29.46)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 18.55, height: 29.46)
+                    .position(x: (UIScreen.main.bounds.width / 1.152), y: (UIScreen.main.bounds.height / 2.63))
                     
                     Button {
-                        self.isBackRightArm.toggle()
-                        if (isBackRightArm){
+                        self.isChildBackRightFinger.toggle()
+                        if isChildBackRightFinger {
                             score += 1.5
-                            bodyArr.append("BB - Right Arm")
+                            bodyArr.append("CB - Right Finger")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackRightArm ? "SBB - Right Arm" : "BB - Right Arm")
+                        Image(isChildBackRightFinger ? "SCB - Right Finger" : "CB - Right Finger")
                             .resizable()
-                            .frame(width: 29, height: 53)
+                            .frame(width: 20.88, height: 34.1)
                             .aspectRatio(contentMode: .fit)
-                        
+                            
                     }
-                    .frame(width: 29, height: 53)
-                    .position(x: (UIScreen.main.bounds.width / 1.094), y: (UIScreen.main.bounds.height / 2.38))
-                    
-                    Button {
-                        self.isBackRightFinger.toggle()
-                        if (isBackRightFinger){
-                            score += 1.5
-                            bodyArr.append("BB - Right Finger")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isBackRightFinger ? "SBB - Right Finger" : "BB - Right Finger")
-                            .resizable()
-                            .frame(width: 24, height: 39)
-                            .aspectRatio(contentMode: .fit)
-                        
-                    }
-                    .frame(width: 24, height: 39)
-                    .position(x: (UIScreen.main.bounds.width / 1.084), y: (UIScreen.main.bounds.height / 2.11))
+                    .frame(width: 20.88, height: 34.1)
+                    .position(x: (UIScreen.main.bounds.width / 1.137), y: (UIScreen.main.bounds.height / 2.4))
                     
                 }
                 
                 // MARK: - Left Hand
                 Group {
                     Button {
-                        self.isBackLeftShoulder.toggle()
-                        if (isBackLeftShoulder){
+                        self.isChildBackLeftShoulder.toggle()
+                        if isChildBackLeftShoulder {
                             score += 1.5
-                            bodyArr.append("BB - Left Shoulder")
+                            bodyArr.append("CB - Left Shoulder")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackLeftShoulder ? "SBB - Left Shoulder" : "BB - Left Shoulder")
+                        Image(isChildBackLeftShoulder ? "SCB - Left Shoulder" : "CB - Left Shoulder")
                             .resizable()
-                            .frame(width: 28, height: 42)
-                            .aspectRatio(contentMode: .fit)
-                        
-                    }
-                    .frame(width: 28, height: 42)
-                    .position(x: (UIScreen.main.bounds.width / 1.59), y: (UIScreen.main.bounds.height / 3.08))
-                    
-                    Button {
-                        self.isBackLeftBisep.toggle()
-                        if (isBackLeftBisep){
-                            score += 1.5
-                            bodyArr.append("BB - Left Elbow")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isBackLeftBisep ? "SBB - Left Elbow" : "BB - Left Elbow")
-                            .resizable()
-                            .frame(width: 31, height: 43)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 31, height: 43)
-                    .position(x: (UIScreen.main.bounds.width / 1.62), y: (UIScreen.main.bounds.height / 2.7))
-                    
-                    Button {
-                        self.isBackLeftArm.toggle()
-                        if (isBackLeftArm){
-                            score += 1.5
-                            bodyArr.append("BB - Left Arm")
-                        } else {
-                            score -= 1.5
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isBackLeftArm ? "SBB - Left Arm" : "BB - Left Arm")
-                            .resizable()
-                            .frame(width: 29, height: 53)
+                            .frame(width: 16.13, height: 44.03)
                             .aspectRatio(contentMode: .fit)
                             
                     }
-                    .frame(width: 29, height: 53)
-                    .position(x: (UIScreen.main.bounds.width / 1.67), y: (UIScreen.main.bounds.height / 2.38))
+                    .frame(width: 16.13, height: 44.03)
+                    .position(x: (UIScreen.main.bounds.width / 1.49), y: (UIScreen.main.bounds.height / 3.05))
 
                     Button {
-                        self.isBackLeftFinger.toggle()
-                        if (isBackLeftFinger){
+                        self.isChildBackLeftElbow.toggle()
+                        if isChildBackLeftElbow {
                             score += 1.5
-                            bodyArr.append("BB - Left Finger")
+                            bodyArr.append("CB - Left Elbow")
                         } else {
                             score -= 1.5
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackLeftFinger ? "SBB - Left Finger" : "BB - Left Finger")
+                        Image(isChildBackLeftElbow ? "SCB - Left Elbow" : "CB - Left Elbow")
                             .resizable()
+                            .frame(width: 12.7, height: 13.21)
                             .aspectRatio(contentMode: .fit)
-                            
                     }
-                    .frame(width: 24, height: 39)
-                    .position(x: (UIScreen.main.bounds.width / 1.684), y: (UIScreen.main.bounds.height / 2.11))
+                    .frame(width: 12.7, height: 13.21)
+                    .position(x: (UIScreen.main.bounds.width / 1.52), y: (UIScreen.main.bounds.height / 2.79))
                     
+                    Button {
+                        self.isChildBackLeftArm.toggle()
+                        if isChildBackLeftArm {
+                            score += 1.5
+                            bodyArr.append("CB - Left Arm")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftArm ? "SCB - Left Arm" : "CB - Left Arm")
+                            .resizable()
+                            .frame(width: 18.55, height: 29.46)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 18.55, height: 29.46)
+                    .position(x: (UIScreen.main.bounds.width / 1.545), y: (UIScreen.main.bounds.height / 2.63))
+                    
+                    Button {
+                        self.isChildBackLeftFinger.toggle()
+                        if (isChildBackLeftFinger) {
+                            score += 1.5
+                            bodyArr.append("CB - Left Finger")
+                        } else {
+                            score -= 1.5
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftFinger ? "SCB - Left Finger" : "CB - Left Finger")
+                            .resizable()
+                            .frame(width: 20.88, height: 34.1)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 20.88, height: 34.1)
+                    .position(x: (UIScreen.main.bounds.width / 1.575), y: (UIScreen.main.bounds.height / 2.4))
+
                 }
                 
-                // MARK: - Right Knee
+                //  MARK: - Left Knee
                 Group {
                     Button {
-                        self.isBackRightKnee.toggle()
-                        if (isBackRightKnee){
+                        self.isChildBackLeftBottom.toggle()
+                        if isChildBackLeftBottom {
                             score += 3.0
-                            bodyArr.append("BB - Right Leg")
+                            bodyArr.append("CB - Left Bottom")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackRightKnee ? "SBB - Right Leg" : "BB - Right Leg")
+                        Image(isChildBackLeftBottom ? "SCB - Left Bottom" : "CB - Left Bottom")
                             .resizable()
-                            .frame(width: 35, height: 69)
+                            .frame(width: 27.34, height: 26.86)
                             .aspectRatio(contentMode: .fit)
                     }
-                    .frame(width: 35, height: 69)
-                    .position(x: (UIScreen.main.bounds.width / 1.25), y: (UIScreen.main.bounds.height / 1.78))
-
-                    Button {
-                        self.isBackRightFoot.toggle()
-                        if (isBackRightFoot){
-                            score += 3.0
-                            bodyArr.append("BB - Right Foot")
-                        } else {
-                            score -= 3.0
-                            bodyArr.removeLast()
-                        }
-                    } label: {
-                        Image(isBackRightFoot ? "SBB - Right Foot" : "BB - Right Foot")
-                            .resizable()
-                            .frame(width: 34, height: 65)
-                            .aspectRatio(contentMode: .fit)
-                            
-                    }
-                    .frame(width: 34, height: 65)
-                    .position(x: (UIScreen.main.bounds.width / 1.25), y: (UIScreen.main.bounds.height / 1.555))
+                    .frame(width: 27.34, height: 26.86)
+                    .position(x: (UIScreen.main.bounds.width / 1.39), y: (UIScreen.main.bounds.height / 2.47))
                     
+                    Button {
+                        self.isChildBackLeftThigh.toggle()
+                        if isChildBackLeftThigh {
+                            score += 3.0
+                            bodyArr.append("CB - Left Thigh")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftThigh ? "SCB - Left Thigh" : "CB - Left Thigh")
+                            .resizable()
+                            .frame(width: 25.78, height: 37.61)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 25.78, height: 37.61)
+                    .position(x: (UIScreen.main.bounds.width / 1.385), y: (UIScreen.main.bounds.height / 2.25))
+                    
+                    Button {
+                        self.isChildBackLeftKnee.toggle()
+                        if isChildBackLeftKnee {
+                            score += 3.0
+                            bodyArr.append("CB - Left Knee")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftKnee ? "SCB - Left Knee" : "CB - Left Knee")
+                            .resizable()
+                            .frame(width: 17.48, height: 17.85)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 17.48, height: 17.85)
+                    .position(x: (UIScreen.main.bounds.width / 1.372), y: (UIScreen.main.bounds.height / 2.12))
+                    
+                    Button {
+                        self.isChildBackLeftLeg.toggle()
+                        if isChildBackLeftLeg {
+                            score += 3.0
+                            bodyArr.append("CB - Left Leg")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftLeg ? "SCB - Left Leg" : "CB - Left Leg")
+                            .resizable()
+                            .frame(width: 18.71, height: 42.46)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 18.71, height: 42.46)
+                    .position(x: (UIScreen.main.bounds.width / 1.37), y: (UIScreen.main.bounds.height / 1.99))
+                    
+                    Button {
+                        self.isChildBackLeftFoot.toggle()
+                        if isChildBackLeftFoot {
+                            score += 3.0
+                            bodyArr.append("CB - Left Foot")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackLeftFoot ? "SCB - Left Foot" : "CB - Left Foot")
+                            .resizable()
+                            .frame(width: 17.99, height: 14.86)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 17.99, height: 14.86)
+                    .position(x: (UIScreen.main.bounds.width / 1.38), y: (UIScreen.main.bounds.height / 1.86))
+
                 }
                 
-                //MARK: - Left Knee
+                //  Right Knee
                 Group {
                     Button {
-                        self.isBackLeftKnee.toggle()
-                        if (isBackLeftKnee){
+                        self.isChildBackRightBottom.toggle()
+                        if isChildBackRightBottom {
                             score += 3.0
-                            bodyArr.append("BB - Left Knee")
+                            bodyArr.append("CB - Right Bottom")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackLeftKnee ? "SBB - Left Knee" : "BB - Left Knee")
+                        Image(isChildBackRightBottom ? "SCB - Right Bottom" : "CB - Right Bottom")
                             .resizable()
-                            .frame(width: 35, height: 69)
+                            .frame(width: 27.47, height: 26.14)
                             .aspectRatio(contentMode: .fit)
-                            
                     }
-                    .frame(width: 35, height: 69)
-                    .position(x: (UIScreen.main.bounds.width / 1.42), y: (UIScreen.main.bounds.height / 1.78))
+                    .frame(width: 27.47, height: 26.14)
+                    .position(x: (UIScreen.main.bounds.width / 1.26), y: (UIScreen.main.bounds.height / 2.47))
                     
                     Button {
-                        self.isBackLeftFoot.toggle()
-                        if (isBackLeftFoot){
+                        self.isChildBackRightThigh.toggle()
+                        if isChildBackRightThigh {
                             score += 3.0
-                            bodyArr.append("BB - Left Foot")
+                            bodyArr.append("CB - Right Thigh")
                         } else {
                             score -= 3.0
                             bodyArr.removeLast()
                         }
                     } label: {
-                        Image(isBackLeftFoot ? "SBB - Left Foot" : "BB - Left Foot")
+                        Image(isChildBackRightThigh ? "SCB - Right Thigh" : "CB - Right Thigh")
                             .resizable()
-                            .frame(width: 34, height: 65)
+                            .frame(width: 25.78, height: 37.61)
                             .aspectRatio(contentMode: .fit)
-                            
                     }
-                    .frame(width: 34, height: 65)
-                    .position(x: (UIScreen.main.bounds.width / 1.42), y: (UIScreen.main.bounds.height / 1.555))
-
+                    .frame(width: 25.78, height: 37.61)
+                    .position(x: (UIScreen.main.bounds.width / 1.26), y: (UIScreen.main.bounds.height / 2.25))
+                    
+                    Button {
+                        self.isChildBackRightKnee.toggle()
+                        if isChildBackRightKnee {
+                            score += 3.0
+                            bodyArr.append("CB - Right Knee")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackRightKnee ? "SCB - Right Knee" : "CB - Right Knee")
+                            .resizable()
+                            .frame(width: 17.48, height: 17.85)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 17.48, height: 17.85)
+                    .position(x: (UIScreen.main.bounds.width / 1.27), y: (UIScreen.main.bounds.height / 2.12))
+                    
+                    Button {
+                        self.isChildBackRightLeg.toggle()
+                        if isChildBackRightLeg {
+                            score += 3.0
+                            bodyArr.append("CB - Right Leg")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackRightLeg ? "SCB - Right Leg" : "CB - Right Leg")
+                            .resizable()
+                            .frame(width: 18.71, height: 42.46)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 18.71, height: 42.46)
+                    .position(x: (UIScreen.main.bounds.width / 1.27), y: (UIScreen.main.bounds.height / 1.99))
+                    
+                    Button {
+                        self.isChildBackRightFoot.toggle()
+                        if isChildBackRightFoot {
+                            score += 3.0
+                            bodyArr.append("CB - Right Foot")
+                        } else {
+                            score -= 3.0
+                            bodyArr.removeLast()
+                        }
+                    } label: {
+                        Image(isChildBackRightFoot ? "SCB - Right Foot" : "CB - Right Foot")
+                            .resizable()
+                            .frame(width: 17.99, height: 14.86)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 17.99, height: 14.86)
+                    .position(x: (UIScreen.main.bounds.width / 1.265), y: (UIScreen.main.bounds.height / 1.86))
                 }
             }
         }
@@ -395,6 +483,6 @@ struct ChildBackView: View {
 
 struct ChildBackView_Previews: PreviewProvider {
     static var previews: some View {
-        ChildBackView()
+        ChildBackView(score: Binding.constant(0), bodyArr: Binding.constant([""]))
     }
 }
