@@ -15,9 +15,9 @@ struct TempInsightPlaceholder: View {
                 .ignoresSafeArea(edges: .top)
                 .ignoresSafeArea(edges: .horizontal)
             VStack {
-                Text("Insight not available")
+                Text("Analisis belum tersedia!")
                     .font(Lexend(.title).getFont().weight(.bold))
-                Text("Insights will be available after appending journal entries for a week.")
+                Text("Nantikan fitur terbaru exzo pada pembaruan mendatang")
             }
             .padding()
             .multilineTextAlignment(.center)

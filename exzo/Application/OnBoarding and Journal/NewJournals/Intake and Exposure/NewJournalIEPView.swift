@@ -43,8 +43,8 @@ struct ProductListRow: View {
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(selected ? .copper : .white)
-                    .border(Color.gray, width: 1)
             }
+            .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1), radius: 10, x: 1, y: 3)
         }
     }
 }
@@ -153,39 +153,56 @@ struct NewJournalIEPView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(alignment: .center, spacing: 0) {
             CustomProgressView(percent: .constant(0.6))
+                .padding()
             VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(inputMode.rawValue)
-                        .font(Lexend(.title2).getFont().bold())
-                    Button {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text(inputMode.rawValue)
+                            .font(Lexend(.title2).getFont().bold())
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
                         
-                    } label: {
-                        Image(systemName: "info.circle")
                     }
-                    
+                    Text("\(inputMode.getDescOne()) apa saja yang \(viewModel.category == .child ? "anak" : "") Anda \(inputMode.getDescTwo()) hari ini?")
                 }
-                Text("\(inputMode.getDescOne()) apa saja yang anak Anda \(inputMode.getDescTwo()) hari ini?")
+                .padding(.horizontal)
                 ScrollView(.vertical, showsIndicators: true) {
                     switch inputMode {
                     case .foodIntake:
                         CategoryGrid($iepViewModel.ieaData, color: .accentYellow)
+                            .padding(.horizontal)
                     case .exposure:
                         CategoryGrid($iepViewModel.ieaData, color: .copper)
+                            .padding(.horizontal)
                     case .stress:
                         Text("Should not belongs here")
+                            .padding(.horizontal)
                     case .medProd:
                         ForEach(iepViewModel.medProd, id: \.id) { item in
                             ProductListRow(product: item) { prodItem, selected in
-                                
+                                print("\(prodItem.productName) - \(selected)")
+                                if selected {
+                                    viewModel.chosenProducts.append(prodItem)
+                                } else {
+                                    viewModel.chosenProducts.removeAll { listProductItem in
+                                        listProductItem.id == prodItem.id
+                                    }
+                                }
+                                print(viewModel.chosenProducts)
                             }
+                            .padding(.horizontal)
                         }
                     }
                     Button("Tambah \(inputMode.rawValue)") {
                         // Show or hide modal
                         self.addThingsShown.toggle()
                     }
+                    .padding(.horizontal)
                     .buttonStyle(ExzoButtonStyle(type: .secondary))
                     .sheet(isPresented: $addThingsShown) {
                         // on dismiss
@@ -235,7 +252,7 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
-                            viewModel.saveJournal {
+                            viewModel.finishInput {
                                 // Completion
                                 dismissModal()
                                 viewModel.pushNavToTimer()
@@ -249,14 +266,14 @@ struct NewJournalIEPView: View {
                         }) {
                             nextPage.toggle()
                         } else {
-                            viewModel.saveJournal {
+                            viewModel.finishInput {
                                 // Completion
                                 dismissModal()
                                 viewModel.pushNavToTimer()
                             }
                         }
                     case .medProd:
-                        viewModel.saveJournal {
+                        viewModel.finishInput {
                             // Completion
                             dismissModal()
                             viewModel.pushNavToTimer()
@@ -266,6 +283,7 @@ struct NewJournalIEPView: View {
                     }
                 }
                 .buttonStyle(ExzoButtonStyle(type: .primary))
+                .padding(.horizontal)
                 .onAppear {
                     switch inputMode {
                     case .foodIntake:
@@ -314,7 +332,6 @@ struct NewJournalIEPView: View {
                     .hidden()
             }
         }
-        .padding()
         .navigationTitle(inputMode.rawValue)
     }
     

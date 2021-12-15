@@ -83,7 +83,8 @@ struct JournalRowView: View {
                                     .foregroundColor(accentArr[1])
                                     .frame(width: 32, height: 32, alignment: .center)
                                     .shadow(radius: 2)
-                                Text("10")
+                                // skor peradangan + pembengkakan + bekas garukan
+                                Text("\(String(format: "%.0f", journal.rednessScore + journal.scratchScore + journal.swellingScore))")
                                     .foregroundColor(.white)
                                     .bold()
                                     .font(Lexend(.footnote).getFont())

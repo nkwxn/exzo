@@ -14,19 +14,22 @@ struct ProductView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                CustomNavBarView(twoColumnsNavBar: false, title: "Products", subtitle: nil, showButton: .addButton) {
+                CustomNavBarView(twoColumnsNavBar: false, title: "Produk", subtitle: nil, showButton: .addButton) {
                     self.isPresented.toggle()
                 }
                 Spacer()
                     .frame(height: 5)
                 List {
-                    ForEach(Array(viewModel.products.enumerated()), id: \.0) {
-                        ProductRow(product: $1)
-                            .onTapGesture {
-                                isGo.toggle()
+                    ForEach($viewModel.products, id: \.self) { product in
+                        ZStack {
+                            NavigationLink {
+                                DetailProductView(product: product.wrappedValue)
+                            } label: {
+                                ProductRow(product: product.wrappedValue)
                             }
-                        NavigationLink(destination: DetailProductView(product: $1), isActive: $isGo) {
-                        }.opacity(0)
+                            .buttonStyle(PlainButtonStyle())
+                            ProductRow(product: product.wrappedValue)
+                        }
                     }
                     .onDelete(perform: viewModel.deleteItem)
                     .listRowBackground(Color.clear)
@@ -40,7 +43,7 @@ struct ProductView: View {
                 .listStyle(PlainListStyle())
             }
             .navigationBarHidden(true)
-            .navigationTitle("Products")
+            .navigationTitle("Produk")
         }
     }
 }

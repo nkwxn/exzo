@@ -25,7 +25,7 @@ class ProductViewModel: ObservableObject {
         }
     }
     
-    func addNewItem(name: String, type: ProductType, image: UIImage? = nil, ingredient: String) {
+    func addNewItem(name: String, type: ProductType, image: UIImage? = nil, ingredient: [String]) {
         productModel.createProduct(name: name, type: type, image: image, ingredients: ingredient)
     }
     

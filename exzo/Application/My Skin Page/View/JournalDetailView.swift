@@ -7,169 +7,238 @@
 
 import SwiftUI
 
-struct JournalDetailView: View {
-    @State var isEditing = false
-    
-    let journal: NewJournal
+class JournalDetailViewModel: ObservableObject {
+    var journal: NewJournal
+    @Published var isEditing = false
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
+    
+    // Item of concerns
+    let concerns = UDHelper.sharedUD.getConcern()
+    
+    init(_ journal: NewJournal) {
+        self.journal = journal
+    }
+    
+    func getJournalDate() -> String {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        df.timeStyle = .none
+        guard let safeDate = journal.dateAndTime
+        else { return df.string(from: Date()) }
+        return df.string(from: safeDate)
+    }
+    
+    func getJournalTime() -> String {
+        let df = DateFormatter()
+        df.dateStyle = .none
+        df.timeStyle = .short
+        return df.string(from: journal.dateAndTime ?? Date())
+    }
+    
+    func getRednessScore() -> Int {
+        return Int(journal.rednessScore)
+    }
+    
+    func getJournalArray(_ journalSect: IEA) -> [IEAData] {
+        switch journalSect {
+        case .activity:
+            // ini ga ada bund
+            return []
+        case .exposure:
+            guard let array = journal.exposures
+            else { return [] }
+            return array.ieaDatas
+        case .intake:
+            guard let array = journal.foodIntakes
+            else { return [] }
+            return array.ieaDatas
+        }
+    }
+    
+    func getProductUsed() -> [String] {
+        guard let products = journal.productIDs else { return ["None of the products are used"] }
+        return products.prods.map { products -> String in
+            return "\(products.productCat) - \(products.productName)"
+        }
+    }
+}
+
+struct JournalDetailHeadingView<Content: View>: View {
+    var title: String
+    var showDivider: Bool = true
+    var content: () -> Content
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(Avenir(.headline).getFont().bold())
+            content()
+                .padding(.bottom)
+            if showDivider {
+                Divider()
+            }
+        }
+        .padding(.top)
+        .padding(.horizontal)
+    }
+}
+
+struct JournalDetailCircleGrid: View {
+    enum GridMode {
+        case gridItem, number
+    }
+    
+    let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 4)
+    let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
+    let gridMode: GridMode
+    var collectionData: [IEAData]
+    var numberContent: Int
+    
+    init(collectionData: [IEAData]) {
+        self.gridMode = .gridItem
+        self.collectionData = collectionData
+        numberContent = 0
+    }
+    
+    init(_ number: Int) {
+        self.gridMode = .number
+        self.collectionData = [IEAData]()
+        self.numberContent = number
+    }
+    
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 16) {
+            switch gridMode {
+            case .gridItem:
+                if collectionData.isEmpty {
+                    CircleNum(text: "N/A")
+                } else {
+                    ForEach(collectionData, id: \.self) { gridData in
+                        VStack {
+                            Image(gridData.thumb)
+                                .resizable()
+                                .foregroundColor(.white)
+                                .background {
+                                    Circle()
+                                        .foregroundColor(accentArr[Int.random(in: 0...3)])
+                                }
+                            Text(gridData.name)
+                                .font(Avenir(.body).getFont())
+                                .fontWeight(.semibold)
+                                .lineLimit(1)
+                        }
+                        .aspectRatio(0.7, contentMode: .fit)
+                    }
+                }
+            case .number:
+                CircleNum(text: "\(numberContent)")
+            }
+        }
+    }
+    
+    struct CircleNum: View {
+        var text: String
+        
+        var body: some View {
+            ZStack {
+                Circle()
+                    .foregroundColor(.copper)
+                Text(text)
+                    .font(Lexend(.title).getFont())
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding()
+            }
+            .aspectRatio(1, contentMode: .fit)
+        }
+    }
+}
+
+struct JournalDetailView: View {
+    
+    @ObservedObject var viewModel: JournalDetailViewModel
+    
+    init(journal: NewJournal) {
+        self.viewModel = JournalDetailViewModel(journal)
+    }
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavBarView(twoColumnsNavBar: true, title: "9 Oct 2021", subtitle: "09.00", showButton: .editButton) {
-                isEditing.toggle()
+            CustomNavBarView(
+                twoColumnsNavBar: true,
+                title: viewModel.getJournalDate(),
+                subtitle: viewModel.getJournalTime(),
+                showButton: .editButton
+            ) {
+                viewModel.isEditing.toggle()
+            }
+            .sheet(isPresented: $viewModel.isEditing) {
+                // onDismiss: update the content
+                let toBeUpdated = CDStorage.shared.getSpecificNewJournal(id: viewModel.journal.id ?? UUID())
+                self.viewModel.journal = toBeUpdated
+            } content: {
+                SkinConditionJournalView(journalContent: viewModel.journal)
+                    .environment(\.modalMode, $viewModel.isEditing)
             }
             
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Asupan makanan")
-                    .font(Avenir(.headline).getFont().bold())
-                HStack(alignment: .center) {
-                    if let foodIntakes = journal.foodIntakes {
-                        if foodIntakes.ieaDatas.isEmpty {
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(accentArr[1])
-                                    .frame(width: 66, height: 66, alignment: .center)
-                                    .shadow(radius: 2)
-                                Text("N/A")
-                                    .foregroundColor(.white)
-                                    .bold()
+            // TODO: Kasih if statement agar bs muncul / tidak sesuai dengan User Defaults
+            ScrollView(.vertical, showsIndicators: true) {
+                if viewModel.concerns.contains(EczemaTriggers.foodIntake.rawValue) {
+                    JournalDetailHeadingView(title: "Asupan makanan") {
+                        JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.intake))
+                    }
+                }
+                if viewModel.concerns.contains(EczemaTriggers.stress.rawValue) {
+                    JournalDetailHeadingView(title: "Tingkat stres") {
+                        JournalDetailCircleGrid(Int(viewModel.journal.stressLevel))
+                    }
+                }
+                if viewModel.concerns.contains(EczemaTriggers.exposure.rawValue) {
+                    JournalDetailHeadingView(title: "Paparan") {
+                        JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.exposure))
+                    }
+                }
+                if viewModel.concerns.contains(EczemaTriggers.medProd.rawValue) {
+                    JournalDetailHeadingView(title: "Produk") {
+                        VStack(alignment: .leading) {
+                            ForEach(viewModel.getProductUsed(), id: \.self) {
+                                Text($0)
                             }
-                        } else {
-                            ForEach(0..<foodIntakes.ieaDatas.count, id: \.self) { idx in
-                                if idx < 4 {
-                                    VStack {
-                                        Image(foodIntakes.ieaDatas[idx].thumb)
-                                            .resizable()
-                                            .foregroundColor(.white)
-                                            .frame(width: 66, height: 66, alignment: .center)
-                                            .background {
-                                                Circle()
-                                                    .foregroundColor(accentArr[idx])
-                                                    .frame(width: 66, height: 66, alignment: .center)
-                                                    .shadow(radius: 2)
-                                            }
-                                        Text(foodIntakes.ieaDatas[idx].name)
-                                            .font(Avenir(.caption).getFont())
-                                            .fontWeight(.semibold)
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        ZStack {
-                            Circle()
-                                .foregroundColor(accentArr[1])
-                                .frame(width: 66, height: 66, alignment: .center)
-                                .shadow(radius: 2)
-                            Text("N/A")
-                                .foregroundColor(.white)
-                                .bold()
                         }
                     }
                 }
-                
-                Divider()
-            }
-            .padding(.horizontal)
-            .padding(.top)
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Nilai stres")
-                    .font(Avenir(.headline).getFont().bold())
-                ZStack {
-                    Circle()
-                        .foregroundColor(accentArr[1])
-                        .frame(width: 66, height: 66, alignment: .center)
-                        .shadow(radius: 2)
-                    Text("\(String(format: "%.0f", journal.stressLevel))")
-                        .foregroundColor(.white)
-                        .bold()
-                }
-                Divider()
-            }
-            .padding(.horizontal)
-            .padding(.top)
-            VStack(alignment: .leading) {
-                Text("Paparan")
-                    .font(Avenir(.headline).getFont().bold())
-                HStack(alignment: .center) {
-                    if let exposure = journal.exposures {
-                        if exposure.ieaDatas.isEmpty {
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(accentArr[1])
-                                    .frame(width: 66, height: 66, alignment: .center)
-                                    .shadow(radius: 2)
-                                Text("N/A")
-                                    .foregroundColor(.white)
-                                    .bold()
-                            }
-                        } else {
-                            ForEach(0..<exposure.ieaDatas.count, id: \.self) { idx in
-                                if idx < 4 {
-                                    VStack {
-                                        Image(exposure.ieaDatas[idx].thumb)
-                                            .resizable()
-                                            .foregroundColor(.white)
-                                            .frame(width: 66, height: 66, alignment: .center)
-                                            .background {
-                                                Circle()
-                                                    .foregroundColor(accentArr[idx])
-                                                    .frame(width: 66, height: 66, alignment: .center)
-                                                    .shadow(radius: 2)
-                                            }
-                                        Text(exposure.ieaDatas[idx].name)
-                                            .font(Avenir(.caption).getFont())
-                                            .fontWeight(.semibold)
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        ZStack {
-                            Circle()
-                                .foregroundColor(accentArr[1])
-                                .frame(width: 66, height: 66, alignment: .center)
-                                .shadow(radius: 2)
-                            Text("N/A")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
+                JournalDetailHeadingView(title: "Kondisi kulit") {
+                    VStack(alignment: .leading) {
+                        JDSkinConditionView(score: Int(viewModel.journal.rednessScore), title: "Peradangan")
+                        JDSkinConditionView(score: Int(viewModel.journal.swellingScore), title: "Pembengkakan")
+                        JDSkinConditionView(score: Int(viewModel.journal.scratchScore), title: "Bekas garukan")
                     }
                 }
-                Divider()
+                Spacer()
             }
-            .padding(.horizontal)
-            .padding(.top)
-            VStack(alignment: .leading) {
-                Text("Produk")
-                    .font(Avenir(.headline).getFont().bold())
-                Text("Moisturizer - Somethinc")
-                    .font(Avenir(.headline).getFont())
-                Divider()
-                Text("Kondisi kulit")
-                    .font(Avenir(.headline).getFont().bold())
-                VStack {
-                    HStack {
-                        Text("2")
-                            .font(Lexend(.footnote).getFont().bold())
-                            .foregroundColor(Color.white)
-                            .background {
-                                Circle()
-                                    .frame(width: 32, height: 32)
-                                    .foregroundColor(Color.copper)
-                                
-                            }
-                            .frame(width: 32, height: 32)
-                        Text("Dryness")
-                            .font(Lexend(.footnote).getFont())
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top)
-            
-            Spacer()
         }
         .navigationBarHidden(true)
+    }
+}
+
+struct JDSkinConditionView: View {
+    @State var score: Int
+    @State var title: String
+    
+    var body: some View {
+        HStack {
+            Text("\(score)")
+                .font(Avenir.shared.getFont().bold())
+                .foregroundColor(Color.white)
+                .background {
+                    Circle()
+                        .frame(width: 32, height: 32)
+                        .foregroundColor(Color.copper)
+                    
+                }
+                .frame(width: 32, height: 32)
+            Text(title)
+                .font(Avenir.shared.getFont())
+        }
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.dismiss) var dismiss
     var profileImage: String
     var profileName: String
     
@@ -22,6 +23,23 @@ struct SettingsView: View {
                 ProfileHeaderView(profileImage: "L0 - \(profileImage)", profileName: profileName)
                     .padding(.bottom)
                 List {
+                    /*
+                     // Tambah section buat update profile dan concern
+                    Section {
+                        NavigationLink {
+                            
+                        } label: {
+                            SettingRowView(settingIcon: "person.crop.circle", settingTitle: "Ubah Nama dan Foto")
+                        }
+                        NavigationLink {
+                            
+                        } label: {
+                            SettingRowView(settingIcon: "bolt", settingTitle: "Ubah Pemicu")
+                        }
+                    } header: {
+                        Text("PROFIL ANDA")
+                    }
+*/
                     Section(header: Text("PENGINGAT")) {
                         
                         NavigationLink {
@@ -39,24 +57,26 @@ struct SettingsView: View {
                         }
                     }
                     
+                    /*
                     Section(header: Text("MASALAH HUKUM")) {
                         NavigationLink {
                             PrivacyPolicyView()
                         } label: {
-                            SettingRowView(settingIcon: "lock", settingTitle: "Privacy Policy")
+                            SettingRowView(settingIcon: "lock", settingTitle: "Kebijakan Privasi")
                         }
                         NavigationLink {
-//                            SetReminderView()
+                            
                         } label: {
-                            SettingRowView(settingIcon: "exclamationmark.triangle", settingTitle: "Terms and Conditions")
+                            SettingRowView(settingIcon: "exclamationmark.triangle", settingTitle: "Syarat dan Ketentuan")
                         }
                     }
+                     */
                     
-                    Section(header: Text("OTHERS")) {
+                    Section(header: Text("LAINNYA")) {
 //                        Button {
 //                            isWriteReview.toggle()
 //                        } label: {
-//                            SettingRowView(settingIcon: "star", settingTitle: "Rate our App", showChevron: true)
+//                            SettingRowView(settingIcon: "star", settingTitle: "Nilai Aplikasi Kami", showChevron: true)
 //                        }
 //                        NavigationLink {
 ////                            SetReminderView()
@@ -66,12 +86,12 @@ struct SettingsView: View {
                         NavigationLink {
                             
                         } label: {
-                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Frequently Asked Questions")
+                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
                         }
                         NavigationLink {
 
                         } label: {
-                            SettingRowView(settingIcon: "phone", settingTitle: "Contact Us")
+                            SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
                         }
 //                        Button {
 //                            alertDeleteAccountShown.toggle()
@@ -102,7 +122,20 @@ struct SettingsView: View {
                 .edgesIgnoringSafeArea(.bottom)
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationBarHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                    }
+                    .foregroundColor(Color.white)
+                }
+            }
+//            .navigationTitle("Pengaturan")
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarHidden(true)
             
         }
 //        .sheet(isPresented: $isWriteReview) {

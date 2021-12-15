@@ -41,6 +41,10 @@
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
 		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
+		BFA3BCEE274C48BD00EFCECB /* ChildBodiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCED274C48BD00EFCECB /* ChildBodiesView.swift */; };
+		BFA3BCF0274C48CD00EFCECB /* ChildFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */; };
+		BFA3BCF2274C48D300EFCECB /* ChildBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */; };
+		BFAB9810274C5E87000AE39F /* DetailJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB980F274C5E87000AE39F /* DetailJournalView.swift */; };
 		BFD2B44F2733809B0011F064 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B44E2733809B0011F064 /* Color.swift */; };
 		BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4502733822B0011F064 /* DynamicFont.swift */; };
 		BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B455273382620011F064 /* OnBoardingView.swift */; };
@@ -198,6 +202,10 @@
 		BF651D762734B94200276CD1 /* QuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageView.swift; sourceTree = "<group>"; };
 		BF651D792734C49100276CD1 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightOnboardingView.swift; sourceTree = "<group>"; };
+		BFA3BCED274C48BD00EFCECB /* ChildBodiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildBodiesView.swift; sourceTree = "<group>"; };
+		BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFrontView.swift; sourceTree = "<group>"; };
+		BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildBackView.swift; sourceTree = "<group>"; };
+		BFAB980F274C5E87000AE39F /* DetailJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJournalView.swift; sourceTree = "<group>"; };
 		BFD2B44E2733809B0011F064 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BFD2B4502733822B0011F064 /* DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFont.swift; sourceTree = "<group>"; };
 		BFD2B455273382620011F064 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -489,6 +497,7 @@
 		BF2F5D38273A30C90059FB23 /* BodyPartsView */ = {
 			isa = PBXGroup;
 			children = (
+				BFA3BCEC274C48A400EFCECB /* Child Body Part */,
 				BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */,
 				BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */,
 				BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */,
@@ -511,6 +520,16 @@
 				BF651D762734B94200276CD1 /* QuestionPageView.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BFA3BCEC274C48A400EFCECB /* Child Body Part */ = {
+			isa = PBXGroup;
+			children = (
+				BFA3BCED274C48BD00EFCECB /* ChildBodiesView.swift */,
+				BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */,
+				BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */,
+			);
+			path = "Child Body Part";
 			sourceTree = "<group>";
 		};
 		BFD2B452273382310011F064 /* ViewModel */ = {
@@ -735,6 +754,7 @@
 				D51CFC852733C76D00DE63CC /* Custom Components */,
 				D51CFC862733C78100DE63CC /* AddJournalView.swift */,
 				D51CFC882733C78B00DE63CC /* AddJournalViewModel.swift */,
+				BFAB980F274C5E87000AE39F /* DetailJournalView.swift */,
 			);
 			path = "Add Journal Page";
 			sourceTree = "<group>";
@@ -1032,6 +1052,13 @@
 			path = "List of IEA";
 			sourceTree = "<group>";
 		};
+		D5B78F002768C45600BBB2B8 /* Set Concerns */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Set Concerns";
+			sourceTree = "<group>";
+		};
 		E290561B273CDA3900A22CB2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1070,7 @@
 		E290561C273D645E00A22CB2 /* Settings Page */ = {
 			isa = PBXGroup;
 			children = (
+				D5B78F002768C45600BBB2B8 /* Set Concerns */,
 				E2FBDE7F274B7A1E00EB01C0 /* Rate Page */,
 				E2FBDE7E274B7A1600EB01C0 /* Privacy Policy Page */,
 				E2FBDE7D274B79DF00EB01C0 /* Language Page */,
@@ -1447,10 +1475,12 @@
 				E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */,
 				E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
+				BFA3BCF0274C48CD00EFCECB /* ChildFrontView.swift in Sources */,
 				D5ADA87B2735152D00425E43 /* CategoryGrid.swift in Sources */,
 				D5494AD4272F458300DA1CF7 /* CKCrudOperators.swift in Sources */,
 				5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */,
 				5D9850B42754B3E90033B1EC /* NewInsightsView.swift in Sources */,
+				BFAB9810274C5E87000AE39F /* DetailJournalView.swift in Sources */,
 				BF36A947273DEBDE00943F94 /* ResultRow.swift in Sources */,
 				5DE09037273950D100B2882B /* WeatherView.swift in Sources */,
 				D5ADFE952746685D0099E7FC /* InsightLineGraph.swift in Sources */,
@@ -1472,6 +1502,7 @@
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
 				E2F8A43227547B5400A885C8 /* LocalNotification.swift in Sources */,
+				BFA3BCEE274C48BD00EFCECB /* ChildBodiesView.swift in Sources */,
 				D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */,
 				E2F8A43A27548A2A00A885C8 /* NotificationListView.swift in Sources */,
 				E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */,
@@ -1520,6 +1551,7 @@
 				E2905622273D6E8600A22CB2 /* SettingRowView.swift in Sources */,
 				E2EF69112738AF1900B2E321 /* CustomNavView.swift in Sources */,
 				E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */,
+				BFA3BCF2274C48D300EFCECB /* ChildBackView.swift in Sources */,
 				E2905620273D6DD500A22CB2 /* ProfileHeaderView.swift in Sources */,
 				5D8F2572274B6970008A3430 /* JournalNavBarView.swift in Sources */,
 				E2FBDE85274CA7E100EB01C0 /* SetReminderViewModel.swift in Sources */,
@@ -1684,7 +1716,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "exzo/Supporting Files/exzo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
 				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;
@@ -1718,7 +1750,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "exzo/Supporting Files/exzo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
 				DEVELOPMENT_TEAM = SCZQ3M4JVY;
 				ENABLE_PREVIEWS = YES;

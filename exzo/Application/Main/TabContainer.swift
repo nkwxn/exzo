@@ -17,7 +17,8 @@ struct TabContainer: View {
                     Image(systemName: "book.closed")
                     Text("Jurnal")
                 }
-            NewInsightsView()
+//            NewInsightsView()
+            TempInsightPlaceholder()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("Analisis")
