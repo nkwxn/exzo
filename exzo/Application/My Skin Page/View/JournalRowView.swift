@@ -21,7 +21,7 @@ struct JournalRowView: View {
             VStack {
                 HStack(alignment: .top) {
                     Text(journal.dateAndTime!, style: .time)
-                        .font(Lexend(.caption).getFont())
+                        .font(Lexend(.subheadline).getFont())
                     Spacer()
                 }
                 Divider()
@@ -29,7 +29,7 @@ struct JournalRowView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Asupan makanan")
-                                .font(Avenir(.caption).getFont())
+                                .font(Avenir(.subheadline).getFont())
                             HStack(alignment: .center, spacing: -8) {
                                 if let foodIntakes = journal.foodIntakes {
                                     if foodIntakes.ieaDatas.isEmpty {
@@ -77,7 +77,7 @@ struct JournalRowView: View {
                         }
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Kondisi Kulit")
-                                .font(Avenir(.caption).getFont())
+                                .font(Avenir(.subheadline).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
@@ -96,7 +96,7 @@ struct JournalRowView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Paparan")
-                                .font(Avenir(.caption).getFont())
+                                .font(Avenir(.subheadline).getFont())
                             HStack(alignment: .center, spacing: -8) {
                                 if let exposure = journal.exposures {
                                     if exposure.ieaDatas.isEmpty {
@@ -144,7 +144,7 @@ struct JournalRowView: View {
                         }
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Nilai stress")
-                                .font(Avenir(.caption).getFont())
+                                .font(Avenir(.subheadline).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])

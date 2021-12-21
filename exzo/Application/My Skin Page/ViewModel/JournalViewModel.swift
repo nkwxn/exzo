@@ -27,16 +27,16 @@ class JournalViewModel: ObservableObject {
     ) {
         cancellable = journalPublisher.sink { journalItem in
             self.journals = journalItem
-            self.filterJournal()
+            self.filterJournal(selectedDate: self.selectedDate)
         }
         
         addSubscribers()
     }
     
     func addSubscribers() {
-        dateCancellable = $selectedDate.sink { date in
-            self.filterJournal()
-            print(date)
+        dateCancellable = $selectedDate.eraseToAnyPublisher().sink { date in
+            self.filterJournal(selectedDate: date)
+            print("From combine: \(date)")
         }
     }
     
@@ -52,7 +52,15 @@ class JournalViewModel: ObservableObject {
     func deleteItem(index offset: IndexSet) {
         offset.map {
             guard let id = journals[$0].id else { return }
-            journalModel.deleteJournal(with: id)
+            journalModel.deleteNewJournal(id: id) {
+                print("Delete completed")
+            }
+        }
+    }
+    
+    func deleteItem(_ journal: NewJournal) {
+        journalModel.deleteNewJournal(id: journal.id!) {
+            print("Delete completed")
         }
     }
     
@@ -60,10 +68,14 @@ class JournalViewModel: ObservableObject {
 //        journalModel.deleteNewJournal()
     }
     
-    public func filterJournal() {
+    public func filterJournal(selectedDate: Date) {
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .none
+        dateFormat.dateStyle = .full
+        
         self.filteredJournal = journals.filter { journal in
             if let journalDate = journal.dateAndTime {
-                return self.isSameDay(date1: journalDate, date2: self.selectedDate)
+                return dateFormat.string(from: journalDate) == dateFormat.string(from: selectedDate)
             } else {
                 return false
             }
