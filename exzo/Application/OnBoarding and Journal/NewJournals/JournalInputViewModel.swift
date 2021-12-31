@@ -19,9 +19,12 @@ class JournalInputViewModel: ObservableObject {
             self.rednessPart = journalItem.rednessPart as! [String]
             self.scratchPart = journalItem.scratchPart as! [String]
             self.swellingPart = journalItem.swellingPart as! [String]
+            
+            /*
             self.rednessValue = journalItem.rednessScore
             self.scratchValue = journalItem.scratchScore
             self.swellingValue = journalItem.swellingScore
+            */
             
             self.stressLevel = journalItem.stressLevel
             self.chosenFoodIntakes = journalItem.foodIntakes?.ieaDatas ?? [IEAData]()
@@ -33,14 +36,17 @@ class JournalInputViewModel: ObservableObject {
     // For journal input (Skin Condition)
     // Redness
     @Published var rednessPart = [String]()
+    @Published var rednessPartScore: Float = 0.0
     @Published var rednessValue = 2.0
     
     // Swelling
     @Published var swellingPart = [String]()
+    @Published var swellingPartScore: Float = 0.0
     @Published var swellingValue = 2.0
     
     // Scratch Mark
     @Published var scratchPart = [String]()
+    @Published var scratchPartScore: Float = 0.0
     @Published var scratchValue = 2.0
     
     // Percentage done
@@ -84,6 +90,10 @@ class JournalInputViewModel: ObservableObject {
         }
     }
     
+    func calculateSkinScore() -> Double {
+        return Double(rednessPartScore) * rednessValue + Double(swellingPartScore) * rednessValue + Double(scratchPartScore) * scratchValue
+    }
+    
     func saveJournal(completion: @escaping () -> Void) {
         CDStorage.shared.createNewJournal(
             rednessPart: self.rednessPart,
@@ -96,6 +106,7 @@ class JournalInputViewModel: ObservableObject {
             exposure: self.chosenExposure,
             products: self.chosenProducts,
             stressLevel: Int(self.stressLevel),
+            tisScorad: calculateSkinScore(),
             completion: completion
         )
     }
@@ -114,6 +125,7 @@ class JournalInputViewModel: ObservableObject {
             exposure: self.chosenExposure,
             products: self.chosenProducts,
             stressLevel: Int(self.stressLevel),
+            tisScorad: calculateSkinScore(),
             completion: completion
         )
     }

@@ -125,6 +125,7 @@ struct SkinConditionJournalView: View {
                         conditionCategory: journalQuestions[0],
                         isBodyPart: $isBodyPart,
                         bodyPart: $viewModel.rednessPart,
+                        bodyPartScore: $viewModel.rednessPartScore,
                         slider: $viewModel.rednessValue
                     )
                 case 1:
@@ -134,6 +135,7 @@ struct SkinConditionJournalView: View {
                         conditionCategory: journalQuestions[1],
                         isBodyPart: $isBodyPart,
                         bodyPart: $viewModel.swellingPart,
+                        bodyPartScore: $viewModel.swellingPartScore,
                         slider: $viewModel.swellingValue
                     )
                 case 2:
@@ -143,6 +145,7 @@ struct SkinConditionJournalView: View {
                         conditionCategory: journalQuestions[2],
                         isBodyPart: $isBodyPart,
                         bodyPart: $viewModel.scratchPart,
+                        bodyPartScore: $viewModel.scratchPartScore,
                         slider: $viewModel.scratchValue
                     )
                 default:
@@ -233,14 +236,15 @@ struct JournalQuestionView: View {
     
     @Binding var isBodyPart: Bool
     @Binding var bodyPart: [String]
+    @Binding var bodyPartScore: Float
     @Binding var slider: Double
     @State var quote = ""
     var range = 0.0...3.0
     
     var body: some View {
         VStack(spacing: 14) {
-            Spacer()
             if isBodyPart {
+                Spacer()
                 HStack {
                     Spacer()
                     Text("Depan")
@@ -254,14 +258,14 @@ struct JournalQuestionView: View {
                 }
                 switch userCategory {
                 case .child:
-                    ChildBodiesView(score: .constant(0), bodyArr: $bodyPart)
+                    ChildBodiesView(score: $bodyPartScore, bodyArr: $bodyPart)
                         .padding(.horizontal)
                         .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
                         .onChange(of: bodyPart) { newValue in
                             print(newValue)
                         }
                 case .adult:
-                    BodyPartsView(score: .constant(0), bodyArr: $bodyPart)
+                    BodyPartsView(score: $bodyPartScore, bodyArr: $bodyPart)
                         .padding(.horizontal)
                         .position(x: (UIScreen.main.bounds.width / 2.5), y: (UIScreen.main.bounds.height / 5) * 0.1)
                         .onChange(of: bodyPart) { newValue in
@@ -271,15 +275,17 @@ struct JournalQuestionView: View {
             } else {
                 Image("\(conditionCategory.imageName)\(String(format: "%.0f", slider))")
                     .resizable()
-                    .frame(width: 220, height: 220)
+                    .frame(width: 180, height: 180)
                     .clipShape(Circle())
                 
                 Slider(value: $slider, in: range, step: 1)
+                    .multilineTextAlignment(.center)
                 Text(String(format: "%.0f", slider))
+                    .multilineTextAlignment(.center)
                     .font(Lexend(.title3).getFont().bold())
                 Text(conditionCategory.sliderValues[Int(slider)])
+                Spacer()
             }
-            Spacer()
         }
     }
 }

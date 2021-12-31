@@ -58,7 +58,7 @@ class JournalDetailViewModel: ObservableObject {
     func getProductUsed() -> [String] {
         guard let products = journal.productIDs else { return ["None of the products are used"] }
         return products.prods.map { products -> String in
-            return "\(products.productCat) - \(products.productName)"
+            return "\(ProductType(rawValue: products.productCat)?.getLocalizedName() ?? "") - \(products.productName)"
         }
     }
 }
@@ -198,7 +198,7 @@ struct JournalDetailView: View {
                         JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.exposure))
                     }
                 }
-                if viewModel.concerns.contains(EczemaTriggers.medProd.rawValue) {
+                if viewModel.concerns.contains(EczemaTriggers.medProd.rawValue) && !viewModel.getProductUsed().isEmpty {
                     JournalDetailHeadingView(title: "Produk") {
                         VStack(alignment: .leading) {
                             ForEach(viewModel.getProductUsed(), id: \.self) {

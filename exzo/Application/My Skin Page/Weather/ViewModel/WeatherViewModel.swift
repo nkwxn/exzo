@@ -72,13 +72,13 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // MARK: - Load weather from the API
     func loadWeather() {
-        guard let locationManager = locationManager
+        guard let location = locationManager?.location
         else {
             return
         }
         self.fetchStatus = .loading
         
-        APIRequest.fetchWeather(coordinate: locationManager.location!.coordinate) { data in
+        APIRequest.fetchWeather(coordinate: location.coordinate) { data in
             self.updateWeatherData(data)
         } failCompletion: { error in
             print(error)

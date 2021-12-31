@@ -33,10 +33,13 @@ struct StressLevelSliderView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             CustomProgressView(percent: .constant(0.6))
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Stres")
-                    .font(Lexend(.title2).getFont().bold())
-                Text("Bagaimana suasana hati anak Anda sekarang?")
+            HStack {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Stres")
+                        .font(Lexend(.title2).getFont().bold())
+                    Text("Bagaimana suasana hati\(viewModel.category == .adult ? " " : " anak ")Anda sekarang?")
+                }
+                Spacer()
             }
             Image("L\(String(format: "%.0f", viewModel.stressLevel)) - \(userPFP)")
                 .resizable()
@@ -48,7 +51,6 @@ struct StressLevelSliderView: View {
                 Text(String(format: "%.0f", viewModel.stressLevel))
                     .font(Lexend(.title3).getFont().bold())
                 Text(captionText[Int(viewModel.stressLevel)])
-                    .lineLimit(0)
             }
             .multilineTextAlignment(.center)
             Spacer()

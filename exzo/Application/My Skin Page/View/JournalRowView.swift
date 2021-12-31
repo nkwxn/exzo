@@ -84,11 +84,19 @@ struct JournalRowView: View {
                                     .frame(width: 32, height: 32, alignment: .center)
                                     .shadow(radius: 2)
                                 // skor peradangan + pembengkakan + bekas garukan
+                                /*
                                 Text("\(String(format: "%.0f", journal.rednessScore + journal.scratchScore + journal.swellingScore))")
                                     .foregroundColor(.white)
                                     .bold()
                                     .font(Lexend(.footnote).getFont())
                                     .fontWeight(.semibold)
+                                */
+                                Text("\(String(format: "%.0f", journal.tisScorad))")
+                                    .foregroundColor(.white)
+                                    .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
+                                 
                             }
                         }
                     }
