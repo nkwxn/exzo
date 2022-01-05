@@ -33,7 +33,7 @@ struct ProductListRow: View {
         } label: {
             // label
             HStack {
-                Text(product.productCat)
+                Text(ProductType(rawValue: product.productCat ?? "")?.getLocalizedName() ?? "")
                     .foregroundColor(selected ? .white : .primary)
                 Spacer()
                 Text(product.productName)

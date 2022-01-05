@@ -62,7 +62,16 @@ struct MySkinView: View {
                                 .frame(width: UIScreen.main.bounds.width, height: reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 10 : 10)
                         }
                         .frame(height: 10)
-                        
+                        /*
+                         Buat nanti kalo mau refactoring view
+                        List {
+                            Section {
+                                // Content
+                            } header: {
+                                Text("Dajjal")
+                            }
+                        }
+                         */
                         LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
                             WeatherView()
                                 .frame(width: UIScreen.main.bounds.width)
@@ -87,6 +96,15 @@ struct MySkinView: View {
                                                 .background(Color.white)
                                         }
                                         .buttonStyle(PlainButtonStyle())
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                print("Delete \(journal.wrappedValue)")
+                                            } label: {
+                                                Image(systemName: "trash")
+                                                Text("Hapus Jurnal")
+                                            }
+
+                                        }
                                     }
                                 }
                             } header: {

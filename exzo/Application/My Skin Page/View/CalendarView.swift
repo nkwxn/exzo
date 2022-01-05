@@ -59,7 +59,6 @@ struct CalendarView: UIViewRepresentable {
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
             parent.dateSelected = date
-            print(date)
         }
         
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {

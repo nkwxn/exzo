@@ -21,6 +21,7 @@ extension CDStorage {
         exposure: [IEAData],
         products: [ListProduct],
         stressLevel: Int,
+        tisScorad: Double,
         completion: @escaping () -> Void
     ) {
         let newJournal = NewJournal(context: context)
@@ -34,6 +35,9 @@ extension CDStorage {
         newJournal.swellingScore = Double(swellingScore)
         newJournal.scratchPart = scratchPart as NSObject
         newJournal.scratchScore = Double(scratchScore)
+        
+        // Score akhir
+        newJournal.tisScorad = tisScorad
         
         // Food Intake dan Exposure yang dimasukkin
         let intks = IEADatas(ieaDatas: foodIntakes)
@@ -74,6 +78,7 @@ extension CDStorage {
         exposure: [IEAData],
         products: [ListProduct],
         stressLevel: Int,
+        tisScorad: Double,
         completion: @escaping () -> Void
     ) {
         let toBeUpdated = self.newJournalItems.value.filter { tbu in
@@ -87,6 +92,9 @@ extension CDStorage {
         toBeUpdated.swellingScore = Double(swellingScore)
         toBeUpdated.scratchPart = scratchPart as NSObject
         toBeUpdated.scratchScore = Double(scratchScore)
+        
+        // Score akhir
+        toBeUpdated.tisScorad = tisScorad
         
         // Food Intake dan Exposure yang dimasukkin
         let intks = IEADatas(ieaDatas: foodIntakes)
