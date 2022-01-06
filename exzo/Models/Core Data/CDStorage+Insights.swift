@@ -15,7 +15,7 @@ enum IEP: String {
 
 // MARK: - CDStorage Extension for Insights
 extension CDStorage {
-    func getJournalsForInsights() -> [NewJournal] {
+    func getJournalsForInsight() -> [NewJournal] {
         // Get data from last 28 days
         let dateRange = DateInterval(start: Date(timeIntervalSinceNow: -2592000), end: Date())
         print(dateRange.start)
@@ -25,14 +25,68 @@ extension CDStorage {
         }
     }
     
-    // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
-    func getSkinConditionsForInsight() -> [Int: Int] {
-        let filteredJournals = getJournalsForInsights()
-        var weeklyAvg = [Int: Int]
-        for filteredJournal in filteredJournals {
-            
+    // swiftlint:disable large_tuple
+    func getSplittedJournalForInsight() -> (
+        [NewJournal], [NewJournal], [NewJournal], [NewJournal]
+    ) {
+        getJournalsForInsight().reduce(
+            ([NewJournal](), [NewJournal](), [NewJournal](), [NewJournal]())
+        ) { (value, object) -> ([NewJournal], [NewJournal], [NewJournal], [NewJournal]) in
+            var value = value
+            if let dateAndTime = object.dateAndTime {
+                if dateAndTime > Date(timeIntervalSinceNow: 604800) {
+                    value.3.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: 1209600) {
+                    value.2.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: 1814400) {
+                    value.1.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: 2419200) {
+                    value.0.append(object)
+                }
+            }
+            return value
         }
-        return [Int: Int]()
+    }
+    
+    // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
+    func getWeeklyAverageSkinCondition() -> [Int: Double] {
+        let splitFiltered = getJournalsForInsight().reduce(
+            ([NewJournal](), [NewJournal](), [NewJournal](), [NewJournal]())
+        ) { (val, object) -> ([NewJournal], [NewJournal], [NewJournal], [NewJournal]) in
+            var value = val
+            if let dateAndTime = object.dateAndTime {
+                if dateAndTime > Date(timeIntervalSinceNow: -604800) {
+                    value.3.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: -1209600) {
+                    value.2.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: -1814400) {
+                    value.1.append(object)
+                } else if dateAndTime > Date(timeIntervalSinceNow: -2419200) {
+                    value.0.append(object)
+                }
+            }
+            return value
+        }
+        var weeklyAvg = [
+            1: countSkinAvgFromJournal(from: splitFiltered.0),
+            2: countSkinAvgFromJournal(from: splitFiltered.1),
+            3: countSkinAvgFromJournal(from: splitFiltered.2),
+            4: countSkinAvgFromJournal(from: splitFiltered.3)
+        ]
+        
+        return weeklyAvg
+    }
+    
+    // MARK: - Penghitungan rata2 per minggu dari jurnal (Redness + Swelling + Scratch)
+    func countSkinAvgFromJournal(from journals: [NewJournal]) -> Double {
+        var average: Double = 0.0
+        for journal in journals {
+            average += (journal.rednessScore + journal.swellingScore + journal.scratchScore)
+        }
+        if average != 0 {
+            average /= Double(journals.count)
+        }
+        return average
     }
     
     // TODO: Mesti di refine lagi agar bisa disesuaikan dengan UI nya
@@ -41,7 +95,7 @@ extension CDStorage {
 //    func getInsightItem(for param: IEP) -> [String: [Int: Int]] {}
     
     func getInsightItem(for param: IEP) -> [Dictionary<String, Int>.Element] {
-        let filteredJournals = getJournalsForInsights()
+        let filteredJournals = getJournalsForInsight()
         var counts = [String: Int]()
         switch param {
         case .intake, .exposure:

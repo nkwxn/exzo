@@ -8,7 +8,8 @@
 import SwiftUI
 
 class TempInsightViewModel: ObservableObject {
-    var fourWeeksFoodIntake = CDStorage.shared.getFoodIntakesForInsight() // [String: Int]
+//    var fourWeeksFoodIntake = CDStorage.shared.get // [String: [Int: Int]]
+    var weeklySkinConditionAverage = CDStorage.shared.getWeeklyAverageSkinCondition()
 }
 
 struct TempInsightPlaceholder: View {
@@ -24,9 +25,10 @@ struct TempInsightPlaceholder: View {
                 Text("Analisis belum tersedia!")
                     .font(Lexend(.title).getFont().weight(.bold))
                 Text("Nantikan fitur terbaru exzo pada pembaruan mendatang")
-                Text("Asupan Makanan terbanyak 30 hari terakhir = \(viewModel.fourWeeksFoodIntake[0].key)")
-                Text("Asupan Makanan terbanyak 30 hari terakhir = \(viewModel.fourWeeksFoodIntake[0].key)")
-                Text("Asupan Makanan terbanyak 30 hari terakhir = \(viewModel.fourWeeksFoodIntake[0].key)")
+                Text("Rata-rata mingguan minggu pertama: \(viewModel.weeklySkinConditionAverage[1] ?? 0.0)")
+                Text("Rata-rata mingguan minggu pertama: \(viewModel.weeklySkinConditionAverage[2] ?? 0.0)")
+                Text("Rata-rata mingguan minggu pertama: \(viewModel.weeklySkinConditionAverage[3] ?? 0.0)")
+                Text("Rata-rata mingguan minggu pertama: \(viewModel.weeklySkinConditionAverage[4] ?? 0.0)")
             }
             .padding()
             .multilineTextAlignment(.center)
