@@ -113,6 +113,7 @@
 		D5B53287273CCB55003EC433 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53286273CCB55003EC433 /* CustomNavBarView.swift */; };
 		D5B5328A273D573C003EC433 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B53289273D573C003EC433 /* View+extensions.swift */; };
 		D5DEF0BF274E2FD1006415E5 /* JournalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */; };
+		D5E5D3782786B80700D72AC3 /* CDStorage+Insights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E5D3772786B80700D72AC3 /* CDStorage+Insights.swift */; };
 		D8C217ECE96164500EA2F258 /* Pods_exzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */; };
 		E20CCBD8274CD9F90099CAFD /* LanguagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CCBD7274CD9F90099CAFD /* LanguagePageView.swift */; };
 		E20CCBDA274CDA0D0099CAFD /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CCBD9274CDA0D0099CAFD /* RateView.swift */; };
@@ -279,6 +280,7 @@
 		D5B53286273CCB55003EC433 /* CustomNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		D5B53289273D573C003EC433 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
 		D5DEF0BE274E2FD1006415E5 /* JournalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalInputViewModel.swift; sourceTree = "<group>"; };
+		D5E5D3772786B80700D72AC3 /* CDStorage+Insights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStorage+Insights.swift"; sourceTree = "<group>"; };
 		D5EF1EE1B31FA3B97017F4BB /* Pods-exzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.debug.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.debug.xcconfig"; sourceTree = "<group>"; };
 		E20CCBD7274CD9F90099CAFD /* LanguagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePageView.swift; sourceTree = "<group>"; };
 		E20CCBD9274CDA0D0099CAFD /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				D5163E432727FF9800DF09D0 /* Atemis.xcdatamodeld */,
 				5DCA14852730E13D00F541AC /* CDStorage.swift */,
 				D5725C24274C959E0071C37A /* CDStorage+NewJournal+Extension.swift */,
+				D5E5D3772786B80700D72AC3 /* CDStorage+Insights.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -1495,6 +1498,7 @@
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
+				D5E5D3782786B80700D72AC3 /* CDStorage+Insights.swift in Sources */,
 				D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
 				5D23EE91272FA79200541E7A /* ProductModel.swift in Sources */,
