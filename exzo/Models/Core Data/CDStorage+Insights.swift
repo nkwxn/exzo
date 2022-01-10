@@ -31,27 +31,6 @@ extension CDStorage {
     ) {
         getJournalsForInsight().reduce(
             ([NewJournal](), [NewJournal](), [NewJournal](), [NewJournal]())
-        ) { (value, object) -> ([NewJournal], [NewJournal], [NewJournal], [NewJournal]) in
-            var value = value
-            if let dateAndTime = object.dateAndTime {
-                if dateAndTime > Date(timeIntervalSinceNow: 604800) {
-                    value.3.append(object)
-                } else if dateAndTime > Date(timeIntervalSinceNow: 1209600) {
-                    value.2.append(object)
-                } else if dateAndTime > Date(timeIntervalSinceNow: 1814400) {
-                    value.1.append(object)
-                } else if dateAndTime > Date(timeIntervalSinceNow: 2419200) {
-                    value.0.append(object)
-                }
-            }
-            return value
-        }
-    }
-    
-    // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
-    func getWeeklyAverageSkinCondition() -> [Int: Double] {
-        let splitFiltered = getJournalsForInsight().reduce(
-            ([NewJournal](), [NewJournal](), [NewJournal](), [NewJournal]())
         ) { (val, object) -> ([NewJournal], [NewJournal], [NewJournal], [NewJournal]) in
             var value = val
             if let dateAndTime = object.dateAndTime {
@@ -67,6 +46,11 @@ extension CDStorage {
             }
             return value
         }
+    }
+    
+    // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
+    func getWeeklyAverageSkinCondition() -> [Int: Double] {
+        let splitFiltered = getSplittedJournalForInsight()
         var weeklyAvg = [
             1: countSkinAvgFromJournal(from: splitFiltered.0),
             2: countSkinAvgFromJournal(from: splitFiltered.1),
@@ -92,9 +76,107 @@ extension CDStorage {
     // TODO: Mesti di refine lagi agar bisa disesuaikan dengan UI nya
     
     // Insight Item: [Nama Asupan: [Minggu: Jumlah]]
-//    func getInsightItem(for param: IEP) -> [String: [Int: Int]] {}
+    func getWeeklyInsight(for param: IEP) -> [Dictionary<String, [Int: Int]>.Element] {
+        let filteredJournals = getJournalsForInsight()
+        let splitFiltered = getSplittedJournalForInsight()
+        var itemDictionary = [String: [Int: Int]]()
+        
+        // Set untuk Intake / Exposure dan Product
+        var setItem: Set<IEAData> = []
+        var setProduct: Set<ListProduct> = []
+        
+        for filteredJournal in filteredJournals {
+            switch param {
+            case .intake:
+                if let intakes = filteredJournal.foodIntakes?.ieaDatas {
+                    for intake in intakes {
+                        setItem.insert(intake)
+                    }
+                }
+            case .exposure:
+                if let exposures = filteredJournal.exposures?.ieaDatas {
+                    for exposure in exposures {
+                        setItem.insert(exposure)
+                    }
+                }
+            case .product:
+                if let products = filteredJournal.productIDs?.prods {
+                    for product in products {
+                        setProduct.insert(product)
+                    }
+                }
+            }
+        }
+        
+        // Populate Dictionary Data
+        switch param {
+        case .intake, .exposure:
+            for item in setItem {
+                let weeklyCounter = [
+                    1: countWeeklyItem(param, for: item, in: splitFiltered.0),
+                    2: countWeeklyItem(param, for: item, in: splitFiltered.1),
+                    3: countWeeklyItem(param, for: item, in: splitFiltered.2),
+                    4: countWeeklyItem(param, for: item, in: splitFiltered.3)
+                ]
+                
+                // Append the weekly data to set
+                
+                itemDictionary[item.name] = weeklyCounter
+            }
+        case .product:
+            for product in setProduct {
+                let weeklyCounter = [
+                    1: countWeeklyItem(param, for: product, in: splitFiltered.0),
+                    2: countWeeklyItem(param, for: product, in: splitFiltered.1),
+                    3: countWeeklyItem(param, for: product, in: splitFiltered.2),
+                    4: countWeeklyItem(param, for: product, in: splitFiltered.3)
+                ]
+                
+                itemDictionary[product.productName] = weeklyCounter
+            }
+        }
+        
+        // Categorize Item
+        return itemDictionary.sorted { leftValue, rightValue in
+            let leftSet = leftValue.value
+            let rightSet = rightValue.value
+            let countLeftSet = (leftSet[1] ?? 0) + (leftSet[2] ?? 0) + (leftSet[3] ?? 0) + (leftSet[4] ?? 0)
+            let countRightSet = (rightSet[1] ?? 0) + (rightSet[2] ?? 0) + (rightSet[3] ?? 0) + (rightSet[4] ?? 0)
+            return countLeftSet > countRightSet
+        }
+    }
     
-    func getInsightItem(for param: IEP) -> [Dictionary<String, Int>.Element] {
+    func countWeeklyItem(_ param: IEP, for item: AnyObject, in journals: [NewJournal]) -> Int {
+        var counter = 0
+        for journal in journals {
+            switch param {
+            case .intake:
+                if let foodIntakes = journal.foodIntakes?.ieaDatas {
+                    for foodIntake in foodIntakes {
+                        if foodIntake == (item as? IEAData) { counter += 1 }
+                    }
+                }
+            case .exposure:
+                if let exposures = journal.exposures?.ieaDatas {
+                    for exposure in exposures {
+                        if exposure == (item as? IEAData) { counter += 1 }
+                    }
+                }
+            case .product:
+                if let products = journal.productIDs?.prods {
+                    for product in products {
+                        if product == (item as? ListProduct) { counter += 1 }
+                    }
+                }
+            }
+        }
+        return counter
+    }
+    
+    // Rata-rata ster
+    func getWeeklyAverageStressLevel() -> [Int: Double] { [Int: Double]() }
+    
+    func getCount(for param: IEP) -> [Dictionary<String, Int>.Element] {
         let filteredJournals = getJournalsForInsight()
         var counts = [String: Int]()
         switch param {
@@ -103,7 +185,7 @@ extension CDStorage {
             for filteredJournal in filteredJournals {
                 switch param {
                 case .exposure:
-                    if let exposures = filteredJournal.foodIntakes?.ieaDatas {
+                    if let exposures = filteredJournal.exposures?.ieaDatas {
                         items.append(contentsOf: exposures)
                     }
                 case .intake:
