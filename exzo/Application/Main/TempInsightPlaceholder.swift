@@ -13,6 +13,7 @@ class TempInsightViewModel: ObservableObject {
     var weeklyIntakeCount = CDStorage.shared.getWeeklyInsight(for: .intake)
     var weeklyExposureCount = CDStorage.shared.getWeeklyInsight(for: .exposure)
     var weeklyProductCount = CDStorage.shared.getWeeklyInsight(for: .product)
+    var stressLevelCount = CDStorage.shared.getMonthlyStressLevelCount()
 }
 
 struct TempInsightPlaceholder: View {

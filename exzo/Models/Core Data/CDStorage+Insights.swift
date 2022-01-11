@@ -51,7 +51,7 @@ extension CDStorage {
     // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
     func getWeeklyAverageSkinCondition() -> [Int: Double] {
         let splitFiltered = getSplittedJournalForInsight()
-        var weeklyAvg = [
+        let weeklyAvg = [
             1: countSkinAvgFromJournal(from: splitFiltered.0),
             2: countSkinAvgFromJournal(from: splitFiltered.1),
             3: countSkinAvgFromJournal(from: splitFiltered.2),
@@ -173,8 +173,31 @@ extension CDStorage {
         return counter
     }
     
-    // Rata-rata ster
-    func getWeeklyAverageStressLevel() -> [Int: Double] { [Int: Double]() }
+    // Rata-rata level stress
+    func getMonthlyStressLevelCount() -> [String: Int] {
+        let filteredJournal = getJournalsForInsight()
+        let stressLevelGraphData = [
+            "😁": countMonthlyStressLevel(for: filteredJournal, stressLevel: 0), // 0
+            "🙂": countMonthlyStressLevel(for: filteredJournal, stressLevel: 1), // 1
+            "😐": countMonthlyStressLevel(for: filteredJournal, stressLevel: 2), // 2
+            "😢": countMonthlyStressLevel(for: filteredJournal, stressLevel: 3), // 3
+            "😭": countMonthlyStressLevel(for: filteredJournal, stressLevel: 4) // 4
+        ]
+        return stressLevelGraphData
+    }
+    
+    func countMonthlyStressLevel(for journals: [NewJournal], stressLevel: Double) -> Int {
+        var counter = 0
+        
+        // masukkin codingan disini
+        for journal in journals {
+            if journal.stressLevel == stressLevel {
+                counter += 1
+            }
+        }
+        
+        return counter
+    }
     
     func getCount(for param: IEP) -> [Dictionary<String, Int>.Element] {
         let filteredJournals = getJournalsForInsight()

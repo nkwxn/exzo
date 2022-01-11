@@ -46,7 +46,13 @@ struct StressLevelSliderView: View {
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .padding()
-            Slider(value: $viewModel.stressLevel, in: 0...4, step: 1)
+            Slider(value: $viewModel.stressLevel, in: 0...4, step: 1) { changed in
+                print(changed)
+                if changed {
+                    print("Changed")
+                    HFHelper.selectionChanged()
+                }
+            }
             VStack(alignment: .center, spacing: 4) {
                 Text(String(format: "%.0f", viewModel.stressLevel))
                     .font(Lexend(.title3).getFont().bold())
