@@ -75,75 +75,114 @@ extension CDStorage {
     
     // TODO: Mesti di refine lagi agar bisa disesuaikan dengan UI nya
     
-    // Insight Item: [Nama Asupan: [Minggu: Jumlah]]
     func getWeeklyInsight(for param: IEP) -> [Dictionary<String, [Int: Int]>.Element] {
         let filteredJournals = getJournalsForInsight()
         let splitFiltered = getSplittedJournalForInsight()
         var itemDictionary = [String: [Int: Int]]()
         
-        // Set untuk Intake / Exposure dan Product
-        var setItem: Set<IEAData> = []
-        var setProduct: Set<ListProduct> = []
+        // Get items from Journal (based on parameter)
+        let itemSet: Set<String> = getIEPSet(param, from: filteredJournals)
         
-        for filteredJournal in filteredJournals {
+        for item in itemSet {
+            let separation = item.components(separatedBy: ": ")
+            switch param {
+            case .intake, .exposure:
+                itemDictionary[separation[1]] = [
+                    1: getCount(of: param, from: splitFiltered.0, with: item),
+                    2: getCount(of: param, from: splitFiltered.1, with: item),
+                    3: getCount(of: param, from: splitFiltered.2, with: item),
+                    4: getCount(of: param, from: splitFiltered.3, with: item)
+                ]
+            case .product:
+                itemDictionary[separation[1]] = [
+                    1: getCount(of: .product, from: splitFiltered.0, with: item),
+                    2: getCount(of: .product, from: splitFiltered.1, with: item),
+                    3: getCount(of: .product, from: splitFiltered.2, with: item),
+                    4: getCount(of: .product, from: splitFiltered.3, with: item)
+                ]
+            }
+        }
+        
+        let sorted = itemDictionary.sorted { (leftSet, rightSet) -> Bool in
+            let leftValue = leftSet.value
+            let rightValue = rightSet.value
+            let leftSum = leftValue[1]! + leftValue[2]! + leftValue[3]! + leftValue[4]!
+            let rightSum = rightValue[1]! + rightValue[2]! + rightValue[3]! + rightValue[4]!
+            return leftSum > rightSum
+        }
+        return sorted
+    }
+    
+    func getIEPSet(_ param: IEP, from journals: [NewJournal]) -> Set<String> {
+        var set = Set<String>()
+        for journal in journals {
             switch param {
             case .intake:
-                if let intakes = filteredJournal.foodIntakes?.ieaDatas {
+                if let intakes = journal.foodIntakes?.ieaDatas {
                     for intake in intakes {
-                        setItem.insert(intake)
+                        set.insert("\(intake.id.uuidString): \(intake.name)")
                     }
                 }
             case .exposure:
-                if let exposures = filteredJournal.exposures?.ieaDatas {
+                if let exposures = journal.exposures?.ieaDatas {
                     for exposure in exposures {
-                        setItem.insert(exposure)
+                        set.insert("\(exposure.id.uuidString): \(exposure.name)")
                     }
                 }
             case .product:
-                if let products = filteredJournal.productIDs?.prods {
+                if let products = journal.productIDs?.prods {
                     for product in products {
-                        setProduct.insert(product)
+                        if let pType = ProductType(rawValue: product.productCat)?.getLocalizedName() {
+                            set.insert("\(product.id.uuidString): \(product.productName) (\(pType))")
+                        }
                     }
                 }
             }
         }
-        
-        // Populate Dictionary Data
+        return set
+    }
+    
+    func getProductsArr(from journals: [NewJournal]) -> [ListProduct] {
+        var arr = [ListProduct]()
+        for journal in journals {
+            if let products = journal.productIDs?.prods {
+                arr.append(contentsOf: products)
+            }
+        }
+        return arr
+    }
+    
+    func getCount(of param: IEP, from journals: [NewJournal], with item: String) -> Int {
         switch param {
         case .intake, .exposure:
-            for item in setItem {
-                let weeklyCounter = [
-                    1: countWeeklyItem(param, for: item, in: splitFiltered.0),
-                    2: countWeeklyItem(param, for: item, in: splitFiltered.1),
-                    3: countWeeklyItem(param, for: item, in: splitFiltered.2),
-                    4: countWeeklyItem(param, for: item, in: splitFiltered.3)
-                ]
-                
-                // Append the weekly data to set
-                
-                itemDictionary[item.name] = weeklyCounter
-            }
+            return getIEArr(param, from: journals).filter { ieitem in
+                item == "\(ieitem.id.uuidString): \(ieitem.name)"
+            }.count
         case .product:
-            for product in setProduct {
-                let weeklyCounter = [
-                    1: countWeeklyItem(param, for: product, in: splitFiltered.0),
-                    2: countWeeklyItem(param, for: product, in: splitFiltered.1),
-                    3: countWeeklyItem(param, for: product, in: splitFiltered.2),
-                    4: countWeeklyItem(param, for: product, in: splitFiltered.3)
-                ]
-                
-                itemDictionary[product.productName] = weeklyCounter
+            return getProductsArr(from: journals).filter { prod in
+                let pType = ProductType(rawValue: prod.productCat)!.getLocalizedName()
+                return item == "\(prod.id.uuidString): \(prod.productName) (\(pType))"
+            }.count
+        }
+    }
+    
+    func getIEArr(_ param: IEP, from journals: [NewJournal]) -> [IEAData] {
+        var arr = [IEAData]()
+        for journal in journals {
+            switch param {
+            case .intake:
+                if let intakes = journal.foodIntakes?.ieaDatas {
+                    arr.append(contentsOf: intakes)
+                }
+            case .exposure:
+                if let exposures = journal.exposures?.ieaDatas {
+                    arr.append(contentsOf: exposures)
+                }
+            case .product:
+                fatalError("Not applicable")
             }
         }
-        
-        // Categorize Item
-        return itemDictionary.sorted { leftValue, rightValue in
-            let leftSet = leftValue.value
-            let rightSet = rightValue.value
-            let countLeftSet = (leftSet[1] ?? 0) + (leftSet[2] ?? 0) + (leftSet[3] ?? 0) + (leftSet[4] ?? 0)
-            let countRightSet = (rightSet[1] ?? 0) + (rightSet[2] ?? 0) + (rightSet[3] ?? 0) + (rightSet[4] ?? 0)
-            return countLeftSet > countRightSet
-        }
+        return arr
     }
     
     func countWeeklyItem(_ param: IEP, for item: AnyObject, in journals: [NewJournal]) -> Int {
@@ -199,6 +238,7 @@ extension CDStorage {
         return counter
     }
     
+    // MARK: - Kemungkinan besar batal pakai
     func getCount(for param: IEP) -> [Dictionary<String, Int>.Element] {
         let filteredJournals = getJournalsForInsight()
         var counts = [String: Int]()
