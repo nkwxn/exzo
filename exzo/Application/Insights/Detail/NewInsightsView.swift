@@ -10,11 +10,10 @@ import Charts
 
 struct NewInsightsView: View {
     var fokus = ["Asupan Makanan", "Paparan", "Produk", "Stress"]
+    @State var value = ""
+    var dropDownList = ["Dairy", "Kacang", "Ikan", "Bebek", "Grain", "Gluten", "Kacang Tanah"]
     @State var indexFocus = 0
     @State var isSettingPresented = false
-    func placeOrder() { }
-    func adjustOrder() { }
-    func cancelOrder() { }
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -83,10 +82,27 @@ struct NewInsightsView: View {
                             .padding()
                             
                             RoundedSquareContainer(autoPadding: true) {
-                                Menu("Options") {
-                                    Button("Order Now", action: placeOrder)
-                                    Button("Adjust Order", action: adjustOrder)
-                                    Button("Cancel", action: cancelOrder)
+                                Menu {
+                                    ForEach(dropDownList, id: \.self){ client in
+                                        Button(client) {
+                                            self.value = client
+                                        }
+                                    }
+                                } label: {
+                                    VStack(spacing: 5){
+                                        HStack{
+                                            Text(value.isEmpty ? "Faktor" : value)
+                                                .foregroundColor(value.isEmpty ? .gray : .black)
+                                            Spacer()
+                                            Image(systemName: "chevron.down")
+                                                .foregroundColor(Color.orange)
+                                                .font(Font.system(size: 20, weight: .bold))
+                                        }
+                                        .padding(.horizontal)
+                                        Rectangle()
+                                            .fill(Color.orange)
+                                            .frame(height: 2)
+                                    }
                                 }
                             }
                             .frame(width: 300, height: 20)
@@ -117,7 +133,6 @@ struct NewInsightsView: View {
             .edgesIgnoringSafeArea(.all)
             
         }
-        
         
     }
     
