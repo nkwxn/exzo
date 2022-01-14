@@ -48,7 +48,7 @@ extension CDStorage {
         }
     }
     
-    // Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
+    // MARK: - Skin Condition untuk Insight -> [Minggu: Keparahan] Nilai keparahan dari jumlah seluruh dr slider
     func getWeeklyAverageSkinCondition() -> [Int: Double] {
         let splitFiltered = getSplittedJournalForInsight()
         let weeklyAvg = [
@@ -61,7 +61,7 @@ extension CDStorage {
         return weeklyAvg
     }
     
-    // MARK: - Penghitungan rata2 per minggu dari jurnal (Redness + Swelling + Scratch)
+    // Penghitungan rata2 per minggu dari jurnal (Redness + Swelling + Scratch)
     func countSkinAvgFromJournal(from journals: [NewJournal]) -> Double {
         var average: Double = 0.0
         for journal in journals {
@@ -73,8 +73,10 @@ extension CDStorage {
         return average
     }
     
-    // TODO: Mesti di refine lagi agar bisa disesuaikan dengan UI nya
-    
+    // MARK: - Insight mingguan untuk parameter tertentu (asupan makanan, paparan, atau produk) -> [String: [Int: Int]]
+    /*
+    Cara pemanggilan key: getWeeklyInsight(for: .intake)[i].key
+     */
     func getWeeklyInsight(for param: IEP) -> [Dictionary<String, [Int: Int]>.Element] {
         let filteredJournals = getJournalsForInsight()
         let splitFiltered = getSplittedJournalForInsight()
@@ -212,7 +214,7 @@ extension CDStorage {
         return counter
     }
     
-    // Rata-rata level stress
+    // MARK: - Rata-rata level stress
     func getMonthlyStressLevelCount() -> [String: Int] {
         let filteredJournal = getJournalsForInsight()
         let stressLevelGraphData = [
