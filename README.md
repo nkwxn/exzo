@@ -1,4 +1,4 @@
-#Exzo is an app made for Exzema patients to help identify eczema triggers.
+# Exzo is an app made for Exzema patients to help identify eczema triggers.
 Made in Apple Developer Academy @BINUS by:
 - Difa Naufal
 - Nicholas
