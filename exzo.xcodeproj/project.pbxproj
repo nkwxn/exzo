@@ -135,9 +135,7 @@
 		E2EF691C273A3B1200B2E321 /* AddFEARowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */; };
 		E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F52C9D2750CE3000F64AA8 /* roundedSwipeAction.swift */; };
 		E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F52C9F2750D18700F64AA8 /* AddReminderPage.swift */; };
-		E2F8A43227547B5400A885C8 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8A43127547B5400A885C8 /* LocalNotification.swift */; };
 		E2F8A438275489C300A885C8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8A437275489C300A885C8 /* NotificationManager.swift */; };
-		E2F8A43A27548A2A00A885C8 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8A43927548A2A00A885C8 /* NotificationListView.swift */; };
 		E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */; };
 		E2FBDE7C274B703D00EB01C0 /* SetReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */; };
 		E2FBDE81274C973000EB01C0 /* ReminderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBDE80274C973000EB01C0 /* ReminderRowView.swift */; };
@@ -303,9 +301,7 @@
 		E2EF691B273A3B1200B2E321 /* AddFEARowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFEARowView.swift; sourceTree = "<group>"; };
 		E2F52C9D2750CE3000F64AA8 /* roundedSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedSwipeAction.swift; sourceTree = "<group>"; };
 		E2F52C9F2750D18700F64AA8 /* AddReminderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderPage.swift; sourceTree = "<group>"; };
-		E2F8A43127547B5400A885C8 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		E2F8A437275489C300A885C8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		E2F8A43927548A2A00A885C8 /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		E2F99DFC2734DAE9004C2456 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
 		E2FBDE7B274B703D00EB01C0 /* SetReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderView.swift; sourceTree = "<group>"; };
 		E2FBDE80274C973000EB01C0 /* ReminderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRowView.swift; sourceTree = "<group>"; };
@@ -1119,9 +1115,7 @@
 		E2F8A43027547B2600A885C8 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				E2F8A43127547B5400A885C8 /* LocalNotification.swift */,
 				E2F8A437275489C300A885C8 /* NotificationManager.swift */,
-				E2F8A43927548A2A00A885C8 /* NotificationListView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1246,7 +1240,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					D5163E342727FF9600DF09D0 = {
 						CreatedOnToolsVersion = 13.1;
@@ -1455,7 +1449,6 @@
 				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
 				E2EF69172738E9BD00B2E321 /* NavBarButton.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
-				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D58422C3274B590200F495E3 /* ProfileCategory.swift in Sources */,
 				E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
@@ -1477,7 +1470,6 @@
 				E2EF69132738B01200B2E321 /* CustomNavLink.swift in Sources */,
 				E2FBDE81274C973000EB01C0 /* ReminderRowView.swift in Sources */,
 				D58422C0274B51EB00F495E3 /* ChildAdultView.swift in Sources */,
-				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */,
 				E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
@@ -1509,10 +1501,8 @@
 				D58AF75B27322C0E00E67214 /* SetNicknameViewModel.swift in Sources */,
 				D51CFC83273392D100DE63CC /* ExzoAppContainer.swift in Sources */,
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
-				E2F8A43227547B5400A885C8 /* LocalNotification.swift in Sources */,
 				BFA3BCEE274C48BD00EFCECB /* ChildBodiesView.swift in Sources */,
 				D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */,
-				E2F8A43A27548A2A00A885C8 /* NotificationListView.swift in Sources */,
 				E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */,
 				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
 				5DE09033273950AE00B2882B /* APIRequest.swift in Sources */,
@@ -1540,7 +1530,6 @@
 				D5ADFE9327465F1B0099E7FC /* InsightsDetailView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				E20CCBD8274CD9F90099CAFD /* LanguagePageView.swift in Sources */,
-				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				D5266D62274E014D00C2DE4A /* JournalConcernView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 				5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */,
@@ -1550,8 +1539,6 @@
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
 				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
 				D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */,
-				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
-				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
 				E20CCBDA274CDA0D0099CAFD /* RateView.swift in Sources */,
 				BF36A949273DEC1800943F94 /* ScanningIngredientView.swift in Sources */,

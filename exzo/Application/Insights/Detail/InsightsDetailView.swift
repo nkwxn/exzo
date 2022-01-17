@@ -69,6 +69,14 @@ struct StaticRaw {
         ChartDataEntry(x: 4, y: 6),
         ChartDataEntry(x: 5, y: 5)
     ]
+    
+    static var barChartView = [
+        ChartDataEntry(x: 1, y: 5),
+        ChartDataEntry(x: 2, y: 3),
+        ChartDataEntry(x: 3, y: 4),
+        ChartDataEntry(x: 4, y: 6),
+        ChartDataEntry(x: 5, y: 5)
+    ]
 }
 
 struct InsightsDetail_Previews: PreviewProvider {

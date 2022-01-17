@@ -114,13 +114,14 @@ struct NewInsightsView: View {
                                             .scaledFont(name: "Avenir", size: 11)
                                             .rotationEffect(Angle(degrees: 0))
                                             .frame(width: 8)
-                                        InsightLineGraph(lineGraphData: .constant(StaticRawData.lineGraphView))
+                                        InsightBarChart(barChartData:  .constant(StaticRawData.barChartView))
                                             .frame(width: nil, height: 300)
                                             .padding(.vertical)
                                     }
                                     HStack{
                                         Circle()
                                             .frame(width: 15, height: 15)
+                                            .foregroundColor(.accentColor)
                                         Text("Produk Susu")
                                     }
                                 }
@@ -141,6 +142,13 @@ struct NewInsightsView: View {
             ChartDataEntry(x: 2, y: 3),
             ChartDataEntry(x: 3, y: 4),
             ChartDataEntry(x: 4, y: 6),
+        ]
+        
+        static var barChartView = [
+            BarChartDataEntry(x: 1, y: 19),
+            BarChartDataEntry(x: 2, y: 26),
+            BarChartDataEntry(x: 3, y: 15),
+            BarChartDataEntry(x: 4, y: 17),
         ]
     }
 }

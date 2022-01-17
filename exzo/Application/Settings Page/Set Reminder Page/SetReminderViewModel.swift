@@ -28,12 +28,17 @@ class SetReminderViewModel: ObservableObject {
         }
     }
     
+    func deleteReminder(at offsets: IndexSet) {
+        reminders.remove(atOffsets: offsets)
+        
+    }
+    
     func addReminder(dateAndTime: Date) {
         let newReminder = Reminder(dateAndTime: dateAndTime)
         reminders.append(newReminder)
     }
     
     func editReminder(id: UUID) {
-        
+    
     }
 }
