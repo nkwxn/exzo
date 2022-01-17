@@ -21,7 +21,6 @@ struct NewInsightsView: View {
                     // Action untuk buka settings
                     self.isSettingPresented.toggle()
                 }
-                .padding(.top, 50)
                 NavigationLink(destination: SettingsView(profileImage: UDHelper.sharedUD.getPFP(), profileName: UDHelper.sharedUD.getName()), isActive: $isSettingPresented) {
                     EmptyView()
                 }
@@ -76,7 +75,7 @@ struct NewInsightsView: View {
                                 } label: {
                                     Image(systemName: "chevron.right")
                                 }
-                                .disabled(indexFocus >= fokus.count ? true : false)
+                                .disabled(indexFocus == fokus.count - 1)
                                 
                             }
                             .padding()
@@ -130,8 +129,7 @@ struct NewInsightsView: View {
                     }
                 }
             }
-            .edgesIgnoringSafeArea(.all)
-            
+            .navigationBarHidden(true)
         }
         
     }
