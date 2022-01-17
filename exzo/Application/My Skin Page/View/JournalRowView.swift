@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JournalRowView: View {
-    let journal: Journal
+    let journal: NewJournal
     let width = 300.0
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
@@ -21,21 +21,33 @@ struct JournalRowView: View {
             VStack {
                 HStack(alignment: .top) {
                     Text(journal.dateAndTime!, style: .time)
+                        .font(Lexend(.subheadline).getFont())
                     Spacer()
                 }
                 Divider()
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Food Intake")
-                                .font(.system(size: 11))
+                            Text("Asupan makanan")
+                                .font(Avenir(.subheadline).getFont())
                             HStack(alignment: .center, spacing: -8) {
-                                if let foodIntakes = journal.foodIntake as? [IEAData] {
-                                    if foodIntakes.isEmpty {
+                                if let foodIntakes = journal.foodIntakes {
+                                    if foodIntakes.ieaDatas.isEmpty {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(accentArr[1])
+                                                .frame(width: 32, height: 32, alignment: .center)
+                                                .shadow(radius: 2)
+                                            Text("N/A")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                .font(Lexend(.footnote).getFont())
+                                                .fontWeight(.semibold)
+                                        }
                                     } else {
-                                        ForEach(0..<foodIntakes.count, id: \.self) { idx in
+                                        ForEach(0..<foodIntakes.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
-                                                Image(foodIntakes[idx].thumb)
+                                                Image(foodIntakes.ieaDatas[idx].thumb)
                                                     .resizable()
                                                     .foregroundColor(.white)
                                                     .frame(width: 32, height: 32, alignment: .center)
@@ -57,37 +69,60 @@ struct JournalRowView: View {
                                         Text("N/A")
                                             .foregroundColor(.white)
                                             .bold()
+                                            .font(Lexend(.footnote).getFont())
+                                            .fontWeight(.semibold)
                                     }
                                 }
                             }
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("PO Scorad")
-                                .font(.system(size: 11))
+                            Text("Kondisi Kulit")
+                                .font(Avenir(.subheadline).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
                                     .frame(width: 32, height: 32, alignment: .center)
                                     .shadow(radius: 2)
-                                Text("\(journal.skinCondition!.poScorad)")
+                                // skor peradangan + pembengkakan + bekas garukan
+                                /*
+                                Text("\(String(format: "%.0f", journal.rednessScore + journal.scratchScore + journal.swellingScore))")
                                     .foregroundColor(.white)
                                     .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
+                                */
+                                Text("\(String(format: "%.0f", journal.tisScorad))")
+                                    .foregroundColor(.white)
+                                    .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
+                                 
                             }
                         }
                     }
                     Spacer()
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Exposure")
-                                .font(.system(size: 11))
+                            Text("Paparan")
+                                .font(Avenir(.subheadline).getFont())
                             HStack(alignment: .center, spacing: -8) {
-                                if let exposure = journal.skinExposure as? [IEAData] {
-                                    if exposure.isEmpty {
-                                        
+                                if let exposure = journal.exposures {
+                                    if exposure.ieaDatas.isEmpty {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(accentArr[1])
+                                                .frame(width: 32, height: 32, alignment: .center)
+                                                .shadow(radius: 2)
+                                            Text("N/A")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                .font(Lexend(.footnote).getFont())
+                                                .fontWeight(.semibold)
+                                        }
                                     } else {
-                                        ForEach(0..<exposure.count, id: \.self) { idx in
+                                        ForEach(0..<exposure.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
-                                                Image(exposure[idx].thumb)
+                                                Image(exposure.ieaDatas[idx].thumb)
                                                     .resizable()
                                                     .foregroundColor(.white)
                                                     .frame(width: 32, height: 32, alignment: .center)
@@ -109,21 +144,25 @@ struct JournalRowView: View {
                                         Text("N/A")
                                             .foregroundColor(.white)
                                             .bold()
+                                            .font(Lexend(.footnote).getFont())
+                                            .fontWeight(.semibold)
                                     }
                                 }
                             }
                         }
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("Stress Level")
-                                .font(.system(size: 11))
+                            Text("Nilai stress")
+                                .font(Avenir(.subheadline).getFont())
                             ZStack {
                                 Circle()
                                     .foregroundColor(accentArr[1])
                                     .frame(width: 32, height: 32, alignment: .center)
                                     .shadow(radius: 2)
-                                Text("\(journal.stressLevel)")
+                                Text("\(String(format: "%.0f", journal.stressLevel))")
                                     .foregroundColor(.white)
                                     .bold()
+                                    .font(Lexend(.footnote).getFont())
+                                    .fontWeight(.semibold)
                             }
                         }
                     }

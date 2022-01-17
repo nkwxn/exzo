@@ -37,6 +37,8 @@ struct CalendarView: UIViewRepresentable {
         
         calendar.select(calendar.today)
         
+        calendar.locale = NSLocale.init() as Locale
+        
         return calendar
     }
 
@@ -57,7 +59,6 @@ struct CalendarView: UIViewRepresentable {
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
             parent.dateSelected = date
-            print(date)
         }
         
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {

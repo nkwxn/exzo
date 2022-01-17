@@ -18,7 +18,6 @@ struct StressLevelSliderView: View {
     var userPFP = UDHelper.sharedUD.getPFP()
     
     @State var buttonText = "Lanjut"
-    @State var stressValue: Double = 2
     var captionText: [String] {
         return [
             "\(viewModel.category == .child ? "Anak " : "")Anda merasa sangat bahagia dan penuh senyum, tidak menunjukkan kesedihan, kecemasan, atau gejala mental negatif apa pun",
@@ -34,21 +33,24 @@ struct StressLevelSliderView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             CustomProgressView(percent: .constant(0.6))
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Stres")
-                    .font(Lexend(.title2).getFont().bold())
-                Text("Bagaimana suasana hati anak Anda sekarang?")
+            HStack {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Stres")
+                        .font(Lexend(.title2).getFont().bold())
+                    Text("Bagaimana suasana hati\(viewModel.category == .adult ? " " : " anak ")Anda sekarang?")
+                }
+                Spacer()
             }
-            Image("L\(String(format: "%.0f", stressValue)) - \(userPFP)")
+            Image("L\(String(format: "%.0f", viewModel.stressLevel)) - \(userPFP)")
                 .resizable()
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .padding()
-            Slider(value: $stressValue, in: 0...4, step: 1)
+            Slider(value: $viewModel.stressLevel, in: 0...4, step: 1)
             VStack(alignment: .center, spacing: 4) {
-                Text(String(format: "%.0f", stressValue))
+                Text(String(format: "%.0f", viewModel.stressLevel))
                     .font(Lexend(.title3).getFont().bold())
-                Text(captionText[Int(stressValue)])
+                Text(captionText[Int(viewModel.stressLevel)])
             }
             .multilineTextAlignment(.center)
             Spacer()
@@ -63,7 +65,7 @@ struct StressLevelSliderView: View {
                     goToNextPage.toggle()
                 } else {
                     // Save to Core Data
-                    viewModel.saveJournal {
+                    viewModel.finishInput {
                         // Completion
                         self.modalMode.wrappedValue.toggle()
                         viewModel.pushNavToTimer()

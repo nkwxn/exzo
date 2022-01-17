@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingSetTimerView: View {
     @Environment(\.modalMode) var modalMode
-    @State var selectedTime = Date()
+    @State var selectedTime = Date().setHour(h: 12)
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,6 +34,7 @@ struct OnboardingSetTimerView: View {
             Spacer()
             Button("Atur pengingat") {
                 // Dismiss modal + user defaults
+                UDHelper.sharedUD.saveReminders(reminders: [Reminder(dateAndTime: selectedTime)])
                 dismissModal()
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))

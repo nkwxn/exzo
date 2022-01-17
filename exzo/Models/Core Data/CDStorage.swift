@@ -134,13 +134,13 @@ class CDStorage: NSObject, ObservableObject {
 
 // MARK: - CRUD Product
 extension CDStorage {
-    func createProduct(name: String, type: ProductType, image: UIImage? = nil, ingredients: String) {
+    func createProduct(name: String, type: ProductType, image: UIImage? = nil, ingredients: [String]? = nil) {
         let newProduct = Product(context: PersistenceController.shared.container.viewContext)
         newProduct.idProduct = UUID()
         newProduct.productName = name
         newProduct.productType = type.rawValue
-        newProduct.productImage = (image ?? UIImage()) as NSObject
-        newProduct.productIngr = ingredients
+        newProduct.productImage = image
+        newProduct.productIngr = ingredients as? NSObject
         save()
     }
     
@@ -250,15 +250,15 @@ struct RawIEAData {
         IEAData(name: "Gluten", thumb: "Icon004"),
         IEAData(name: "Ikan", thumb: "Icon003"),
         IEAData(name: "Ayam", thumb: "Icon002"),
-        IEAData(name: "Bebek", thumb: "Icon002"),
-        IEAData(name: "Udang", thumb: "Icon003"),
-        IEAData(name: "Gurita", thumb: "Icon003"),
+        IEAData(name: "Bebek", thumb: "Icon038"),
+        IEAData(name: "Udang", thumb: "Icon039"),
+        IEAData(name: "Gurita", thumb: "Icon040"),
         IEAData(name: "Susu", thumb: "Icon001"),
         IEAData(name: "Grain", thumb: "Icon007"),
-        IEAData(name: "Kacang Tanah", thumb: "Icon006"),
-        IEAData(name: "Almond", thumb: "Icon006"),
+        IEAData(name: "Kacang Tanah", thumb: "Icon041"),
+        IEAData(name: "Almond", thumb: "Icon042"),
         IEAData(name: "Telur", thumb: "Icon005"),
-        IEAData(name: "Wijen", thumb: "Icon007")
+        IEAData(name: "Wijen", thumb: "Icon043")
     ]
     static let exposureTemplate = [
         IEAData(name: "Serbuk sari", thumb: "Icon009"),
@@ -266,7 +266,7 @@ struct RawIEAData {
         IEAData(name: "Matahari", thumb: "Icon018"),
         IEAData(name: "Jamur", thumb: "Icon011"),
         IEAData(name: "Bulu hewan", thumb: "Icon019"),
-        IEAData(name: "Latex", thumb: "Icon010")
+        IEAData(name: "Latex", thumb: "Icon045")
     ]
 //    static let activityTemplate = [
 //        IEAData(name: "Exercise", thumb: "Icon013"),

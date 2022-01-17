@@ -14,11 +14,11 @@ struct WeatherView: View {
         switch viewModel.fetchStatus {
         case .loading:
             VStack {
-                Text("Loading")
+                Text("Memuat")
                 ProgressView().progressViewStyle(.circular)
-                    .onAppear {
-                        viewModel.checkLocationEnabled()
-                    }
+            }
+            .onAppear {
+                viewModel.checkLocationEnabled()
             }
             .padding()
             .background {
@@ -33,7 +33,6 @@ struct WeatherView: View {
             HStack(alignment: .top, spacing: 10) {
                 VStack {
                     Text(Image(systemName: "location")) + Text(viewModel.cityName)
-                        .font(.subheadline)
                         .fontWeight(.medium)
                     AsyncImage(url: URL(string: viewModel.iconLink)) { image in
                         image.resizable()
@@ -41,30 +40,31 @@ struct WeatherView: View {
                         ProgressView()
                     }
                     .frame(width: 100, height: 100)
+                    Spacer()
                 }
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(viewModel.weatherDesc)
-                        .font(.footnote)
+//                        .font(.footnote)
                     HStack(spacing: 16) {
                         VStack(alignment: .leading) {
-                            Text("Temp")
+                            Text("Suhu")
                                 .font(.footnote)
                             Text(viewModel.tempString)
                                 .font(.title2)
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("Humidity")
+                            Text("Kelembapan")
                                 .font(.footnote)
                             Text(viewModel.humidityString)
                                 .font(.title2)
                         }
                     }
-                    Text(viewModel.recommendationString)
+                    Text(viewModel.getMotivationKeyword())
                         .font(.subheadline).bold()
                         .multilineTextAlignment(.leading)
-                    Text("Data provided by OpenWeather")
+                    Text("Data disediakan oleh OpenWeather")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
@@ -81,7 +81,7 @@ struct WeatherView: View {
                     .padding(.bottom, 17)
             }
         case .error:
-            Text("404 not found")
+            Text("404 - Tidak Ditemukan")
         }
     }
 }

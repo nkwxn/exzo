@@ -14,26 +14,22 @@ struct TabContainer: View {
         TabView {
             MySkinView()
                 .tabItem {
-                    Image(systemName: "face.smiling")
-                    Text("My Skin")
+                    Image(systemName: "book.closed")
+                    Text("Jurnal")
+                }
+//            NewInsightsView()
+            TempInsightPlaceholder()
+                .tabItem {
+                    Image(systemName: "chart.pie")
+                    Text("Analisis")
                 }
             ProductView()
                 .tabItem {
                     Image(systemName: "viewfinder.circle")
-                    Text("Product")
-                }
-            InsightsView()
-                .tabItem {
-                    Image(systemName: "chart.pie")
-                    Text("Insights")
-                }
-            SettingsView(profileImage: "pp_004", profileName: "Regina Georgia")
-                .tabItem {
-                    Image(systemName: "gearshape")
-                    Text("Settings")
+                    Text("Produk")
                 }
         }
-        .tabViewStyle(backgroundColor: colorScheme == .light ? .white : .black, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)
+        .tabViewStyle(backgroundColor: .white, itemColor: Color.gray, selectedItemColor: Color.accentColor, badgeColor: Color.red)
     }
 }
 

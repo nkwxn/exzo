@@ -14,12 +14,12 @@ enum UDKey: String {
     case reminders
     
     // MARK: - Addition from Nic (Profile)
-    case userName = "name"
+    case userName = "uName"
     case childAge = "age"
     case profilePicture = "pfp"
     case userType = "userProf"
     
-    // MARK: - Addition for saving collection
+    // MARK: - To save what kind of concern (product, etc)
     case userSkinPart = "skinPart"
 }
 
@@ -75,7 +75,16 @@ class UDHelper {
     // get the profile picture / user profile
     func getPFP() -> String {
         let pfp = defaults.string(forKey: UDKey.profilePicture.rawValue) ?? "KidsB"
-        print(pfp)
         return pfp
+    }
+    
+    func getName() -> String {
+        let name = defaults.string(forKey: UDKey.userName.rawValue) ?? "Regina George"
+        return name
+    }
+    
+    func getConcern() -> [String] {
+        let concerns = defaults.stringArray(forKey: UDKey.userSkinPart.rawValue) ?? [String]()
+        return concerns
     }
 }

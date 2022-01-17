@@ -32,7 +32,7 @@ struct ProductRow: View {
                     .aspectRatio(contentMode: .fill)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack {
-                    Text(product.productType ?? "")
+                    Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")
                         .font(.system(size: 18, weight: .bold))
                         .frame(width: 190, height: 21, alignment: .leading)
                     Text(product.productName ?? "")

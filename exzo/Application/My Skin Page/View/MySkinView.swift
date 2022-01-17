@@ -34,20 +34,23 @@ struct CalendarHeader: View {
 }
 
 struct MySkinView: View {
-    @StateObject var journalViewModel = JournalViewModel()
+    @ObservedObject var journalViewModel = JournalViewModel()
     @State var isOpeningSettings = false
     @State var isAddingJournal = false
-    @State var isOpeningDetail = false
-    @ObservedObject private var calendarModel = CalendarModel()
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                JournalNavBarView(twoColumnsNavBar: false, title: "Skin Journal", subtitle: nil, showButton: .settingsButton) {
-                    self.isOpeningDetail.toggle()
+                JournalNavBarView(twoColumnsNavBar: false, title: "Jurnal", subtitle: nil, showButton: .settingsButton) {
+                    self.isOpeningSettings.toggle()
                     print("\(self.isOpeningSettings)")
                 }
                 .aspectRatio(contentMode: .fit)
+                .sheet(isPresented: $isOpeningSettings) {
+                    // onDismiss
+                } content: {
+                    SettingsView(profileImage: UDHelper.sharedUD.getPFP(), profileName: UDHelper.sharedUD.getName())
+                }
                 
                 ScrollView {
                     ZStack {
@@ -59,31 +62,49 @@ struct MySkinView: View {
                                 .frame(width: UIScreen.main.bounds.width, height: reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 10 : 10)
                         }
                         .frame(height: 10)
-                        
+                        /*
+                         Buat nanti kalo mau refactoring view
+                        List {
+                            Section {
+                                // Content
+                            } header: {
+                                Text("Dajjal")
+                            }
+                        }
+                         */
                         LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
                             WeatherView()
                                 .frame(width: UIScreen.main.bounds.width)
                             Section {
-                                if journalViewModel.journals.isEmpty {
+                                if journalViewModel.filteredJournal.isEmpty {
                                     ZStack {
                                         Color(uiColor: .systemGray5)
                                             .cornerRadius(15)
-                                        Text("No skin history at the moment")
+                                        Text("Belum ada jurnal saat ini. Tambahkan jurnal Anda dengan menekan tombol \"+ Tambahkan Jurnal\"di atas.")
                                             .foregroundColor(.gray)
                                             .padding()
                                     }
                                     .padding(.horizontal)
                                 } else {
-                                    ForEach(Array(journalViewModel.journals.enumerated()), id: \.0) {
-                                        JournalRowView(journal: $1)
-                                            .padding(.horizontal)
-                                            .padding(.vertical, 14)
-                                            .onTapGesture {
-                                                isOpeningDetail.toggle()
+                                    ForEach($journalViewModel.filteredJournal, id: \.self) { journal in
+                                        NavigationLink {
+                                            JournalDetailView(journal: journal.wrappedValue)
+                                        } label: {
+                                            JournalRowView(journal: journal.wrappedValue)
+                                                .padding(.horizontal)
+                                                .padding(.vertical, 14)
+                                                .background(Color.white)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                print("Delete \(journal.wrappedValue)")
+                                            } label: {
+                                                Image(systemName: "trash")
+                                                Text("Hapus Jurnal")
                                             }
-                                            .background(Color.white)
-                                        NavigationLink(destination: JournalDetailView(journal: $1), isActive: $isOpeningDetail) {
-                                        }.opacity(0)
+
+                                        }
                                     }
                                 }
                             } header: {
@@ -92,16 +113,16 @@ struct MySkinView: View {
                                         .ignoresSafeArea(.all, edges: .top)
                                         .cornerRadius(radius: 30, corners: .topLeft)
                                         .cornerRadius(radius: 30, corners: .topRight)
-                                    CalendarHeader(selectedDate: $calendarModel.selectedDate, currentPage: $calendarModel.currentPage)
+                                    CalendarHeader(selectedDate: $journalViewModel.selectedDate, currentPage: $journalViewModel.currentPage)
                                     
                                     VStack(alignment: .leading, spacing: 20) {
                                         Button {
                                             isAddingJournal = true
                                         } label: {
                                             Image(systemName: "plus")
-                                            Text("Add Journal")
+                                            Text("Tambahkan Jurnal")
                                         }.buttonStyle(ExzoButtonStyle(type: .primary))
-                                        Text("Skin History")
+                                        Text("Riwayat Pengisian Jurnal")
                                             .font(Lexend(.headline).getFont().bold())
                                     }
                                     .padding()
@@ -109,13 +130,19 @@ struct MySkinView: View {
                             }
                             Divider()
                         }
-                        .sheet(isPresented: $isAddingJournal) {
-                            AddJournalView()
+                        .sheet(
+                            isPresented: $isAddingJournal
+                        ) {
+                            SkinConditionJournalView(
+                                jourVM: JournalInputViewModel(
+                                    ProfileCategory(
+                                        rawValue: UDHelper.sharedUD.defaults.string(forKey: UDKey.userType.rawValue) ?? "userProf"
+                                    ) ?? .adult,
+                                    mode: .create
+                                )
+                            ).environment(\.modalMode, $isAddingJournal)
                         }
                     }
-                }
-                .sheet(isPresented: $isAddingJournal) {
-                    AddJournalView()
                 }
             }
             .navigationBarHidden(true)

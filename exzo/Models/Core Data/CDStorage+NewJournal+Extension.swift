@@ -21,6 +21,7 @@ extension CDStorage {
         exposure: [IEAData],
         products: [ListProduct],
         stressLevel: Int,
+        tisScorad: Double,
         completion: @escaping () -> Void
     ) {
         let newJournal = NewJournal(context: context)
@@ -34,6 +35,9 @@ extension CDStorage {
         newJournal.swellingScore = Double(swellingScore)
         newJournal.scratchPart = scratchPart as NSObject
         newJournal.scratchScore = Double(scratchScore)
+        
+        // Score akhir
+        newJournal.tisScorad = tisScorad
         
         // Food Intake dan Exposure yang dimasukkin
         let intks = IEADatas(ieaDatas: foodIntakes)
@@ -60,6 +64,59 @@ extension CDStorage {
             newJournal.id == id
         }[0]
         return newJournal
+    }
+    
+    func updateNewJournal(
+        id: UUID,
+        rednessPart: [String],
+        rednessScore: Int,
+        swellingPart: [String],
+        swellingScore: Int,
+        scratchPart: [String],
+        scratchScore: Int,
+        foodIntakes: [IEAData],
+        exposure: [IEAData],
+        products: [ListProduct],
+        stressLevel: Int,
+        tisScorad: Double,
+        completion: @escaping () -> Void
+    ) {
+        let toBeUpdated = self.newJournalItems.value.filter { tbu in
+            tbu.id == id
+        }[0]
+        
+        // 3 bagian penting pada scoring TIS
+        toBeUpdated.rednessPart = rednessPart as NSObject
+        toBeUpdated.rednessScore = Double(rednessScore)
+        toBeUpdated.swellingPart = swellingPart as NSObject
+        toBeUpdated.swellingScore = Double(swellingScore)
+        toBeUpdated.scratchPart = scratchPart as NSObject
+        toBeUpdated.scratchScore = Double(scratchScore)
+        
+        // Score akhir
+        toBeUpdated.tisScorad = tisScorad
+        
+        // Food Intake dan Exposure yang dimasukkin
+        let intks = IEADatas(ieaDatas: foodIntakes)
+        let expsrs = IEADatas(ieaDatas: exposure)
+        toBeUpdated.foodIntakes = intks
+        toBeUpdated.exposures = expsrs
+        
+        // Product Item (pake NSObject instead of just uuid krn kalo di delete kecenderungan untuk error nya tinggi)
+        let prods = ListProducts(prods: products)
+        toBeUpdated.productIDs = prods
+        
+        // Stress Level
+        toBeUpdated.stressLevel = Double(stressLevel)
+        
+        save()
+        completion()
+    }
+    
+    func deleteNewJournal(id: UUID, completion: () -> Void) {
+        context.delete(newJournalItems.value.filter{ newJournal in
+            newJournal.id == id
+        }[0])
     }
 }
 
