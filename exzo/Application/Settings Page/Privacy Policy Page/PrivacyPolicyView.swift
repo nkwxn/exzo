@@ -9,10 +9,9 @@ import SwiftUI
 
 struct PrivacyPolicyView: View {
     var body: some View {
-//        ScrollView{
-//            Text("PRIVACY POLICY")
-//        }
-        NotificationListView()
+        ScrollView {
+            Text("PRIVACY POLICY")
+        }
     }
 }
 
