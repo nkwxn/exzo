@@ -1004,6 +1004,7 @@
 		D5ADFE8827463B820099E7FC /* Insights */ = {
 			isa = PBXGroup;
 			children = (
+				E2D9FC3227953C850088AC7D /* Chart */,
 				D5ADFE9127465F080099E7FC /* Detail */,
 				D5ADFE8A27463C510099E7FC /* Reusables */,
 				D5ADFE8927463C480099E7FC /* Main Page */,
@@ -1084,6 +1085,13 @@
 				E29FCB2A272FA28400721FFD /* UDHelper.swift */,
 			);
 			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		E2D9FC3227953C850088AC7D /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		E2EF691A273A2A6C00B2E321 /* Food Exposure Activities Page */ = {
@@ -1234,7 +1242,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					D5163E342727FF9600DF09D0 = {
 						CreatedOnToolsVersion = 13.1;
@@ -1443,7 +1451,6 @@
 				BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */,
 				E2EF69172738E9BD00B2E321 /* NavBarButton.swift in Sources */,
 				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
-				D5163E8427280E3000DF09D0 /* WaitAlert.swift in Sources */,
 				D58422C3274B590200F495E3 /* ProfileCategory.swift in Sources */,
 				E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
@@ -1465,7 +1472,6 @@
 				E2EF69132738B01200B2E321 /* CustomNavLink.swift in Sources */,
 				E2FBDE81274C973000EB01C0 /* ReminderRowView.swift in Sources */,
 				D58422C0274B51EB00F495E3 /* ChildAdultView.swift in Sources */,
-				D5494AE3272FFB6200DA1CF7 /* LoginViewModel.swift in Sources */,
 				E2F99DFD2734DAE9004C2456 /* CustomNavBarContainerView.swift in Sources */,
 				E2F52CA02750D18700F64AA8 /* AddReminderPage.swift in Sources */,
 				D5325FBB272B9C37007FAFED /* CloudKitHelper.swift in Sources */,
@@ -1524,7 +1530,6 @@
 				D5ADFE9327465F1B0099E7FC /* InsightsDetailView.swift in Sources */,
 				D51CFC892733C78B00DE63CC /* AddJournalViewModel.swift in Sources */,
 				E20CCBD8274CD9F90099CAFD /* LanguagePageView.swift in Sources */,
-				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
 				D5266D62274E014D00C2DE4A /* JournalConcernView.swift in Sources */,
 				BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */,
 				5DF4ADED27338D2B00F51423 /* Exposure enum.swift in Sources */,
@@ -1534,8 +1539,6 @@
 				5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */,
 				D542BD21273BA4FB008BB68A /* TriggerAreas.swift in Sources */,
 				D5ADFE8C27463C620099E7FC /* RoundedSquareContainer.swift in Sources */,
-				5D23EE8F272FA78400541E7A /* ProductViewModel.swift in Sources */,
-				D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */,
 				5DD92CE42734D9CB00F4C319 /* JournalDetailView.swift in Sources */,
 				E20CCBDA274CDA0D0099CAFD /* RateView.swift in Sources */,
 				BF36A949273DEC1800943F94 /* ScanningIngredientView.swift in Sources */,
