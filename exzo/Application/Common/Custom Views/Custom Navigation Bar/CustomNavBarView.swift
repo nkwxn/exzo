@@ -73,6 +73,19 @@ struct CustomNavBarView: View {
         )
     }
     
+    private var settingsButton: some View {
+        Button(action: {
+            action()
+        }, label: {
+            Image(systemName: "gearshape")
+                .foregroundColor(Color.brandy)
+        }).background(
+            Circle()
+                .fill(Color.antique)
+                .frame(width: 29, height: 29)
+        )
+    }
+    
     var body: some View {
         HStack {
             if twoColumnsNavBar {
@@ -87,6 +100,8 @@ struct CustomNavBarView: View {
                 addButton
             } else if showButton == NavBarButton.editButton {
                 editButton
+            } else {
+                settingsButton
             }
         }
         .padding()

@@ -33,6 +33,7 @@
 		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
 		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
 		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
+		BF2F27D1278C100300F28132 /* AnalisisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F27D0278C100300F28132 /* AnalisisView.swift */; };
 		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
 		BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */; };
 		BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */; };
@@ -192,6 +193,7 @@
 		5DF4ADF6273395C600F51423 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		BF2F27D0278C100300F28132 /* AnalisisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalisisView.swift; sourceTree = "<group>"; };
 		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
 		BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontBodyView.swift; sourceTree = "<group>"; };
 		BF2F5D3B273A30EE0059FB23 /* BackBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBodyView.swift; sourceTree = "<group>"; };
@@ -1017,6 +1019,7 @@
 			children = (
 				D5ADFE8D274640210099E7FC /* InsightsView.swift */,
 				D5ADFE8F2746493A0099E7FC /* InsightsViewModel.swift */,
+				BF2F27D0278C100300F28132 /* AnalisisView.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -1488,6 +1491,7 @@
 				5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */,
 				5DE09035273950C600B2882B /* WeatherViewModel.swift in Sources */,
 				D542BD1E273A5CFA008BB68A /* HapticFeedbackHelper.swift in Sources */,
+				BF2F27D1278C100300F28132 /* AnalisisView.swift in Sources */,
 				5DF4ADEF27338E2D00F51423 /* Activities.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
 				D58AF75427310E3000E67214 /* ExzoButtonStyle.swift in Sources */,
