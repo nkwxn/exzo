@@ -1006,7 +1006,6 @@
 		D5ADFE8827463B820099E7FC /* Insights */ = {
 			isa = PBXGroup;
 			children = (
-				E2D9FC3227953C850088AC7D /* Chart */,
 				D5ADFE9127465F080099E7FC /* Detail */,
 				D5ADFE8A27463C510099E7FC /* Reusables */,
 				D5ADFE8927463C480099E7FC /* Main Page */,
@@ -1088,13 +1087,6 @@
 				E29FCB2A272FA28400721FFD /* UDHelper.swift */,
 			);
 			path = UserDefault;
-			sourceTree = "<group>";
-		};
-		E2D9FC3227953C850088AC7D /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chart;
 			sourceTree = "<group>";
 		};
 		E2EF691A273A2A6C00B2E321 /* Food Exposure Activities Page */ = {
