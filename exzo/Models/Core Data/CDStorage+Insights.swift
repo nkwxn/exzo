@@ -218,11 +218,11 @@ extension CDStorage {
     func getMonthlyStressLevelCount() -> [String: Int] {
         let filteredJournal = getJournalsForInsight()
         let stressLevelGraphData = [
-            "😁": countMonthlyStressLevel(for: filteredJournal, stressLevel: 0), // 0
-            "🙂": countMonthlyStressLevel(for: filteredJournal, stressLevel: 1), // 1
-            "😐": countMonthlyStressLevel(for: filteredJournal, stressLevel: 2), // 2
-            "😢": countMonthlyStressLevel(for: filteredJournal, stressLevel: 3), // 3
-            "😭": countMonthlyStressLevel(for: filteredJournal, stressLevel: 4) // 4
+            "0": countMonthlyStressLevel(for: filteredJournal, stressLevel: 0), // 0
+            "1": countMonthlyStressLevel(for: filteredJournal, stressLevel: 1), // 1
+            "2": countMonthlyStressLevel(for: filteredJournal, stressLevel: 2), // 2
+            "3": countMonthlyStressLevel(for: filteredJournal, stressLevel: 3), // 3
+            "4": countMonthlyStressLevel(for: filteredJournal, stressLevel: 4) // 4
         ]
         return stressLevelGraphData
     }

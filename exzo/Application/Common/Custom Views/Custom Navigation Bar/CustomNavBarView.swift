@@ -13,7 +13,7 @@ struct CustomNavBarView: View {
 
     let title: String
     let subtitle: String?
-    let showButton: NavBarButton
+    let showButton: NavBarButton?
     var action: () -> Void
 
     private var backButton: some View {
@@ -100,7 +100,7 @@ struct CustomNavBarView: View {
                 addButton
             } else if showButton == NavBarButton.editButton {
                 editButton
-            } else {
+            } else if showButton == NavBarButton.settingsButton {
                 settingsButton
             }
         }
