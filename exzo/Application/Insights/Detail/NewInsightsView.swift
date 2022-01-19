@@ -15,6 +15,8 @@ struct NewInsightsView: View {
         NavigationView {
             VStack(spacing: 0) {
                 CustomNavBarView(twoColumnsNavBar: false, title: "Analisis", subtitle: nil, showButton: nil, action: {})
+                
+                // TODO: Buat validasi dari function viewModel.isWeeklyJournalAvailable()
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack {
                         VStack(spacing: 15) {

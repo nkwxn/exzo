@@ -79,7 +79,7 @@ struct AddProduct: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Section(header: Text("Type of Product")) {
+                        Section(header: Text("Tipe Produk")) {
                             Picker("", selection: $selectedType) {
                                 ForEach(productType) { typeOfProduct in
                                     Text(typeOfProduct.productType.getLocalizedName())

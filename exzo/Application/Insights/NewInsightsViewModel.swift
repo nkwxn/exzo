@@ -12,6 +12,9 @@ class NewInsightsViewModel: ObservableObject {
     // Data grafik atas
     @Published var lineChartData = [ChartDataEntry]()
     
+    // Data dari Core Data untuk validasi view
+    @Published var weeklyJournalData = CDStorage.shared.getSplittedJournalForInsight()
+    
     // Slider
     var fokus = ["Asupan Makanan", "Paparan", "Produk", "Stress"]
     let udArr = UDHelper.sharedUD.getConcern()
@@ -29,6 +32,15 @@ class NewInsightsViewModel: ObservableObject {
     init() {
         self.getWeeklySkinCondition()
         self.getInsightData()
+    }
+    
+    // MARK: - Validate each week's journal input
+    public func isWeeklyJournalAvailable() -> Bool {
+        let firstWeekNotEmpty = !weeklyJournalData.0.isEmpty
+        let secondWeekNotEmpty = !weeklyJournalData.1.isEmpty
+        let thirdWeekNotEmpty = !weeklyJournalData.2.isEmpty
+        let fourthWeekNotEmpty = !weeklyJournalData.3.isEmpty
+        return firstWeekNotEmpty && secondWeekNotEmpty && thirdWeekNotEmpty && fourthWeekNotEmpty
     }
     
     // MARK: - Get line chart for top part
@@ -72,7 +84,9 @@ class NewInsightsViewModel: ObservableObject {
                     partialResult["\(arr1.key)"] = arr1.value
                 }
             }
-            value = dropDownList[0]
+            if !dropDownList.isEmpty {
+                value = dropDownList[0]
+            }
         }
         
         // Make the data
