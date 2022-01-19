@@ -99,7 +99,6 @@ struct NewInsightsView: View {
                                 .padding()
                                 .onChange(of: viewModel.value) { newValue in
                                     print("Should show bar chart for \(newValue)")
-                                    viewModel.getWeeklySkinCondition()
                                     viewModel.showDataOnBarChart()
                                 }
                             }
@@ -128,6 +127,10 @@ struct NewInsightsView: View {
                 }
             }
             .navigationBarHidden(true)
+            .onAppear {
+                viewModel.getWeeklySkinCondition()
+                viewModel.showDataOnBarChart()
+            }
         }
     }
     

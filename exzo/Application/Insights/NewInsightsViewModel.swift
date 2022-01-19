@@ -45,11 +45,14 @@ class NewInsightsViewModel: ObservableObject {
     
     // MARK: - Get line chart for top part
     public func getWeeklySkinCondition() {
+        self.lineChartData.removeAll()
         let skinCondition = CDStorage.shared.getWeeklyAverageSkinCondition()
         self.lineChartData = skinCondition
-            .map { transforming -> ChartDataEntry in
-            ChartDataEntry(x: Double(transforming.key), y: transforming.value)
-        }
+            .sorted { leftVal, rightVal in
+                leftVal.key < rightVal.key
+            }.map { transforming -> ChartDataEntry in
+                ChartDataEntry(x: Double(transforming.key), y: transforming.value)
+            }
     }
     
     // MARK: - Get the Insight Data for a particular part
@@ -95,9 +98,14 @@ class NewInsightsViewModel: ObservableObject {
     
     
     func showDataOnBarChart() {
+        self.barChartData.removeAll()
         guard let mappedData = self.chartData[value] else { return }
-        self.barChartData = mappedData.map({ oldValue -> BarChartDataEntry in
-            BarChartDataEntry(x: Double(oldValue.key)!, y: Double(oldValue.value))
-        })
+        self.barChartData = mappedData
+            .sorted { leftData, rightData in
+                Int(leftData.key) ?? 0 < Int(rightData.key) ?? 0
+            }
+            .map({ oldValue -> BarChartDataEntry in
+                BarChartDataEntry(x: Double(oldValue.key)!, y: Double(oldValue.value))
+            })
     }
 }
