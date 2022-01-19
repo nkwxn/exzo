@@ -8,21 +8,28 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    var profileImage: String
-    var profileName: String
+    @Binding var profileImage: String
+    @Binding var profileName: String
+    @Binding var profileAge: String
     
     var body: some View {
         VStack {
             HStack {
-               Image(profileImage)
+               Image("L0 - \(profileImage)")
                     .resizable()
                     .frame(width: 104, height: 104)
                     .clipShape(Circle())
-                Text(profileName)
-                    .font(Lexend(.title2).getFont())
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .padding()
+                VStack(alignment: .leading) {
+                    Text(profileName)
+                        .font(Lexend(.title2).getFont())
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                    Text("\(profileAge) tahun")
+                        .font(Lexend.shared.getFont())
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                }
+                .padding()
                 Spacer()
             }
             .padding()
@@ -36,6 +43,6 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(profileImage: "pp_004", profileName: "Regina George")
+        ProfileHeaderView(profileImage: .constant("pp_004"), profileName: .constant("Regina George"), profileAge: .constant("21"))
     }
 }

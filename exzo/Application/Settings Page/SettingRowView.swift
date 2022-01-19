@@ -12,15 +12,16 @@ struct SettingRowView: View {
     let settingTitle: String
     var showChevron: Bool = false
     var body: some View {
-        HStack {
-            Image(systemName: settingIcon)
-            Text(settingTitle)
-            Spacer()
-            if showChevron {
-                Image(systemName: "chevron.right")
-
-            }
-        }
-        .foregroundColor(.black)
+        Image(systemName: settingIcon)
+        Text(settingTitle)
+//        HStack {
+//            Image(systemName: settingIcon)
+//            Text(settingTitle)
+//            Spacer()
+//            if showChevron {
+//                Image(systemName: "chevron.right")
+//            }
+//        }
+//        .foregroundColor(.black)
     }
 }
