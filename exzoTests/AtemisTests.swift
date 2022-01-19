@@ -6,7 +6,7 @@
 //
 
 import XCTest
-//@testable import exzo
+@testable import exzo
 
 class AtemisTests: XCTestCase {
 
@@ -23,6 +23,11 @@ class AtemisTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testCreateJournalAndFilterToInsight() throws {
+        let arr = CDStorage.shared.getJournalsForInsights()
+        XCTAssert(arr.isEmpty, "Count: \(arr.count)")
+    }
+    
     func testCreateNewJournalTest() throws {
         CDStorage.shared.createNewJournal(
             rednessPart: ["arm", "elbow"],
@@ -34,7 +39,7 @@ class AtemisTests: XCTestCase {
             foodIntakes: [IEAData(name: "Food", thumb: "Icon002")],
             exposure: [IEAData(name: "Sun", thumb: "Icon006")],
             products: [ListProduct(productCat: "Moisturizer", productName: "Cetapil")],
-            stressLevel: 2
+            stressLevel: 2, tisScorad: 12.0
         ) {
             // completion handler
         }

@@ -11,7 +11,7 @@ import UserNotifications
 final class NotificationManager: ObservableObject {
     @Published private(set) var notifications: [UNNotificationRequest] = []
     @Published private(set) var authorizationStatus: UNAuthorizationStatus?
-    func relogAuthorizationStatus() {
+    func reloadAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {
                 self.authorizationStatus = settings.authorizationStatus
@@ -28,11 +28,32 @@ final class NotificationManager: ObservableObject {
     }
     
     func reloadLocalNotifications() {
-        
         UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
             DispatchQueue.main.async {
                 self.notifications = notifications
             }
         }
+    }
+    
+    func createLocalNotification(hour: Int, minute: Int, completion: @escaping (Error?) -> Void) {
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.sound = .default
+        notificationContent.title = "Hey it's time to use your moisturizer!"
+        notificationContent.subtitle = "CEPET PAKE NTAR KAMBUH LOH!"
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: completion)
+        print("NAMBAH NOTIF")
+    }
+    
+    func deleteLocalNotifications(identifiers: [String]) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }

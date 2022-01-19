@@ -103,7 +103,7 @@ class AddJournalViewModel: ObservableObject {
             self.intakeSelect = items.filter { item in
                 item.selected
             }.map { item -> IEAData in
-                IEAData(name: item.name, thumb: item.iconName)
+                IEAData(id: item.id, name: item.name, thumb: item.iconName)
             }
             self.toggleDoneBtnDisabled()
         }
@@ -112,7 +112,7 @@ class AddJournalViewModel: ObservableObject {
             self.exposureSelect = items.filter { item in
                 item.selected
             }.map { item -> IEAData in
-                IEAData(name: item.name, thumb: item.iconName)
+                IEAData(id: item.id, name: item.name, thumb: item.iconName)
             }
             self.toggleDoneBtnDisabled()
         }
@@ -121,7 +121,7 @@ class AddJournalViewModel: ObservableObject {
             self.activitySelect = items.filter { item in
                 item.selected
             }.map { item -> IEAData in
-                IEAData(name: item.name, thumb: item.iconName)
+                IEAData(id: item.id, name: item.name, thumb: item.iconName)
             }
             self.toggleDoneBtnDisabled()
         }

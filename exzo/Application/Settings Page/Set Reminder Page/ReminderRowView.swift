@@ -18,9 +18,6 @@ struct ReminderRowView: View {
                         .font(Lexend(.largeTitle).getFont())
                         .fontWeight(.light)
                 }
-                .onChange(of: reminder.isOn, perform: { newValue in
-                    print(newValue)
-                })
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
             }
             .padding()

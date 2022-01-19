@@ -15,14 +15,14 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    //FIXME:  //kayanya mesti bikin asset buat empty state? idk lol haha
+    // FIXME:  //kayanya mesti bikin asset buat empty state? idk lol haha
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
     @State private var recognizedText: [String] = []
     
-    //Vision state
+    // Vision state
     @State var isScan: Bool = false
     @State private var showingScanningView = false
     
@@ -79,7 +79,7 @@ struct AddProduct: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Section(header: Text("Type of Product")) {
+                        Section(header: Text("Tipe Produk")) {
                             Picker("", selection: $selectedType) {
                                 ForEach(productType) { typeOfProduct in
                                     Text(typeOfProduct.productType.getLocalizedName())
@@ -137,19 +137,19 @@ struct AddProduct: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle(Text("Add Product"))
+            .navigationTitle(Text("Tambahkan Product"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Cancel")
+                        Text("Batalkan")
                     })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: addProductAction) {
-                        Text("Done").bold()
+                        Text("Selesai").bold()
                     }
                 }
             }
