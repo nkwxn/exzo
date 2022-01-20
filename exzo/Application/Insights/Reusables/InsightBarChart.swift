@@ -10,6 +10,7 @@ import Charts
 
 struct InsightBarChart: UIViewRepresentable {
     @Binding var barChartData: [BarChartDataEntry]
+    @Binding var xFormat: BarChartFormatter
     var barView = BarChartView()
     
     func makeUIView(context: Context) -> BarChartView {
@@ -25,11 +26,16 @@ struct InsightBarChart: UIViewRepresentable {
         barChartData.barWidth = 0.3
         barChart.data = barChartData
         barChart.legend.enabled = false
-//        barChart.isUserInteractionEnabled = false
         
+        // Axis formatting
         formatXAXis(xAxis: barChart.xAxis)
         formatLeftAxis(leftAxis: barChart.leftAxis)
         formatRightAxis(rightAxis: barChart.rightAxis)
+        
+        // TODO: X Axis label dibuat disini
+        // X Axis Labels
+        barChart.xAxis.valueFormatter = xFormat
+        
         barChart.notifyDataSetChanged()
     }
     

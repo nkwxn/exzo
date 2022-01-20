@@ -27,6 +27,7 @@ class NewInsightsViewModel: ObservableObject {
     // Data buat grafik bawah
     var chartData = [String: [String: Int]]() // [Nama: minggu / emoji: Jumlah]
     @Published var barChartData = [BarChartDataEntry]()
+    @Published var xAxisValues = BarChartFormatter(mode: .number)
     
     // MARK: - Initializer buat dapetin data Insight
     init() {
@@ -80,6 +81,7 @@ class NewInsightsViewModel: ObservableObject {
             dropDownList.append("Tingkat Stres")
             value = dropDownList[0]
             self.chartData[value] = stressLevelData
+            self.xAxisValues = BarChartFormatter(mode: .emoji)
         } else {
             for datum in insightData {
                 dropDownList.append(datum.key)
@@ -90,6 +92,7 @@ class NewInsightsViewModel: ObservableObject {
             if !dropDownList.isEmpty {
                 value = dropDownList[0]
             }
+            self.xAxisValues = BarChartFormatter(mode: .number)
         }
         
         // Make the data

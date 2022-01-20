@@ -110,7 +110,7 @@ struct NewInsightsView: View {
                                             .scaledFont(name: "Avenir", size: 11)
                                             .rotationEffect(Angle(degrees: 0))
                                             .frame(width: 8)
-                                        InsightBarChart(barChartData: $viewModel.barChartData)
+                                        InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
                                             .frame(width: nil, height: 300)
                                             .padding(.vertical)
                                     }
