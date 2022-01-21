@@ -9,22 +9,14 @@ import SwiftUI
 import Charts
 
 struct NewInsightsView: View {
-    var fokus = ["Asupan Makanan", "Paparan", "Produk", "Stress"]
-    @State var value = ""
-    var dropDownList = ["Dairy", "Kacang", "Ikan", "Bebek", "Grain", "Gluten", "Kacang Tanah"]
-    @State var indexFocus = 0
-    @State var isSettingPresented = false
+    @StateObject var viewModel = NewInsightsViewModel()
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                CustomNavBarView(twoColumnsNavBar: false, title: "Insights", subtitle: nil, showButton: .settingsButton) {
-                    // Action untuk buka settings
-                    self.isSettingPresented.toggle()
-                }
-                .padding(.top, 50)
-                NavigationLink(destination: SettingsView(profileImage: UDHelper.sharedUD.getPFP(), profileName: UDHelper.sharedUD.getName()), isActive: $isSettingPresented) {
-                    EmptyView()
-                }
+                CustomNavBarView(twoColumnsNavBar: false, title: "Analisis", subtitle: nil, showButton: nil, action: {})
+                
+                // TODO: Buat validasi dari function viewModel.isWeeklyJournalAvailable()
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack {
                         VStack(spacing: 15) {
@@ -36,13 +28,13 @@ struct NewInsightsView: View {
                             .padding(.horizontal)
                             .padding(.top)
                             RoundedSquareContainer(autoPadding: true) {
-                                VStack{
-                                    HStack{
+                                VStack {
+                                    HStack {
                                         Text("Tingkat\n Keparahan")
                                             .scaledFont(name: "Avenir", size: 11)
                                             .rotationEffect(Angle(degrees: 0))
                                             .frame(width: 8)
-                                        InsightLineGraph(lineGraphData: .constant(StaticRawData.lineGraphView))
+                                        InsightLineGraph(lineGraphData: $viewModel.lineChartData)
                                             .frame(width: nil, height: 300)
                                             .padding(.vertical)
                                     }
@@ -55,75 +47,79 @@ struct NewInsightsView: View {
                             HStack {
                                 Button() {
                                     print("left button pressed")
-                                    if indexFocus > 0 {
-                                        self.indexFocus -= 1
+                                    if viewModel.indexFocus > 0 {
+                                        self.viewModel.indexFocus -= 1
                                     }
+                                    viewModel.getInsightData()
                                 } label: {
                                     Image(systemName: "chevron.left")
                                 }
-                                .disabled(indexFocus == 0 ? true : false)
+                                .disabled(viewModel.indexFocus == 0 ? true : false)
                                 Spacer()
-                                if (indexFocus >= 0 && indexFocus < fokus.count) {
-                                    Text("\(fokus[indexFocus])")
+                                if (viewModel.indexFocus >= 0 && viewModel.indexFocus < viewModel.fokus.count) {
+                                    Text("\(viewModel.fokus[viewModel.indexFocus])")
                                         .font(Avenir(.title3).getFont().bold())
                                 }
                                 Spacer()
                                 Button() {
                                     print("right button pressed")
-                                    if indexFocus <= fokus.count {
-                                        self.indexFocus += 1
+                                    if viewModel.indexFocus <= viewModel.fokus.count {
+                                        self.viewModel.indexFocus += 1
                                     }
+                                    viewModel.getInsightData()
                                 } label: {
                                     Image(systemName: "chevron.right")
                                 }
-                                .disabled(indexFocus >= fokus.count ? true : false)
+                                .disabled(viewModel.indexFocus == viewModel.fokus.count - 1)
                                 
                             }
                             .padding()
                             
-                            RoundedSquareContainer(autoPadding: true) {
-                                Menu {
-                                    ForEach(dropDownList, id: \.self){ client in
-                                        Button(client) {
-                                            self.value = client
+                            if viewModel.indexFocus != 3 {
+                                RoundedSquareContainer(autoPadding: true) {
+                                    Menu {
+                                        ForEach(viewModel.dropDownList, id: \.self) { client in
+                                            Button(client) {
+                                                self.viewModel.value = client
+                                            }
                                         }
-                                    }
-                                } label: {
-                                    VStack(spacing: 5){
-                                        HStack{
-                                            Text(value.isEmpty ? "Faktor" : value)
-                                                .foregroundColor(value.isEmpty ? .gray : .black)
+                                    } label: {
+                                        HStack {
+                                            Text(viewModel.value.isEmpty ? "Faktor" : viewModel.value)
+                                                .foregroundColor(viewModel.value.isEmpty ? .gray : .black)
                                             Spacer()
                                             Image(systemName: "chevron.down")
                                                 .foregroundColor(Color.orange)
                                                 .font(Font.system(size: 20, weight: .bold))
                                         }
                                         .padding(.horizontal)
-                                        Rectangle()
-                                            .fill(Color.orange)
-                                            .frame(height: 2)
                                     }
                                 }
+                                .frame(width: 300, height: 20)
+                                .padding()
+                                .onChange(of: viewModel.value) { newValue in
+                                    print("Should show bar chart for \(newValue)")
+                                    viewModel.getWeeklySkinCondition()
+                                    viewModel.showDataOnBarChart()
+                                }
                             }
-                            .frame(width: 300, height: 20)
-                            .padding()
                             
                             RoundedSquareContainer(autoPadding: true) {
-                                VStack{
-                                    HStack{
+                                VStack {
+                                    HStack {
                                         Text("Jumlah")
                                             .scaledFont(name: "Avenir", size: 11)
                                             .rotationEffect(Angle(degrees: 0))
                                             .frame(width: 8)
-                                        InsightBarChart(barChartData:  .constant(StaticRawData.barChartView))
+                                        InsightBarChart(barChartData: $viewModel.barChartData)
                                             .frame(width: nil, height: 300)
                                             .padding(.vertical)
                                     }
-                                    HStack{
+                                    HStack {
                                         Circle()
                                             .frame(width: 15, height: 15)
                                             .foregroundColor(.accentColor)
-                                        Text("Produk Susu")
+                                        Text(viewModel.value)
                                     }
                                 }
                             }
@@ -131,10 +127,8 @@ struct NewInsightsView: View {
                     }
                 }
             }
-            .edgesIgnoringSafeArea(.all)
-            
+            .navigationBarHidden(true)
         }
-        
     }
     
     // TODO: DELETE THIS AFTER INTEGRATION WITH CORE DATA QUERY
@@ -143,14 +137,14 @@ struct NewInsightsView: View {
             ChartDataEntry(x: 1, y: 5),
             ChartDataEntry(x: 2, y: 3),
             ChartDataEntry(x: 3, y: 4),
-            ChartDataEntry(x: 4, y: 6),
+            ChartDataEntry(x: 4, y: 6)
         ]
         
         static var barChartView = [
             BarChartDataEntry(x: 1, y: 19),
             BarChartDataEntry(x: 2, y: 26),
             BarChartDataEntry(x: 3, y: 15),
-            BarChartDataEntry(x: 4, y: 17),
+            BarChartDataEntry(x: 4, y: 17)
         ]
     }
 }

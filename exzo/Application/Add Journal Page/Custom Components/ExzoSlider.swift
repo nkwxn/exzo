@@ -21,7 +21,7 @@ struct ExzoSlider: View {
     var title: String? = nil
     @Binding var value: Double {
         didSet {
-            HFHelper.selectionChanged()
+            HFHelper.success()
         }
     }
     var range: ClosedRange<Double>
@@ -40,6 +40,10 @@ struct ExzoSlider: View {
             } maximumValueLabel: {
                 Text("\(Int(range.upperBound))")
                     .font(Avenir.shared.getFont().bold())
+            } onEditingChanged: { changed in
+                if changed {
+                    HFHelper.selectionChanged()
+                }
             }
             .padding(.horizontal)
             .padding(.vertical, 7)

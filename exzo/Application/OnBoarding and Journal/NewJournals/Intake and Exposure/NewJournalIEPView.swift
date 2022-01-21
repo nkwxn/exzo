@@ -80,7 +80,7 @@ class IEPViewModel: ObservableObject {
                 self.selectedIEA = items.filter { item in
                     item.selected
                 }.map { item -> IEAData in
-                    IEAData(name: item.name, thumb: item.iconName)
+                    IEAData(id: item.id, name: item.name, thumb: item.iconName)
                 }
             }
             
@@ -103,7 +103,7 @@ class IEPViewModel: ObservableObject {
                 self.selectedIEA = items.filter { item in
                     item.selected
                 }.map { item -> IEAData in
-                    IEAData(name: item.name, thumb: item.iconName)
+                    IEAData(id: item.id, name: item.name, thumb: item.iconName)
                 }
             }
             

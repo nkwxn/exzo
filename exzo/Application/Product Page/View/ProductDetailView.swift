@@ -129,10 +129,8 @@ struct DetailProductView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle(Text("Add Product"))
+            .navigationTitle(Text("Detil Produk"))
             .navigationBarTitleDisplayMode(.inline)
         
     }
-    
-   
 }

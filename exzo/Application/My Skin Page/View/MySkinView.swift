@@ -141,6 +141,7 @@ struct MySkinView: View {
                                     mode: .create
                                 )
                             ).environment(\.modalMode, $isAddingJournal)
+                                .interactiveDismissDisabled(true)
                         }
                     }
                 }

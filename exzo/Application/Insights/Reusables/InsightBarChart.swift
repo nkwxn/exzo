@@ -25,6 +25,7 @@ struct InsightBarChart: UIViewRepresentable {
         barChartData.barWidth = 0.3
         barChart.data = barChartData
         barChart.legend.enabled = false
+//        barChart.isUserInteractionEnabled = false
         
         formatXAXis(xAxis: barChart.xAxis)
         formatLeftAxis(leftAxis: barChart.leftAxis)
