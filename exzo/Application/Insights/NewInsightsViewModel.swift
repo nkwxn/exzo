@@ -42,6 +42,7 @@ class NewInsightsViewModel: ObservableObject {
         let thirdWeekNotEmpty = !weeklyJournalData.2.isEmpty
         let fourthWeekNotEmpty = !weeklyJournalData.3.isEmpty
         return firstWeekNotEmpty && secondWeekNotEmpty && thirdWeekNotEmpty && fourthWeekNotEmpty
+//        return true
     }
     
     // MARK: - Get line chart for top part

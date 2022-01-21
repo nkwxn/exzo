@@ -14,14 +14,5 @@ struct SettingRowView: View {
     var body: some View {
         Image(systemName: settingIcon)
         Text(settingTitle)
-//        HStack {
-//            Image(systemName: settingIcon)
-//            Text(settingTitle)
-//            Spacer()
-//            if showChevron {
-//                Image(systemName: "chevron.right")
-//            }
-//        }
-//        .foregroundColor(.black)
     }
 }
