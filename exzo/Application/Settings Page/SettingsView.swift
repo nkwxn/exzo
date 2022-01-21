@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MessageUI
 import Combine
 
 class SettingsViewModel: ObservableObject {
@@ -77,50 +78,42 @@ struct SettingsView: View {
                     }
                     
                     Section(header: Text("PENGINGAT")) {
-                        
                         NavigationLink {
-                            SetReminderView()
-                        } label: {
-                            SettingRowView(settingIcon: "timer", settingTitle: "Atur Pengingat")
+                                SetReminderView()
+                            } label: {
+                                SettingRowView(settingIcon: "timer", settingTitle: "Atur Pengingat")
+                            }
+                        }
+                    
+                        Section(header: Text("LAINNYA")) {
+    //                        Button {
+    //                            isWriteReview.toggle()
+    //                        } label: {
+    //                            SettingRowView(settingIcon: "star", settingTitle: "Nilai Aplikasi Kami", showChevron: true)
+    //                        }
+                            NavigationLink {
+                                FAQView()
+                            } label: {
+                                SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
+                            }
+                            Button {
+                                self.showAlert.toggle()
+                            } label: {
+                                SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
+                            }
                         }
                     }
+                    .cornerRadius(30)
+                    .edgesIgnoringSafeArea(.bottom)
                     
-                    /*
-                     Section(header: Text("BAHASA")) {
-                     NavigationLink {
-                     LanguagePageView()
-                     } label: {
-                     SettingRowView(settingIcon: "globe", settingTitle: "Bahasa")
-                     }
-                     }
-                     */
-                    
-                    /*
-                     Section(header: Text("MASALAH HUKUM")) {
-                     NavigationLink {
-                     PrivacyPolicyView()
-                     } label: {
-                     SettingRowView(settingIcon: "lock", settingTitle: "Kebijakan Privasi")
-                     }
-                     NavigationLink {
-                     
-                     } label: {
-                     SettingRowView(settingIcon: "exclamationmark.triangle", settingTitle: "Syarat dan Ketentuan")
-                     }
-                     }
-                     */
-                    
+                }
+                .listStyle(InsetGroupedListStyle())
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            self.dismiss()
+                    }
                     Section(header: Text("LAINNYA")) {
-                        //                        Button {
-                        //                            isWriteReview.toggle()
-                        //                        } label: {
-                        //                            SettingRowView(settingIcon: "star", settingTitle: "Nilai Aplikasi Kami", showChevron: true)
-                        //                        }
-                        //                        NavigationLink {
-                        //                            SetReminderView()
-                        //                        } label: {
-                        //                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Frequently Asked Questions")
-                        //                        }
                         NavigationLink {
                             
                         } label: {
@@ -128,13 +121,18 @@ struct SettingsView: View {
                         }
                         NavigationLink {
                             
+
                         } label: {
-                            SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
+                            Image(systemName: "xmark.circle.fill")
+                                .symbolRenderingMode(.hierarchical)
                         }
+                        .foregroundColor(Color.white)
                     }
                 }
-                .cornerRadius(30)
-                .edgesIgnoringSafeArea(.bottom)
+    //            .navigationTitle("Pengaturan")
+                .navigationBarTitleDisplayMode(.inline)
+    //            .navigationBarHidden(true)
+               PopUpWindow(show: $showAlert)
             }
             .listStyle(InsetGroupedListStyle())
             .toolbar {
@@ -163,9 +161,6 @@ struct SettingsView: View {
                 print("Scene is in background")
             }
         }
-        //        .sheet(isPresented: $isWriteReview) {
-        //            RateView()
-        //        }
     }
 }
 

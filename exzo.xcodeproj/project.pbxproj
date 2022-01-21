@@ -33,6 +33,7 @@
 		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
 		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
 		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
+		BF0B86F3279A551F006C5A9A /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B86F2279A551F006C5A9A /* FAQView.swift */; };
 		BF2F27D1278C100300F28132 /* AnalisisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F27D0278C100300F28132 /* AnalisisView.swift */; };
 		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
 		BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */; };
@@ -46,6 +47,8 @@
 		BFA3BCF0274C48CD00EFCECB /* ChildFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */; };
 		BFA3BCF2274C48D300EFCECB /* ChildBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */; };
 		BFAB9810274C5E87000AE39F /* DetailJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB980F274C5E87000AE39F /* DetailJournalView.swift */; };
+		BFC9EB3E279A89940094CFBB /* MailCompose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9EB3D279A89940094CFBB /* MailCompose.swift */; };
+		BFC9EB40279A99530094CFBB /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9EB3F279A99530094CFBB /* PopUpWindow.swift */; };
 		BFD2B44F2733809B0011F064 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B44E2733809B0011F064 /* Color.swift */; };
 		BFD2B4512733822B0011F064 /* DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B4502733822B0011F064 /* DynamicFont.swift */; };
 		BFD2B456273382620011F064 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B455273382620011F064 /* OnBoardingView.swift */; };
@@ -196,6 +199,7 @@
 		5DF4ADF6273395C600F51423 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		BF0B86F2279A551F006C5A9A /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		BF2F27D0278C100300F28132 /* AnalisisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalisisView.swift; sourceTree = "<group>"; };
 		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
 		BF2F5D39273A30DA0059FB23 /* FrontBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontBodyView.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 		BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFrontView.swift; sourceTree = "<group>"; };
 		BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildBackView.swift; sourceTree = "<group>"; };
 		BFAB980F274C5E87000AE39F /* DetailJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJournalView.swift; sourceTree = "<group>"; };
+		BFC9EB3D279A89940094CFBB /* MailCompose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCompose.swift; sourceTree = "<group>"; };
+		BFC9EB3F279A99530094CFBB /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
 		BFD2B44E2733809B0011F064 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BFD2B4502733822B0011F064 /* DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFont.swift; sourceTree = "<group>"; };
 		BFD2B455273382620011F064 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -498,6 +504,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BF0B86F1279A5512006C5A9A /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				BF0B86F2279A551F006C5A9A /* FAQView.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
 		BF2F5D38273A30C90059FB23 /* BodyPartsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +548,14 @@
 				BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */,
 			);
 			path = "Child Body Part";
+			sourceTree = "<group>";
+		};
+		BFC9EB3C279A89420094CFBB /* MailCompose */ = {
+			isa = PBXGroup;
+			children = (
+				BFC9EB3D279A89940094CFBB /* MailCompose.swift */,
+			);
+			path = MailCompose;
 			sourceTree = "<group>";
 		};
 		BFD2B452273382310011F064 /* ViewModel */ = {
@@ -1078,12 +1100,15 @@
 		E290561C273D645E00A22CB2 /* Settings Page */ = {
 			isa = PBXGroup;
 			children = (
+				BFC9EB3C279A89420094CFBB /* MailCompose */,
+				BF0B86F1279A5512006C5A9A /* FAQ */,
 				D5B78F002768C45600BBB2B8 /* Set Concerns */,
 				E2FBDE7F274B7A1E00EB01C0 /* Rate Page */,
 				E2FBDE7E274B7A1600EB01C0 /* Privacy Policy Page */,
 				E2FBDE7D274B79DF00EB01C0 /* Language Page */,
 				E2FBDE7A274B700400EB01C0 /* Set Reminder Page */,
 				E290561D273D647900A22CB2 /* SettingsView.swift */,
+				BFC9EB3F279A99530094CFBB /* PopUpWindow.swift */,
 				E290561F273D6DD500A22CB2 /* ProfileHeaderView.swift */,
 				E2905621273D6E8600A22CB2 /* SettingRowView.swift */,
 			);
@@ -1460,11 +1485,13 @@
 				E228CEAB273B74B500FFEDD8 /* FEAListRowView.swift in Sources */,
 				D5494ADE272FB6D600DA1CF7 /* SignUpView.swift in Sources */,
 				D5DEF0BF274E2FD1006415E5 /* JournalInputViewModel.swift in Sources */,
+				BFC9EB40279A99530094CFBB /* PopUpWindow.swift in Sources */,
 				BF2F5D3C273A30EE0059FB23 /* BackBodyView.swift in Sources */,
 				D59B8A622750AB0300BB33FE /* NewJournalIEPView.swift in Sources */,
 				D55092D7274F566B0047A14C /* OnboardingSetTimerView.swift in Sources */,
 				D51CFC9227342F6F00DE63CC /* JournalSectionType.swift in Sources */,
 				D55092DA274FA3D10047A14C /* StressLevelSliderView.swift in Sources */,
+				BF0B86F3279A551F006C5A9A /* FAQView.swift in Sources */,
 				BFD2B45C273382C40011F064 /* DynamicFontV2.swift in Sources */,
 				E2FBDE7C274B703D00EB01C0 /* SetReminderView.swift in Sources */,
 				D5725C25274C959E0071C37A /* CDStorage+NewJournal+Extension.swift in Sources */,
@@ -1501,6 +1528,7 @@
 				D5325FC0272D0AFB007FAFED /* NewUserAccount.swift in Sources */,
 				5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
+				BFC9EB3E279A89940094CFBB /* MailCompose.swift in Sources */,
 				D5E5D3782786B80700D72AC3 /* CDStorage+Insights.swift in Sources */,
 				D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
@@ -1721,7 +1749,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1737,7 +1765,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverz.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1755,7 +1783,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
