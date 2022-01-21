@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+
 enum UDKey: String {
     case loginUserID
     case newUser
@@ -78,13 +80,82 @@ class UDHelper {
         return pfp
     }
     
-    func getName() -> String {
-        let name = defaults.string(forKey: UDKey.userName.rawValue) ?? "Regina George"
-        return name
+    // Reactive Edit Username
+    func createProfile(name: String, age: String, pic: String) {
+        defaults.userName = name
+        defaults.userAge = age
+        defaults.userPFP = pic
+    }
+    
+    // PFP, Name, and Age as a Publisher in Combine
+    func subsName(receiveVal: @escaping ((String) -> Void)) -> AnyCancellable {
+        defaults.publisher(for: \.userName)
+            .eraseToAnyPublisher()
+            .sink(receiveValue: receiveVal)
+    }
+    
+    func subsAge(receiveVal: @escaping ((String) -> Void)) -> AnyCancellable {
+        defaults.publisher(for: \.userAge)
+            .eraseToAnyPublisher()
+            .sink(receiveValue: receiveVal)
+    }
+    
+    func subsPFP(receiveVal: @escaping ((String) -> Void)) -> AnyCancellable {
+        defaults.publisher(for: \.userPFP)
+            .eraseToAnyPublisher()
+            .sink(receiveValue: receiveVal)
+    }
+    
+    func subsConcern(receiveVal: @escaping (([String]) -> Void)) -> AnyCancellable {
+        defaults.publisher(for: \.userConcern)
+            .eraseToAnyPublisher()
+            .sink(receiveValue: receiveVal)
     }
     
     func getConcern() -> [String] {
-        let concerns = defaults.stringArray(forKey: UDKey.userSkinPart.rawValue) ?? [String]()
+        let concerns = defaults.userConcern
         return concerns
+    }
+    
+    func setConcern(_ conc: [String]) {
+        defaults.userConcern = conc
+    }
+}
+
+extension UserDefaults {
+    @objc var userPFP: String {
+        get {
+            return string(forKey: UDKey.profilePicture.rawValue) ?? ""
+        }
+        set {
+            set(newValue, forKey: UDKey.profilePicture.rawValue)
+        }
+    }
+    
+    @objc var userName: String {
+        get {
+            return string(forKey: UDKey.userName.rawValue) ?? ""
+        }
+        set {
+            set(newValue, forKey: UDKey.userName.rawValue)
+        }
+    }
+    
+    @objc var userAge: String {
+        get {
+            return string(forKey: UDKey.childAge.rawValue) ?? ""
+        }
+        set {
+            set(newValue, forKey: UDKey.childAge.rawValue)
+        }
+    }
+    
+    @objc var userConcern: [String] {
+        get {
+            return stringArray(forKey: UDKey.userSkinPart.rawValue) ?? [String]()
+        }
+        set {
+            set(newValue, forKey: UDKey.userSkinPart.rawValue)
+        }
     }
 }

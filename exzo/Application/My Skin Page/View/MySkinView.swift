@@ -49,7 +49,7 @@ struct MySkinView: View {
                 .sheet(isPresented: $isOpeningSettings) {
                     // onDismiss
                 } content: {
-                    SettingsView(profileImage: UDHelper.sharedUD.getPFP(), profileName: UDHelper.sharedUD.getName())
+                    SettingsView()
                 }
                 
                 ScrollView {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum EczemaTriggers: String, CaseIterable {
     case foodIntake = "Asupan makanan"
@@ -42,7 +43,7 @@ enum EczemaTriggers: String, CaseIterable {
 
 struct EczemaTriggersRow: View {
     var trigger: EczemaTriggers
-    @State var chosen = false
+    @State var chosen: Bool
     var action: (EczemaTriggers, Bool) -> Void
     
     var body: some View {
@@ -70,21 +71,52 @@ struct EczemaTriggersRow: View {
     }
 }
 
+class ConcernVM: ObservableObject {
+    @Published var chosenTrigger: [String] = [String]()
+    
+    var subs = Set<AnyCancellable>()
+    
+    init() {
+        UDHelper.sharedUD.subsConcern { triggers in
+            self.chosenTrigger = triggers
+        }.store(in: &subs)
+    }
+}
+
 struct JournalConcernView: View {
     @Environment(\.presentationMode) var isPresented
     
     @ObservedObject var viewModel: JournalInputViewModel
+    @StateObject var concVM: ConcernVM = ConcernVM()
     
     var triggers = EczemaTriggers.allCases
-    @State var chosenTrigger = [String]()
     
     @State var goToNextPage = false
     @State var nextBtnDisabled = true
     
+    var forUpdate: Bool = false
+    
+    init() {
+        viewModel = JournalInputViewModel(ProfileCategory(
+            rawValue: UDHelper.sharedUD
+                .defaults.string(
+                    forKey: UDKey.userType.rawValue
+                ) ?? "userProf"
+        ) ?? .adult, mode: .onboarding)
+        forUpdate = true
+    }
+    
+    init(viewModel: JournalInputViewModel) {
+        self.viewModel = viewModel
+        forUpdate = false
+    }
+    
     var body: some View {
         VStack {
             VStack {
-                CustomProgressView(percent: $viewModel.percentageDone)
+                if !forUpdate {
+                    CustomProgressView(percent: $viewModel.percentageDone)
+                }
                 Text("Apa pemicu eczema yang ingin Anda ketahui?")
                     .font(Lexend(.title2).getFont().bold())
                 Text("Kami akan membuat personalisasi berdasarkan pilihan Anda dalam pengisian jurnal dan hasil analisisnya.")
@@ -93,11 +125,11 @@ struct JournalConcernView: View {
             .padding(.top)
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach(EczemaTriggers.allCases, id: \.self) {
-                    EczemaTriggersRow(trigger: $0) { trigger, chosen in
+                    EczemaTriggersRow(trigger: $0, chosen: concVM.chosenTrigger.contains($0.rawValue)) { trigger, chosen in
                         if chosen {
-                            chosenTrigger.append(trigger.rawValue)
+                            concVM.chosenTrigger.append(trigger.rawValue)
                         } else {
-                            chosenTrigger.removeAll { trig in
+                            concVM.chosenTrigger.removeAll { trig in
                                 trigger.rawValue == trig
                             }
                         }
@@ -105,12 +137,13 @@ struct JournalConcernView: View {
                 }
             }
             Spacer()
-            Button("Lanjut") {
+            Button(forUpdate ? "Simpan" : "Lanjut") {
                 // Action untuk save ke user defaults
-                UDHelper.sharedUD.createUD(key: UDKey.userSkinPart.rawValue, value: chosenTrigger)
-                viewModel.chosenTriggerCategory = chosenTrigger
+                UDHelper.sharedUD.setConcern(concVM.chosenTrigger)
+                viewModel.chosenTriggerCategory = concVM.chosenTrigger
                 // ke halaman berikutnya
-                if chosenTrigger.isEmpty {
+                
+                if concVM.chosenTrigger.isEmpty || self.forUpdate {
                     self.isPresented.wrappedValue.dismiss()
                 } else {
                     goToNextPage.toggle()
@@ -118,19 +151,19 @@ struct JournalConcernView: View {
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
             .padding()
-            .onChange(of: chosenTrigger) { newValue in
+            .onChange(of: concVM.chosenTrigger) { newValue in
                 nextBtnDisabled = newValue.isEmpty
             }
             .disabled(nextBtnDisabled)
             NavigationLink("Lanjut", isActive: $goToNextPage, destination: {
                 // Masuk ke halaman yg itu loh, tp get data dl dr user defaults
-                if chosenTrigger.contains(EczemaTriggers.stress.rawValue) {
+                if concVM.chosenTrigger.contains(EczemaTriggers.stress.rawValue) {
                     StressLevelSliderView(viewModel)
-                } else if chosenTrigger.contains(EczemaTriggers.foodIntake.rawValue) {
+                } else if concVM.chosenTrigger.contains(EczemaTriggers.foodIntake.rawValue) {
                     NewJournalIEPView(.foodIntake, viewModel: viewModel)
-                } else if chosenTrigger.contains(EczemaTriggers.exposure.rawValue) {
+                } else if concVM.chosenTrigger.contains(EczemaTriggers.exposure.rawValue) {
                     NewJournalIEPView(.exposure, viewModel: viewModel)
-                } else if chosenTrigger.contains(EczemaTriggers.medProd.rawValue) {
+                } else if concVM.chosenTrigger.contains(EczemaTriggers.medProd.rawValue) {
                     NewJournalIEPView(.medProd, viewModel: viewModel)
                 } else {
                     Text("DISMISS THIS VIEW")
@@ -139,6 +172,9 @@ struct JournalConcernView: View {
             .hidden()
         }
         .navigationTitle("Lacak rutin")
+        .onAppear {
+            self.nextBtnDisabled = concVM.chosenTrigger.isEmpty
+        }
     }
 }
 

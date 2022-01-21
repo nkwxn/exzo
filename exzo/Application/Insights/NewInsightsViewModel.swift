@@ -27,6 +27,7 @@ class NewInsightsViewModel: ObservableObject {
     // Data buat grafik bawah
     var chartData = [String: [String: Int]]() // [Nama: minggu / emoji: Jumlah]
     @Published var barChartData = [BarChartDataEntry]()
+    @Published var xAxisValues = BarChartFormatter(mode: .number)
     
     // MARK: - Initializer buat dapetin data Insight
     init() {
@@ -41,15 +42,19 @@ class NewInsightsViewModel: ObservableObject {
         let thirdWeekNotEmpty = !weeklyJournalData.2.isEmpty
         let fourthWeekNotEmpty = !weeklyJournalData.3.isEmpty
         return firstWeekNotEmpty && secondWeekNotEmpty && thirdWeekNotEmpty && fourthWeekNotEmpty
+//        return true
     }
     
     // MARK: - Get line chart for top part
     public func getWeeklySkinCondition() {
+        self.lineChartData.removeAll()
         let skinCondition = CDStorage.shared.getWeeklyAverageSkinCondition()
         self.lineChartData = skinCondition
-            .map { transforming -> ChartDataEntry in
-            ChartDataEntry(x: Double(transforming.key), y: transforming.value)
-        }
+            .sorted { leftVal, rightVal in
+                leftVal.key < rightVal.key
+            }.map { transforming -> ChartDataEntry in
+                ChartDataEntry(x: Double(transforming.key), y: transforming.value)
+            }
     }
     
     // MARK: - Get the Insight Data for a particular part
@@ -77,6 +82,7 @@ class NewInsightsViewModel: ObservableObject {
             dropDownList.append("Tingkat Stres")
             value = dropDownList[0]
             self.chartData[value] = stressLevelData
+            self.xAxisValues = BarChartFormatter(mode: .emoji)
         } else {
             for datum in insightData {
                 dropDownList.append(datum.key)
@@ -87,6 +93,7 @@ class NewInsightsViewModel: ObservableObject {
             if !dropDownList.isEmpty {
                 value = dropDownList[0]
             }
+            self.xAxisValues = BarChartFormatter(mode: .number)
         }
         
         // Make the data
@@ -95,9 +102,14 @@ class NewInsightsViewModel: ObservableObject {
     
     
     func showDataOnBarChart() {
+        self.barChartData.removeAll()
         guard let mappedData = self.chartData[value] else { return }
-        self.barChartData = mappedData.map({ oldValue -> BarChartDataEntry in
-            BarChartDataEntry(x: Double(oldValue.key)!, y: Double(oldValue.value))
-        })
+        self.barChartData = mappedData
+            .sorted { leftData, rightData in
+                Int(leftData.key) ?? 0 < Int(rightData.key) ?? 0
+            }
+            .map({ oldValue -> BarChartDataEntry in
+                BarChartDataEntry(x: Double(oldValue.key)!, y: Double(oldValue.value))
+            })
     }
 }
