@@ -57,6 +57,7 @@
 		BFD2B464273392FF0011F064 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2B463273392FF0011F064 /* ImagePicker.swift */; };
 		C9D32C8EED9C89A045E70594 /* Pods_exzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */; };
 		CA3D029B3FF2C7A38BDF5D63 /* Pods_exzo_exzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7CE9EB8DC9F4207A911E74 /* Pods_exzo_exzoUITests.framework */; };
+		D507494C27994D3D00D5566B /* XAxisBarFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D507494B27994D3D00D5566B /* XAxisBarFormatter.swift */; };
 		D5163E392727FF9600DF09D0 /* ExzoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5163E382727FF9600DF09D0 /* ExzoApp.swift */; };
 		D5163E3D2727FF9800DF09D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3C2727FF9800DF09D0 /* Assets.xcassets */; };
 		D5163E402727FF9800DF09D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5163E3F2727FF9800DF09D0 /* Preview Assets.xcassets */; };
@@ -221,6 +222,7 @@
 		BFD2B45B273382C40011F064 /* DynamicFontV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontV2.swift; sourceTree = "<group>"; };
 		BFD2B463273392FF0011F064 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C94CFE5F30E0F92F586E0133 /* Pods_exzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D507494B27994D3D00D5566B /* XAxisBarFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAxisBarFormatter.swift; sourceTree = "<group>"; };
 		D5163E352727FF9600DF09D0 /* exzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5163E382727FF9600DF09D0 /* ExzoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExzoApp.swift; sourceTree = "<group>"; };
 		D5163E3C2727FF9800DF09D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1057,6 +1059,7 @@
 				D5ADFE8B27463C620099E7FC /* RoundedSquareContainer.swift */,
 				D5ADFE942746685D0099E7FC /* InsightLineGraph.swift */,
 				D575967C274799100053D39B /* InsightBarChart.swift */,
+				D507494B27994D3D00D5566B /* XAxisBarFormatter.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -1535,6 +1538,7 @@
 				5D23EE93272FA87500541E7A /* ProductRowView.swift in Sources */,
 				BFA3BCEE274C48BD00EFCECB /* ChildBodiesView.swift in Sources */,
 				D5ADA87D27364DB500425E43 /* ExzoSlider.swift in Sources */,
+				D507494C27994D3D00D5566B /* XAxisBarFormatter.swift in Sources */,
 				E2F52C9E2750CE3000F64AA8 /* roundedSwipeAction.swift in Sources */,
 				5DCA14862730E13D00F541AC /* CDStorage.swift in Sources */,
 				5DE09033273950AE00B2882B /* APIRequest.swift in Sources */,
