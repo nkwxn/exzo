@@ -11,6 +11,8 @@ struct SetReminderView: View {
     @ObservedObject var setReminderViewModel = SetReminderViewModel()
     @StateObject private var notificationManager = NotificationManager()
     
+    @State var isAddReminder: Bool = false
+
     private static var notificationDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
@@ -38,7 +40,7 @@ struct SetReminderView: View {
 //            }
             .onDelete(perform: delete)
             Button(action: {
-                setReminderViewModel.isAddReminder.toggle()
+                isAddReminder.toggle()
             }, label: {
                 Text("+ Tambah Pengingat")
             })
@@ -65,7 +67,7 @@ struct SetReminderView: View {
         }
         .navigationTitle("Pengingat")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $setReminderViewModel.isAddReminder) {
+        .sheet(isPresented: $isAddReminder) {
             AddReminderPage(notificationManager: notificationManager, setReminderViewModel: setReminderViewModel)
         }
     }
