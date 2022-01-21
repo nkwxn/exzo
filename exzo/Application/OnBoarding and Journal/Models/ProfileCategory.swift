@@ -26,7 +26,7 @@ enum ProfileCategory: String, CaseIterable {
         case .child:
             return "Kami senang jika Anda memperkenalkan kami dengan anak Anda! Silakan masukkan beberapa informasi tentangnya."
         case .adult:
-            return "Kami senang jika Anda memperkenalkan dir Anda agar menjadi lebih dekat. Silakan masukkan beberapa informasi Anda."
+            return "Kami senang jika Anda memperkenalkan diri Anda agar menjadi lebih dekat. Silakan masukkan beberapa informasi Anda."
         }
     }
 }

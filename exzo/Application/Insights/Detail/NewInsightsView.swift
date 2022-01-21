@@ -75,7 +75,6 @@ struct NewInsightsView: View {
                                     
                                 }
                                 .padding()
-                                
                                 if viewModel.indexFocus != 3 {
                                     RoundedSquareContainer(autoPadding: true) {
                                         Menu {
@@ -98,23 +97,23 @@ struct NewInsightsView: View {
                                     }
                                     .frame(width: 300, height: 20)
                                     .padding()
-                                    .onChange(of: viewModel.value) { newValue in
-                                        print("Should show bar chart for \(newValue)")
-                                        viewModel.getWeeklySkinCondition()
-                                        viewModel.showDataOnBarChart()
-                                    }
+                                .onChange(of: viewModel.value) { newValue in
+                                    print("Should show bar chart for \(newValue)")
+                                    viewModel.showDataOnBarChart()
                                 }
-                                
-                                RoundedSquareContainer(autoPadding: true) {
-                                    VStack {
-                                        HStack {
-                                            Text("Jumlah")
-                                                .scaledFont(name: "Avenir", size: 11)
-                                                .rotationEffect(Angle(degrees: 0))
-                                                .frame(width: 8)
-                                            InsightBarChart(barChartData: $viewModel.barChartData)
-                                                .frame(width: nil, height: 300)
-                                                .padding(.vertical)
+                            }
+                            
+                            RoundedSquareContainer(autoPadding: true) {
+                                VStack {
+                                    HStack {
+                                        Text("Jumlah")
+                                            .scaledFont(name: "Avenir", size: 11)
+                                            .rotationEffect(Angle(degrees: 0))
+                                            .frame(width: 8)
+                                        InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
+                                            .frame(width: nil, height: 300)
+                                            .padding(.vertical)
+
                                         }
                                         HStack {
                                             Circle()
@@ -129,9 +128,18 @@ struct NewInsightsView: View {
                     }
                 }
                 .navigationBarHidden(true)
+            .onAppear {
+                viewModel.getWeeklySkinCondition()
+                viewModel.showDataOnBarChart()
+            }
             }
         } else {
             TempInsightPlaceholder()
+            .navigationBarHidden(true)
+            .onAppear {
+                viewModel.getWeeklySkinCondition()
+                viewModel.showDataOnBarChart()
+            }
         }
     }
     
