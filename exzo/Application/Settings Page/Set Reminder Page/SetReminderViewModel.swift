@@ -15,7 +15,6 @@ class SetReminderViewModel: ObservableObject {
         }
     }
     
-    @Published var isAddReminder: Bool = false
     @Published var isEditReminder: Bool = false
     
     init() {
