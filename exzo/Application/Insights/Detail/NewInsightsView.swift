@@ -16,8 +16,6 @@ struct NewInsightsView: View {
             NavigationView {
                 VStack(spacing: 0) {
                     CustomNavBarView(twoColumnsNavBar: false, title: "Analisis", subtitle: nil, showButton: nil, action: {})
-                    
-                    // TODO: Buat validasi dari function viewModel.isWeeklyJournalAvailable()
                     ScrollView(.vertical, showsIndicators: true) {
                         VStack {
                             VStack(spacing: 15) {
@@ -29,17 +27,27 @@ struct NewInsightsView: View {
                                 .padding(.horizontal)
                                 .padding(.top)
                                 RoundedSquareContainer(autoPadding: true) {
-                                    VStack {
+                                    VStack(spacing: 0) {
                                         HStack {
-                                            Text("Tingkat\n Keparahan")
-                                                .scaledFont(name: "Avenir", size: 11)
-                                                .rotationEffect(Angle(degrees: 0))
-                                                .frame(width: 8)
+                                            Rectangle()
+                                                .foregroundColor(.clear)
+                                                .frame(width: 10)
+                                                .overlay(
+                                                    Text("Tingkat keparahan")
+                                                        .lineLimit(1)
+                                                        .rotationEffect(Angle(degrees: 270))
+                                                        .frame(width: 300)
+                                                        .scaledFont(name: "Avenir", size: 14)
+                                                        .foregroundColor(.secondary)
+                                                )
                                             InsightLineGraph(lineGraphData: $viewModel.lineChartData)
                                                 .frame(width: nil, height: 300)
                                                 .padding(.vertical)
                                         }
-                                        Text("Mingguan")
+                                        Text("Minggu")
+                                            .scaledFont(name: "Avenir", size: 14)
+                                            .foregroundColor(.secondary)
+                                            .offset(x: 0, y: -14)
                                     }
                                 }
                             }
@@ -97,24 +105,34 @@ struct NewInsightsView: View {
                                     }
                                     .frame(width: 300, height: 20)
                                     .padding()
-                                .onChange(of: viewModel.value) { newValue in
-                                    print("Should show bar chart for \(newValue)")
-                                    viewModel.showDataOnBarChart()
+                                    .onChange(of: viewModel.value) { newValue in
+                                        print("Should show bar chart for \(newValue)")
+                                        viewModel.showDataOnBarChart()
+                                    }
                                 }
-                            }
-                            
-                            RoundedSquareContainer(autoPadding: true) {
-                                VStack {
-                                    HStack {
-                                        Text("Jumlah")
-                                            .scaledFont(name: "Avenir", size: 11)
-                                            .rotationEffect(Angle(degrees: 0))
-                                            .frame(width: 8)
-                                        InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
-                                            .frame(width: nil, height: 300)
-                                            .padding(.vertical)
-
+                                
+                                RoundedSquareContainer(autoPadding: true) {
+                                    VStack(spacing: 0) {
+                                        HStack {
+                                            Rectangle()
+                                                .foregroundColor(.clear)
+                                                .frame(width: 10)
+                                                .overlay(
+                                                    Text("Jumlah")
+                                                        .lineLimit(1)
+                                                        .rotationEffect(Angle(degrees: 270))
+                                                        .frame(width: 300)
+                                                        .scaledFont(name: "Avenir", size: 14)
+                                                        .foregroundColor(.secondary)
+                                                )
+                                            InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
+                                                .frame(width: nil, height: 300)
+                                                .padding(.vertical)
                                         }
+                                        Text("Minggu")
+                                            .scaledFont(name: "Avenir", size: 14)
+                                            .foregroundColor(.secondary)
+                                            .offset(x: 0, y: -14)
                                         HStack {
                                             Circle()
                                                 .frame(width: 15, height: 15)
@@ -128,18 +146,18 @@ struct NewInsightsView: View {
                     }
                 }
                 .navigationBarHidden(true)
-            .onAppear {
-                viewModel.getWeeklySkinCondition()
-                viewModel.showDataOnBarChart()
-            }
+                .onAppear {
+                    viewModel.getWeeklySkinCondition()
+                    viewModel.showDataOnBarChart()
+                }
             }
         } else {
             TempInsightPlaceholder()
-            .navigationBarHidden(true)
-            .onAppear {
-                viewModel.getWeeklySkinCondition()
-                viewModel.showDataOnBarChart()
-            }
+                .navigationBarHidden(true)
+                .onAppear {
+                    viewModel.getWeeklySkinCondition()
+                    viewModel.showDataOnBarChart()
+                }
         }
     }
     

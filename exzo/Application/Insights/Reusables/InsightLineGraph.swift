@@ -21,6 +21,7 @@ struct InsightLineGraph: UIViewRepresentable {
         let dataSet = LineChartDataSet(entries: lineGraphData)
         formatDataSet(dataSet: dataSet)
         lineChart.data = LineChartData(dataSet: dataSet)
+        lineChart.borderLineWidth = 10
         
         lineChart.legend.enabled = false
         formatXAXis(xAxis: lineChart.xAxis)
@@ -32,11 +33,16 @@ struct InsightLineGraph: UIViewRepresentable {
     
     // MARK: Format Chart
     func formatDataSet(dataSet: LineChartDataSet) {
-        dataSet.colors = [UIColor(.accentColor)]
+        dataSet.colors = [UIColor(.brandy)]
         let formatter = NumberFormatter()
-        formatter.numberStyle = .none
+        formatter.numberStyle = .decimal
         dataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
-        dataSet.circleColors = [UIColor(.accentColor)]
+        dataSet.circleColors = [UIColor(.brandy)]
+        dataSet.circleRadius = CGFloat(8)
+        dataSet.circleHoleRadius = CGFloat(5)
+        
+        dataSet.valueFont = NSUIFont(name: "Avenir", size: 14)!
+        dataSet.valueTextColor = UIColor.secondaryLabel
     }
     
     func formatRightAxis(rightAxis: YAxis) {
@@ -46,7 +52,8 @@ struct InsightLineGraph: UIViewRepresentable {
     func formatLeftAxis(leftAxis: YAxis) {
         leftAxis.enabled = true
         leftAxis.axisMinimum = 0
-        leftAxis.labelTextColor = UIColor.label
+        leftAxis.labelFont = UIFont(name: "Avenir", size: 14)!
+        leftAxis.labelTextColor = UIColor.secondaryLabel
         leftAxis.gridColor = .secondaryLabel
     }
     
@@ -54,7 +61,12 @@ struct InsightLineGraph: UIViewRepresentable {
         xAxis.labelPosition = .bottom
         xAxis.labelTextColor = UIColor(.primary)
         xAxis.drawGridLinesEnabled = false
+        
+        xAxis.labelFont = UIFont(name: "Avenir", size: 14)!
+        xAxis.labelTextColor = UIColor.secondaryLabel
+        
         xAxis.granularity = 1
+        xAxis.avoidFirstLastClippingEnabled = true
         if let first = lineGraphData.first {
             xAxis.axisMinimum = first.x - 0.5
         }
