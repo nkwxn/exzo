@@ -15,7 +15,7 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    // FIXME:  //kayanya mesti bikin asset buat empty state? idk lol haha
+    // TODO: kayanya mesti bikin asset buat empty state? idk lol haha
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false

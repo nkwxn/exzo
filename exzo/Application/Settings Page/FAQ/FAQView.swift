@@ -14,12 +14,13 @@ struct Collapsible<Content: View>: View {
     @State private var collapsed: Bool = true
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Button(
                 action: { self.collapsed.toggle() },
                 label: {
                     HStack {
                         self.label()
+                            .foregroundColor(.white)
                         Spacer()
                         Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
                     }
@@ -27,7 +28,10 @@ struct Collapsible<Content: View>: View {
                     .background(Color.white.opacity(0.01))
                 }
             )
-                
+                .background(Color.copper)
+                .padding(5)
+                .cornerRadius(20)
+            
             
             VStack {
                 self.content()
@@ -64,13 +68,13 @@ struct FAQView: View {
     var question = ["Apa itu Eczema?", "Apakah Exzo menjual data, dikarenakan aplikasi ini gratis?", "Berapa lama untuk mendapatkan analisis?"]
     var answer = [
         "Eczema adalah penyakit kulit yang menyebabkan gatal, memar, kemerahan.",
-                  "Tidak aplikasi kami tidak akan menjual data user. Dan semua data yang dimasukan akan kami jaga rahasianya",
-                  "Diperlukan waktu selama 30 hari, untuk mendapatkan hasil analisis yang sempurna"]
+        "Tidak aplikasi kami tidak akan menjual data user. Dan semua data yang dimasukan akan kami jaga rahasianya",
+        "Diperlukan waktu selama 30 hari, untuk mendapatkan hasil analisis yang sempurna"]
     var body: some View {
         VStack {
-//            CustomNavBarView(twoColumnsNavBar: false, title: "FAQs", subtitle: nil, showButton: .none) {
-//                // Action untuk buka settings
-//            }
+            //            CustomNavBarView(twoColumnsNavBar: false, title: "FAQs", subtitle: nil, showButton: .none) {
+            //                // Action untuk buka settings
+            //            }
             HStack{
                 Spacer()
                 Text("FAQS")
@@ -83,7 +87,7 @@ struct FAQView: View {
                     index in
                     FaqRow(question: question[index], answer: "Eczema adalah penyakit kulit")
                         .padding()
-                        
+                    
                 }
             }
         }

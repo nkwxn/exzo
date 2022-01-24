@@ -92,12 +92,15 @@ struct SettingsView: View {
                             } label: {
                                 SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
                             }
-                            Button {
-                                self.showAlert.toggle()
-                            } label: {
+                            
+                            HStack {
                                 SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
+                                Spacer()
                             }
-                            .buttonStyle(PlainButtonStyle())
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                self.showAlert.toggle()
+                            }
                         }
                     }
                     .cornerRadius(30)

@@ -43,6 +43,7 @@
 		BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D762734B94200276CD1 /* QuestionPageView.swift */; };
 		BF651D7A2734C49100276CD1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D792734C49100276CD1 /* ProgressView.swift */; };
 		BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */; };
+		BF6D7C16279EA24C0086E473 /* OCRVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6D7C15279EA24C0086E473 /* OCRVision.swift */; };
 		BFA3BCEE274C48BD00EFCECB /* ChildBodiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCED274C48BD00EFCECB /* ChildBodiesView.swift */; };
 		BFA3BCF0274C48CD00EFCECB /* ChildFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */; };
 		BFA3BCF2274C48D300EFCECB /* ChildBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */; };
@@ -209,6 +210,7 @@
 		BF651D762734B94200276CD1 /* QuestionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPageView.swift; sourceTree = "<group>"; };
 		BF651D792734C49100276CD1 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		BF651D7B2734E55000276CD1 /* InsightOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightOnboardingView.swift; sourceTree = "<group>"; };
+		BF6D7C15279EA24C0086E473 /* OCRVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRVision.swift; sourceTree = "<group>"; };
 		BFA3BCED274C48BD00EFCECB /* ChildBodiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildBodiesView.swift; sourceTree = "<group>"; };
 		BFA3BCEF274C48CD00EFCECB /* ChildFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFrontView.swift; sourceTree = "<group>"; };
 		BFA3BCF1274C48D300EFCECB /* ChildBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildBackView.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 			children = (
 				5D23EE8E272FA78400541E7A /* ProductViewModel.swift */,
 				BF36A948273DEC1800943F94 /* ScanningIngredientView.swift */,
+				BF6D7C15279EA24C0086E473 /* OCRVision.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1529,6 +1532,7 @@
 				5DF4ADE52733837800F51423 /* MySkinView.swift in Sources */,
 				D5494ADC272FB6CB00DA1CF7 /* LoginView.swift in Sources */,
 				BFC9EB3E279A89940094CFBB /* MailCompose.swift in Sources */,
+				BF6D7C16279EA24C0086E473 /* OCRVision.swift in Sources */,
 				D5E5D3782786B80700D72AC3 /* CDStorage+Insights.swift in Sources */,
 				D58AF756273148D400E67214 /* ExzoTextFieldStyle.swift in Sources */,
 				D5494AE6272FFC1700DA1CF7 /* PreOnboardingViewModel.swift in Sources */,
@@ -1749,7 +1753,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1765,7 +1769,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverz.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1783,7 +1787,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1799,7 +1803,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverz.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
