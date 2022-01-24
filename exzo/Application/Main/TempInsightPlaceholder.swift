@@ -7,18 +7,7 @@
 
 import SwiftUI
 
-class TempInsightViewModel: ObservableObject {
-//    var fourWeeksFoodIntake = CDStorage.shared.get // [String: [Int: Int]]
-    var weeklySkinConditionAverage = CDStorage.shared.getWeeklyAverageSkinCondition()
-    var weeklyIntakeCount = CDStorage.shared.getWeeklyInsight(for: .intake)
-    var weeklyExposureCount = CDStorage.shared.getWeeklyInsight(for: .exposure)
-    var weeklyProductCount = CDStorage.shared.getWeeklyInsight(for: .product)
-    var stressLevelCount = CDStorage.shared.getMonthlyStressLevelCount()
-}
-
 struct TempInsightPlaceholder: View {
-    @StateObject var viewModel = TempInsightViewModel()
-    
     var body: some View {
         ZStack {
             Image("Header")
@@ -26,12 +15,9 @@ struct TempInsightPlaceholder: View {
                 .ignoresSafeArea(edges: .top)
                 .ignoresSafeArea(edges: .horizontal)
             VStack {
-                Text("Analisis belum tersedia!")
+                Text("Maaf, analisis belum dapat diakses!")
                     .font(Lexend(.title).getFont().weight(.bold))
-                Text("Nantikan fitur terbaru exzo pada pembaruan mendatang")
-                Text("Weekly Intake Count: \(viewModel.weeklyIntakeCount.description)")
-                Text("Weekly Exposure Count: \(viewModel.weeklyExposureCount.description)")
-                Text("Weekly Product Count: \(viewModel.weeklyProductCount.description)")
+                Text("Analisis akan muncul setelah Anda mengisi jurnal selama 4 minggu berturut-turut.")
             }
             .padding()
             .multilineTextAlignment(.center)

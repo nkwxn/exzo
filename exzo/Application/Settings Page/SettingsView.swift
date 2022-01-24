@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MessageUI
 import Combine
 
 class SettingsViewModel: ObservableObject {
@@ -38,105 +39,75 @@ class SettingsViewModel: ObservableObject {
 
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.scenePhase) var scenePhase
     
-    @State var alertDeleteAccountShown: Bool = false
-    @State var alertSignOutShown: Bool = false
+    @State var showAlert: Bool = false
     
     @ObservedObject var viewModel = SettingsViewModel()
     
-    //    @State var isWriteReview: Bool = false
-    
     var body: some View {
         NavigationView {
-            VStack {
-                ProfileHeaderView(profileImage: $viewModel.profileImage, profileName: $viewModel.profileName, profileAge: $viewModel.profileAge)
-                    .padding(.bottom)
-                List {
-                    Section {
-                        NavigationLink {
-                            UserProfileView(
-                                category: ProfileCategory(
-                                    rawValue: UDHelper.sharedUD
-                                        .defaults.string(
-                                            forKey: UDKey.userType.rawValue
-                                        ) ?? "userProf"
-                                ) ?? .adult,
-                                update: true
-                            )
-                        } label: {
-                            SettingRowView(settingIcon: "person.crop.circle", settingTitle: "Ubah Nama dan Foto")
+            ZStack {
+                VStack {
+                    ProfileHeaderView(profileImage: $viewModel.profileImage, profileName: $viewModel.profileName, profileAge: $viewModel.profileAge)
+                        .padding(.bottom)
+                    List {
+                        Section {
+                            NavigationLink {
+                                UserProfileView(
+                                    category: ProfileCategory(
+                                        rawValue: UDHelper.sharedUD
+                                            .defaults.string(
+                                                forKey: UDKey.userType.rawValue
+                                            ) ?? "userProf"
+                                    ) ?? .adult,
+                                    update: true
+                                )
+                            } label: {
+                                SettingRowView(settingIcon: "person.crop.circle", settingTitle: "Ubah Nama dan Foto")
+                            }
+                            NavigationLink {
+                                JournalConcernView()
+                            } label: {
+                                SettingRowView(settingIcon: "bolt", settingTitle: "Ubah Pemicu")
+                            }
+                        } header: {
+                            Text("PROFIL ANDA")
                         }
-                        NavigationLink {
-                            JournalConcernView()
-                        } label: {
-                            SettingRowView(settingIcon: "bolt", settingTitle: "Ubah Pemicu")
-                        }
-                    } header: {
-                        Text("PROFIL ANDA")
-                    }
-                    
-                    Section(header: Text("PENGINGAT")) {
                         
-                        NavigationLink {
-                            SetReminderView()
-                        } label: {
-                            SettingRowView(settingIcon: "timer", settingTitle: "Atur Pengingat")
+                        Section(header: Text("PENGINGAT")) {
+                            NavigationLink {
+                                SetReminderView()
+                            } label: {
+                                SettingRowView(settingIcon: "timer", settingTitle: "Atur Pengingat")
+                            }
+                        }
+                        
+                        Section(header: Text("LAINNYA")) {
+                            //                        Button {
+                            //                            isWriteReview.toggle()
+                            //                        } label: {
+                            //                            SettingRowView(settingIcon: "star", settingTitle: "Nilai Aplikasi Kami", showChevron: true)
+                            //                        }
+                            NavigationLink {
+                                FAQView()
+                            } label: {
+                                SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
+                            }
+                            Button {
+                                self.showAlert.toggle()
+                            } label: {
+                                SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
+                    .cornerRadius(30)
+                    .edgesIgnoringSafeArea(.bottom)
                     
-                    /*
-                     Section(header: Text("BAHASA")) {
-                     NavigationLink {
-                     LanguagePageView()
-                     } label: {
-                     SettingRowView(settingIcon: "globe", settingTitle: "Bahasa")
-                     }
-                     }
-                     */
-                    
-                    /*
-                     Section(header: Text("MASALAH HUKUM")) {
-                     NavigationLink {
-                     PrivacyPolicyView()
-                     } label: {
-                     SettingRowView(settingIcon: "lock", settingTitle: "Kebijakan Privasi")
-                     }
-                     NavigationLink {
-                     
-                     } label: {
-                     SettingRowView(settingIcon: "exclamationmark.triangle", settingTitle: "Syarat dan Ketentuan")
-                     }
-                     }
-                     */
-                    
-                    Section(header: Text("LAINNYA")) {
-                        //                        Button {
-                        //                            isWriteReview.toggle()
-                        //                        } label: {
-                        //                            SettingRowView(settingIcon: "star", settingTitle: "Nilai Aplikasi Kami", showChevron: true)
-                        //                        }
-                        //                        NavigationLink {
-                        //                            SetReminderView()
-                        //                        } label: {
-                        //                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Frequently Asked Questions")
-                        //                        }
-                        NavigationLink {
-                            
-                        } label: {
-                            SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
-                        }
-                        NavigationLink {
-                            
-                        } label: {
-                            SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
-                        }
-                    }
                 }
-                .cornerRadius(30)
-                .edgesIgnoringSafeArea(.bottom)
+                .listStyle(InsetGroupedListStyle())
+                PopUpWindow(show: $showAlert)
             }
-            .listStyle(InsetGroupedListStyle())
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -148,24 +119,8 @@ struct SettingsView: View {
                     .foregroundColor(Color.white)
                 }
             }
-            //            .navigationTitle("Pengaturan")
             .navigationBarTitleDisplayMode(.inline)
-            //            .navigationBarHidden(true)
-            
         }
-        .onChange(of: scenePhase) { phase in
-            switch phase {
-            case .active:
-                print("Scene is active")
-            case .inactive:
-                print("Scene is inactive")
-            case .background:
-                print("Scene is in background")
-            }
-        }
-        //        .sheet(isPresented: $isWriteReview) {
-        //            RateView()
-        //        }
     }
 }
 
