@@ -33,10 +33,12 @@ struct ProfileHeaderView: View {
                 Spacer()
             }
             .padding()
+            Spacer()
         }
         .background(
             Image("Header")
-                
+                .resizable(resizingMode: .tile)
+                .ignoresSafeArea()
         )
     }
 }

@@ -128,7 +128,6 @@ struct MySkinView: View {
                                     .padding()
                                 }
                             }
-                            Divider()
                         }
                         .sheet(
                             isPresented: $isAddingJournal
