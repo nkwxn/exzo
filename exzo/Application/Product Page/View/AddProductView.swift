@@ -112,7 +112,6 @@ struct AddProduct: View {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
                     Button {
-                        self.isScan.toggle()
                         self.showingScanningView.toggle()
                     } label: {
                         VStack {
@@ -121,23 +120,28 @@ struct AddProduct: View {
                             Text("Pindai Bahan Produk Anda")
                                 .scaledFont(name: "Avenir", size: 18)
                         }
-                    }.opacity(isScan ? 0 : 1)
-
-                    VStack {
-                        ForEach(recognizedText, id: \.self) {
-                            index in
-                            Text(index)
-                                .padding()
+                    }
+                    if isScan {
+                        List {
+                            ForEach(recognizedText, id: \.self) { index in
+                                Text(index)
+                                    .padding()
+                            }
                         }
+                        .listStyle(PlainListStyle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .strokeBorder(Color.copper, lineWidth: 2)
+                        )
                     }
                 }.sheet(isPresented: $showingScanningView) {
-                    ScanIngredientView(recognizedText: self.$recognizedText)
+                    ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
                 }
                 
                 Spacer()
             }
             .padding()
-            .navigationTitle(Text("Tambahkan Product"))
+            .navigationTitle(Text("Tambahkan Produk"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

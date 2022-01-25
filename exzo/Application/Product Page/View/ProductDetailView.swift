@@ -109,20 +109,22 @@ struct DetailProductView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
-                    VStack {
+                    
+                    List {
                         if let ingredients = product.productIngr as? [String] {
-                            ForEach(ingredients, id: \.self){ index in
+                            ForEach(ingredients, id: \.self) { index in
                                 Text("\(index)")
                                     .padding()
                             }
                         }
-                        
                     }
-                    
-//                    Text((product.productIngr ?? "" as NSObject) as! DateInterval)
-//                        .padding()
+                    .listStyle(PlainListStyle())
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .strokeBorder(Color.copper, lineWidth: 2)
+                    )
                 }.sheet(isPresented: $showingScanningView) {
-                    ScanIngredientView(recognizedText: self.$recognizedText)
+                    ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
                 }
                 
                 Spacer()
