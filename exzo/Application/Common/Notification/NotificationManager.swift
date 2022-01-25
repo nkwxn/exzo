@@ -44,9 +44,9 @@ final class NotificationManager: ObservableObject {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.sound = .default
-        notificationContent.title = "Hey it's time to use your moisturizer!"
-        notificationContent.subtitle = "CEPET PAKE NTAR KAMBUH LOH!"
+        notificationContent.sound = .defaultCritical
+        notificationContent.title = "Ayo isi jurnal sekarang!"
+        notificationContent.body = "Yuk, isi jurnalmu agar kamu segera tahu penyebab eksim mu!"
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: completion)
