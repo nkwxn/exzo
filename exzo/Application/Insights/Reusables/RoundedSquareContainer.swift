@@ -8,24 +8,40 @@
 import SwiftUI
 
 struct RoundedSquareContainer<Content: View>: View {
-    let autoPadding: Bool
+    var autoPadding: Bool
+    var outerPadding = true
     let content: () -> Content
     var body: some View {
         if autoPadding {
-            content()
-                .padding()
-                .background {
-                    bg
-                }
-                .padding(.vertical, 7)
-                .padding(.horizontal)
+            if outerPadding {
+                content()
+                    .padding()
+                    .background {
+                        bg
+                    }
+                    .padding(.vertical, 7)
+                    .padding(.horizontal)
+            } else {
+                content()
+                    .padding()
+                    .background {
+                        bg
+                    }
+            }
         } else {
-            content()
-                .background {
-                    bg
-                }
-                .padding(.vertical, 7)
-                .padding(.horizontal)
+            if outerPadding {
+                content()
+                    .background {
+                        bg
+                    }
+                    .padding(.vertical, 7)
+                    .padding(.horizontal)
+            } else {
+                content()
+                    .background {
+                        bg
+                    }
+            }
         }
     }
     

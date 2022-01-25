@@ -16,6 +16,7 @@ class Constant: NSObject {
         if NSLocale.autoupdatingCurrent.identifier.hasSuffix("US") {
             return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=imperial&appid=\(apiKey)&lang=en"
         } else {
+            // Nanti bisa pake localizable string
             return "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=metric&appid=\(apiKey)&lang=id"
         }
     }
@@ -27,6 +28,7 @@ class Constant: NSObject {
         if NSLocale.autoupdatingCurrent.identifier.hasSuffix("US") {
             return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=imperial&appid=\(apiKey)&lang=en"
         } else {
+            // Nanti bisa pake localizable string
             return "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&units=metric&appid=\(apiKey)&lang=id"
         }
     }
