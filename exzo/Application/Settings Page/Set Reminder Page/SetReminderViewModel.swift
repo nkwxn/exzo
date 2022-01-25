@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class SetReminderViewModel: ObservableObject {
     
@@ -15,25 +16,21 @@ class SetReminderViewModel: ObservableObject {
         }
     }
     
-    @Published var isEditReminder: Bool = false
+//    @Published var isEditReminder: Bool = false
     
     init() {
         reminders = UDHelper.sharedUD.getReminders()
     }
     
-    func deleteReminder(id: UUID) {
-        reminders.removeAll {
-            $0.id == id
-        }
-    }
-    
     func deleteReminder(at offsets: IndexSet) {
+        let notificationID = offsets.map { self.reminders[$0].notificationID }
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationID)
         reminders.remove(atOffsets: offsets)
         
     }
     
-    func addReminder(dateAndTime: Date) {
-        let newReminder = Reminder(dateAndTime: dateAndTime)
+    func addReminder(dateAndTime: Date, notificationID: String) {
+        let newReminder = Reminder(dateAndTime: dateAndTime, notificationID: notificationID)
         reminders.append(newReminder)
     }
     

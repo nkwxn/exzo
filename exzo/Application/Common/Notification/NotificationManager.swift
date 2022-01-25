@@ -39,6 +39,7 @@ final class NotificationManager: ObservableObject {
         var dateComponents = DateComponents()
         dateComponents.hour = hour
         dateComponents.minute = minute
+        dateComponents.second = 0
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
@@ -49,11 +50,9 @@ final class NotificationManager: ObservableObject {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: completion)
-        print("NAMBAH NOTIF")
     }
     
     func deleteLocalNotifications(identifiers: [String]) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
-//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }
