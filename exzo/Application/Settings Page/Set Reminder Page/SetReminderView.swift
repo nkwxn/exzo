@@ -52,6 +52,9 @@ struct SetReminderView: View {
         .onAppear(perform: {
             notificationManager.reloadAuthorizationStatus()
         })
+        .onDisappear(perform: {
+            UDHelper.sharedUD.saveReminders(reminders: setReminderViewModel.reminders)
+        })
         .onChange(of: notificationManager.authorizationStatus) { authorizationStatus in
             switch authorizationStatus {
             case .notDetermined:
@@ -75,11 +78,8 @@ struct SetReminderView: View {
 
 extension SetReminderView {
     func delete(_ indexSet: IndexSet) {
-        notificationManager.deleteLocalNotifications(identifiers: indexSet.map {
-            notificationManager.notifications[$0].identifier
-        })
-        notificationManager.reloadLocalNotifications()
         setReminderViewModel.deleteReminder(at: indexSet)
+        notificationManager.reloadLocalNotifications()
     }
 }
 

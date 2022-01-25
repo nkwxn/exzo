@@ -28,12 +28,14 @@ struct AddReminderPage: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        setReminderViewModel.addReminder(dateAndTime: selectionDate)
                         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: selectionDate)
                         guard let hour = dateComponents.hour, let minute = dateComponents.minute
                         else { return }
                         notificationManager.createLocalNotification(hour: hour, minute: minute, completion: { error in
                             if error == nil {
+                                UNUserNotificationCenter.current().getPendingNotificationRequests { notification in
+                                    setReminderViewModel.addReminder(dateAndTime: selectionDate, notificationID: notification.last?.identifier ?? "")
+                                }
                                 DispatchQueue.main.async {
                                     dismiss.callAsFunction()
                                 }
