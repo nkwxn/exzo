@@ -28,7 +28,6 @@ struct ProductRow: View {
                 Image(uiImage: getImage())
                     .resizable()
                     .frame(width: 112, height: 104, alignment: .leading)
-                    .background(Color.black.opacity(0.2))
                     .aspectRatio(contentMode: .fill)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack {
