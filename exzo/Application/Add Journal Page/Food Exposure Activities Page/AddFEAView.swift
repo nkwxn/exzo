@@ -29,7 +29,7 @@ struct AddFEAView: View {
     var body: some View {
         List {
             Section {
-                AddFEARowView(title: "Kategori", chooseImage: false, icon: nil, name: category.rawValue, color: accent)
+                AddFEARowView(title: "Kategori", chooseImage: false, icon: nil, name: category.getLocalizedName(), color: accent)
                 NavigationLink {
                     SelectIconView(iconSelection: $imageChoice, accentColor: accent)
                 } label: {
@@ -62,8 +62,12 @@ struct AddFEAView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Selesai") {
-                    CDStorage.shared.createIEA(category, name: self.name, thumb: imageChoice)
-                    dismiss()
+                    if doneDisabled {
+                        print("Should show alert")
+                    } else {
+                        CDStorage.shared.createIEA(category, name: self.name, thumb: imageChoice)
+                        dismiss()
+                    }
                 }
                 .disabled(doneDisabled)
             }
