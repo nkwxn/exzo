@@ -174,6 +174,7 @@ struct NewInsightsView: View {
                     viewModel.showDataOnBarChart()
                 } content: {
                     SettingsView()
+                        .interactiveDismissDisabled(true)
                 }
 
             }

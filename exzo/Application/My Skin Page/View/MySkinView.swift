@@ -50,6 +50,7 @@ struct MySkinView: View {
                     // onDismiss
                 } content: {
                     SettingsView()
+                        .interactiveDismissDisabled(true)
                 }
                 
                 ScrollView {

@@ -179,6 +179,7 @@ struct JournalDetailView: View {
             } content: {
                 SkinConditionJournalView(journalContent: viewModel.journal)
                     .environment(\.modalMode, $viewModel.isEditing)
+                    .interactiveDismissDisabled(true)
             }
             
             // TODO: Kasih if statement agar bs muncul / tidak sesuai dengan User Defaults

@@ -111,16 +111,6 @@ struct AddProduct: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
-                    Button {
-                        self.showingScanningView.toggle()
-                    } label: {
-                        VStack {
-                            Image(systemName: "camera")
-                                .frame(width: 18, height: 18)
-                            Text("Pindai Bahan Produk Anda")
-                                .scaledFont(name: "Avenir", size: 18)
-                        }
-                    }
                     if isScan {
                         List {
                             ForEach(recognizedText, id: \.self) { index in
@@ -133,6 +123,17 @@ struct AddProduct: View {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .strokeBorder(Color.copper, lineWidth: 2)
                         )
+                    } else {
+                        Button {
+                            self.showingScanningView.toggle()
+                        } label: {
+                            VStack {
+                                Image(systemName: "camera")
+                                    .frame(width: 18, height: 18)
+                                Text("Pindai Bahan Produk Anda")
+                                    .scaledFont(name: "Avenir", size: 18)
+                            }
+                        }
                     }
                 }.sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
