@@ -50,6 +50,7 @@ struct MySkinView: View {
                     // onDismiss
                 } content: {
                     SettingsView()
+                        .interactiveDismissDisabled(true)
                 }
                 
                 ScrollView {
@@ -98,7 +99,9 @@ struct MySkinView: View {
                                         .buttonStyle(PlainButtonStyle())
                                         .contextMenu {
                                             Button(role: .destructive) {
-                                                print("Delete \(journal.wrappedValue)")
+//                                                self.journalViewModel.deleteItem(id: journal.id!)
+                                                self.journalViewModel.toBeDeleted = journalViewModel.journalModel.getSpecificNewJournal(id: journal.id!)
+                                                self.journalViewModel.deleteConfirmation = true
                                             } label: {
                                                 Image(systemName: "trash")
                                                 Text("Hapus Jurnal")
@@ -128,7 +131,6 @@ struct MySkinView: View {
                                     .padding()
                                 }
                             }
-                            Divider()
                         }
                         .sheet(
                             isPresented: $isAddingJournal
@@ -148,6 +150,14 @@ struct MySkinView: View {
             }
             .navigationBarHidden(true)
             .navigationTitle("Skin Journal")
+            .alert("Hapus Jurnal", isPresented: $journalViewModel.deleteConfirmation) {
+                Button("Hapus", role: .destructive) {
+                    self.journalViewModel.deleteItem(journalViewModel.toBeDeleted!)
+                }
+            } message: {
+                Text("Apakah Anda yakin ingin menghapus jurnal ini?")
+            }
+
         }
     }
 }

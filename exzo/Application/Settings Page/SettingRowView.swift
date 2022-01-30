@@ -12,7 +12,10 @@ struct SettingRowView: View {
     let settingTitle: String
     var showChevron: Bool = false
     var body: some View {
-        Image(systemName: settingIcon)
-        Text(settingTitle)
+        HStack{
+            Image(systemName: settingIcon)
+            Text(settingTitle)
+        }
+        
     }
 }

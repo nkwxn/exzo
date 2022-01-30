@@ -21,6 +21,7 @@ struct ModalPlaceholder: View {
             .buttonStyle(ExzoButtonStyle(type: .primary))
             .sheet(isPresented: $showModal, onDismiss: nil) {
                 AddJournalView()
+                    .interactiveDismissDisabled(true)
             }
     }
 }

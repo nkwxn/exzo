@@ -72,13 +72,28 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // MARK: - Load weather from the API
     func loadWeather() {
+        let geocoder = CLGeocoder()
         guard let location = locationManager?.location
         else {
             return
         }
+        print(location)
+        
         self.fetchStatus = .loading
         
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            let placemark = placemarks?[0]
+            APIRequest.fetchWeather(cityName: placemark?.locality ?? "") { data in
+                self.fetchStatus = .done
+                self.updateWeatherData(data)
+            } failCompletion: { error in
+                print(error)
+                self.fetchStatus = .error
+            }
+        }
+        
         APIRequest.fetchWeather(coordinate: location.coordinate) { data in
+            self.fetchStatus = .done
             self.updateWeatherData(data)
         } failCompletion: { error in
             print(error)
@@ -96,7 +111,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             self.cityName = "\(data.name)"
             self.humidityString = "\(data.main.humidity)%"
-            self.weatherDesc = data.weather[0].main
+            self.weatherDesc = data.weather[0].description.capitalized
             self.iconLink = "https://openweathermap.org/img/wn/" + "\(data.weather[0].icon)" + "@2x.png"
         }
         self.fetchStatus = .done

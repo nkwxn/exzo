@@ -15,7 +15,7 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    // FIXME:  //kayanya mesti bikin asset buat empty state? idk lol haha
+    // TODO: kayanya mesti bikin asset buat empty state? idk lol haha
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
@@ -111,33 +111,38 @@ struct AddProduct: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
-                    Button {
-                        self.isScan.toggle()
-                        self.showingScanningView.toggle()
-                    } label: {
-                        VStack {
-                            Image(systemName: "camera")
-                                .frame(width: 18, height: 18)
-                            Text("Pindai Bahan Produk Anda")
-                                .scaledFont(name: "Avenir", size: 18)
+                    if isScan {
+                        List {
+                            ForEach(recognizedText, id: \.self) { index in
+                                Text(index)
+                                    .padding()
+                            }
                         }
-                    }.opacity(isScan ? 0 : 1)
-
-                    VStack {
-                        ForEach(recognizedText, id: \.self) {
-                            index in
-                            Text(index)
-                                .padding()
+                        .listStyle(PlainListStyle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .strokeBorder(Color.copper, lineWidth: 2)
+                        )
+                    } else {
+                        Button {
+                            self.showingScanningView.toggle()
+                        } label: {
+                            VStack {
+                                Image(systemName: "camera")
+                                    .frame(width: 18, height: 18)
+                                Text("Pindai Bahan Produk Anda")
+                                    .scaledFont(name: "Avenir", size: 18)
+                            }
                         }
                     }
                 }.sheet(isPresented: $showingScanningView) {
-                    ScanIngredientView(recognizedText: self.$recognizedText)
+                    ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
                 }
                 
                 Spacer()
             }
             .padding()
-            .navigationTitle(Text("Tambahkan Product"))
+            .navigationTitle(Text("Tambahkan Produk"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

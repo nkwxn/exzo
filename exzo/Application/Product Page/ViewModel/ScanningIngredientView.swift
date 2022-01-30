@@ -19,6 +19,7 @@ struct ScanIngredientView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var recognizedText: [String]
+    @Binding var scanDone: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(recognizedText: $recognizedText, parent: self)
@@ -49,6 +50,7 @@ struct ScanIngredientView: UIViewControllerRepresentable {
             let separateProcess = processedText.components(separatedBy: ", ")
             recognizedText.wrappedValue = separateProcess
             
+            parent.scanDone.toggle()
             parent.presentationMode.wrappedValue.dismiss()
         }
         

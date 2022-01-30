@@ -42,6 +42,7 @@ struct InsightBarChart: UIViewRepresentable {
     func formatDataSet(dataSet: BarChartDataSet) {
         dataSet.colors = [UIColor(.accentColor)]
         dataSet.drawValuesEnabled = false
+        dataSet.highlightEnabled = false
     }
     
     func formatRightAxis(rightAxis: YAxis) {
@@ -50,14 +51,20 @@ struct InsightBarChart: UIViewRepresentable {
     
     func formatLeftAxis(leftAxis: YAxis) {
         leftAxis.enabled = true
+        
         leftAxis.axisMinimum = 0
-        leftAxis.labelTextColor = UIColor.label
+        leftAxis.granularity = 1
+        leftAxis.labelFont = UIFont(name: "Avenir", size: 14)!
+        leftAxis.labelTextColor = UIColor.secondaryLabel
         leftAxis.gridColor = .secondaryLabel
     }
     
     func formatXAXis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
-        xAxis.labelTextColor = UIColor(.primary)
+        
+        xAxis.labelFont = UIFont(name: "Avenir", size: 14)!
+        xAxis.labelTextColor = UIColor.secondaryLabel
+        
         xAxis.drawGridLinesEnabled = false
         xAxis.granularity = 1
         if let first = barChartData.first {

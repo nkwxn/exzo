@@ -12,6 +12,9 @@ import UIKit
 class JournalViewModel: ObservableObject {
     var journalModel = CDStorage.shared
     
+    @Published var deleteConfirmation = false
+    var toBeDeleted: NewJournal?
+    
     @Published var selectedDate: Date = Date()
     @Published var currentPage: Date = Date()
         
@@ -65,7 +68,9 @@ class JournalViewModel: ObservableObject {
     }
     
     func deleteItem(id: UUID) {
-//        journalModel.deleteNewJournal()
+        journalModel.deleteNewJournal(id: id) { 
+            print("Delete completed ")
+        }
     }
     
     public func filterJournal(selectedDate: Date) {

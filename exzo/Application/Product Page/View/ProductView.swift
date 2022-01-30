@@ -39,6 +39,7 @@ struct ProductView: View {
 
                 .sheet(isPresented: $isPresented) {
                     AddProduct()
+                        .interactiveDismissDisabled(true)
                 }
                 .listStyle(PlainListStyle())
             }

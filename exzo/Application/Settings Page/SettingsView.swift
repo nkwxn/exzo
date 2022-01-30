@@ -47,9 +47,8 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
                     ProfileHeaderView(profileImage: $viewModel.profileImage, profileName: $viewModel.profileName, profileAge: $viewModel.profileAge)
-                        .padding(.bottom)
+//                        .padding(.bottom)
                     List {
                         Section {
                             NavigationLink {
@@ -93,19 +92,22 @@ struct SettingsView: View {
                             } label: {
                                 SettingRowView(settingIcon: "questionmark.circle", settingTitle: "Pertanyaan yang Sering Ditanyakan")
                             }
-                            Button {
-                                self.showAlert.toggle()
-                            } label: {
+                            
+                            HStack {
                                 SettingRowView(settingIcon: "phone", settingTitle: "Kontak Kami")
+                                Spacer()
                             }
-                            .buttonStyle(PlainButtonStyle())
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                self.showAlert.toggle()
+                            }
                         }
                     }
                     .cornerRadius(30)
                     .edgesIgnoringSafeArea(.bottom)
-                    
-                }
-                .listStyle(InsetGroupedListStyle())
+                    .padding(.top, 150)
+                    .listStyle(InsetGroupedListStyle())
+                
                 PopUpWindow(show: $showAlert)
             }
             .toolbar {

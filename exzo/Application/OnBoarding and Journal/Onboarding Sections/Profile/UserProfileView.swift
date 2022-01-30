@@ -26,29 +26,34 @@ struct UserProfileView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Atur profil\(viewModel.category == .child ? " anak " : " ")Anda")
-                .font(Lexend(.title2).getFont().bold())
-            Text(viewModel.category.getProfileDesc())
-            HStack {
-                Spacer()
-                ZStack(alignment: .bottomTrailing) {
-                    Image("L0 - \(viewModel.selectedPic)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 200, height: 200)
-                        .clipShape(Circle())
-                    Button(action: viewModel.shuffleImage) {
-                        Image(systemName: "arrow.2.circlepath")
+        VStack(spacing: 0) {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Text("Atur profil\(viewModel.category == .child ? " anak " : " ")Anda")
+                        .font(Lexend(.title2).getFont().bold())
+                    Text(viewModel.category.getProfileDesc())
+                    HStack {
+                        Spacer()
+                        ZStack(alignment: .bottomTrailing) {
+                            Image("L0 - \(viewModel.selectedPic)")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 200, height: 200)
+                                .clipShape(Circle())
+                            Button(action: viewModel.shuffleImage) {
+                                Image(systemName: "arrow.2.circlepath")
+                            }
+                            .buttonStyle(ExzoButtonStyle(type: .smallIconPrimary))
+                            .padding(.horizontal)
+                        }
+                        Spacer()
                     }
-                    .buttonStyle(ExzoButtonStyle(type: .smallIconPrimary))
-                    .padding(.horizontal)
+                    ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.myNickName)
+                    ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt, style: .numberTextField)
                 }
-                Spacer()
+                .padding()
             }
-            ExzoTextField("Siapa nama \(viewModel.category == .child ? "anak Anda" : "Anda")?", input: $viewModel.myNickName)
-            ExzoTextField("Berapa umur \(viewModel.category == .child ? "anak Anda" : "Anda")? (Tahun)", input: $viewModel.ageInt, style: .numberTextField)
-            Spacer()
+            Spacer(minLength: 0)
             Button(forUpdate ? "Simpan" : "Lanjut") {
                 viewModel.saveData()
                 if forUpdate {
@@ -58,12 +63,13 @@ struct UserProfileView: View {
                 }
             }
             .buttonStyle(ExzoButtonStyle(type: .primary))
+            .padding(.horizontal)
+            .padding(.bottom)
             NavigationLink("Lanjut", isActive: $pushToNextPage) {
                 OnBoardingView(category: self.viewModel.category)
             }
             .hidden()
         }
-        .padding()
         .navigationTitle("Atur Profil")
         .navigationBarTitleDisplayMode(.inline)
     }

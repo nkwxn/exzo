@@ -15,9 +15,9 @@ struct NewInsightsView: View {
         if viewModel.isWeeklyJournalAvailable() {
             NavigationView {
                 VStack(spacing: 0) {
-                    CustomNavBarView(twoColumnsNavBar: false, title: "Analisis", subtitle: nil, showButton: nil, action: {})
-                    
-                    // TODO: Buat validasi dari function viewModel.isWeeklyJournalAvailable()
+                    CustomNavBarView(twoColumnsNavBar: false, title: "Analisis", subtitle: nil, showButton: .settingsButton) {
+                        viewModel.showSettingsPage.toggle()
+                    }
                     ScrollView(.vertical, showsIndicators: true) {
                         VStack {
                             VStack(spacing: 15) {
@@ -29,17 +29,27 @@ struct NewInsightsView: View {
                                 .padding(.horizontal)
                                 .padding(.top)
                                 RoundedSquareContainer(autoPadding: true) {
-                                    VStack {
+                                    VStack(spacing: 0) {
                                         HStack {
-                                            Text("Tingkat\n Keparahan")
-                                                .scaledFont(name: "Avenir", size: 11)
-                                                .rotationEffect(Angle(degrees: 0))
-                                                .frame(width: 8)
+                                            Rectangle()
+                                                .foregroundColor(.clear)
+                                                .frame(width: 10)
+                                                .overlay(
+                                                    Text("Tingkat keparahan")
+                                                        .lineLimit(1)
+                                                        .rotationEffect(Angle(degrees: 270))
+                                                        .frame(width: 300)
+                                                        .scaledFont(name: "Avenir", size: 14)
+                                                        .foregroundColor(.secondary)
+                                                )
                                             InsightLineGraph(lineGraphData: $viewModel.lineChartData)
                                                 .frame(width: nil, height: 300)
                                                 .padding(.vertical)
                                         }
-                                        Text("Mingguan")
+                                        Text("Minggu")
+                                            .scaledFont(name: "Avenir", size: 14)
+                                            .foregroundColor(.secondary)
+                                            .offset(x: 0, y: -14)
                                     }
                                 }
                             }
@@ -57,7 +67,7 @@ struct NewInsightsView: View {
                                     }
                                     .disabled(viewModel.indexFocus == 0 ? true : false)
                                     Spacer()
-                                    if (viewModel.indexFocus >= 0 && viewModel.indexFocus < viewModel.fokus.count) {
+                                    if viewModel.indexFocus >= 0 && viewModel.indexFocus < viewModel.fokus.count {
                                         Text("\(viewModel.fokus[viewModel.indexFocus])")
                                             .font(Avenir(.title3).getFont().bold())
                                     }
@@ -74,72 +84,107 @@ struct NewInsightsView: View {
                                     .disabled(viewModel.indexFocus == viewModel.fokus.count - 1)
                                     
                                 }
-                                .padding()
-                                if viewModel.indexFocus != 3 {
+                                .padding(.horizontal)
+                                
+                                // MARK: - Show data on below chart
+                                if viewModel.chartData.isEmpty {
                                     RoundedSquareContainer(autoPadding: true) {
-                                        Menu {
-                                            ForEach(viewModel.dropDownList, id: \.self) { client in
-                                                Button(client) {
-                                                    self.viewModel.value = client
+                                        HStack {
+                                            Spacer()
+                                            VStack(alignment: .center) {
+                                                Text("Oops!")
+                                                    .font(Lexend(.title3).getFont().bold())
+                                                // swiftlint:disable line_length
+                                                Text("Kami tidak dapat merangkum data untuk \(viewModel.fokus[viewModel.indexFocus]). Silakan pilih \(viewModel.fokus[viewModel.indexFocus]) pada menu Pengaturan > Ubah Pemicu atau isi jurnal sebanyak mungkin.")
+                                            }
+                                            .multilineTextAlignment(.center)
+                                            Spacer()
+                                        }
+                                    }
+                                } else {
+                                    if viewModel.indexFocus != 3 {
+                                        RoundedSquareContainer(autoPadding: true) {
+                                            Menu {
+                                                ForEach(viewModel.dropDownList, id: \.self) { client in
+                                                    Button(client) {
+                                                        self.viewModel.value = client
+                                                    }
+                                                }
+                                            } label: {
+                                                HStack {
+                                                    Text(viewModel.value.isEmpty ? "Faktor" : viewModel.value)
+                                                        .foregroundColor(viewModel.value.isEmpty ? .gray : .black)
+                                                    Spacer()
+                                                    Image(systemName: "chevron.down")
+                                                        .foregroundColor(Color.orange)
+                                                        .font(Font.system(size: 20, weight: .bold))
                                                 }
                                             }
-                                        } label: {
+                                        }
+                                        .frame(width: 300, height: 20)
+                                        .padding()
+                                        .onChange(of: viewModel.value) { newValue in
+                                            viewModel.showDataOnBarChart()
+                                        }
+                                    }
+                                    
+                                    RoundedSquareContainer(autoPadding: true) {
+                                        VStack(spacing: 0) {
                                             HStack {
-                                                Text(viewModel.value.isEmpty ? "Faktor" : viewModel.value)
-                                                    .foregroundColor(viewModel.value.isEmpty ? .gray : .black)
-                                                Spacer()
-                                                Image(systemName: "chevron.down")
-                                                    .foregroundColor(Color.orange)
-                                                    .font(Font.system(size: 20, weight: .bold))
+                                                Rectangle()
+                                                    .foregroundColor(.clear)
+                                                    .frame(width: 10)
+                                                    .overlay(
+                                                        Text("Jumlah")
+                                                            .lineLimit(1)
+                                                            .rotationEffect(Angle(degrees: 270))
+                                                            .frame(width: 300)
+                                                            .scaledFont(name: "Avenir", size: 14)
+                                                            .foregroundColor(.secondary)
+                                                    )
+                                                InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
+                                                    .frame(width: nil, height: 300)
+                                                    .padding(.vertical)
                                             }
-                                            .padding(.horizontal)
+                                            Text("Minggu")
+                                                .scaledFont(name: "Avenir", size: 14)
+                                                .foregroundColor(.secondary)
+                                                .offset(x: 0, y: -14)
+                                            HStack {
+                                                Circle()
+                                                    .frame(width: 15, height: 15)
+                                                    .foregroundColor(.accentColor)
+                                                Text(viewModel.value)
+                                            }
                                         }
                                     }
-                                    .frame(width: 300, height: 20)
-                                    .padding()
-                                .onChange(of: viewModel.value) { newValue in
-                                    print("Should show bar chart for \(newValue)")
-                                    viewModel.showDataOnBarChart()
-                                }
-                            }
-                            
-                            RoundedSquareContainer(autoPadding: true) {
-                                VStack {
-                                    HStack {
-                                        Text("Jumlah")
-                                            .scaledFont(name: "Avenir", size: 11)
-                                            .rotationEffect(Angle(degrees: 0))
-                                            .frame(width: 8)
-                                        InsightBarChart(barChartData: $viewModel.barChartData, xFormat: $viewModel.xAxisValues)
-                                            .frame(width: nil, height: 300)
-                                            .padding(.vertical)
-
-                                        }
-                                        HStack {
-                                            Circle()
-                                                .frame(width: 15, height: 15)
-                                                .foregroundColor(.accentColor)
-                                            Text(viewModel.value)
-                                        }
-                                    }
+                                    .padding(.bottom)
                                 }
                             }
                         }
                     }
                 }
                 .navigationBarHidden(true)
-            .onAppear {
-                viewModel.getWeeklySkinCondition()
-                viewModel.showDataOnBarChart()
-            }
+                .onAppear {
+                    viewModel.getWeeklySkinCondition()
+                    viewModel.showDataOnBarChart()
+                }
+                .sheet(isPresented: $viewModel.showSettingsPage) {
+                    viewModel.getWeeklySkinCondition()
+                    viewModel.showDataOnBarChart()
+                } content: {
+                    SettingsView()
+                        .interactiveDismissDisabled(true)
+                }
+
             }
         } else {
             TempInsightPlaceholder()
-            .navigationBarHidden(true)
-            .onAppear {
-                viewModel.getWeeklySkinCondition()
-                viewModel.showDataOnBarChart()
-            }
+                .navigationBarHidden(true)
+                .onAppear {
+                    viewModel.getWeeklySkinCondition()
+                    viewModel.showDataOnBarChart()
+                }
         }
     }
     

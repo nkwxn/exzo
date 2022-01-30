@@ -9,6 +9,9 @@ import SwiftUI
 import Charts
 
 class NewInsightsViewModel: ObservableObject {
+    // Untuk menampilkan halaman setting secara modality
+    @Published var showSettingsPage: Bool = false
+    
     // Data grafik atas
     @Published var lineChartData = [ChartDataEntry]()
     

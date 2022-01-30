@@ -134,24 +134,6 @@ struct FrontBodyView: View {
                 .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.56))
                 
                 Button {
-                    self.isFrontVital.toggle()
-                    if (isFrontVital) {
-                        bodyArr.append("F - Vital")
-                        score += 1.0
-                    } else {
-                        score -= 1.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isFrontVital ? "SF - Vital" : "F - Vital")
-                        .resizable()
-                        .frame(width: 13.02, height: 13.02)
-                        .aspectRatio(contentMode: .fit)
-                }
-                .frame(width: 13.02, height: 13.02)
-                .position(x: (UIScreen.main.bounds.width / 4.33), y: (UIScreen.main.bounds.height / 2.375))
-                
-                Button {
                     self.isFrontRightHip.toggle()
                     if isFrontRightHip {
                         score += 3.0
@@ -185,6 +167,24 @@ struct FrontBodyView: View {
                 }
                 .frame(width: 30.02, height: 44.87)
                 .position(x: (UIScreen.main.bounds.width / 3.72), y: (UIScreen.main.bounds.height / 2.3))
+                
+                Button {
+                    self.isFrontVital.toggle()
+                    if (isFrontVital) {
+                        bodyArr.append("F - Vital")
+                        score += 1.0
+                    } else {
+                        score -= 1.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isFrontVital ? "SF - Vital" : "F - Vital")
+                        .resizable()
+                        .frame(width: 13.02, height: 13.02)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 13.02, height: 13.02)
+                .position(x: (UIScreen.main.bounds.width / 4.33), y: (UIScreen.main.bounds.height / 2.375))
             }
             
             // MARK: - Left Hand

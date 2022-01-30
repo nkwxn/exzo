@@ -27,14 +27,14 @@ struct CategoryGrid: View {
     
     // Grid View Property
     var gridItems: [GridItem] = Array(
-        repeating: GridItem(.flexible()), count: 5
+        repeating: GridItem(.flexible(), alignment: .top), count: 5
     )
     
     var body: some View {
-        LazyVGrid(columns: gridItems, spacing: 20) {
+        LazyVGrid(columns: gridItems, alignment: .center, spacing: 8) {
             ForEach(Array(grid.enumerated()), id: \.0) { idx, _ in
                 CategoryGridItem(category: $grid[idx], accent: gridColor)
-                    .aspectRatio(0.7, contentMode: .fit)
+                    .aspectRatio(0.55, contentMode: .fill)
             }
         }
     }
@@ -55,7 +55,11 @@ struct CategoryGridItem: View {
                         .foregroundColor(Color.clear)
                         .background(Circle().fill(self.category.selected ? accent : Color.clear))
                 }
+                .aspectRatio(1, contentMode: .fit)
             Text(category.name)
+                .font(Avenir(.subheadline).getFont())
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
         }
         .onTapGesture {
             self.category.selected.toggle()

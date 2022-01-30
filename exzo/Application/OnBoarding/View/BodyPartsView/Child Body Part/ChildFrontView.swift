@@ -134,24 +134,6 @@ struct ChildFrontView: View {
                 .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.7))
                 
                 Button {
-                    self.isChildFrontVital.toggle()
-                    if (isChildFrontVital) {
-                        bodyArr.append("CF - Vital")
-                        score += 1.0
-                    } else {
-                        score -= 1.0
-                        bodyArr.removeLast()
-                    }
-                } label: {
-                    Image(isChildFrontVital ? "SCF - Vital" : "CF - Vital")
-                        .resizable()
-                        .frame(width: 14.66, height: 14.97)
-                        .aspectRatio(contentMode: .fit)
-                }
-                .frame(width: 14.66, height: 14.97)
-                .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.53))
-                
-                Button {
                     self.isChildFrontRightHip.toggle()
                     if isChildFrontRightHip {
                         score += 3.0
@@ -168,6 +150,7 @@ struct ChildFrontView: View {
                 }
                 .frame(width: 27.46, height: 37.6)
                 .position(x: (UIScreen.main.bounds.width / 5.18), y: (UIScreen.main.bounds.height / 2.51))
+                
                 Button {
                     self.isChildFrontLeftHip.toggle()
                     if isChildFrontLeftHip {
@@ -185,6 +168,24 @@ struct ChildFrontView: View {
                 }
                 .frame(width: 27.31, height: 37.92)
                 .position(x: (UIScreen.main.bounds.width / 3.72), y: (UIScreen.main.bounds.height / 2.51))
+                
+                Button {
+                    self.isChildFrontVital.toggle()
+                    if (isChildFrontVital) {
+                        bodyArr.append("CF - Vital")
+                        score += 1.0
+                    } else {
+                        score -= 1.0
+                        bodyArr.removeLast()
+                    }
+                } label: {
+                    Image(isChildFrontVital ? "SCF - Vital" : "CF - Vital")
+                        .resizable()
+                        .frame(width: 14.66, height: 14.97)
+                        .aspectRatio(contentMode: .fit)
+                }
+                .frame(width: 14.66, height: 14.97)
+                .position(x: (UIScreen.main.bounds.width / 4.32), y: (UIScreen.main.bounds.height / 2.53))
             }
             
             // MARK: - Left Hand
