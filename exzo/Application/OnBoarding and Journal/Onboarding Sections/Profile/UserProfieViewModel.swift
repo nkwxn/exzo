@@ -36,14 +36,14 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func initSubscribers() {
-        UDHelper.sharedUD.subsName { value in
-            self.myNickName = value
+        UDHelper.sharedUD.subsName { [weak self] value in
+            self?.myNickName = value
         }.store(in: &subs)
-        UDHelper.sharedUD.subsAge { value in
-            self.ageInt = value
+        UDHelper.sharedUD.subsAge { [weak self] value in
+            self?.ageInt = value
         }.store(in: &subs)
-        UDHelper.sharedUD.subsPFP { value in
-            self.selectedPic = value
+        UDHelper.sharedUD.subsPFP { [weak self] value in
+            self?.selectedPic = value
         }.store(in: &subs)
     }
     

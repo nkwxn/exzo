@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class JournalInputViewModel: ObservableObject {
     var category: ProfileCategory
@@ -58,7 +59,8 @@ class JournalInputViewModel: ObservableObject {
     var chosenExposure = [IEAData]()
     var chosenProducts = [ListProduct]()
     
-    @Published var chosenTriggerCategory = UDHelper.sharedUD.getTriggers()
+    var cancellables = Set<AnyCancellable>()
+    @Published var chosenTriggerCategory = [String]()
     
     // For onboarding only, push navigation to timer
     @Published var pushToTimer = false
@@ -67,12 +69,25 @@ class JournalInputViewModel: ObservableObject {
         self.category = cat
         self.journalMode = mode
         self.journalItem = nil
+        getConcernData()
     }
     
     init(_ cat: ProfileCategory, item: NewJournal) {
         self.category = cat
         self.journalMode = .update
         self.journalItem = item
+        getConcernData()
+    }
+    
+    func getConcernData() {
+        UDHelper.sharedUD.subsConcern { [weak self] value in
+            self?.chosenTriggerCategory = value
+            if value.contains(EczemaTriggers.stress.rawValue) {
+                self?.stressLevel = 0.0
+            } else {
+                self?.stressLevel = -1.0
+            }
+        }.store(in: &cancellables)
     }
     
     func pushNavToTimer() {
