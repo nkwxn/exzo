@@ -146,10 +146,12 @@ struct NewInsightsView: View {
                                                     .frame(width: nil, height: 300)
                                                     .padding(.vertical)
                                             }
-                                            Text("Minggu")
-                                                .scaledFont(name: "Avenir", size: 14)
-                                                .foregroundColor(.secondary)
-                                                .offset(x: 0, y: -14)
+                                            if viewModel.value != "Tingkat Stres" {
+                                                Text("Minggu")
+                                                    .scaledFont(name: "Avenir", size: 14)
+                                                    .foregroundColor(.secondary)
+                                                    .offset(x: 0, y: -14)
+                                            }
                                             HStack {
                                                 Circle()
                                                     .frame(width: 15, height: 15)

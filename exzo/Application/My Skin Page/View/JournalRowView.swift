@@ -6,11 +6,26 @@
 //
 
 import SwiftUI
+import Combine
+
+class JournalRowViewModel: ObservableObject {
+    var subs = Set<AnyCancellable>()
+    var concerns = [String]()
+    var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        UDHelper.sharedUD.subsConcern { [weak self] value in
+            self?.concerns = value
+        }.store(in: &cancellables)
+    }
+}
 
 struct JournalRowView: View {
     let journal: NewJournal
     let width = 300.0
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
+    
+    @ObservedObject var viewModel = JournalRowViewModel()
     
     var body: some View {
         ZStack {
@@ -27,24 +42,14 @@ struct JournalRowView: View {
                 Divider()
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("Asupan makanan")
-                                .font(Avenir(.subheadline).getFont())
-                            HStack(alignment: .center, spacing: -8) {
-                                if let foodIntakes = journal.foodIntakes {
-                                    if foodIntakes.ieaDatas.isEmpty {
-                                        ZStack {
-                                            Circle()
-                                                .foregroundColor(accentArr[1])
-                                                .frame(width: 32, height: 32, alignment: .center)
-                                                .shadow(radius: 2)
-                                            Text("N/A")
-                                                .foregroundColor(.white)
-                                                .bold()
-                                                .font(Lexend(.footnote).getFont())
-                                                .fontWeight(.semibold)
-                                        }
-                                    } else {
+                        
+                        // MARK: - Asupan Makanan
+                        if let foodIntakes = journal.foodIntakes {
+                            if !foodIntakes.ieaDatas.isEmpty {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Asupan makanan")
+                                        .font(Avenir(.subheadline).getFont())
+                                    HStack(alignment: .center, spacing: -8) {
                                         ForEach(0..<foodIntakes.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
                                                 Image(foodIntakes.ieaDatas[idx].thumb)
@@ -60,21 +65,11 @@ struct JournalRowView: View {
                                             }
                                         }
                                     }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .foregroundColor(accentArr[1])
-                                            .frame(width: 32, height: 32, alignment: .center)
-                                            .shadow(radius: 2)
-                                        Text("N/A")
-                                            .foregroundColor(.white)
-                                            .bold()
-                                            .font(Lexend(.footnote).getFont())
-                                            .fontWeight(.semibold)
-                                    }
                                 }
                             }
                         }
+                        
+                        // MARK: - Skor Kondisi Kulit
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Kondisi Kulit")
                                 .font(Avenir(.subheadline).getFont())
@@ -104,24 +99,14 @@ struct JournalRowView: View {
                     }
                     Spacer()
                     VStack(alignment: .leading, spacing: 10) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("Paparan")
-                                .font(Avenir(.subheadline).getFont())
-                            HStack(alignment: .center, spacing: -8) {
-                                if let exposure = journal.exposures {
-                                    if exposure.ieaDatas.isEmpty {
-                                        ZStack {
-                                            Circle()
-                                                .foregroundColor(accentArr[1])
-                                                .frame(width: 32, height: 32, alignment: .center)
-                                                .shadow(radius: 2)
-                                            Text("N/A")
-                                                .foregroundColor(.white)
-                                                .bold()
-                                                .font(Lexend(.footnote).getFont())
-                                                .fontWeight(.semibold)
-                                        }
-                                    } else {
+                        
+                        // MARK: - Paparan
+                        if let exposure = journal.exposures {
+                            if !exposure.ieaDatas.isEmpty {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Paparan")
+                                        .font(Avenir(.subheadline).getFont())
+                                    HStack(alignment: .center, spacing: -8) {
                                         ForEach(0..<exposure.ieaDatas.count, id: \.self) { idx in
                                             if idx < 4 {
                                                 Image(exposure.ieaDatas[idx].thumb)
@@ -137,34 +122,27 @@ struct JournalRowView: View {
                                             }
                                         }
                                     }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .foregroundColor(accentArr[1])
-                                            .frame(width: 32, height: 32, alignment: .center)
-                                            .shadow(radius: 2)
-                                        Text("N/A")
-                                            .foregroundColor(.white)
-                                            .bold()
-                                            .font(Lexend(.footnote).getFont())
-                                            .fontWeight(.semibold)
-                                    }
                                 }
                             }
                         }
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("Nilai stress")
-                                .font(Avenir(.subheadline).getFont())
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(accentArr[1])
-                                    .frame(width: 32, height: 32, alignment: .center)
-                                    .shadow(radius: 2)
-                                Text("\(String(format: "%.0f", journal.stressLevel))")
-                                    .foregroundColor(.white)
-                                    .bold()
-                                    .font(Lexend(.footnote).getFont())
-                                    .fontWeight(.semibold)
+                        
+                        // MARK: - Stress Level
+                        if viewModel.concerns.contains(EczemaTriggers.stress.rawValue)
+                            && journal.stressLevel != -1 {
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text("Nilai stress")
+                                    .font(Avenir(.subheadline).getFont())
+                                ZStack {
+                                    Circle()
+                                        .foregroundColor(accentArr[1])
+                                        .frame(width: 32, height: 32, alignment: .center)
+                                        .shadow(radius: 2)
+                                    Text("\(String(format: "%.0f", journal.stressLevel))")
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .font(Lexend(.footnote).getFont())
+                                        .fontWeight(.semibold)
+                                }
                             }
                         }
                     }

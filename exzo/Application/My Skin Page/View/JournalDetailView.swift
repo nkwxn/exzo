@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class JournalDetailViewModel: ObservableObject {
     var journal: NewJournal
@@ -13,10 +14,14 @@ class JournalDetailViewModel: ObservableObject {
     let accentArr = [Color.brandy, Color.copper, Color.accentYellow, Color.brandy]
     
     // Item of concerns
-    let concerns = UDHelper.sharedUD.getConcern()
+    var subs = Set<AnyCancellable>()
+    var concerns = [String]()
     
     init(_ journal: NewJournal) {
         self.journal = journal
+        UDHelper.sharedUD.subsConcern { [weak self] value in
+            self?.concerns = value
+        }.store(in: &subs)
     }
     
     func getJournalDate() -> String {
@@ -184,22 +189,22 @@ struct JournalDetailView: View {
             
             // TODO: Kasih if statement agar bs muncul / tidak sesuai dengan User Defaults
             ScrollView(.vertical, showsIndicators: true) {
-                if viewModel.concerns.contains(EczemaTriggers.foodIntake.rawValue) {
+                if !viewModel.getJournalArray(.intake).isEmpty {
                     JournalDetailHeadingView(title: "Asupan makanan") {
                         JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.intake))
                     }
                 }
-                if viewModel.concerns.contains(EczemaTriggers.stress.rawValue) {
+                if viewModel.journal.stressLevel != -1 {
                     JournalDetailHeadingView(title: "Tingkat stres") {
                         JournalDetailCircleGrid(Int(viewModel.journal.stressLevel))
                     }
                 }
-                if viewModel.concerns.contains(EczemaTriggers.exposure.rawValue) {
+                if !viewModel.getJournalArray(.exposure).isEmpty {
                     JournalDetailHeadingView(title: "Paparan") {
                         JournalDetailCircleGrid(collectionData: viewModel.getJournalArray(.exposure))
                     }
                 }
-                if viewModel.concerns.contains(EczemaTriggers.medProd.rawValue) && !viewModel.getProductUsed().isEmpty {
+                if !viewModel.getProductUsed().isEmpty {
                     JournalDetailHeadingView(title: "Produk") {
                         VStack(alignment: .leading) {
                             ForEach(viewModel.getProductUsed(), id: \.self) {
