@@ -15,13 +15,15 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    // TODO: kayanya mesti bikin asset buat empty state? idk lol haha
+    
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
     @State private var recognizedText: [String] = []
-    
+    @State var newA: [String] = []
+    @State var textClassify = ""
+    @State var collapse: [Task] = []
     // Vision state
     @State var isScan: Bool = false
     @State private var showingScanningView = false
@@ -162,7 +164,8 @@ struct AddProduct: View {
     }
     
     private func addProductAction() {
-        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: recognizedText)
+        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: newA)
         self.presentationMode.wrappedValue.dismiss()
     }
 }
+
