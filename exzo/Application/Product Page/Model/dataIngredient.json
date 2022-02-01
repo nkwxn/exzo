@@ -1,0 +1,126 @@
+[
+    {
+        "id" : 1001,
+        "name": "dyes",
+        "bahanMengandung" :[
+            "D&C Yellow #11",
+            "FD&C Blue #1",
+            "FD&C Yellow #5 (also known as tartrazine)",
+            "paraphenylenediamine (PPD)"
+        ],
+        "description": "When absorbed into your skin, artificial colours can lead to irritation, blocked pores, inflammation and sensitise the skin."
+    },
+    {
+        "id" : 1002,
+        "name" : "fragrance",
+        "bahanMengandung": [
+            "3-Cyclohexene Carboxaldehyde",
+            "Alpha Amyl Cinnamic Alcohol",
+            "Anthemis Nobilis (Chamomile)",
+            "Amyl Cinnamal",
+            "Anisyl Alcohol",
+            "Balsam of Peru (Myroxylon Pereirae)",
+            "Benzaldehyde",
+            "Benzyl Alcohol",
+            "Benzyl Benzoate",
+            "Benzyl Cinnamate",
+            "Benzyl Salicylate",
+            "Butylphenyl Methylpropional",
+            "Cassia Oil",
+            "Chamomile (Anthemis Nobilis)",
+            "Cinnamal",
+            "Cinnamic Alcohol",
+            "Cinnamic Aldehyde",
+            "Cinnamon Leaf Oil",
+            "Cinnamyl Alcohol",
+            "Citral",
+            "Citronellol",
+            "Clove Oil",
+            "Cologne",
+            "Coumarin",
+            "Ethylene Brassylate",
+            "Eugenol",
+            "Evernia Furfuracea",
+            "Evernia Prunastri",
+            "Farnesol",
+            "Geraniol",
+            "Herbal Extracts",
+            "Hexyl Cinnamal",
+            "Hydroxycitronellal",
+            "Hydroxylisohexyl 3-Cyclohexene",
+            "Carboxaldehyde",
+            "Isoeugenol",
+            "Isomethyl Ionone",
+            "Limonene",
+            "Linalool",
+            "Lyral",
+            "Masking Fragrance",
+            "Methyl 2-Octynoate",
+            "Oakmoss absolute",
+            "Perfume",
+            "Phenoxyethanol",
+            "Plant, flower, fruit, nut oils",
+            "Yarrow (Achillea Millefolium)"
+        ],
+        "description" : "Fragrance adds to consumer appeal and may be used to cover up undesirable odors for some ingredients."
+    },
+    {
+        "id" : 1003,
+        "name": "Preservatives",
+        "bahanMengandung" : [
+            "Methylchloroisothiazolinone (MCI)",
+            "Methylisothiazolinone (MIT/MI)"
+        ],
+        "description" : "Irritating preservatives are used to prevent microbial growth, unfortunately by their own nature, cause irritation to the skin of many people. Preservatives are the second most common cause of cosmetic allergic contact dermatitis."
+    },
+    {
+        "id": 1004,
+        "name": "Formaldehyde",
+        "bahanMengandung" : [
+            "Bronopol",
+            "Diazolidinyl Urea",
+            "DMDM Hydantoin",
+            "Imidazolidinyl Urea",
+            "MDM Hydantoin",
+            "Quaternium 15"
+        ],
+        "description" : "Formaldehyde releasers preserve a product against bacterial, mold and fungus contamination. Unfortunately, formaldehyde also causes irritation and allergic problems for some people."
+    },
+    {
+        "id": 1005,
+        "name" : "Parabens",
+        "bahanMengandung" : [
+            "Benzylparaben",
+            "Butylparaben",
+            "Ethylparaben",
+            "Methylparaben",
+            "Propylparaben"
+        ],
+        "description" : "Parabens are preservatives that guard against mold, fungus, or bacteria growth."
+    },
+    {
+        "id": 1006,
+        "name": "Lanolin",
+        "bahanMengandung" : [
+            "Lanolin (hydrous and anhydrous)",
+            "Hydrogenated Lanolin",
+            "Lanolin Alcohol",
+            "Wool Fat",
+            "Wool Wax",
+            "Alcohols (Wool Alcohol)"
+        ],
+        "description" : "Lanolin and derivatives contribute properties to skin products that help moisturize. Lanolin is not a pure product but a complex combination of many substances which are difficult to separate and may carry over to derivatives. Some of these substances can cause skin irritation to sensitive skin, and may produce skin sensitization"
+    },
+    {
+        "id" : 1007,
+        "name" : "surfactants",
+        "bahanMengandung" : [
+            "Cocamidopropyl Betaine (CAPB)",
+            "Sodium lauryl sulfate (SLS)",
+            "Sodium laureth sulfate (SLES)",
+            "Ammonium lauryl sulfate (ALS)"
+        ],
+        "description" : "Surfactants serve several functions but are best known for their cleaning or detergent use; in addition they are used for improved foaming action in many personal care products. Unfortunately, some surfactants are known skin sensitizers and/or skin irritants."
+    }
+    
+]

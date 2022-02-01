@@ -29,7 +29,7 @@ struct ProductRow: View {
                     .resizable()
                     .frame(width: 112, height: 104, alignment: .leading)
                     .background(Color.black.opacity(0.2))
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack {
                     Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")

@@ -15,13 +15,15 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    // TODO: kayanya mesti bikin asset buat empty state? idk lol haha
+    
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
     @State private var recognizedText: [String] = []
-    
+    @State var newA: [String] = []
+    @State var textClassify = ""
+    @State var collapse: [Task] = []
     // Vision state
     @State var isScan: Bool = false
     @State private var showingScanningView = false
@@ -111,6 +113,7 @@ struct AddProduct: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
+                        .opacity(!newA.isEmpty ? 0 : 1)
                     Button {
                         self.isScan.toggle()
                         self.showingScanningView.toggle()
@@ -124,14 +127,21 @@ struct AddProduct: View {
                     }.opacity(isScan ? 0 : 1)
 
                     VStack {
-                        ForEach(recognizedText, id: \.self) {
-                            index in
+                        // TODO: How to display ingredientCell
+                        ForEach(newA, id: \.self) { index in
                             Text(index)
                                 .padding()
+                            
                         }
                     }
-                }.sheet(isPresented: $showingScanningView) {
+                }
+                .sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText)
+                        .onDisappear {
+                            DispatchQueue.main.async {
+                                newA = checkAvoid(name: recognizedText)
+                            }
+                        }
                 }
                 
                 Spacer()
@@ -157,7 +167,8 @@ struct AddProduct: View {
     }
     
     private func addProductAction() {
-        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: recognizedText)
+        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: newA)
         self.presentationMode.wrappedValue.dismiss()
     }
 }
+
