@@ -25,10 +25,10 @@ struct SubtaskCell: View {
     var body: some View {
         VStack {
             HStack {
-                Rectangle().frame(width: 2, height: CGFloat(task.height), alignment: .center).padding(.leading, 9)
+                Rectangle().frame(width: 0.5, height: CGFloat(task.height), alignment: .center).padding(.leading, 9)
                 Text(task.title)
                     .scaledFont(name: "Avenir", size: 15)
-                    .padding(.trailing, 5)
+                    .padding(.trailing, 25)
             }
             .frame( height: CGFloat(task.height * 1.5))
         }

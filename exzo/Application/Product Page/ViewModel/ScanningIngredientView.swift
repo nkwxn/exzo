@@ -14,7 +14,6 @@ class ContentViewModel: ObservableObject {
     @Published var arrayString = [String]()
 }
 
-
 struct ScanIngredientView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
@@ -92,3 +91,28 @@ struct ScanIngredientView: UIViewControllerRepresentable {
         }
     }
 }
+
+public func checkAvoid(name: [String]) -> [String] {
+    var newArr: [String] = []
+    for index in name {
+        for igr in bahanBerbahya {
+            if index.contains(igr.name.lowercased()) {
+                newArr.append(igr.name)
+            }
+        }
+    }
+    return newArr
+}
+
+public let avoidIng = ["dyes",
+                       "fragrance",
+                       "ethanol",
+                       "preservatives",
+                       "propylene glycol",
+                       "urea",
+                       "retinoid",
+                       "antibiotics",
+                       "formaldehyde",
+                       "paraben"
+
+]

@@ -33,6 +33,10 @@
 		5DF4ADF32733924000F51423 /* Trigger Area enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF22733924000F51423 /* Trigger Area enum.swift */; };
 		5DF4ADF5273392ED00F51423 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF4273392ED00F51423 /* Journals.swift */; };
 		5DF4ADF7273395C600F51423 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4ADF6273395C600F51423 /* JournalViewModel.swift */; };
+		BF0AFEED27A9F3C200790DC7 /* AvoidIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0AFEEC27A9F3C200790DC7 /* AvoidIngredientView.swift */; };
+		BF0AFEEF27A9F96C00790DC7 /* dataIngredient.json in Resources */ = {isa = PBXBuildFile; fileRef = BF0AFEEE27A9F96C00790DC7 /* dataIngredient.json */; };
+		BF0AFEF227A9F9D700790DC7 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0AFEF027A9F9D700790DC7 /* ModelData.swift */; };
+		BF0AFEF327A9F9D700790DC7 /* Bahan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0AFEF127A9F9D700790DC7 /* Bahan.swift */; };
 		BF0B86F3279A551F006C5A9A /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B86F2279A551F006C5A9A /* FAQView.swift */; };
 		BF2F27D1278C100300F28132 /* AnalisisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F27D0278C100300F28132 /* AnalisisView.swift */; };
 		BF2F5D32273A10EA0059FB23 /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */; };
@@ -200,6 +204,10 @@
 		5DF4ADF6273395C600F51423 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		92138DCB9EF3D14BA385AE50 /* Pods_exzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_exzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B49E6AB8A7944B19031BA /* Pods-exzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exzo.release.xcconfig"; path = "Target Support Files/Pods-exzo/Pods-exzo.release.xcconfig"; sourceTree = "<group>"; };
+		BF0AFEEC27A9F3C200790DC7 /* AvoidIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvoidIngredientView.swift; sourceTree = "<group>"; };
+		BF0AFEEE27A9F96C00790DC7 /* dataIngredient.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dataIngredient.json; sourceTree = "<group>"; };
+		BF0AFEF027A9F9D700790DC7 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		BF0AFEF127A9F9D700790DC7 /* Bahan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bahan.swift; sourceTree = "<group>"; };
 		BF0B86F2279A551F006C5A9A /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		BF2F27D0278C100300F28132 /* AnalisisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalisisView.swift; sourceTree = "<group>"; };
 		BF2F5D31273A10EA0059FB23 /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
@@ -429,6 +437,9 @@
 		5D23EE89272FA6E300541E7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF0AFEF127A9F9D700790DC7 /* Bahan.swift */,
+				BF0AFEF027A9F9D700790DC7 /* ModelData.swift */,
+				BF0AFEEE27A9F96C00790DC7 /* dataIngredient.json */,
 				BFD2B463273392FF0011F064 /* ImagePicker.swift */,
 				5D23EE90272FA79200541E7A /* ProductModel.swift */,
 			);
@@ -452,6 +463,7 @@
 				5D23EE92272FA87500541E7A /* ProductRowView.swift */,
 				5D23EE94272FB4B400541E7A /* AddProductView.swift */,
 				5D034A722732AE04005DB9B9 /* ProductDetailView.swift */,
+				BF0AFEEC27A9F3C200790DC7 /* AvoidIngredientView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1314,6 +1326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0AFEEF27A9F96C00790DC7 /* dataIngredient.json in Resources */,
 				D5163E8727280F6E00DF09D0 /* Avenir.ttc in Resources */,
 				D5163E402727FF9800DF09D0 /* Preview Assets.xcassets in Resources */,
 				D5163E8627280F6400DF09D0 /* Lexend.ttf in Resources */,
@@ -1463,6 +1476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5163E422727FF9800DF09D0 /* Persistence.swift in Sources */,
+				BF0AFEF227A9F9D700790DC7 /* ModelData.swift in Sources */,
 				D5ADFE8E274640210099E7FC /* InsightsView.swift in Sources */,
 				BF651D772734B94200276CD1 /* QuestionPageView.swift in Sources */,
 				D5AD70AE27548F83000F8C9D /* Date+extension.swift in Sources */,
@@ -1523,6 +1537,7 @@
 				5DF4ADEB27338ADA00F51423 /* Food Intakes.swift in Sources */,
 				5DE09035273950C600B2882B /* WeatherViewModel.swift in Sources */,
 				D542BD1E273A5CFA008BB68A /* HapticFeedbackHelper.swift in Sources */,
+				BF0AFEED27A9F3C200790DC7 /* AvoidIngredientView.swift in Sources */,
 				BF2F27D1278C100300F28132 /* AnalisisView.swift in Sources */,
 				5DF4ADEF27338E2D00F51423 /* Activities.swift in Sources */,
 				D5163E8C2728108A00DF09D0 /* TabContainer.swift in Sources */,
@@ -1563,6 +1578,7 @@
 				BF2F5D3A273A30DA0059FB23 /* FrontBodyView.swift in Sources */,
 				D58422BC274B51A800F495E3 /* UserProfileView.swift in Sources */,
 				D554768C2741FCD000519540 /* TempInsightPlaceholder.swift in Sources */,
+				BF0AFEF327A9F9D700790DC7 /* Bahan.swift in Sources */,
 				D51CFC872733C78100DE63CC /* AddJournalView.swift in Sources */,
 				E20CCBDC274CDA1B0099CAFD /* PrivacyPolicyView.swift in Sources */,
 				BF651D7C2734E55000276CD1 /* InsightOnboardingView.swift in Sources */,
@@ -1753,7 +1769,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1769,7 +1785,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverz.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1787,7 +1803,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"exzo/Preview Content\"";
-				DEVELOPMENT_TEAM = SCZQ3M4JVY;
+				DEVELOPMENT_TEAM = 2BC2RKUHZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "exzo/Supporting Files/Info.plist";
@@ -1803,7 +1819,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.impraver.exzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impraverz.exzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
