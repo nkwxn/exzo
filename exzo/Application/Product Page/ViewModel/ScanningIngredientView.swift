@@ -96,8 +96,13 @@ public func checkAvoid(name: [String]) -> [String] {
     var newArr: [String] = []
     for index in name {
         for igr in bahanBerbahya {
-            if index.contains(igr.name.lowercased()) {
-                newArr.append(igr.name)
+            let kandungan = igr.bahanMengandung.map { string -> String in
+                return string.lowercased()
+            }
+            if kandungan.contains(index.lowercased()) {
+                if !newArr.contains(igr.name) {
+                    newArr.append(igr.name)
+                }
             }
         }
     }

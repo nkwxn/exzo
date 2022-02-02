@@ -19,6 +19,7 @@ struct Bahan: Hashable, Codable, Identifiable {
 var bahanBerbahya: [Bahan] = [
     Bahan(name: "Dyes",
           bahanMengandung: [
+            "Dyes",
             "D&C Yellow #11",
             "FD&C Blue #1",
             "FD&C Yellow #5 (also known as tartrazine)",
@@ -27,6 +28,7 @@ var bahanBerbahya: [Bahan] = [
           description: "When absorbed into your skin, artificial colours can lead to irritation, blocked pores, inflammation and sensitise the skin."),
     Bahan(name: "Fragrance",
           bahanMengandung: [
+            "Fragrance",
             "3-Cyclohexene Carboxaldehyde",
             "Alpha Amyl Cinnamic Alcohol",
             "Anthemis Nobilis (Chamomile)",
@@ -78,12 +80,14 @@ var bahanBerbahya: [Bahan] = [
           description: "Fragrance adds to consumer appeal and may be used to cover up undesirable odors for some ingredients."),
     Bahan(name: "Preservatives",
           bahanMengandung: [
+            "Preservatives",
             "Methylchloroisothiazolinone (MCI)",
             "Methylisothiazolinone (MIT/MI)"
           ],
           description: "Irritating preservatives are used to prevent microbial growth, unfortunately by their own nature, cause irritation to the skin of many people. Preservatives are the second most common cause of cosmetic allergic contact dermatitis."),
     Bahan(name: "Formaldehyde",
           bahanMengandung: [
+            "Formaldehyde",
             "Bronopol",
             "Diazolidinyl Urea",
             "DMDM Hydantoin",
@@ -94,6 +98,7 @@ var bahanBerbahya: [Bahan] = [
           description: "Formaldehyde releasers preserve a product against bacterial, mold and fungus contamination. Unfortunately, formaldehyde also causes irritation and allergic problems for some people."),
     Bahan(name: "Parabens",
           bahanMengandung: [
+            "Paraben",
             "Benzylparaben",
             "Butylparaben",
             "Ethylparaben",
@@ -103,6 +108,7 @@ var bahanBerbahya: [Bahan] = [
           description: "Parabens are preservatives that guard against mold, fungus, or bacteria growth."),
     Bahan(name: "Lanolin",
           bahanMengandung: [
+            "Lanolin",
             "Lanolin (hydrous and anhydrous)",
             "Hydrogenated Lanolin",
             "Lanolin Alcohol",
@@ -113,6 +119,7 @@ var bahanBerbahya: [Bahan] = [
           description: "Lanolin and derivatives contribute properties to skin products that help moisturize. Lanolin is not a pure product but a complex combination of many substances which are difficult to separate and may carry over to derivatives. Some of these substances can cause skin irritation to sensitive skin, and may produce skin sensitization"),
     Bahan(name: "Surfactants",
           bahanMengandung: [
+            "Surfactants",
             "Cocamidopropyl Betaine (CAPB)",
             "Sodium lauryl sulfate (SLS)",
             "Sodium laureth sulfate (SLES)",
@@ -136,3 +143,5 @@ var bahanBerbahya: [Bahan] = [
           description: "Ethanol (alcohol) is often an ingredient in gels. These are lightweight, cooling and evaporate in seconds, which makes them great preparations for hair-bearing areas. However, for patients with AD and sensitive skin, alcohols can sting, burn and dry out the skin, so are best avoided"),
     
 ]
+
+// INGREDIENTS: Limonene, Ethanol, Urea, Hydrogenated Lanolin, Surfactants

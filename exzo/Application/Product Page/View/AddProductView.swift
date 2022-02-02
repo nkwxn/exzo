@@ -116,6 +116,7 @@ struct AddProduct: View {
                         ScrollView {
                             ForEach(tmpArray, id: \.self) { index in
                                 var take: [Bahan] = bahanBerbahya.filter({$0.name == "\(index)"})
+                                
                                 ProdukRow(namaProduk: index, descProduk: take[0].description, bahanProduk: take[0].bahanMengandung)
                             }
                         }
@@ -174,23 +175,27 @@ struct AddProduct: View {
 }
 
 struct ProdukRow: View {
+    private let id = UUID()
     @State private var isExpanded: Bool = false
     var namaProduk: String
     var descProduk: String
     var bahanProduk: [String]
-    var bahan: String {
+    private var bahan: String {
         var bahan: String = ""
         for (index, item) in bahanProduk.enumerated() { // how to limit cuman 3
             if index < 3 {
-                bahan += "\(item), "
+                if index == bahanProduk.count - 1 || index == 2 {
+                    bahan += "\(item)."
+                } else {
+                    bahan += "\(item), "
+                }
             }
-            
         }
         return bahan
     }
     var body: some View {
         content
-            .frame(maxWidth: 400)
+//            .frame(maxWidth: 400)
     }
     
     private var content: some View {
@@ -208,37 +213,39 @@ struct ProdukRow: View {
                 }
             }
             if isExpanded {
-                VStack{
+                VStack(alignment: .leading) {
                     Text(descProduk)
-                        .padding(10)
                         .opacity(isExpanded ? 1 : 0)
                     Divider()
                         .foregroundColor(Color.black)
-                    Text("Common of \(namaProduk) are \(bahan)")
-                        .font(Avenir(.caption).getFont().italic())
-                        .padding(10)
+                    Text("Common \(namaProduk) are \(bahan)")
+                        .font(Avenir(.subheadline).getFont().italic())
                 }
+                .padding(10)
             }
-            
         }
+        .cornerRadius(10, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
     }
     
     private var header: some View {
-        HStack {
-            Text(namaProduk)
-                .padding(10)
-                .foregroundColor(Color.white)
-            Spacer()
-            Image(systemName: !isExpanded ? "chevron.down" : "chevron.up")
-                .foregroundColor(Color.white)
-            Spacer()
-                .frame(width:20)
+        Button {
+            // Action
+            isExpanded.toggle()
+        } label: {
+            HStack {
+                Text(namaProduk)
+                    .padding(10)
+                    .foregroundColor(Color.white)
+                Spacer()
+                Image(systemName: !isExpanded ? "chevron.down" : "chevron.up")
+                    .foregroundColor(Color.white)
+                Spacer()
+                    .frame(width: 20)
+            }
+            .contentShape(Rectangle())
+            .padding(.vertical, 4)
+            .background(Color("accent_copper"))
         }
-        .contentShape(Rectangle())
-        .padding(.vertical, 4)
-        .background(Color("accent_copper"))
-        .onTapGesture {
-            withAnimation { isExpanded.toggle() }
-        }
+        .buttonStyle(PlainButtonStyle())
     }
 }

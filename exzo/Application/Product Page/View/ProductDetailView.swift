@@ -46,77 +46,77 @@ struct DetailProductView: View {
     
     var body: some View {
         
-            VStack(alignment: .leading) {
-                
-                HStack(alignment: .center, spacing: 11.0) {
-                    Section {
-                        ZStack(alignment: .trailing) {
-                            Image(uiImage: getImage())
-                                .resizable()
-                                .cornerRadius(15)
-                                .frame(width: 141, height: 181, alignment: .leading)
-                                .background(Color.white.opacity(0.2))
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .onTapGesture {
-                                    showOption = true
-                                }
-                            Image("camer")
-                                .resizable()
-                                .frame(width: 29, height: 29)
-                                .offset(x: -10, y: -65)
-                        }
-                        
-                    }
-                    .confirmationDialog("Pilih sumber foto", isPresented: $showOption, titleVisibility: .visible) {
-                        Button("Galeri") {
-                            showPhotoLibrarySheet = true
-                        }
-                        Button("Kamera") {
-                            showCameraSheet = true
-                        }
-                    }
-                    .sheet(isPresented: $showPhotoLibrarySheet) {
-                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-                    }
-                    .sheet(isPresented: $showCameraSheet) {
-                        ImagePicker(sourceType: .camera, selectedImage: self.$image)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Section(header: Text("Tipe Produk")) {
-                            Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")
-                        }
-                        Divider()
-                        Section(header: Text("Nama Produk")) {
-                            Text(product.productName ?? "")
-                        }
-                        Divider()
-                    }
-                }
-                HStack {
-                    Text("Daftar Bahan")
-                    Spacer()
-                    Button {
-                        self.showingScanningView.toggle()
-                    } label: {
+        VStack(alignment: .leading) {
+            
+            HStack(alignment: .center, spacing: 11.0) {
+                Section {
+                    ZStack(alignment: .trailing) {
+                        Image(uiImage: getImage())
+                            .resizable()
+                            .cornerRadius(15)
+                            .frame(width: 141, height: 181, alignment: .leading)
+                            .background(Color.white.opacity(0.2))
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .onTapGesture {
+                                showOption = true
+                            }
                         Image("camer")
                             .resizable()
                             .frame(width: 29, height: 29)
+                            .offset(x: -10, y: -65)
+                    }
+                    
+                }
+                .confirmationDialog("Pilih sumber foto", isPresented: $showOption, titleVisibility: .visible) {
+                    Button("Galeri") {
+                        showPhotoLibrarySheet = true
+                    }
+                    Button("Kamera") {
+                        showCameraSheet = true
                     }
                 }
+                .sheet(isPresented: $showPhotoLibrarySheet) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                }
+                .sheet(isPresented: $showCameraSheet) {
+                    ImagePicker(sourceType: .camera, selectedImage: self.$image)
+                }
                 
-                ZStack {
-                    if isScan {
-                        if let ingredients = product.productIngr as? [String] {
-                            ScrollView {
-                                ForEach(ingredients, id: \.self) { index in
-                                    var take: [Bahan] = bahanBerbahya.filter({$0.name == "\(index)"})
+                VStack(alignment: .leading) {
+                    Section(header: Text("Tipe Produk")) {
+                        Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")
+                    }
+                    Divider()
+                    Section(header: Text("Nama Produk")) {
+                        Text(product.productName ?? "")
+                    }
+                    Divider()
+                }
+            }
+            HStack {
+                Text("Daftar Bahan")
+                Spacer()
+                Button {
+                    self.showingScanningView.toggle()
+                } label: {
+                    Image("camer")
+                        .resizable()
+                        .frame(width: 29, height: 29)
+                }
+            }
+            
+            ZStack {
+                if let ingredients = product.productIngr as? [String] {
+                    if isScan || !ingredients.isEmpty {
+                        ScrollView {
+                            ForEach(ingredients, id: \.self) { index in
+                                var take: [Bahan] = bahanBerbahya.filter({$0.name == "\(index)"})
+                                if !take.isEmpty {
                                     ProdukRow(namaProduk: index, descProduk: take[0].description, bahanProduk: take[0].bahanMengandung)
                                 }
                             }
                         }
-                        
                     } else {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .strokeBorder(Color.copper, lineWidth: 2)
@@ -132,15 +132,16 @@ struct DetailProductView: View {
                             }
                         }
                     }
-                }.sheet(isPresented: $showingScanningView) {
-                    ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
                 }
-                
-                Spacer()
+            }.sheet(isPresented: $showingScanningView) {
+                ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
             }
-            .padding()
-            .navigationTitle(Text("Detil Produk"))
-            .navigationBarTitleDisplayMode(.inline)
+            
+            Spacer()
+        }
+        .padding()
+        .navigationTitle(Text("Detil Produk"))
+        .navigationBarTitleDisplayMode(.inline)
         
     }
 }
