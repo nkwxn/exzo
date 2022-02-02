@@ -107,22 +107,31 @@ struct DetailProductView: View {
                 }
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(Color.copper, lineWidth: 2)
-                    
-                    List {
+                    if isScan {
                         if let ingredients = product.productIngr as? [String] {
-                            ForEach(ingredients, id: \.self) { index in
-                                Text("\(index)")
-                                    .padding()
+                            ScrollView {
+                                ForEach(ingredients, id: \.self) { index in
+                                    var take: [Bahan] = bahanBerbahya.filter({$0.name == "\(index)"})
+                                    ProdukRow(namaProduk: index, descProduk: take[0].description, bahanProduk: take[0].bahanMengandung)
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .strokeBorder(Color.copper, lineWidth: 2)
+                            .opacity(isScan ? 0 : 1)
+                        Button {
+                            self.showingScanningView = true
+                        } label: {
+                            VStack {
+                                Image(systemName: "camera")
+                                    .frame(width: 18, height: 18)
+                                Text("Pindai Bahan Produk Anda")
+                                    .scaledFont(name: "Avenir", size: 18)
                             }
                         }
                     }
-                    .listStyle(PlainListStyle())
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .strokeBorder(Color.copper, lineWidth: 2)
-                    )
                 }.sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
                 }

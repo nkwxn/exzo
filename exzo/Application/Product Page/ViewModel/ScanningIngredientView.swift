@@ -95,8 +95,8 @@ struct ScanIngredientView: UIViewControllerRepresentable {
 public func checkAvoid(name: [String]) -> [String] {
     var newArr: [String] = []
     for index in name {
-        for igr in bahans {
-            if index.contains(igr.name) {
+        for igr in bahanBerbahya {
+            if index.contains(igr.name.lowercased()) {
                 newArr.append(igr.name)
             }
         }
