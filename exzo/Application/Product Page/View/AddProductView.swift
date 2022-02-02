@@ -113,32 +113,35 @@ struct AddProduct: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(Color.copper, lineWidth: 2)
-                    if isScan {
-                        List {
-                            ForEach(recognizedText, id: \.self) { index in
-                                Text(index)
-                                    .padding()
-                            }
+                        .opacity(!newA.isEmpty ? 0 : 1)
+                    Button {
+                        self.isScan.toggle()
+                        self.showingScanningView.toggle()
+                    } label: {
+                        VStack {
+                            Image(systemName: "camera")
+                                .frame(width: 18, height: 18)
+                            Text("Pindai Bahan Produk Anda")
+                                .scaledFont(name: "Avenir", size: 18)
                         }
-                        .listStyle(PlainListStyle())
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .strokeBorder(Color.copper, lineWidth: 2)
-                        )
-                    } else {
-                        Button {
-                            self.showingScanningView.toggle()
-                        } label: {
-                            VStack {
-                                Image(systemName: "camera")
-                                    .frame(width: 18, height: 18)
-                                Text("Pindai Bahan Produk Anda")
-                                    .scaledFont(name: "Avenir", size: 18)
-                            }
+                    }.opacity(isScan ? 0 : 1)
+
+                    VStack {
+                        // TODO: How to display ingredientCell
+                        ForEach(newA, id: \.self) { index in
+                            Text(index)
+                                .padding()
+                            
                         }
                     }
-                }.sheet(isPresented: $showingScanningView) {
-                    ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
+                }
+                .sheet(isPresented: $showingScanningView) {
+                    ScanIngredientView(recognizedText: self.$recognizedText)
+                        .onDisappear {
+                            DispatchQueue.main.async {
+                                newA = checkAvoid(name: recognizedText)
+                            }
+                        }
                 }
                 
                 Spacer()

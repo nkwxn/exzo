@@ -32,18 +32,29 @@ struct ProductView: View {
                                 ProductRow(product: product.wrappedValue)
                             }
                         }
+                        .onDelete(perform: viewModel.deleteItem)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                     }
-                    .onDelete(perform: viewModel.deleteItem)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                }
-                .environment(\.defaultMinListRowHeight, 2)
-
-                .sheet(isPresented: $isPresented) {
-                    AddProduct()
+                    .environment(\.defaultMinListRowHeight, 2)
+                    .sheet(isPresented: $isPresented) {
+                        AddProduct()
                         .interactiveDismissDisabled(true)
+                    }
+                    .listStyle(PlainListStyle())
+                } else {
+                    VStack {
+                        Spacer()
+                        Image("produkNone")
+                        Spacer()
+                    }
+                    .sheet(isPresented: $isPresented) {
+                        AddProduct()
+                        .interactiveDismissDisabled(true)
+                    }
+                    
                 }
-                .listStyle(PlainListStyle())
+                      
             }
             .navigationBarHidden(true)
             .navigationTitle("Produk")
