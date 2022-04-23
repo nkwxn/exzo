@@ -27,8 +27,8 @@ struct ProductRow: View {
             HStack {
                 Image(uiImage: getImage())
                     .resizable()
-                    .frame(width: 112, height: 104, alignment: .leading)
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: 112, height: 104, alignment: .leading)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 VStack {
                     Text(ProductType(rawValue: product.productType ?? "")?.getLocalizedName() ?? "")

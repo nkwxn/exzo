@@ -15,13 +15,15 @@ struct AddProduct: View {
     
     @State var name = ""
     @State var type = ""
-    // TODO: kayanya mesti bikin asset buat empty state? idk lol haha
+    
     @State var image: UIImage? = UIImage(imageLiteralResourceName: "PhotoProduct")
     @State var showOption = false
     @State var showPhotoLibrarySheet = false
     @State var showCameraSheet = false
     @State private var recognizedText: [String] = []
-    
+    @State var tmpArray: [String] = []
+    @State var textClassify = ""
+    @State var collapse: [Task] = []
     // Vision state
     @State var isScan: Bool = false
     @State private var showingScanningView = false
@@ -99,7 +101,8 @@ struct AddProduct: View {
                     Text("Daftar Bahan Produk")
                     Spacer()
                     Button {
-                        self.showingScanningView.toggle()
+                        self.showingScanningView = true
+                        
                     } label: {
                         Image("camer")
                             .resizable()
@@ -109,23 +112,22 @@ struct AddProduct: View {
                 }
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(Color.copper, lineWidth: 2)
-                    if isScan {
-                        List {
-                            ForEach(recognizedText, id: \.self) { index in
-                                Text(index)
-                                    .padding()
+                    if isScan == true {
+                        ScrollView {
+                            ForEach(tmpArray, id: \.self) { index in
+                                var take: [Bahan] = bahanBerbahya.filter({$0.name == "\(index)"})
+                                
+                                ProdukRow(namaProduk: index, descProduk: take[0].description, bahanProduk: take[0].bahanMengandung)
                             }
                         }
                         .listStyle(PlainListStyle())
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .strokeBorder(Color.copper, lineWidth: 2)
-                        )
+                        
                     } else {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .strokeBorder(Color.copper, lineWidth: 2)
+                            .opacity(isScan ? 0 : 1)
                         Button {
-                            self.showingScanningView.toggle()
+                            self.showingScanningView = true
                         } label: {
                             VStack {
                                 Image(systemName: "camera")
@@ -137,6 +139,11 @@ struct AddProduct: View {
                     }
                 }.sheet(isPresented: $showingScanningView) {
                     ScanIngredientView(recognizedText: self.$recognizedText, scanDone: self.$isScan)
+                        .onDisappear {
+                            DispatchQueue.main.async {
+                                tmpArray = checkAvoid(name: recognizedText)
+                            }
+                        }
                 }
                 
                 Spacer()
@@ -162,7 +169,83 @@ struct AddProduct: View {
     }
     
     private func addProductAction() {
-        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: recognizedText)
+        CDStorage.shared.createProduct(name: name, type: selectedType, image: image, ingredients: tmpArray)
         self.presentationMode.wrappedValue.dismiss()
+    }
+}
+
+struct ProdukRow: View {
+    private let id = UUID()
+    @State private var isExpanded: Bool = false
+    var namaProduk: String
+    var descProduk: String
+    var bahanProduk: [String]
+    private var bahan: String {
+        var bahan: String = ""
+        for (index, item) in bahanProduk.enumerated() { // how to limit cuman 3
+            if index < 3 {
+                if index == bahanProduk.count - 1 || index == 2 {
+                    bahan += "\(item)."
+                } else {
+                    bahan += "\(item), "
+                }
+            }
+        }
+        return bahan
+    }
+    var body: some View {
+        content
+//            .frame(maxWidth: 400)
+    }
+    
+    private var content: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            if !isExpanded {
+                withAnimation {
+                    header
+                        .cornerRadius(10, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
+                }
+                
+            } else {
+                withAnimation {
+                    header
+                        .cornerRadius(10, corners: [.topLeft, .topRight])
+                }
+            }
+            if isExpanded {
+                VStack(alignment: .leading) {
+                    Text(descProduk)
+                        .opacity(isExpanded ? 1 : 0)
+                    Divider()
+                        .foregroundColor(Color.black)
+                    Text("Common \(namaProduk) are \(bahan)")
+                        .font(Avenir(.subheadline).getFont().italic())
+                }
+                .padding(10)
+            }
+        }
+        .cornerRadius(10, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
+    }
+    
+    private var header: some View {
+        Button {
+            // Action
+            isExpanded.toggle()
+        } label: {
+            HStack {
+                Text(namaProduk)
+                    .padding(10)
+                    .foregroundColor(Color.white)
+                Spacer()
+                Image(systemName: !isExpanded ? "chevron.down" : "chevron.up")
+                    .foregroundColor(Color.white)
+                Spacer()
+                    .frame(width: 20)
+            }
+            .contentShape(Rectangle())
+            .padding(.vertical, 4)
+            .background(Color("accent_copper"))
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }

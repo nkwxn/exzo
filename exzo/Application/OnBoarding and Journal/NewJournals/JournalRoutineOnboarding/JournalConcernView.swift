@@ -77,8 +77,8 @@ class ConcernVM: ObservableObject {
     var subs = Set<AnyCancellable>()
     
     init() {
-        UDHelper.sharedUD.subsConcern { triggers in
-            self.chosenTrigger = triggers
+        UDHelper.sharedUD.subsConcern { [weak self] triggers in
+            self?.chosenTrigger = triggers
         }.store(in: &subs)
     }
 }

@@ -19,29 +19,42 @@ struct ProductView: View {
                 }
                 Spacer()
                     .frame(height: 5)
-                List {
-                    ForEach($viewModel.products, id: \.self) { product in
-                        ZStack {
-                            NavigationLink {
-                                DetailProductView(product: product.wrappedValue)
-                            } label: {
+                if !viewModel.products.isEmpty {
+                    List {
+                        ForEach($viewModel.products, id: \.self) { product in
+                            ZStack {
+                                NavigationLink {
+                                    DetailProductView(product: product.wrappedValue)
+                                } label: {
+                                    ProductRow(product: product.wrappedValue)
+                                }
+                                .buttonStyle(PlainButtonStyle())
                                 ProductRow(product: product.wrappedValue)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            ProductRow(product: product.wrappedValue)
                         }
+                        .onDelete(perform: viewModel.deleteItem)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                     }
-                    .onDelete(perform: viewModel.deleteItem)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                }
-                .environment(\.defaultMinListRowHeight, 2)
-
-                .sheet(isPresented: $isPresented) {
-                    AddProduct()
+                    .environment(\.defaultMinListRowHeight, 2)
+                    .sheet(isPresented: $isPresented) {
+                        AddProduct()
                         .interactiveDismissDisabled(true)
+                    }
+                    .listStyle(PlainListStyle())
+                } else {
+                    VStack {
+                        Spacer()
+                        Image("produkNone")
+                        Spacer()
+                    }
+                    .sheet(isPresented: $isPresented) {
+                        AddProduct()
+                        .interactiveDismissDisabled(true)
+                    }
+                    
                 }
-                .listStyle(PlainListStyle())
+                      
             }
             .navigationBarHidden(true)
             .navigationTitle("Produk")
